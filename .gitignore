@@ -8,6 +8,10 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+*.babelrc
+*.env
+.env
+.babelrc
 
 # macOS
 .DS_Store
