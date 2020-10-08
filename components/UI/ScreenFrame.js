@@ -9,7 +9,7 @@ import {
 const ScreenFrame = props => {
     
     <SafeAreaView style={styles.screen}>
-        <StatusBar style="auto"/>
+        <StatusBar style='auto' />
         <View>{props.children}</View>
     </SafeAreaView>
 

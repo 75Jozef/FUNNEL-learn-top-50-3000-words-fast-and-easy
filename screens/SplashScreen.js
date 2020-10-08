@@ -1,11 +1,17 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text } from 'react-native'
+
+import ScreenFrame from '../components/UI/ScreenFrame';
+
 
 const SplashScreen = () => {
     return (
-        <View style={styles.screen}>
+        <ScreenFrame>
             <Text style={styles.text}>KUK</Text>
-        </View>
+        </ScreenFrame>
+        
+
+
     )
 
 }
