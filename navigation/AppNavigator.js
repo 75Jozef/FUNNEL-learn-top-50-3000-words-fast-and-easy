@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-
-import WelcomeScreen from '../screens/WelcomeScreen';
+import { AuthNavigator } from './../navigation/ScreenNavigator';
 
 const AppNavigator = () => {
+  let isAuth = true;
+
   return (
-    <NavigationContainer>
-      <WelcomeScreen />
-    </NavigationContainer>
+    <NavigationContainer>{!isAuth && <AuthNavigator />}</NavigationContainer>
   );
 };
 

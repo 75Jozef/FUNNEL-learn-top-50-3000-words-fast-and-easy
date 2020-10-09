@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -7,7 +7,7 @@ const ScreenFrame = (props) => {
   return (
     <SafeAreaView style={styles.screen}>
       <StatusBar style='auto' />
-      <View>{props.children}</View>
+      <>{props.children}</>
     </SafeAreaView>
   );
 };

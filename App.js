@@ -1,34 +1,9 @@
 import React, { useState } from 'react';
 import AppNavigator from './navigation/AppNavigator';
+import { View } from 'react-native';
 
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
-
-// import { init } from './localDb/db'
-// init()
-//   .then(() => {
-//     console.log('initialized db OK');
-//   })
-//   .catch((err) => {
-//     console.log('failed to open db');
-//     console.log(err);
-//   });
-
-// import { composeWithDevTools } from 'redux-devtools-extension';
-
-// !!!implement dotenv .env dependency to make app safer; store there keys...
-
-// import { createStore, combineReducers, applyMiddleware } from 'redux';
-// import { Provider } from 'react-redux';
-
-// import ReduxThunk from 'redux-thunk';
-
-// const rootReducer = combineReducers({
-  
-// });
-
-// // const store = createStore(rootReducer, composeWithDevTools());
-// const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -50,9 +25,5 @@ export default function App() {
     );
   }
 
-  return (
-    // <Provider store={store}>
-      <AppNavigator />
-    // </Provider>
-  );
+  return <AppNavigator />;
 }
