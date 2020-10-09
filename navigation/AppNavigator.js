@@ -7,7 +7,7 @@ const AppNavigator = () => {
   let isAuth = true;
 
   return (
-    <NavigationContainer>{!isAuth && <AuthNavigator />}</NavigationContainer>
+    <NavigationContainer>{isAuth && <AuthNavigator />}</NavigationContainer>
   );
 };
 
