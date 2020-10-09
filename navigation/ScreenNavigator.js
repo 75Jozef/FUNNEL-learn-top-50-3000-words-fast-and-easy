@@ -49,12 +49,12 @@ import AuthScreen, {
 //* Default Navigation Options
 const defaultNavOptions = {
   headerStyle: {
-    backgroundColor: Colors.back,
+    backgroundColor: Colors.base,
   },
   headerTitleStyle: {
     fontFamily: Fonts.bold,
   },
-  headerTintColor: Colors.text,
+  headerTintColor: Colors.surround,
   gestureEnabled: true,
 };
 
