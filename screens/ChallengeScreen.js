@@ -21,7 +21,7 @@ const ChallengeScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>Challenges SCREEN</TxtLabel>
+        <TxtLabel>Challenge SCREEN</TxtLabel>
       </CardFrame>
     </ScreenFrame>
   );

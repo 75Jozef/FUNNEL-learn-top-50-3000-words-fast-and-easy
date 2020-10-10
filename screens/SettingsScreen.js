@@ -25,7 +25,7 @@ const SettingsScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>Settings SCREEN</TxtLabel>
+        <TxtLabel>OPTIONS SCREEN</TxtLabel>
         <TxtNormal>
           Language: <TxtItalic>{lng}</TxtItalic>
         </TxtNormal>
@@ -36,7 +36,7 @@ const SettingsScreen = () => {
 
 export const screenOptions = (navData) => {
   return {
-    headerTitle: 'Settings Screen Header',
+    headerTitle: 'Options Screen Header',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
@@ -52,7 +52,7 @@ export const screenOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='About'
-          iconName={'ios-heart'}
+          iconName={'ios-heart-empty'}
           onPress={() => {
             navData.navigation.navigate('About');
           }}

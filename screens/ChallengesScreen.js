@@ -45,7 +45,7 @@ export const screenOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Challenge'
-          iconName={'ios-stats'}
+          iconName={'ios-fitness'}
           onPress={() => {
             navData.navigation.navigate('Challenge');
           }}

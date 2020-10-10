@@ -50,7 +50,6 @@ import WelcomeScreen, {
 import UserScreen, {
   screenOptions as userScreenOptions,
 } from './../screens/UserScreen';
-import ChallengeScreen from '../screens/ChallengesScreen';
 
 //* Default Navigation Options
 const defaultNavOptions = {
@@ -120,7 +119,7 @@ export const MainNavigator = () => {
   );
 };
 
-//* How To Navigation ***************************
+//* Settings Navigation ***************************
 
 const SettingsStackNavigator = createStackNavigator();
 
@@ -141,7 +140,7 @@ export const SettingsNavigator = () => {
   );
 };
 
-//* Challenge Navigation ***************************
+//* Challenges Navigation ***************************
 
 const ChallengesStackNavigator = createStackNavigator();
 
@@ -199,20 +198,20 @@ export const SideNavigator = () => {
       }}
       drawerContentOptions={{ activeTintColor: Colors.accent }}>
       <SideDrawerNavigator.Screen
-        name='Welcome !'
+        name='How To Use'
         component={WelcomeNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-cart'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-home'} size={23} color={Colors.base} />
           ),
         }}
       />
       <SideDrawerNavigator.Screen
-        name='Main Pool'
+        name='F|U|N|N|E|L'
         component={MainNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-cart'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-funnel'} size={23} color={Colors.base} />
           ),
         }}
       />
@@ -222,27 +221,27 @@ export const SideNavigator = () => {
         component={ChallengesNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-list'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-pulse'} size={23} color={Colors.base} />
           ),
         }}
       />
 
       <SideDrawerNavigator.Screen
-        name='Stats'
+        name='Statistics'
         component={StatsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-create'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-stats'} size={23} color={Colors.base} />
           ),
         }}
       />
 
       <SideDrawerNavigator.Screen
-        name='Settings'
+        name='Options'
         component={SettingsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-create'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-options'} size={23} color={Colors.base} />
           ),
         }}
       />

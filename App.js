@@ -4,7 +4,7 @@ import AppNavigator from './navigation/AppNavigator';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
