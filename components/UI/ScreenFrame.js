@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Colors from '../../constants/Colors';
 
 const ScreenFrame = (props) => {
   return (
@@ -15,9 +16,9 @@ const ScreenFrame = (props) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#000',
+    backgroundColor: Colors.base,
+    // borderColor: 'white',
+    // borderWidth: 1,
   },
 });
 

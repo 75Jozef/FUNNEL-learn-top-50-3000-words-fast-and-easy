@@ -1,8 +1,16 @@
 import React, { useReducer, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 
 import Fonts from '../../constants/Fonts';
 import Colors from '../../constants/Colors';
+import {
+  TxtHeader,
+  TxtBold,
+  TxtNormal,
+  TxtItalic,
+  TxtLabel,
+  TxtError,
+} from './Txt';
 
 const INPUT_CHANGE = 'INPUT_CHANGE';
 const INPUT_BLUR = 'INPUT_BLUR';
@@ -67,10 +75,10 @@ const Input = (props) => {
 
   return (
     <View style={styles.formControl}>
-      <Text style={styles.label}>{props.label}</Text>
+      <TxtLabel style={styles.label}>{props.label}</TxtLabel>
       {!inputState.isValid && (
         <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>{props.errorText}</Text>
+          <TxtError>{props.errorText}</TxtError>
         </View>
       )}
       <TextInput
@@ -89,22 +97,18 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   label: {
-    fontFamily: Fonts.bold,
     marginVertical: 2,
   },
   input: {
     paddingHorizontal: 2,
     paddingVertical: 2,
-    borderBottomColor: Colors.backSecond,
-    borderBottomWidth: 1,
+    borderBottomColor: Colors.surround,
+    borderBottomWidth: 0.5,
+    color: Colors.textPrimary,
+    fontSize: 20,
   },
   errorContainer: {
-    marginVertical: 2,
-  },
-  errorText: {
-    fontFamily: Fonts.normal,
-    color: Colors.accent,
-    fontSize: 12,
+    marginVertical: 1,
   },
 });
 
