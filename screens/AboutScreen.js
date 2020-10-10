@@ -12,6 +12,7 @@ import {
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 
 const AboutScreen = () => {
   return (
@@ -28,7 +29,7 @@ const AboutScreen = () => {
 
 export const screenOptions = (navData) => {
   return {
-    headerTitle: 'About App',
+    headerTitle: 'About Screen Header',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

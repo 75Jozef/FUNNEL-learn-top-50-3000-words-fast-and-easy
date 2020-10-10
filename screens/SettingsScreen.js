@@ -12,6 +12,7 @@ import {
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 
 const SettingsScreen = () => {
   return (
@@ -24,6 +25,23 @@ const SettingsScreen = () => {
       </CardFrame>
     </ScreenFrame>
   );
+};
+
+export const screenOptions = (navData) => {
+  return {
+    headerTitle: 'Settings Screen Header',
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='App Menu'
+          iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 export default SettingsScreen;

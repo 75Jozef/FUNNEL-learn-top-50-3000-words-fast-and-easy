@@ -1,17 +1,47 @@
-import React from 'react';
-import { Text } from 'react-native';
-import { StyleSheet } from 'react-native';
+import React, { useCallback } from 'react';
+import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import { TxtBold } from '../components/UI/Txt';
+import Input from './../components/UI/Input';
 import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
+import {
+  TxtHeader,
+  TxtBold,
+  TxtNormal,
+  TxtItalic,
+  TxtLabel,
+} from '../components/UI/Txt';
+import CardFrame from '../components/UI/CardFrame';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 
 const WelcomeScreen = () => {
   return (
     <ScreenFrame>
-      <TxtBold>KUK ;)</TxtBold>
+      <View style={{ alignItems: 'center', margin: 10 }}>
+        <TxtHeader>W|O|R|D</TxtHeader>
+      </View>
+      <CardFrame style={{ margin: 15 }}>
+        <TxtLabel>WELCOME SCREEN</TxtLabel>
+      </CardFrame>
     </ScreenFrame>
   );
+};
+
+export const screenOptions = (navData) => {
+  return {
+    headerTitle: 'Welcome Screen Header',
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='App Menu'
+          iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 export default WelcomeScreen;

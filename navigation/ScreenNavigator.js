@@ -39,9 +39,9 @@ import StatisticsScreen, {
   screenOptions as statisticsScreenOptions,
 } from './../screens/StatisticsScreen';
 
-// import WelcomeScreen, {
-//   screenOptions as welcomeScreenOptions,
-// } from './../screens/WelcomeScreen';
+import WelcomeScreen, {
+  screenOptions as welcomeScreenOptions,
+} from './../screens/WelcomeScreen';
 
 import UserScreen, {
   screenOptions as userScreenOptions,
@@ -72,6 +72,20 @@ export const AuthNavigator = () => {
         options={authScreenOptions}
       />
     </AuthStackNavigator.Navigator>
+  );
+};
+
+//* Welcome navigation ***********************
+const WelcomeStackNavigator = createStackNavigator();
+export const WelcomeNavigator = () => {
+  return (
+    <WelcomeStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <WelcomeStackNavigator.Screen
+        name='Welcome'
+        component={WelcomeScreen}
+        options={welcomeScreenOptions}
+      />
+    </WelcomeStackNavigator.Navigator>
   );
 };
 
@@ -163,6 +177,19 @@ export const SideNavigator = () => {
         );
       }}
       drawerContentOptions={{ activeTintColor: Colors.backPrimary }}>
+      <SideDrawerNavigator.Screen
+        name='WelcomeScreen'
+        component={WelcomeNavigator}
+        options={{
+          drawerIcon: (props) => (
+            <Ionicons
+              name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+              size={23}
+              color={Colors.base}
+            />
+          ),
+        }}
+      />
       <SideDrawerNavigator.Screen
         name='How To'
         component={HowToNavigator}
