@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Input from './../components/UI/Input';
+import Input from '../components/UI/Input';
 import Colors from '../constants/Colors';
 import {
   TxtHeader,
@@ -12,17 +12,16 @@ import {
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import CustomHeaderButton from './../components/UI/CustomHeaderButton';
-import AboutScreen from './AboutScreen';
+import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
-const WelcomeScreen = () => {
+const ChallengeScreen = () => {
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>WELCOME SCREEN</TxtLabel>
+        <TxtLabel>Challenges SCREEN</TxtLabel>
       </CardFrame>
     </ScreenFrame>
   );
@@ -30,25 +29,14 @@ const WelcomeScreen = () => {
 
 export const screenOptions = (navData) => {
   return {
-    headerTitle: 'Welcome Screen Header',
+    headerTitle: 'Challenge Screen Header',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Menu'
-          iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+          title='Challenges'
+          iconName={'ios-arrow-round-back'}
           onPress={() => {
-            navData.navigation.toggleDrawer();
-          }}
-        />
-      </HeaderButtons>
-    ),
-    headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item
-          title='HowTo'
-          iconName={'ios-heart'}
-          onPress={() => {
-            navData.navigation.navigate('HowTo');
+            navData.navigation.goBack();
           }}
         />
       </HeaderButtons>
@@ -56,4 +44,4 @@ export const screenOptions = (navData) => {
   };
 };
 
-export default WelcomeScreen;
+export default ChallengeScreen;

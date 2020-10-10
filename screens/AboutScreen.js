@@ -3,6 +3,9 @@ import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from './../components/UI/Input';
 import Colors from '../constants/Colors';
+
+import * as txt from './../data/languages';
+
 import {
   TxtHeader,
   TxtBold,
@@ -33,7 +36,7 @@ export const screenOptions = (navData) => {
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Welcome'
+          title='Settings'
           iconName={'ios-arrow-round-back'}
           onPress={() => {
             navData.navigation.goBack();

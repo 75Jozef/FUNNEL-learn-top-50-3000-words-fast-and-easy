@@ -14,7 +14,7 @@ import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
-const ChallengeScreen = () => {
+const ChallengesScreen = () => {
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
@@ -44,10 +44,10 @@ export const screenOptions = (navData) => {
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Statistics'
+          title='Challenge'
           iconName={'ios-stats'}
           onPress={() => {
-            navData.navigation.navigate('Statistics');
+            navData.navigation.navigate('Challenge');
           }}
         />
       </HeaderButtons>
@@ -55,4 +55,4 @@ export const screenOptions = (navData) => {
   };
 };
 
-export default ChallengeScreen;
+export default ChallengesScreen;

@@ -23,6 +23,10 @@ import ChallengesScreen, {
   screenOptions as challengesScreenOptions,
 } from '../screens/ChallengesScreen';
 
+import ChallengeScreen, {
+  screenOptions as challengeScreenOptions,
+} from '../screens/ChallengeScreen';
+
 import HowToScreen, {
   screenOptions as howToScreenOptions,
 } from '../screens/HowToScreen';
@@ -46,6 +50,7 @@ import WelcomeScreen, {
 import UserScreen, {
   screenOptions as userScreenOptions,
 } from './../screens/UserScreen';
+import ChallengeScreen from '../screens/ChallengesScreen';
 
 //* Default Navigation Options
 const defaultNavOptions = {
@@ -85,10 +90,10 @@ export const WelcomeNavigator = () => {
         component={WelcomeScreen}
         options={welcomeScreenOptions}
       />
-      <HowToStackNavigator.Screen
-        name='About'
-        component={AboutScreen}
-        options={aboutScreenOptions}
+      <WelcomeStackNavigator.Screen
+        name='HowTo'
+        component={HowToScreen}
+        options={howToScreenOptions}
       />
     </WelcomeStackNavigator.Navigator>
   );
@@ -117,43 +122,59 @@ export const MainNavigator = () => {
 
 //* How To Navigation ***************************
 
-const HowToStackNavigator = createStackNavigator();
+const SettingsStackNavigator = createStackNavigator();
 
-export const HowToNavigator = () => {
+export const SettingsNavigator = () => {
   return (
-    <HowToStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <HowToStackNavigator.Screen
-        name='HowTo'
-        component={HowToScreen}
-        options={howToScreenOptions}
-      />
-      <HowToStackNavigator.Screen
+    <SettingsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <SettingsStackNavigator.Screen
         name='Settings'
         component={SettingsScreen}
         options={settingsScreenOptions}
       />
-    </HowToStackNavigator.Navigator>
+      <SettingsStackNavigator.Screen
+        name='About'
+        component={AboutScreen}
+        options={aboutScreenOptions}
+      />
+    </SettingsStackNavigator.Navigator>
   );
 };
 
 //* Challenge Navigation ***************************
 
-const ChallengeStackNavigator = createStackNavigator();
+const ChallengesStackNavigator = createStackNavigator();
 
 export const ChallengesNavigator = () => {
   return (
-    <ChallengeStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <ChallengeStackNavigator.Screen
+    <ChallengesStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <ChallengesStackNavigator.Screen
         name='Challenges'
         component={ChallengesScreen}
         options={challengesScreenOptions}
       />
-      <ChallengeStackNavigator.Screen
-        name='Statistics'
+      <ChallengesStackNavigator.Screen
+        name='Challenge'
+        component={ChallengeScreen}
+        options={challengeScreenOptions}
+      />
+    </ChallengesStackNavigator.Navigator>
+  );
+};
+
+//* Stats Navigation ***************************
+
+const StatsStackNavigator = createStackNavigator();
+
+export const StatsNavigator = () => {
+  return (
+    <StatsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <StatsStackNavigator.Screen
+        name='Stats'
         component={StatisticsScreen}
         options={statisticsScreenOptions}
       />
-    </ChallengeStackNavigator.Navigator>
+    </StatsStackNavigator.Navigator>
   );
 };
 
@@ -182,38 +203,16 @@ export const SideNavigator = () => {
         component={WelcomeNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons
-              name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
-              size={23}
-              color={Colors.base}
-            />
+            <Ionicons name={'ios-cart'} size={23} color={Colors.base} />
           ),
         }}
       />
       <SideDrawerNavigator.Screen
-        name='How To'
-        component={HowToNavigator}
-        options={{
-          drawerIcon: (props) => (
-            <Ionicons
-              name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
-              size={23}
-              color={Colors.base}
-            />
-          ),
-        }}
-      />
-
-      <SideDrawerNavigator.Screen
-        name='Main Screen'
+        name='Main Pool'
         component={MainNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons
-              name={Platform.OS === 'android' ? 'md-list' : 'ios-list'}
-              size={23}
-              color={Colors.base}
-            />
+            <Ionicons name={'ios-cart'} size={23} color={Colors.base} />
           ),
         }}
       />
@@ -223,11 +222,27 @@ export const SideNavigator = () => {
         component={ChallengesNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons
-              name={Platform.OS === 'android' ? 'md-create' : 'ios-create'}
-              size={23}
-              color={Colors.base}
-            />
+            <Ionicons name={'ios-list'} size={23} color={Colors.base} />
+          ),
+        }}
+      />
+
+      <SideDrawerNavigator.Screen
+        name='Stats'
+        component={StatsNavigator}
+        options={{
+          drawerIcon: (props) => (
+            <Ionicons name={'ios-create'} size={23} color={Colors.base} />
+          ),
+        }}
+      />
+
+      <SideDrawerNavigator.Screen
+        name='Settings'
+        component={SettingsNavigator}
+        options={{
+          drawerIcon: (props) => (
+            <Ionicons name={'ios-create'} size={23} color={Colors.base} />
           ),
         }}
       />

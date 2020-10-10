@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import AppNavigator from './navigation/AppNavigator';
-import { View } from 'react-native';
 
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
+
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+
+import langReducer from './store/reducers/lang';
+
+const rootReducer = combineReducers({
+  language: langReducer,
+});
+
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -25,5 +36,9 @@ export default function App() {
     );
   }
 
-  return <AppNavigator />;
+  return (
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
+  );
 }

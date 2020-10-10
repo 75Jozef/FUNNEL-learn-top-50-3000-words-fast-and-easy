@@ -33,10 +33,10 @@ export const screenOptions = (navData) => {
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Challenges'
-          iconName={'ios-arrow-round-back'}
+          title='Menu'
+          iconName={'ios-menu'}
           onPress={() => {
-            navData.navigation.goBack();
+            navData.navigation.toggleDrawer();
           }}
         />
       </HeaderButtons>

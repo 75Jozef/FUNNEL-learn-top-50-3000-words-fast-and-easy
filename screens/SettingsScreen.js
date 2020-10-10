@@ -14,7 +14,11 @@ import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 
+import { useSelector } from 'react-redux';
+
 const SettingsScreen = () => {
+  const lng = useSelector((state) => state.language.language);
+
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
@@ -22,6 +26,9 @@ const SettingsScreen = () => {
       </View>
       <CardFrame style={{ margin: 15 }}>
         <TxtLabel>Settings SCREEN</TxtLabel>
+        <TxtNormal>
+          Language: <TxtItalic>{lng}</TxtItalic>
+        </TxtNormal>
       </CardFrame>
     </ScreenFrame>
   );
@@ -37,6 +44,17 @@ export const screenOptions = (navData) => {
           iconName={'ios-arrow-round-back'}
           onPress={() => {
             navData.navigation.goBack();
+          }}
+        />
+      </HeaderButtons>
+    ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='About'
+          iconName={'ios-heart'}
+          onPress={() => {
+            navData.navigation.navigate('About');
           }}
         />
       </HeaderButtons>
