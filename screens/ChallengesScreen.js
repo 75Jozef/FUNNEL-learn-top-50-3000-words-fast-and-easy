@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Input from './../components/UI/Input';
+import Input from '../components/UI/Input';
 import Colors from '../constants/Colors';
 import {
   TxtHeader,
@@ -12,7 +12,7 @@ import {
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import CustomHeaderButton from './../components/UI/CustomHeaderButton';
+import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
 const ChallengeScreen = () => {
   return (
@@ -21,7 +21,7 @@ const ChallengeScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>Challenge SCREEN</TxtLabel>
+        <TxtLabel>Challenges SCREEN</TxtLabel>
       </CardFrame>
     </ScreenFrame>
   );
@@ -29,7 +29,7 @@ const ChallengeScreen = () => {
 
 export const screenOptions = (navData) => {
   return {
-    headerTitle: 'Challenge Screen Header',
+    headerTitle: 'Challenges Screen Header',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
@@ -37,6 +37,17 @@ export const screenOptions = (navData) => {
           iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
           onPress={() => {
             navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='Statistics'
+          iconName={'ios-stats'}
+          onPress={() => {
+            navData.navigation.navigate('Statistics');
           }}
         />
       </HeaderButtons>

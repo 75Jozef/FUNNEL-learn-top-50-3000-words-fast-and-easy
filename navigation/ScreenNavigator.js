@@ -19,9 +19,9 @@ import AuthScreen, {
   screenOptions as authScreenOptions,
 } from '../screens/AuthScreen';
 
-import ChallengeScreen, {
-  screenOptions as challengeScreenOptions,
-} from '../screens/ChallengeScreen';
+import ChallengesScreen, {
+  screenOptions as challengesScreenOptions,
+} from '../screens/ChallengesScreen';
 
 import HowToScreen, {
   screenOptions as howToScreenOptions,
@@ -85,6 +85,11 @@ export const WelcomeNavigator = () => {
         component={WelcomeScreen}
         options={welcomeScreenOptions}
       />
+      <HowToStackNavigator.Screen
+        name='About'
+        component={AboutScreen}
+        options={aboutScreenOptions}
+      />
     </WelcomeStackNavigator.Navigator>
   );
 };
@@ -97,12 +102,12 @@ export const MainNavigator = () => {
   return (
     <MainStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <MainStackNavigator.Screen
-        name='MainScreen'
+        name='Main'
         component={MainScreen}
         options={mainScreenOptions}
       />
       <MainStackNavigator.Screen
-        name='UserScreen'
+        name='User'
         component={UserScreen}
         options={userScreenOptions}
       />
@@ -118,19 +123,14 @@ export const HowToNavigator = () => {
   return (
     <HowToStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <HowToStackNavigator.Screen
-        name='HowToScreen'
+        name='HowTo'
         component={HowToScreen}
         options={howToScreenOptions}
       />
       <HowToStackNavigator.Screen
-        name='SettingsScreen'
+        name='Settings'
         component={SettingsScreen}
         options={settingsScreenOptions}
-      />
-      <HowToStackNavigator.Screen
-        name='AboutScreen'
-        component={AboutScreen}
-        options={aboutScreenOptions}
       />
     </HowToStackNavigator.Navigator>
   );
@@ -140,16 +140,16 @@ export const HowToNavigator = () => {
 
 const ChallengeStackNavigator = createStackNavigator();
 
-export const ChallengeNavigator = () => {
+export const ChallengesNavigator = () => {
   return (
     <ChallengeStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <ChallengeStackNavigator.Screen
-        name='Challenge Screen'
-        component={ChallengeScreen}
-        options={challengeScreenOptions}
+        name='Challenges'
+        component={ChallengesScreen}
+        options={challengesScreenOptions}
       />
       <ChallengeStackNavigator.Screen
-        name='StatisticsScreen'
+        name='Statistics'
         component={StatisticsScreen}
         options={statisticsScreenOptions}
       />
@@ -176,9 +176,9 @@ export const SideNavigator = () => {
           </View>
         );
       }}
-      drawerContentOptions={{ activeTintColor: Colors.backPrimary }}>
+      drawerContentOptions={{ activeTintColor: Colors.accent }}>
       <SideDrawerNavigator.Screen
-        name='WelcomeScreen'
+        name='Welcome !'
         component={WelcomeNavigator}
         options={{
           drawerIcon: (props) => (
@@ -219,8 +219,8 @@ export const SideNavigator = () => {
       />
 
       <SideDrawerNavigator.Screen
-        name='Challenge Screen'
-        component={ChallengeNavigator}
+        name='Challenges'
+        component={ChallengesNavigator}
         options={{
           drawerIcon: (props) => (
             <Ionicons

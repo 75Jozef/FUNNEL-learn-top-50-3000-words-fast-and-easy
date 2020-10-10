@@ -13,6 +13,7 @@ import {
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
+import AboutScreen from './AboutScreen';
 
 const WelcomeScreen = () => {
   return (
@@ -33,10 +34,21 @@ export const screenOptions = (navData) => {
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='App Menu'
+          title='Menu'
           iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
           onPress={() => {
             navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='About'
+          iconName={'ios-heart'}
+          onPress={() => {
+            navData.navigation.navigate('About');
           }}
         />
       </HeaderButtons>

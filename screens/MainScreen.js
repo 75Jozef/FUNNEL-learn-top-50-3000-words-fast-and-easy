@@ -41,6 +41,17 @@ export const screenOptions = (navData) => {
         />
       </HeaderButtons>
     ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='User'
+          iconName={'ios-man'}
+          onPress={() => {
+            navData.navigation.navigate('User');
+          }}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 
