@@ -4,14 +4,17 @@ import { NativeModules, Platform } from 'react-native';
 
 let deviceLanguage =
   Platform.OS === 'ios'
-    ? NativeModules.SettingsManager.settings.AppleLocale
-    : NativeModules.I18nManager.localeIdentifier;
+    ? NativeModules.SettingsManager.settings.AppleLocale.slice(0, 1)
+    : NativeModules.I18nManager.localeIdentifier.slice(0, 1);
 
 if (deviceLanguage === undefined) {
   // iOS 13 workaround, take first of AppleLanguages array
-  deviceLanguage = NativeModules.SettingsManager.settings.AppleLanguages[0];
+  deviceLanguage = NativeModules.SettingsManager.settings.AppleLanguages[0].slice(
+    0,
+    1
+  );
   if (deviceLanguage == undefined) {
-    deviceLanguage = 'en_US';
+    deviceLanguage = 'en';
   }
 }
 
