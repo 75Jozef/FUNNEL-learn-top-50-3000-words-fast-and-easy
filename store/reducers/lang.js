@@ -11,7 +11,7 @@ if (deviceLanguage === undefined) {
   // iOS 13 workaround, take first of AppleLanguages array
   deviceLanguage = NativeModules.SettingsManager.settings.AppleLanguages[0];
   if (deviceLanguage == undefined) {
-    deviceLanguage = 'en-US';
+    deviceLanguage = 'en_US';
   }
 }
 

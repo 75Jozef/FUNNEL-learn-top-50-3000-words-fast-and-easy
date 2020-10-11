@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from '../components/UI/Input';
@@ -13,8 +13,12 @@ import {
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
+import * as Languages from '../data/languages';
+import { useSelector } from 'react-redux';
 
 const ChallengesScreen = () => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>

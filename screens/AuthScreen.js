@@ -11,8 +11,13 @@ import {
   TxtLabel,
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
+import * as Languages from '../data/languages';
+import { useSelector } from 'react-redux';
 
 const AuthScreen = () => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
+
   const inputChangeHandler = useCallback(() => {}, []);
 
   return (
