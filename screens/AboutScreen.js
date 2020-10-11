@@ -33,6 +33,8 @@ const AboutScreen = () => {
 };
 
 export const screenOptions = (navData) => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
   return {
     headerTitle: 'About Screen Header',
     headerLeft: () => (

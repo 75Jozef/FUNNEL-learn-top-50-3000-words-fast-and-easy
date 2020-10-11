@@ -27,15 +27,18 @@ const WelcomeScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>{texts.Welcome}</TxtLabel>
+        <TxtLabel>{texts.Welcome.header}</TxtLabel>
+        <TxtNormal>{texts.Welcome.intro}</TxtNormal>
       </CardFrame>
     </ScreenFrame>
   );
 };
 
 export const screenOptions = (navData) => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
   return {
-    headerTitle: `kuka`,
+    headerTitle: `${texts.Welcome}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

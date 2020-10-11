@@ -32,6 +32,8 @@ const HowToScreen = () => {
 };
 
 export const screenOptions = (navData) => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
   return {
     headerTitle: 'How To Screen Header',
     headerLeft: () => (

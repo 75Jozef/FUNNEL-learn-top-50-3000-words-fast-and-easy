@@ -32,6 +32,8 @@ const StatisticsScreen = () => {
 };
 
 export const screenOptions = (navData) => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
   return {
     headerTitle: 'Stats Screen Header',
     headerLeft: () => (

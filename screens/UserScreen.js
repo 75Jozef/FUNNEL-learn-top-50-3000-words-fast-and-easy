@@ -32,6 +32,8 @@ const UserScreen = () => {
 };
 
 export const screenOptions = (navData) => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
   return {
     headerTitle: 'User Screen Header',
     headerLeft: () => (

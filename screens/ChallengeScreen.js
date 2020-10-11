@@ -32,6 +32,8 @@ const ChallengeScreen = () => {
 };
 
 export const screenOptions = (navData) => {
+  const lng = useSelector((state) => state.language.language);
+  const texts = Languages[lng];
   return {
     headerTitle: 'Challenge Screen Header',
     headerLeft: () => (
