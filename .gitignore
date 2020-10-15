@@ -13,5 +13,8 @@ web-build/
 .env
 .babelrc
 
+#data
+.data/*
+
 # macOS
 .DS_Store
