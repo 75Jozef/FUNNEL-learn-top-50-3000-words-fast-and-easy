@@ -56,7 +56,6 @@ export const screenOptions = (navData) => {
           title='About'
           iconName={'ios-help-circle-outline'}
           onPress={() => {
-            di;
             navData.navigation.navigate('About');
           }}
         />

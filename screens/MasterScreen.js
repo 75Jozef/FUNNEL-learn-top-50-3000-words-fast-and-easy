@@ -22,7 +22,6 @@ const MasterScreen = () => {
   const texts = Languages[lng];
 
   const allWords = useSelector((state) => state.words.allWords);
-  console.log(allWords);
 
   return (
     <ScreenFrame>
@@ -34,6 +33,7 @@ const MasterScreen = () => {
       </CardFrame>
 
       <FlatList
+        removeClippedSubviews='false'
         data={allWords}
         keyExtractor={(item) => item.iden}
         renderItem={(itemData) => (
