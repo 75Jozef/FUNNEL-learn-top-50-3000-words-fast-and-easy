@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SectionList } from 'react-native';
+import { View, SectionList, FlatList } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from '../components/UI/Input';
 import Colors from '../constants/Colors';
@@ -15,12 +15,14 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
+import words from '../store/reducers/words';
 
 const MasterScreen = () => {
   const lng = useSelector((state) => state.language.language);
   const texts = Languages[lng];
 
   const allWords = useSelector((state) => state.words.allWords);
+  console.log(allWords);
 
   return (
     <ScreenFrame>
@@ -31,12 +33,13 @@ const MasterScreen = () => {
         <TxtLabel>MASTER SCREEN</TxtLabel>
       </CardFrame>
 
-      <SectionList
-        sections={allWords}
-        keyExtractor={(word) => word.iden}
-        renderItem={({ word }) => <TxtNormal>{word.English}</TxtNormal>}
-        renderSectionHeader={({ section: { word } }) => (
-          <TxtBold>{word}</TxtBold>
+      <FlatList
+        data={allWords}
+        keyExtractor={(item) => item.iden}
+        renderItem={(itemData) => (
+          <TxtNormal>
+            English: {itemData.item.English} Slovak: {itemData.item.Slovak}
+          </TxtNormal>
         )}
       />
     </ScreenFrame>
