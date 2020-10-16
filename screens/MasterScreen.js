@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, SectionList } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from '../components/UI/Input';
 import Colors from '../constants/Colors';
@@ -19,6 +19,9 @@ import { useSelector } from 'react-redux';
 const MasterScreen = () => {
   const lng = useSelector((state) => state.language.language);
   const texts = Languages[lng];
+
+  const allWords = useSelector((state) => state.words.allWords);
+
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
@@ -27,6 +30,15 @@ const MasterScreen = () => {
       <CardFrame style={{ margin: 15 }}>
         <TxtLabel>MASTER SCREEN</TxtLabel>
       </CardFrame>
+
+      <SectionList
+        sections={allWords}
+        keyExtractor={(word) => word.iden}
+        renderItem={({ word }) => <TxtNormal>{word.English}</TxtNormal>}
+        renderSectionHeader={({ section: { word } }) => (
+          <TxtBold>{word}</TxtBold>
+        )}
+      />
     </ScreenFrame>
   );
 };
