@@ -9,9 +9,11 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
 import langReducer from './store/reducers/lang';
+import wordsReducer from './store/reducers/words';
 
 const rootReducer = combineReducers({
   language: langReducer,
+  words: wordsReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
