@@ -1,5 +1,5 @@
 //english*
-export const en = {
+export const English = {
   About: 'About',
   Auth: 'Authorization',
   Challenges: 'Challenges',
@@ -12,7 +12,7 @@ export const en = {
 };
 
 //slovak
-export const sk = {
+export const Slovak = {
   About: 'O apke',
   Auth: 'Prihlásenie',
   Challenges: 'Výzvy',

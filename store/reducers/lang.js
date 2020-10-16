@@ -19,7 +19,9 @@ import { NativeModules, Platform } from 'react-native';
 // }
 
 const initialState = {
-  language: 'en',
+  language: 'English',
+  id: '',
+  st: '',
 };
 
 const langReducer = (state = initialState, action) => {
