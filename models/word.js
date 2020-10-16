@@ -1,4 +1,4 @@
-class wordToLearn {
+export default class Word {
   constructor(
     userlvl,
     iden,
@@ -263,5 +263,3 @@ class wordToLearn {
     this.Bulgarian = Bulgarian;
   }
 }
-
-export default wordToLearn;
