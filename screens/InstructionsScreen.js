@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Input from './../components/UI/Input';
+import Input from '../components/UI/Input';
 import Colors from '../constants/Colors';
 import {
   TxtHeader,
@@ -12,11 +12,11 @@ import {
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import CustomHeaderButton from './../components/UI/CustomHeaderButton';
+import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
 
-const UserScreen = () => {
+const InstructionsScreen = () => {
   const lng = useSelector((state) => state.language.language);
   const texts = Languages[lng];
   return (
@@ -25,7 +25,7 @@ const UserScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>USER SCREEN</TxtLabel>
+        <TxtLabel>INSTRUCTIONS SCREEN</TxtLabel>
       </CardFrame>
     </ScreenFrame>
   );
@@ -35,14 +35,14 @@ export const screenOptions = (navData) => {
   const lng = useSelector((state) => state.language.language);
   const texts = Languages[lng];
   return {
-    headerTitle: 'User Screen Header',
+    headerTitle: 'Instructions Screen Header',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Main'
-          iconName={'ios-arrow-round-back'}
+          title='Menu'
+          iconName={'ios-menu'}
           onPress={() => {
-            navData.navigation.goBack();
+            navData.navigation.toggleDrawer();
           }}
         />
       </HeaderButtons>
@@ -50,4 +50,4 @@ export const screenOptions = (navData) => {
   };
 };
 
-export default UserScreen;
+export default InstructionsScreen;

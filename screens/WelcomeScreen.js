@@ -53,11 +53,11 @@ export const screenOptions = (navData) => {
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='HowTo'
+          title='About'
           iconName={'ios-help-circle-outline'}
           onPress={() => {
             di;
-            navData.navigation.navigate('HowTo');
+            navData.navigation.navigate('About');
           }}
         />
       </HeaderButtons>

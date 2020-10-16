@@ -31,9 +31,9 @@ import HowToScreen, {
   screenOptions as howToScreenOptions,
 } from '../screens/HowToScreen';
 
-import MainScreen, {
-  screenOptions as mainScreenOptions,
-} from './../screens/MainScreen';
+import MasterScreen, {
+  screenOptions as masterScreenOptions,
+} from './../screens/MasterScreen';
 
 import SettingsScreen, {
   screenOptions as settingsScreenOptions,
@@ -47,9 +47,9 @@ import WelcomeScreen, {
   screenOptions as welcomeScreenOptions,
 } from './../screens/WelcomeScreen';
 
-import UserScreen, {
-  screenOptions as userScreenOptions,
-} from './../screens/UserScreen';
+import InstructionsScreen, {
+  screenOptions as instructionsScrenOptions,
+} from '../screens/InstructionsScreen';
 
 //* Default Navigation Options
 const defaultNavOptions = {
@@ -90,53 +90,43 @@ export const WelcomeNavigator = () => {
         options={welcomeScreenOptions}
       />
       <WelcomeStackNavigator.Screen
-        name='HowTo'
-        component={HowToScreen}
-        options={howToScreenOptions}
+        name='About'
+        component={AboutScreen}
+        options={aboutScreenOptions}
       />
     </WelcomeStackNavigator.Navigator>
   );
 };
 
-//* Main Navigation ***************************
+//* Instructions Navigation ****************************
 
-const MainStackNavigator = createStackNavigator();
+const InstructionsStackNavigator = createStackNavigator();
 
-export const MainNavigator = () => {
+export const InstructionsNavigator = () => {
   return (
-    <MainStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <MainStackNavigator.Screen
-        name='Main'
-        component={MainScreen}
-        options={mainScreenOptions}
+    <InstructionsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <InstructionsStackNavigator.Screen
+        name='Instructions'
+        component={InstructionsScreen}
+        options={instructionsScrenOptions}
       />
-      <MainStackNavigator.Screen
-        name='User'
-        component={UserScreen}
-        options={userScreenOptions}
-      />
-    </MainStackNavigator.Navigator>
+    </InstructionsStackNavigator.Navigator>
   );
 };
 
-//* Settings Navigation ***************************
+//* Master Navigation ***************************
 
-const SettingsStackNavigator = createStackNavigator();
+const MasterStackNavigator = createStackNavigator();
 
-export const SettingsNavigator = () => {
+export const MasterNavigator = () => {
   return (
-    <SettingsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <SettingsStackNavigator.Screen
-        name='Settings'
-        component={SettingsScreen}
-        options={settingsScreenOptions}
+    <MasterStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <MasterStackNavigator.Screen
+        name='Master'
+        component={MasterScreen}
+        options={masterScreenOptions}
       />
-      <SettingsStackNavigator.Screen
-        name='About'
-        component={AboutScreen}
-        options={aboutScreenOptions}
-      />
-    </SettingsStackNavigator.Navigator>
+    </MasterStackNavigator.Navigator>
   );
 };
 
@@ -177,6 +167,22 @@ export const StatsNavigator = () => {
   );
 };
 
+//* Settings Navigation ***************************
+
+const SettingsStackNavigator = createStackNavigator();
+
+export const SettingsNavigator = () => {
+  return (
+    <SettingsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <SettingsStackNavigator.Screen
+        name='Settings'
+        component={SettingsScreen}
+        options={settingsScreenOptions}
+      />
+    </SettingsStackNavigator.Navigator>
+  );
+};
+
 //* Side Drawer Navigation *******************
 const SideDrawerNavigator = createDrawerNavigator();
 export const SideNavigator = () => {
@@ -198,7 +204,7 @@ export const SideNavigator = () => {
       }}
       drawerContentOptions={{ activeTintColor: Colors.accent }}>
       <SideDrawerNavigator.Screen
-        name='How To Use'
+        name='Welcome'
         component={WelcomeNavigator}
         options={{
           drawerIcon: (props) => (
@@ -206,9 +212,20 @@ export const SideNavigator = () => {
           ),
         }}
       />
+
+      <SideDrawerNavigator.Screen
+        name='Instructions'
+        component={InstructionsNavigator}
+        options={{
+          drawerIcon: (props) => (
+            <Ionicons name={'ios-fitness'} size={23} color={Colors.base} />
+          ),
+        }}
+      />
+
       <SideDrawerNavigator.Screen
         name='F|U|N|N|E|L'
-        component={MainNavigator}
+        component={MasterNavigator}
         options={{
           drawerIcon: (props) => (
             <Ionicons name={'ios-funnel'} size={23} color={Colors.base} />

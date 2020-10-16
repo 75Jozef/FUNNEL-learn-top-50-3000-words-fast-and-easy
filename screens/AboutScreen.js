@@ -40,7 +40,7 @@ export const screenOptions = (navData) => {
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Settings'
+          title='Welcome'
           iconName={'ios-arrow-round-back'}
           onPress={() => {
             navData.navigation.goBack();
