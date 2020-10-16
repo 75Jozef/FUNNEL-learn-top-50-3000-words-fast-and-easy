@@ -15,6 +15,7 @@ web-build/
 
 #data
 .data/*
+.models/*
 
 # macOS
 .DS_Store
