@@ -47,23 +47,14 @@ const MasterScreen = () => {
   }, [words, range]);
 
   const handleIndex = (jump) => {
-    if (range > 0) {
-      if (jump === 9999) {
-        setIndex(range);
-        return;
-      }
-      if (index + jump > range) {
-        setIndex(range);
-        return;
-      }
-
-      if (index - jump < 0) {
-        setIndex(0);
-        return;
-      }
-
-      setIndex(index + jump);
+    if (index + jump > range) {
+      setIndex(range);
+    } else if (index + jump < 0) {
+      setIndex(0);
+      return;
     }
+
+    setIndex(index + jump);
   };
 
   return (
@@ -154,7 +145,7 @@ const MasterScreen = () => {
         <Button
           title='|<'
           onPress={() => {
-            handleIndex(0);
+            setIndex(0);
           }}
           color={Colors.surround}
         />
@@ -197,7 +188,7 @@ const MasterScreen = () => {
         <Button
           title='>|'
           onPress={() => {
-            handleIndex(9999);
+            setIndex(range);
           }}
           color={Colors.surround}
         />
