@@ -27,10 +27,6 @@ import ChallengeScreen, {
   screenOptions as challengeScreenOptions,
 } from '../screens/ChallengeScreen';
 
-import HowToScreen, {
-  screenOptions as howToScreenOptions,
-} from '../screens/HowToScreen';
-
 import MasterScreen, {
   screenOptions as masterScreenOptions,
 } from './../screens/MasterScreen';
@@ -88,11 +84,6 @@ export const WelcomeNavigator = () => {
         name='Welcome'
         component={WelcomeScreen}
         options={welcomeScreenOptions}
-      />
-      <WelcomeStackNavigator.Screen
-        name='About'
-        component={AboutScreen}
-        options={aboutScreenOptions}
       />
     </WelcomeStackNavigator.Navigator>
   );
@@ -183,6 +174,22 @@ export const SettingsNavigator = () => {
   );
 };
 
+//* About Navigation ***************************
+
+const AboutStackNavigator = createStackNavigator();
+
+export const AboutNavigator = () => {
+  return (
+    <AboutStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <AboutStackNavigator.Screen
+        name='About'
+        component={AboutScreen}
+        options={aboutScreenOptions}
+      />
+    </AboutStackNavigator.Navigator>
+  );
+};
+
 //* Side Drawer Navigation *******************
 const SideDrawerNavigator = createDrawerNavigator();
 export const SideNavigator = () => {
@@ -256,6 +263,16 @@ export const SideNavigator = () => {
       <SideDrawerNavigator.Screen
         name='Options'
         component={SettingsNavigator}
+        options={{
+          drawerIcon: (props) => (
+            <Ionicons name={'ios-options'} size={23} color={Colors.base} />
+          ),
+        }}
+      />
+
+      <SideDrawerNavigator.Screen
+        name='About'
+        component={AboutNavigator}
         options={{
           drawerIcon: (props) => (
             <Ionicons name={'ios-options'} size={23} color={Colors.base} />

@@ -45,20 +45,9 @@ export const screenOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='HowTo'
-          iconName={'ios-arrow-round-back'}
+          iconName={'ios-menu'}
           onPress={() => {
-            navData.navigation.goBack();
-          }}
-        />
-      </HeaderButtons>
-    ),
-    headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item
-          title='About'
-          iconName={'ios-heart-empty'}
-          onPress={() => {
-            navData.navigation.navigate('About');
+            navData.navigation.toggleDrawer();
           }}
         />
       </HeaderButtons>

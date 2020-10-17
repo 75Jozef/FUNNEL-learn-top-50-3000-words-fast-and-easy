@@ -3,263 +3,263 @@ export default class Word {
     userlvl,
     iden,
     sten,
-    English,
+    en,
     idit,
     stit,
-    Italian,
+    it,
     idpa,
     stpa,
-    Punjabi,
+    pa,
     idjv,
     stjv,
-    Javanese,
+    jv,
     idth,
     stth,
-    Thai,
+    th,
     idpl,
     stpl,
-    Polish,
+    pl,
     idfa,
     stfa,
-    Persian,
+    fa,
     idur,
     stur,
-    Urdu,
+    ur,
     iduk,
     stuk,
-    Ukrainian,
+    uk,
     idro,
     stro,
-    Romanian,
+    ro,
     idnl,
     stnl,
-    Dutch,
+    nl,
     idsr,
     stsr,
-    Serbian,
+    sr,
     idhr,
     sthr,
-    Croatian,
+    hr,
     idhu,
     sthu,
-    Hungarian,
+    hu,
     idel,
     stel,
-    Greek,
+    el,
     idcs,
     stcs,
-    Czech,
+    cs,
     idsv,
     stsv,
-    Swedish,
+    sv,
     idbe,
     stbe,
-    Belarusian,
+    be,
     idfi,
     stfi,
-    Finnish,
+    fi,
     idda,
     stda,
-    Danish,
+    da,
     idcn,
     stcn,
-    Chinese_Simplified,
+    cn,
     ides,
     stes,
-    Spanish,
+    es,
     idar,
     star,
-    Arabic,
+    ar,
     idpt,
     stpt,
-    Portuguese_Brasil,
+    pt,
     idid,
     stid,
-    Indonesian,
+    id,
     idms,
     stms,
-    Malay,
+    ms,
     idfr,
     stfr,
-    French,
+    fr,
     idru,
     stru,
-    Russian,
+    ru,
     idde,
     stde,
-    German,
+    de,
     idja,
     stja,
-    Japanese,
+    ja,
     idhi,
     sthi,
-    Hindi,
+    hi,
     idbn,
     stbn,
-    Bengali,
+    bn,
     idtr,
     sttr,
-    Turkish,
+    tr,
     idmr,
     stmr,
-    Marathi,
+    mr,
     idko,
     stko,
-    Korean,
+    ko,
     idvi,
     stvi,
-    Vietnamese,
+    vi,
     idta,
     stta,
-    Tamil,
+    ta,
     idsk,
     stsk,
-    Slovak,
+    sk,
     idaf,
     staf,
-    Afrikaans,
+    af,
     idlv,
     stlv,
-    Latvian,
+    lv,
     ideo,
     steo,
-    Esperanto,
+    eo,
     idet,
     stet,
-    Estonian,
+    et,
     idbg,
     stbg,
-    Bulgarian
+    bg
   ) {
     this.userlvl = userlvl;
     this.iden = iden;
     this.sten = sten;
-    this.English = English;
+    this.en = en;
     this.idit = idit;
     this.stit = stit;
-    this.Italian = Italian;
+    this.it = it;
     this.idpa = idpa;
     this.stpa = stpa;
-    this.Punjabi = Punjabi;
+    this.pa = pa;
     this.idjv = idjv;
     this.stjv = stjv;
-    this.Javanese = Javanese;
+    this.jv = jv;
     this.idth = idth;
     this.stth = stth;
-    this.Thai = Thai;
+    this.th = th;
     this.idpl = idpl;
     this.stpl = stpl;
-    this.Polish = Polish;
+    this.pl = pl;
     this.idfa = idfa;
     this.stfa = stfa;
-    this.Persian = Persian;
+    this.fa = fa;
     this.idur = idur;
     this.stur = stur;
-    this.Urdu = Urdu;
+    this.ur = ur;
     this.iduk = iduk;
     this.stuk = stuk;
-    this.Ukrainian = Ukrainian;
+    this.uk = uk;
     this.idro = idro;
     this.stro = stro;
-    this.Romanian = Romanian;
+    this.ro = ro;
     this.idnl = idnl;
     this.stnl = stnl;
-    this.Dutch = Dutch;
+    this.nl = nl;
     this.idsr = idsr;
     this.stsr = stsr;
-    this.Serbian = Serbian;
+    this.sr = sr;
     this.idhr = idhr;
     this.sthr = sthr;
-    this.Croatian = Croatian;
+    this.hr = hr;
     this.idhu = idhu;
     this.sthu = sthu;
-    this.Hungarian = Hungarian;
+    this.hu = hu;
     this.idel = idel;
     this.stel = stel;
-    this.Greek = Greek;
+    this.rl = el;
     this.idcs = idcs;
     this.stcs = stcs;
-    this.Czech = Czech;
+    this.cs = cs;
     this.idsv = idsv;
     this.stsv = stsv;
-    this.Swedish = Swedish;
+    this.sv = sv;
     this.idbe = idbe;
     this.stbe = stbe;
-    this.Belarusian = Belarusian;
+    this.be = be;
     this.idfi = idfi;
     this.stfi = stfi;
-    this.Finnish = Finnish;
+    this.fi = fi;
     this.idda = idda;
     this.stda = stda;
-    this.Danish = Danish;
+    this.da = da;
     this.idcn = idcn;
     this.stcn = stcn;
-    this.Chinese_Simplified = Chinese_Simplified;
+    this.cn = cn;
     this.ides = ides;
     this.stes = stes;
-    this.Spanish = Spanish;
+    this.es = es;
     this.idar = idar;
     this.star = star;
-    this.Arabic = Arabic;
+    this.ar = ar;
     this.idpt = idpt;
     this.stpt = stpt;
-    this.Portuguese_Brasil = Portuguese_Brasil;
+    this.pt = pt;
     this.idid = idid;
     this.stid = stid;
-    this.Indonesian = Indonesian;
+    this.id = id;
     this.idms = idms;
     this.stms = stms;
-    this.Malay = Malay;
+    this.ms = ms;
     this.idfr = idfr;
     this.stfr = stfr;
-    this.French = French;
+    this.fr = fr;
     this.idru = idru;
     this.stru = stru;
-    this.Russian = Russian;
+    this.ru = ru;
     this.idde = idde;
     this.stde = stde;
-    this.German = German;
+    this.de = de;
     this.idja = idja;
     this.stja = stja;
-    this.Japanese = Japanese;
+    this.ja = ja;
     this.idhi = idhi;
     this.sthi = sthi;
-    this.Hindi = Hindi;
+    this.hi = hi;
     this.idbn = idbn;
     this.stbn = stbn;
-    this.Bengali = Bengali;
+    this.bn = bn;
     this.idtr = idtr;
     this.sttr = sttr;
-    this.Turkish = Turkish;
+    this.tr = tr;
     this.idmr = idmr;
     this.stmr = stmr;
-    this.Marathi = Marathi;
+    this.mr = mr;
     this.idko = idko;
     this.stko = stko;
-    this.Korean = Korean;
+    this.ko = ko;
     this.idvi = idvi;
     this.stvi = stvi;
-    this.Vietnamese = Vietnamese;
+    this.vi = vi;
     this.idta = idta;
     this.stta = stta;
-    this.Tamil = Tamil;
+    this.ta = ta;
     this.idsk = idsk;
     this.stsk = stsk;
-    this.Slovak = Slovak;
+    this.sk = sk;
     this.idaf = idaf;
     this.staf = staf;
-    this.Afrikaans = Afrikaans;
+    this.af = af;
     this.idlv = idlv;
     this.stlv = stlv;
-    this.Latvian = Latvian;
+    this.lv = lv;
     this.ideo = ideo;
     this.steo = steo;
-    this.Esperanto = Esperanto;
+    this.eo = eo;
     this.idet = idet;
     this.stet = stet;
-    this.Estonian = Estonian;
+    this.et = et;
     this.idbg = idbg;
     this.stbg = stbg;
-    this.Bulgarian = Bulgarian;
+    this.bg = bg;
   }
 }

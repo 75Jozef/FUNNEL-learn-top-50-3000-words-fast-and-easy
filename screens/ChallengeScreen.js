@@ -17,8 +17,6 @@ import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
 
 const ChallengeScreen = () => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
@@ -32,8 +30,6 @@ const ChallengeScreen = () => {
 };
 
 export const screenOptions = (navData) => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
   return {
     headerTitle: 'Challenge Screen Header',
     headerLeft: () => (

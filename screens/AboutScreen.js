@@ -26,7 +26,7 @@ const AboutScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>ABOUT SCREEN</TxtLabel>
+        <TxtLabel>{texts.About}</TxtLabel>
       </CardFrame>
     </ScreenFrame>
   );
@@ -36,14 +36,14 @@ export const screenOptions = (navData) => {
   const lng = useSelector((state) => state.language.language);
   const texts = Languages[lng];
   return {
-    headerTitle: 'About Screen Header',
+    headerTitle: `${texts.About}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Welcome'
-          iconName={'ios-arrow-round-back'}
+          iconName={'ios-menu'}
           onPress={() => {
-            navData.navigation.goBack();
+            navData.navigation.toggleDrawer();
           }}
         />
       </HeaderButtons>

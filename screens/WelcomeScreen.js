@@ -27,8 +27,8 @@ const WelcomeScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>{texts.Welcome.header}</TxtLabel>
-        <TxtNormal>{texts.Welcome.intro}</TxtNormal>
+        <TxtLabel>{texts.Welcome}</TxtLabel>
+        <TxtNormal>{texts.Welcome}</TxtNormal>
       </CardFrame>
     </ScreenFrame>
   );
@@ -46,17 +46,6 @@ export const screenOptions = (navData) => {
           iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
           onPress={() => {
             navData.navigation.toggleDrawer();
-          }}
-        />
-      </HeaderButtons>
-    ),
-    headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item
-          title='About'
-          iconName={'ios-help-circle-outline'}
-          onPress={() => {
-            navData.navigation.navigate('About');
           }}
         />
       </HeaderButtons>
