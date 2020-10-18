@@ -9,6 +9,7 @@ import {
   TxtNormal,
   TxtItalic,
   TxtLabel,
+  TxtButton,
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -18,7 +19,7 @@ import { useSelector } from 'react-redux';
 import WordShow from '../components/UI/WordShow';
 
 const MasterScreen = () => {
-  const [levelA, setLevelA] = useState(false);
+  const [levelA, setLevelA] = useState(true);
   const [levelN, setLevelN] = useState(false);
   const [levelV, setLevelV] = useState(false);
   const [levelH, setLevelH] = useState(false);
@@ -27,131 +28,125 @@ const MasterScreen = () => {
   const [levelX, setLevelX] = useState(false);
   const [index, setIndex] = useState(0);
   const [range, setRange] = useState(0);
+  const [show, setShow] = useState(0);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
   const txtfrst = Languages[lngfrst].Master;
   const txtscnd = Languages[lngscnd].Master;
 
-  useEffect(async () => {
-    const data = useSelector((state) => state.words.words);
-    const words = await data.filter(
-      (word) =>
-        (word.userlvl === 'a' && levelA) ||
-        (word.userlvl === 'n' && levelN) ||
-        (word.userlvl === 'v' && levelV) ||
-        (word.userlvl === 'h' && levelH) ||
-        (word.userlvl === 'f' && levelF) ||
-        (word.userlvl === 't' && levelT) ||
-        (word.userlvl === 'x' && levelX)
-    );
-  }, [
-    setLevelA,
-    setLevelN,
-    setLevelV,
-    setLevelH,
-    setLevelF,
-    setLevelT,
-    setLevelX,
-  ]);
+  const data = useSelector((state) => state.words.words);
+
+  const words = data.filter(
+    (word) =>
+      (word.userlvl === 'a' && levelA) ||
+      (word.userlvl === 'n' && levelN) ||
+      (word.userlvl === 'v' && levelV) ||
+      (word.userlvl === 'h' && levelH) ||
+      (word.userlvl === 'f' && levelF) ||
+      (word.userlvl === 't' && levelT) ||
+      (word.userlvl === 'x' && levelX) ||
+      word.iden === 2999
+  );
 
   useEffect(() => {
     setRange(words.length);
   }, [words, range]);
 
   const handleIndex = (jump) => {
-    if (index + jump > range) {
-      setIndex(range);
+    console.log('r: ' + range + ' i: ' + index);
+    if (index + jump >= range) {
+      setIndex(range - 1);
     } else if (index + jump < 0) {
       setIndex(0);
-      return;
+    } else {
+      setIndex(index + jump);
     }
-
-    setIndex(index + jump);
   };
 
   return (
     <ScreenFrame>
-      <View style={{ alignItems: 'center', margin: 10 }}>
+      {/* <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
-      </View>
+      </View> */}
       <CardFrame style={{ margin: 15 }}>
         <TxtLabel>{txtfrst.title}</TxtLabel>
       </CardFrame>
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button
-          title='verbs'
+          title='Verbs'
           onPress={() => {
             setLevelV((prev) => !prev);
-            setRange(0);
             setIndex(0);
+            setRange(0);
           }}
-          color={levelV ? 'green' : 'blue'}
+          color={levelV ? Colors.surround : Colors.base}
         />
+
         <Button
           title='nouns'
           onPress={() => {
             setLevelN((prev) => !prev);
-            setRange(0);
             setIndex(0);
+            setRange(0);
           }}
-          color={levelN ? 'green' : 'blue'}
+          color={levelN ? Colors.surround : Colors.base}
         />
         <Button
           title='adjct'
           onPress={() => {
             setLevelA((prev) => !prev);
-            setRange(0);
             setIndex(0);
+            setRange(0);
           }}
-          color={levelA ? 'green' : 'blue'}
+          color={levelA ? Colors.surround : Colors.base}
         />
         <Button
           title='100'
           onPress={() => {
             setLevelH((prev) => !prev);
-            setRange(0);
             setIndex(0);
+            setRange(0);
           }}
-          color={levelH ? 'green' : 'blue'}
+          color={levelH ? Colors.surround : Colors.base}
         />
         <Button
           title='500'
           onPress={() => {
             setLevelF((prev) => !prev);
-            setRange(0);
             setIndex(0);
+            setRange(0);
           }}
-          color={levelF ? 'green' : 'blue'}
+          color={levelF ? Colors.surround : Colors.base}
         />
         <Button
           title='1000'
           onPress={() => {
             setLevelT((prev) => !prev);
-            setRange(0);
             setIndex(0);
+            setRange(0);
           }}
-          color={levelT ? 'green' : 'blue'}
+          color={levelT ? Colors.surround : Colors.base}
         />
         <Button
           title='3000'
           onPress={() => {
             setLevelX((prev) => !prev);
-            setRange(0);
             setIndex(0);
+            setRange(0);
           }}
-          color={levelX ? 'green' : 'blue'}
+          color={levelX ? Colors.surround : Colors.base}
         />
       </View>
       <View
         style={{
-          height: 70,
+          height: 100,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
         <TxtNormal>
           {range > 0 ? (
-            <WordShow word={words[index][lngscnd]} />
+            <WordShow word={words[index][lngscnd]} show={show} />
           ) : (
             <TxtItalic>{txtscnd.noRange}</TxtItalic>
           )}
@@ -164,7 +159,7 @@ const MasterScreen = () => {
           onPress={() => {
             setIndex(0);
           }}
-          color={Colors.surround}
+          color={Colors.base}
         />
 
         <Button
@@ -172,42 +167,42 @@ const MasterScreen = () => {
           onPress={() => {
             handleIndex(-3);
           }}
-          color={Colors.surround}
+          color={Colors.base}
         />
         <Button
           title='<-'
           onPress={() => {
             handleIndex(-1);
           }}
-          color={Colors.surround}
+          color={Colors.base}
         />
         <Button
           title='| |'
           onPress={() => {
             setIndex(Math.floor(range / 2));
           }}
-          color={Colors.surround}
+          color={Colors.base}
         />
         <Button
           title='->'
           onPress={() => {
             handleIndex(1);
           }}
-          color={Colors.surround}
+          color={Colors.base}
         />
         <Button
           title='--->'
           onPress={() => {
             handleIndex(3);
           }}
-          color={Colors.surround}
+          color={Colors.base}
         />
         <Button
           title='>|'
           onPress={() => {
             setIndex(range);
           }}
-          color={Colors.surround}
+          color={Colors.base}
         />
       </View>
       <View
@@ -217,10 +212,10 @@ const MasterScreen = () => {
           alignItems: 'center',
         }}>
         <TxtItalic>
-          {txtfrst.index}: {index} {txtfrst.range}: {range}
+          {txtfrst.index}: {index + 1} {txtfrst.range}: {range}
         </TxtItalic>
         <TxtNormal>
-          {range >= 0 ? (
+          {range > 0 ? (
             words[index][lngfrst]
           ) : (
             <TxtItalic>{txtfrst.noRange}</TxtItalic>

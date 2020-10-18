@@ -4,18 +4,17 @@ import Colors from '../../constants/Colors';
 import { TxtHeader, TxtNormal } from './Txt';
 
 const WordShow = (props) => {
-  const word = props.word;
+  const word = props.word.split('');
 
-  const ShowCard = (
+  const ShowCard = (props) => (
     <View style={styles.card}>
       <TxtHeader>{props.children}</TxtHeader>
     </View>
   );
-
   return (
     <View style={styles.show}>
-      {word.map((letter) => (
-        <ShowCard>{letter}</ShowCard>
+      {word.map((ltr) => (
+        <ShowCard>{ltr}</ShowCard>
       ))}
     </View>
   );
@@ -30,7 +29,7 @@ const styles = StyleSheet.create({
   card: {
     borderColor: Colors.surround,
     borderRadius: 7,
-    borderWidth: 0.5,
+    borderWidth: 0.2,
     padding: 7,
   },
 });

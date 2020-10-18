@@ -166,7 +166,7 @@ export const OptionsNavigator = () => {
   return (
     <OptionsStackNavigator.Navigator screenOptions={defaultNavOptions}>
       <OptionsStackNavigator.Screen
-        name='Settings'
+        name='Options'
         component={OptionsScreen}
         options={optionsScreenOptions}
       />

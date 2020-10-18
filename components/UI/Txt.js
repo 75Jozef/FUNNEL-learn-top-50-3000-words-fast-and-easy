@@ -63,6 +63,16 @@ export const TxtError = (props) => {
   );
 };
 
+export const TxtButton = (props) => {
+  return (
+    <>
+      <Text style={{ ...styles.textButton, ...props.style }}>
+        {props.children}
+      </Text>
+    </>
+  );
+};
+
 const styles = StyleSheet.create({
   textNormal: {
     color: Colors.textPrimary,
@@ -93,6 +103,11 @@ const styles = StyleSheet.create({
   textError: {
     fontFamily: Fonts.normal,
     color: Colors.accent,
+    fontSize: Dimensions.get('window').height / 50,
+  },
+  textButton: {
+    fontFamily: Fonts.normal,
+    color: Colors.textPrimary,
     fontSize: Dimensions.get('window').height / 50,
   },
 });

@@ -24,7 +24,7 @@ export const en = {
     header: 'Master screen',
     title: 'Master title',
     noRange: 'select range first...',
-    rande: 'Range',
+    range: 'Range',
     index: 'Index',
   },
   Options: {
@@ -63,7 +63,7 @@ export const sk = {
     header: 'Majster screen',
     title: 'Majster nadpis',
     noRange: 'Najprv vyber rozsah...',
-    rande: 'Rozsah',
+    range: 'Rozsah',
     index: 'Číslo',
   },
   Options: {
