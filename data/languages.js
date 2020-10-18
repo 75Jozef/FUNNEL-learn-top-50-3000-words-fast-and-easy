@@ -26,6 +26,7 @@ export const en = {
     noRange: 'select range first...',
     range: 'Range',
     index: 'Index',
+    show: 'Show level',
   },
   Options: {
     header: 'Options header',
@@ -65,6 +66,7 @@ export const sk = {
     noRange: 'Najprv vyber rozsah...',
     range: 'Rozsah',
     index: 'Číslo',
+    show: 'Obtiažnosť zobrazenia',
   },
   Options: {
     header: 'Options hlavička',

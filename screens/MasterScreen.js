@@ -54,7 +54,6 @@ const MasterScreen = () => {
   }, [words, range]);
 
   const handleIndex = (jump) => {
-    console.log('r: ' + range + ' i: ' + index);
     if (index + jump >= range) {
       setIndex(range - 1);
     } else if (index + jump < 0) {
@@ -140,7 +139,7 @@ const MasterScreen = () => {
       </View>
       <View
         style={{
-          height: 100,
+          height: 150,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -205,15 +204,55 @@ const MasterScreen = () => {
           color={Colors.base}
         />
       </View>
+
       <View
         style={{
-          height: 50,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
         <TxtItalic>
           {txtfrst.index}: {index + 1} {txtfrst.range}: {range}
         </TxtItalic>
+        <CardFrame style={{ margin: 25, alignItems: 'center' }}>
+          <TxtButton>{txtfrst.show}</TxtButton>
+          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            <Button
+              title='  ?  '
+              onPress={() => {
+                setShow(0);
+              }}
+              color={show === 0 ? Colors.surround : Colors.base}
+            />
+            <Button
+              title='_ _ _'
+              onPress={() => {
+                setShow(1);
+              }}
+              color={show === 1 ? Colors.surround : Colors.base}
+            />
+            <Button
+              title='_ _ X'
+              onPress={() => {
+                setShow(2);
+              }}
+              color={show === 2 ? Colors.surround : Colors.base}
+            />
+            <Button
+              title='X _ X'
+              onPress={() => {
+                setShow(3);
+              }}
+              color={show === 3 ? Colors.surround : Colors.base}
+            />
+            <Button
+              title='X X X'
+              onPress={() => {
+                setShow(4);
+              }}
+              color={show === 4 ? Colors.surround : Colors.base}
+            />
+          </View>
+        </CardFrame>
         <TxtNormal>
           {range > 0 ? (
             words[index][lngfrst]
