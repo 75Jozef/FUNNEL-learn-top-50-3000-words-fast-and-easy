@@ -68,9 +68,9 @@ const MasterScreen = () => {
       {/* <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
       </View> */}
-      <CardFrame style={{ margin: 15 }}>
+      {/* <CardFrame style={{ margin: 15 }}>
         <TxtLabel>{txtfrst.title}</TxtLabel>
-      </CardFrame>
+      </CardFrame> */}
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button
           title='Verbs'
@@ -253,13 +253,13 @@ const MasterScreen = () => {
             />
           </View>
         </CardFrame>
-        <TxtNormal>
+        <TxtLabel style={{ margin: 20 }}>
           {range > 0 ? (
             words[index][lngfrst]
           ) : (
             <TxtItalic>{txtfrst.noRange}</TxtItalic>
           )}
-        </TxtNormal>
+        </TxtLabel>
       </View>
     </ScreenFrame>
   );
