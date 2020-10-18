@@ -18,8 +18,10 @@ import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
 
 const WelcomeScreen = () => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const lngscnd = useSelector((state) => state.language.lngscnd);
+  const txtfrst = Languages[lngfrst].Welcome;
+  const txtscnd = Languages[lngscnd].Welcome;
 
   return (
     <ScreenFrame>
@@ -27,18 +29,18 @@ const WelcomeScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>{texts.Welcome}</TxtLabel>
-        <TxtNormal>{texts.Welcome}</TxtNormal>
+        <TxtLabel>frst{txtfrst.title}</TxtLabel>
+        <TxtNormal>scnd{txtscnd.title}</TxtNormal>
       </CardFrame>
     </ScreenFrame>
   );
 };
 
 export const screenOptions = (navData) => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const txtfrst = Languages[lngfrst].Welcome;
   return {
-    headerTitle: `${texts.Welcome}`,
+    headerTitle: `${txtfrst.header}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

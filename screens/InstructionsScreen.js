@@ -17,25 +17,27 @@ import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
 
 const InstructionsScreen = () => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const lngscnd = useSelector((state) => state.language.lngscnd);
+  const txtscnd = Languages[lngscnd].Instructions;
+  const txtfrst = Languages[lngfrst].Instructions;
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>INSTRUCTIONS SCREEN</TxtLabel>
+        <TxtLabel>{txtfrst.title} </TxtLabel>
       </CardFrame>
     </ScreenFrame>
   );
 };
 
 export const screenOptions = (navData) => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const txtfrst = Languages[lngfrst].Instructions;
   return {
-    headerTitle: 'Instructions Screen Header',
+    headerTitle: `${txtfrst.header}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

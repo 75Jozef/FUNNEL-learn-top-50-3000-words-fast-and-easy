@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Input from './../components/UI/Input';
+import Input from '../components/UI/Input';
 import Colors from '../constants/Colors';
 import {
   TxtHeader,
@@ -12,37 +12,44 @@ import {
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import CustomHeaderButton from './../components/UI/CustomHeaderButton';
-import * as Languages from '../data/languages';
-import { useSelector } from 'react-redux';
+import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
-const HowToScreen = () => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+import { useSelector } from 'react-redux';
+import * as Languages from '../data/languages';
+
+const OptionsScreen = () => {
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const lngscnd = useSelector((state) => state.language.lngscnd);
+  const txtfrst = Languages[lngfrst].Options;
+  const txtscnd = Languages[lngscnd].Options;
+
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>HOW TO SCREEN</TxtLabel>
+        <TxtLabel>{txtfrst.title}</TxtLabel>
+        <TxtNormal>
+          Language: <TxtItalic>{lng}</TxtItalic>
+        </TxtNormal>
       </CardFrame>
     </ScreenFrame>
   );
 };
 
 export const screenOptions = (navData) => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const txtfrst = Languages[lngfrst].Options;
   return {
-    headerTitle: 'How To Screen Header',
+    headerTitle: `${txtfrst.header}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Welcome'
-          iconName={'ios-arrow-round-back'}
+          title='HowTo'
+          iconName={'ios-menu'}
           onPress={() => {
-            navData.navigation.goBack();
+            navData.navigation.toggleDrawer();
           }}
         />
       </HeaderButtons>
@@ -50,4 +57,4 @@ export const screenOptions = (navData) => {
   };
 };
 
-export default HowToScreen;
+export default OptionsScreen;

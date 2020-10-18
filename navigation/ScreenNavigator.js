@@ -31,9 +31,9 @@ import MasterScreen, {
   screenOptions as masterScreenOptions,
 } from './../screens/MasterScreen';
 
-import SettingsScreen, {
-  screenOptions as settingsScreenOptions,
-} from './../screens/SettingsScreen';
+import OptionsScreen, {
+  screenOptions as optionsScreenOptions,
+} from '../screens/OptionsScreen';
 
 import StatisticsScreen, {
   screenOptions as statisticsScreenOptions,
@@ -158,19 +158,19 @@ export const StatsNavigator = () => {
   );
 };
 
-//* Settings Navigation ***************************
+//* Options Navigation ***************************
 
-const SettingsStackNavigator = createStackNavigator();
+const OptionsStackNavigator = createStackNavigator();
 
-export const SettingsNavigator = () => {
+export const OptionsNavigator = () => {
   return (
-    <SettingsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <SettingsStackNavigator.Screen
+    <OptionsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+      <OptionsStackNavigator.Screen
         name='Settings'
-        component={SettingsScreen}
-        options={settingsScreenOptions}
+        component={OptionsScreen}
+        options={optionsScreenOptions}
       />
-    </SettingsStackNavigator.Navigator>
+    </OptionsStackNavigator.Navigator>
   );
 };
 
@@ -262,7 +262,7 @@ export const SideNavigator = () => {
 
       <SideDrawerNavigator.Screen
         name='Options'
-        component={SettingsNavigator}
+        component={OptionsNavigator}
         options={{
           drawerIcon: (props) => (
             <Ionicons name={'ios-options'} size={23} color={Colors.base} />

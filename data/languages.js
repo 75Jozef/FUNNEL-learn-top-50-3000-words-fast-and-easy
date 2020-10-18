@@ -1,245 +1,81 @@
 //english*
-export const English = {
-  About: 'About',
-  Auth: 'Authorization',
-  Challenges: 'Challenges',
-  HowTo: 'How To',
-  Main: 'Main',
-  Settings: 'Settings',
-  Stats: 'Statistics',
-  User: 'User',
-  Welcome: 'Welcome my friend',
+export const en = {
+  About: {
+    header: 'About header',
+    title: 'About title',
+  },
+  Auth: {
+    header: 'Auth header',
+    title: 'Auth title',
+  },
+  Challenges: {
+    header: 'Challenges header',
+    title: 'Challenges title',
+  },
+  Challenge: {
+    header: 'Challenge header',
+    title: 'Challenge title',
+  },
+  Instructions: {
+    header: 'Instructions Header',
+    title: 'Instructions title',
+  },
+  Master: {
+    header: 'Master screen',
+    title: 'Master title',
+    noRange: 'select range first...',
+    rande: 'Range',
+    index: 'Index',
+  },
+  Options: {
+    header: 'Options header',
+    title: 'Options title',
+  },
+  Statistics: {
+    header: 'Statistics header',
+    title: 'Stats title',
+  },
+  Welcome: {
+    header: 'Welcome my friend',
+    title: 'Welcome title',
+  },
 };
 
 //slovak
-export const Slovak = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: {
-    header: 'Vitajte',
-    intro: 'Toto je intro text',
+export const sk = {
+  About: {
+    header: 'O appke hlavička',
+    title: 'O appke nadpis',
   },
-};
-
-//czech
-export const cs = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: {
-    header: 'Vitajte',
-    intro: 'Toto je intro text',
+  Auth: {
+    header: 'Auth hlavička',
+    title: 'Auth nadpis',
   },
-};
-
-//polish
-export const pl = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: {
-    header: 'Vitajte',
-    intro: 'Toto je intro text',
+  Challenges: {
+    header: 'Challenges hlavička',
+    title: 'Challenges nadpis',
   },
-};
-
-//hungarian
-export const hu = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: {
-    header: 'Vitajte',
-    intro: 'Toto je intro text',
+  Instructions: {
+    header: 'Instructions hlavička',
+    title: 'Instructions nadpis',
   },
-};
-
-//spanish*
-export const es = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//french*
-export const fr = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//russian*
-export const ru = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//chinese*
-export const zh = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//portuguese*
-export const pt = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//indonesian id*
-export const id = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//japanese*
-export const jp = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//turkish
-export const tr = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//arabic*
-export const ar = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//german*
-export const de = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//italian
-export const it = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//vietnamese
-export const vi = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
-};
-
-//persian
-export const fa = {
-  About: 'O apke',
-  Auth: 'Prihlásenie',
-  Challenges: 'Výzvy',
-  HowTo: 'Ako na to',
-  Main: 'Lievik',
-  Settings: 'Možnosti',
-  Stats: 'Štatistiky',
-  User: 'Užívateľ',
-  Welcome: 'Vitajte',
+  Master: {
+    header: 'Majster screen',
+    title: 'Majster nadpis',
+    noRange: 'Najprv vyber rozsah...',
+    rande: 'Rozsah',
+    index: 'Číslo',
+  },
+  Options: {
+    header: 'Options hlavička',
+    title: 'Options nadpis',
+  },
+  Stats: {
+    header: 'Statistics hlavička',
+    title: 'Stats nadpis',
+  },
+  Welcome: {
+    header: 'Welcome my friend',
+    title: 'Welcome nadpis',
+  },
 };

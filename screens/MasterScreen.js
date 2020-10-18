@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Pressable, FlatList, Button } from 'react-native';
+import { View, Button } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Input from '../components/UI/Input';
+
 import Colors from '../constants/Colors';
 import {
   TxtHeader,
@@ -15,6 +15,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
+import WordShow from '../components/UI/WordShow';
 
 const MasterScreen = () => {
   const [levelA, setLevelA] = useState(false);
@@ -27,20 +28,32 @@ const MasterScreen = () => {
   const [index, setIndex] = useState(0);
   const [range, setRange] = useState(0);
 
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const lngscnd = useSelector((state) => state.language.lngscnd);
+  const txtfrst = Languages[lngfrst].Master;
+  const txtscnd = Languages[lngscnd].Master;
 
-  const data = useSelector((state) => state.words.words);
-  const words = data.filter(
-    (word) =>
-      (word.userlvl === 'a' && levelA) ||
-      (word.userlvl === 'n' && levelN) ||
-      (word.userlvl === 'v' && levelV) ||
-      (word.userlvl === 'h' && levelH) ||
-      (word.userlvl === 'f' && levelF) ||
-      (word.userlvl === 't' && levelT) ||
-      (word.userlvl === 'x' && levelX)
-  );
+  useEffect(async () => {
+    const data = useSelector((state) => state.words.words);
+    const words = await data.filter(
+      (word) =>
+        (word.userlvl === 'a' && levelA) ||
+        (word.userlvl === 'n' && levelN) ||
+        (word.userlvl === 'v' && levelV) ||
+        (word.userlvl === 'h' && levelH) ||
+        (word.userlvl === 'f' && levelF) ||
+        (word.userlvl === 't' && levelT) ||
+        (word.userlvl === 'x' && levelX)
+    );
+  }, [
+    setLevelA,
+    setLevelN,
+    setLevelV,
+    setLevelH,
+    setLevelF,
+    setLevelT,
+    setLevelX,
+  ]);
 
   useEffect(() => {
     setRange(words.length);
@@ -63,7 +76,7 @@ const MasterScreen = () => {
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>MASTER SCREEN</TxtLabel>
+        <TxtLabel>{txtfrst.title}</TxtLabel>
       </CardFrame>
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button
@@ -137,7 +150,11 @@ const MasterScreen = () => {
           alignItems: 'center',
         }}>
         <TxtNormal>
-          {range > 0 ? data[index].en : <TxtItalic>select range...</TxtItalic>}
+          {range > 0 ? (
+            <WordShow word={words[index][lngscnd]} />
+          ) : (
+            <TxtItalic>{txtscnd.noRange}</TxtItalic>
+          )}
         </TxtNormal>
       </View>
 
@@ -200,13 +217,13 @@ const MasterScreen = () => {
           alignItems: 'center',
         }}>
         <TxtItalic>
-          index: {index} range: {range}
+          {txtfrst.index}: {index} {txtfrst.range}: {range}
         </TxtItalic>
         <TxtNormal>
           {range >= 0 ? (
-            data[index].sk
+            words[index][lngfrst]
           ) : (
-            <TxtItalic>vyberte rozsah...</TxtItalic>
+            <TxtItalic>{txtfrst.noRange}</TxtItalic>
           )}
         </TxtNormal>
       </View>
@@ -215,10 +232,10 @@ const MasterScreen = () => {
 };
 
 export const screenOptions = (navData) => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const txtfrst = Languages[lngfrst].Master;
   return {
-    headerTitle: 'Master Screen Header',
+    headerTitle: `${txtfrst.header}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

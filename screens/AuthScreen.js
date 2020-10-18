@@ -15,8 +15,10 @@ import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
 
 const AuthScreen = () => {
-  const lng = useSelector((state) => state.language.language);
-  const texts = Languages[lng];
+  const lngfrst = useSelector((state) => state.language.lngfrst);
+  const lngscnd = useSelector((state) => state.language.lngscnd);
+  const txtscnd = Languages[lngscnd].Auth;
+  const txtfrst = Languages[lngfrst].Auth;
 
   const inputChangeHandler = useCallback(() => {}, []);
 
