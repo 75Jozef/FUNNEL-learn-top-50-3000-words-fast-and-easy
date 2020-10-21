@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Colors from '../../constants/Colors';
-import { TxtHeader } from './Txt';
+import { TxtHeader, TxtItalic } from './Txt';
 
 const WordShow = (props) => {
-  const [see, setSee] = useState(undefined);
+  const [see, setSee] = useState(-1);
   let word = [];
 
   useEffect(
@@ -40,7 +40,9 @@ const WordShow = (props) => {
     for (let i = 1; i < props.word.length - 1; i++) {
       word.push('_');
     }
-    word.push(props.word.slice(props.word.length - 1));
+    if (props.word.length > 1) {
+      word.push(props.word.slice(props.word.length - 1));
+    }
   }
 
   if (props.show === 4) {
@@ -56,43 +58,46 @@ const WordShow = (props) => {
   };
 
   const ShowCard = (props) => {
-    console.log('showcard', props.show, see, wordToShow);
     let child = props.children;
 
     if (props.ltr === see) {
       child = wordToShow[props.ltr];
     }
 
-    if (props.show > 0) {
-      return (
-        <View
-          style={{
-            borderRadius: 7,
-            borderWidth: 0.3,
-            padding: 7,
-            borderColor: Colors.surround,
-          }}>
-          <TxtHeader>{child}</TxtHeader>
-        </View>
-      );
-    } else {
-      return <></>;
-    }
+    return (
+      <View
+        style={{
+          borderRadius: 7,
+          borderWidth: 0.3,
+          padding: 7,
+          borderColor: Colors.surround,
+        }}>
+        <TxtHeader>{child}</TxtHeader>
+      </View>
+    );
   };
 
-  return (
-    <View style={styles.showka}>
-      {word.map((ltr, index) => {
-        return (
-          <TouchableOpacity onPress={() => handleLetterShow(index)}>
-            <ShowCard show={props.show} ltr={index}>
-              {ltr}
-            </ShowCard>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  );
+  if (props.show > 0) {
+    return (
+      <View style={styles.showka}>
+        {word.map((ltr, index) => {
+          return (
+            <TouchableOpacity onPress={() => handleLetterShow(index)}>
+              <ShowCard show={props.show} key={index} ltr={index}>
+                {ltr}
+              </ShowCard>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.showka}>
+        <TxtItalic>? ? ?</TxtItalic>
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -100,6 +105,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    width: 200,
   },
   card: {},
 });

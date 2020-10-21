@@ -143,7 +143,7 @@ const MasterScreen = () => {
       </View>
       <View
         style={{
-          height: 150,
+          height: 160,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -164,16 +164,22 @@ const MasterScreen = () => {
           }}
           color={Colors.base}
         />
-
         <Button
-          title='<---'
+          title='<-50'
           onPress={() => {
-            handleIndex(-3);
+            handleIndex(-50);
           }}
           color={Colors.base}
         />
         <Button
-          title='<-'
+          title='<--5'
+          onPress={() => {
+            handleIndex(-5);
+          }}
+          color={Colors.base}
+        />
+        <Button
+          title='<-1'
           onPress={() => {
             handleIndex(-1);
           }}
@@ -187,16 +193,23 @@ const MasterScreen = () => {
           color={Colors.base}
         />
         <Button
-          title='->'
+          title='1->'
           onPress={() => {
             handleIndex(1);
           }}
           color={Colors.base}
         />
         <Button
-          title='--->'
+          title='5-->'
           onPress={() => {
-            handleIndex(3);
+            handleIndex(5);
+          }}
+          color={Colors.base}
+        />
+        <Button
+          title='50->'
+          onPress={() => {
+            handleIndex(50);
           }}
           color={Colors.base}
         />
@@ -221,7 +234,7 @@ const MasterScreen = () => {
           <TxtButton>{txtfrst.show}</TxtButton>
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <Button
-              title='  ?  '
+              title=' ??? '
               onPress={() => {
                 setShow(0);
               }}
