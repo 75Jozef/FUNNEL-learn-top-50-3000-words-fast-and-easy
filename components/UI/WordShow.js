@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import Colors from '../../constants/Colors';
 import { TxtHeader, TxtItalic } from './Txt';
 
@@ -69,10 +69,18 @@ const WordShow = (props) => {
         style={{
           borderRadius: 7,
           borderWidth: 0.3,
-          padding: 7,
+          padding: 5,
           borderColor: Colors.surround,
-        }}>
-        <TxtHeader>{child}</TxtHeader>
+        }}
+        key={props.key}>
+        <TxtHeader
+          style={{
+            fontSize:
+              Dimensions.get('window').height / 13 - wordToShow.length * 1.5,
+          }}
+          key={props.ltr}>
+          {child}
+        </TxtHeader>
       </View>
     );
   };
@@ -83,7 +91,7 @@ const WordShow = (props) => {
         {word.map((ltr, index) => {
           return (
             <TouchableOpacity onPress={() => handleLetterShow(index)}>
-              <ShowCard show={props.show} key={index} ltr={index}>
+              <ShowCard show={props.show} ltr={index} key={index}>
                 {ltr}
               </ShowCard>
             </TouchableOpacity>
@@ -105,7 +113,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 200,
   },
   card: {},
 });

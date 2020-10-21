@@ -93,8 +93,9 @@ const styles = StyleSheet.create({
   textHeader: {
     color: Colors.backSecond,
     fontFamily: Fonts.normal,
-    fontSize: Dimensions.get('window').height / 14,
+    fontSize: Dimensions.get('window').height / 15,
   },
+
   textLabel: {
     color: Colors.backPrimary,
     fontFamily: Fonts.normal,

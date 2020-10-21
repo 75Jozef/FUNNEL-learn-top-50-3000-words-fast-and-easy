@@ -149,7 +149,7 @@ const MasterScreen = () => {
         }}>
         <TxtNormal>
           {range > 0 ? (
-            <WordShow word={words[index][lngscnd]} show={show} />
+            <WordShow word={words[index][lngscnd]} show={show} key={index} />
           ) : (
             <TxtItalic>{txtscnd.noRange}</TxtItalic>
           )}
@@ -216,7 +216,7 @@ const MasterScreen = () => {
         <Button
           title='>|'
           onPress={() => {
-            setIndex(range);
+            setIndex(range - 1);
           }}
           color={Colors.base}
         />
