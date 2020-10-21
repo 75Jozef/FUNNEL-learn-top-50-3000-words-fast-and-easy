@@ -25,6 +25,9 @@ const fetchFonts = () => {
   });
 };
 
+//! screenshot banned of some screens; copy texts is available from list od words by filter
+//! git ignore, implement .env and encrypt data
+
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
   if (!fontLoaded) {

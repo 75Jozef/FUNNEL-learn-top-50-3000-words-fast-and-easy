@@ -15,6 +15,7 @@ import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
+import * as Buttons from './../components/UI/Buttons';
 import { useSelector } from 'react-redux';
 import WordShow from '../components/UI/WordShow';
 
@@ -63,6 +64,8 @@ const MasterScreen = () => {
     }
   };
 
+  const handleAction = () => {};
+  //* render **************************************
   return (
     <ScreenFrame>
       {/* <View style={{ alignItems: 'center', margin: 10 }}>
@@ -141,9 +144,51 @@ const MasterScreen = () => {
           color={levelX ? Colors.surround : Colors.base}
         />
       </View>
+      <CardFrame style={{ margin: 25, alignItems: 'center' }}>
+        <TxtButton>{txtfrst.show}</TxtButton>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+          <Button
+            title=' ??? '
+            onPress={() => {
+              setShow(0);
+            }}
+            color={show === 0 ? Colors.surround : Colors.base}
+          />
+          <Button
+            title='_ _ _'
+            onPress={() => {
+              setShow(1);
+            }}
+            color={show === 1 ? Colors.surround : Colors.base}
+          />
+          <Button
+            title='_ _ X'
+            onPress={() => {
+              setShow(2);
+            }}
+            color={show === 2 ? Colors.surround : Colors.base}
+          />
+          <Button
+            title='X _ X'
+            onPress={() => {
+              setShow(3);
+            }}
+            color={show === 3 ? Colors.surround : Colors.base}
+          />
+          <Button
+            title='X X X'
+            onPress={() => {
+              setShow(4);
+            }}
+            color={show === 4 ? Colors.surround : Colors.base}
+          />
+        </View>
+      </CardFrame>
+
+      <Buttons.ButtonNormal action={handleAction}>!</Buttons.ButtonNormal>
       <View
         style={{
-          height: 160,
+          height: 120,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -155,7 +200,6 @@ const MasterScreen = () => {
           )}
         </TxtNormal>
       </View>
-
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button
           title='|<'
@@ -221,7 +265,6 @@ const MasterScreen = () => {
           color={Colors.base}
         />
       </View>
-
       <View
         style={{
           justifyContent: 'center',
@@ -230,46 +273,7 @@ const MasterScreen = () => {
         <TxtItalic>
           {txtfrst.index}: {index + 1} {txtfrst.range}: {range}
         </TxtItalic>
-        <CardFrame style={{ margin: 25, alignItems: 'center' }}>
-          <TxtButton>{txtfrst.show}</TxtButton>
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <Button
-              title=' ??? '
-              onPress={() => {
-                setShow(0);
-              }}
-              color={show === 0 ? Colors.surround : Colors.base}
-            />
-            <Button
-              title='_ _ _'
-              onPress={() => {
-                setShow(1);
-              }}
-              color={show === 1 ? Colors.surround : Colors.base}
-            />
-            <Button
-              title='_ _ X'
-              onPress={() => {
-                setShow(2);
-              }}
-              color={show === 2 ? Colors.surround : Colors.base}
-            />
-            <Button
-              title='X _ X'
-              onPress={() => {
-                setShow(3);
-              }}
-              color={show === 3 ? Colors.surround : Colors.base}
-            />
-            <Button
-              title='X X X'
-              onPress={() => {
-                setShow(4);
-              }}
-              color={show === 4 ? Colors.surround : Colors.base}
-            />
-          </View>
-        </CardFrame>
+
         <TxtLabel style={{ margin: 20 }}>
           {range > 0 ? (
             words[index][lngfrst]

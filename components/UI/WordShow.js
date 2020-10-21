@@ -76,7 +76,7 @@ const WordShow = (props) => {
         <TxtHeader
           style={{
             fontSize:
-              Dimensions.get('window').height / 13 - wordToShow.length * 1.5,
+              Dimensions.get('window').height / 10 - wordToShow.length * 2.5,
           }}
           key={props.ltr}>
           {child}
