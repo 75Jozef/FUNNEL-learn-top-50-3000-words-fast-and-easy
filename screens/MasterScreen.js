@@ -71,7 +71,11 @@ const MasterScreen = () => {
       {/* <CardFrame style={{ margin: 15 }}>
         <TxtLabel>{txtfrst.title}</TxtLabel>
       </CardFrame> */}
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+        }}>
         <Button
           title='Verbs'
           onPress={() => {

@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, SnapshotViewIOSComponent } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Colors from '../../constants/Colors';
 import { TxtHeader } from './Txt';
 
 const WordShow = (props) => {
+  const [see, setSee] = useState(undefined);
   let word = [];
 
-  console.log(props.show);
+  useEffect(
+    (props) => {
+      setSee(-1);
+    },
+    [props.word]
+  );
+
+  const wordToShow = props.word;
 
   // 0: ..?..
   // 1: - - -
   // 2: - - X
   // 3: X - -
   // 4: X - X
-
-  if (props.show === 0) {
-    for (let i = 0; i < props.word.length; i++) {
-      word.push(' ');
-    }
-  }
 
   if (props.show === 1) {
     for (let i = 0; i < props.word.length; i++) {
@@ -44,8 +46,24 @@ const WordShow = (props) => {
   if (props.show === 4) {
     word = [...props.word];
   }
+
+  const handleLetterShow = (index) => {
+    if (see === index || see === undefined) {
+      setSee(-1);
+    } else {
+      setSee(index);
+    }
+  };
+
   const ShowCard = (props) => {
-    if (props.show !== 0) {
+    console.log('showcard', props.show, see, wordToShow);
+    let child = props.children;
+
+    if (props.ltr === see) {
+      child = wordToShow[props.ltr];
+    }
+
+    if (props.show > 0) {
       return (
         <View
           style={{
@@ -54,7 +72,7 @@ const WordShow = (props) => {
             padding: 7,
             borderColor: Colors.surround,
           }}>
-          <TxtHeader>{props.children}</TxtHeader>
+          <TxtHeader>{child}</TxtHeader>
         </View>
       );
     } else {
@@ -64,9 +82,15 @@ const WordShow = (props) => {
 
   return (
     <View style={styles.showka}>
-      {word.map((ltr) => (
-        <ShowCard show={props.show}>{ltr}</ShowCard>
-      ))}
+      {word.map((ltr, index) => {
+        return (
+          <TouchableOpacity onPress={() => handleLetterShow(index)}>
+            <ShowCard show={props.show} ltr={index}>
+              {ltr}
+            </ShowCard>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
