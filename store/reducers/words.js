@@ -1,16 +1,27 @@
 import WORDS from '../../data/words';
+import { SET_STATUS } from './../actions/words';
 
 const initialState = {
   words: WORDS,
-  //   v: WORDS.filter((word) => word.userlvl === 'v'),
-  //   n: WORDS.filter((word) => word.userlvl === 'n'),
-  //   a: WORDS.filter((word) => word.userlvl === 'a'),
-  //   h: WORDS.filter((word) => word.userlvl === 'h'),
-  //   f: WORDS.filter((word) => word.userlvl === 'f'),
-  //   t: WORDS.filter((word) => word.userlvl === 't'),
-  //   x: WORDS.filter((word) => word.userlvl === 'x'),
 };
 
 export default (state = initialState, action) => {
+  switch (action.type) {
+    case SET_STATUS: {
+      const iden = action.data.iden;
+      const status = action.data.status;
+      const lng = action.data.lng;
+
+      let index = state.words.findIndex((item) => item.iden === iden);
+
+      const updatedWords = [...state.words];
+      updatedWords[index]['st' + lng] = status;
+
+      return {
+        ...state,
+        words: updatedWords,
+      };
+    }
+  }
   return state;
 };

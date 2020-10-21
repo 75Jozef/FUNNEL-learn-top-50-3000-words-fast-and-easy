@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Button } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-
 import Colors from '../constants/Colors';
 import {
   TxtHeader,
@@ -16,8 +15,10 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
 import * as Buttons from './../components/UI/Buttons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import * as wordActions from '../store/actions/words';
 import WordShow from '../components/UI/WordShow';
+import { Ionicons } from '@expo/vector-icons';
 
 const MasterScreen = () => {
   const [levelA, setLevelA] = useState(true);
@@ -37,6 +38,8 @@ const MasterScreen = () => {
   const txtscnd = Languages[lngscnd].Master;
 
   const data = useSelector((state) => state.words.words);
+
+  const dispatch = useDispatch();
 
   const words = data.filter(
     (word) =>
@@ -64,7 +67,12 @@ const MasterScreen = () => {
     }
   };
 
-  const handleAction = () => {};
+  const handleStatus = (status) => {
+    if (words[index]['st' + lngscnd] !== status) {
+      dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
+    }
+  };
+
   //* render **************************************
   return (
     <ScreenFrame>
@@ -144,6 +152,58 @@ const MasterScreen = () => {
           color={levelX ? Colors.surround : Colors.base}
         />
       </View>
+
+      <View
+        style={{
+          height: 120,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <TxtNormal>
+          {range > 0 ? (
+            <WordShow word={words[index][lngscnd]} show={show} key={index} />
+          ) : (
+            <TxtItalic>{txtscnd.noRange}</TxtItalic>
+          )}
+        </TxtNormal>
+      </View>
+      <View style={{ alignItems: 'center' }}>
+        <View
+          style={{
+            width: '70%',
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}>
+          <Buttons.ButtonNormal action={() => handleStatus(0)}>
+            <Ionicons
+              name='ios-help-circle-outline'
+              size={40}
+              color={
+                words[index]['st' + lngscnd] === 0 ? 'brown' : Colors.surround
+              }
+            />
+          </Buttons.ButtonNormal>
+          <Buttons.ButtonNormal action={() => handleStatus(1)}>
+            <Ionicons
+              name='ios-add'
+              size={40}
+              color={
+                words[index]['st' + lngscnd] === 1 ? 'yellow' : Colors.surround
+              }
+            />
+          </Buttons.ButtonNormal>
+          <Buttons.ButtonNormal action={() => handleStatus(2)}>
+            <Ionicons
+              name='ios-funnel'
+              size={40}
+              color={
+                words[index]['st' + lngscnd] === 2 ? 'green' : Colors.surround
+              }
+            />
+          </Buttons.ButtonNormal>
+        </View>
+      </View>
       <CardFrame style={{ margin: 25, alignItems: 'center' }}>
         <TxtButton>{txtfrst.show}</TxtButton>
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -185,21 +245,6 @@ const MasterScreen = () => {
         </View>
       </CardFrame>
 
-      <Buttons.ButtonNormal action={handleAction}>!</Buttons.ButtonNormal>
-      <View
-        style={{
-          height: 120,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <TxtNormal>
-          {range > 0 ? (
-            <WordShow word={words[index][lngscnd]} show={show} key={index} />
-          ) : (
-            <TxtItalic>{txtscnd.noRange}</TxtItalic>
-          )}
-        </TxtNormal>
-      </View>
       <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button
           title='|<'

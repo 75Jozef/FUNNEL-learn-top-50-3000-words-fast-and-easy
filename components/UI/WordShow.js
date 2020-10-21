@@ -71,8 +71,7 @@ const WordShow = (props) => {
           borderWidth: 0.3,
           padding: 5,
           borderColor: Colors.surround,
-        }}
-        key={props.key}>
+        }}>
         <TxtHeader
           style={{
             fontSize:
@@ -90,7 +89,9 @@ const WordShow = (props) => {
       <View style={styles.showka}>
         {word.map((ltr, index) => {
           return (
-            <TouchableOpacity onPress={() => handleLetterShow(index)}>
+            <TouchableOpacity
+              onPress={() => handleLetterShow(index)}
+              key={index}>
               <ShowCard show={props.show} ltr={index} key={index}>
                 {ltr}
               </ShowCard>
