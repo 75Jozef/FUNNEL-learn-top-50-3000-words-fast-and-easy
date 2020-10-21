@@ -165,21 +165,21 @@ const MasterScreen = () => {
           color={Colors.base}
         />
         <Button
-          title='<-50'
+          title='<100'
           onPress={() => {
-            handleIndex(-50);
+            handleIndex(-100);
           }}
           color={Colors.base}
         />
         <Button
-          title='<--5'
+          title='<10'
           onPress={() => {
-            handleIndex(-5);
+            handleIndex(-10);
           }}
           color={Colors.base}
         />
         <Button
-          title='<-1'
+          title='<1'
           onPress={() => {
             handleIndex(-1);
           }}
@@ -193,23 +193,23 @@ const MasterScreen = () => {
           color={Colors.base}
         />
         <Button
-          title='1->'
+          title='1>'
           onPress={() => {
             handleIndex(1);
           }}
           color={Colors.base}
         />
         <Button
-          title='5-->'
+          title='10>'
           onPress={() => {
-            handleIndex(5);
+            handleIndex(10);
           }}
           color={Colors.base}
         />
         <Button
-          title='50->'
+          title='100>'
           onPress={() => {
-            handleIndex(50);
+            handleIndex(100);
           }}
           color={Colors.base}
         />
