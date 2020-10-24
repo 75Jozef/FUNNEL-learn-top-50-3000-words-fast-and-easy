@@ -60,6 +60,7 @@ const MasterScreen = () => {
   useEffect(() => {
     setRange(words.length);
     setIndex(0);
+    counter();
   }, [
     range,
     setRange,

@@ -11,11 +11,11 @@ import Colors from './../../constants/Colors';
 
 export const ButtonNormal = (props) => {
   return (
-    <View style={styles.buttonNormalBody}>
-      <TouchableOpacity onPress={props.action}>
+    <TouchableOpacity onPress={props.action}>
+      <View style={styles.buttonNormalBody}>
         <Text style={styles.buttonNormatInside}>{props.children}</Text>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
