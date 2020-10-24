@@ -32,6 +32,9 @@ const MasterScreen = () => {
   const [range, setRange] = useState(0);
   const [show, setShow] = useState(0);
   const [select, setSelect] = useState(0);
+  const [selectZero, setSelectZero] = useState(0);
+  const [selectOne, setSelectOne] = useState(0);
+  const [selectTwo, setSelectTwo] = useState(0);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -44,18 +47,17 @@ const MasterScreen = () => {
 
   const words = data.filter(
     (word) =>
-      word['st' + lngscnd] === select &&
-      ((word.userlvl === 'a' && levelA) ||
-        (word.userlvl === 'n' && levelN) ||
-        (word.userlvl === 'v' && levelV) ||
-        (word.userlvl === 'h' && levelH) ||
-        (word.userlvl === 'f' && levelF) ||
-        (word.userlvl === 't' && levelT) ||
-        (word.userlvl === 'x' && levelX) ||
-        word.userlvl === 'l')
+      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === select) ||
+      (word.userlvl === 't' && levelT && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === select) ||
+      word.userlvl === 'l'
   );
+
   useEffect(() => {
-    console.log('effect');
     setRange(words.length);
     setIndex(0);
   }, [
@@ -86,8 +88,38 @@ const MasterScreen = () => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
+        counter();
       }
     }
+  };
+
+  const handleSelect = (select) => {
+    setSelect(select);
+    setIndex(0);
+  };
+
+  const counter = () => {
+    const countZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 ? (counter += 1) : counter,
+      0
+    );
+
+    setSelectZero(countZero);
+
+    const countOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 ? (counter += 1) : counter,
+      0
+    );
+    setSelectOne(countOne);
+
+    const countTwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 ? (counter += 1) : counter,
+      0
+    );
+    setSelectTwo(countTwo);
   };
 
   //* render **************************************
@@ -108,8 +140,7 @@ const MasterScreen = () => {
           title='Verbs'
           onPress={() => {
             setLevelV((prev) => !prev);
-            // setIndex(0);
-            // setRange(0);
+            setIndex(0);
           }}
           color={levelV ? Colors.surround : Colors.base}
         />
@@ -118,8 +149,7 @@ const MasterScreen = () => {
           title='nouns'
           onPress={() => {
             setLevelN((prev) => !prev);
-            // setIndex(0);
-            // setRange(0);
+            setIndex(0);
           }}
           color={levelN ? Colors.surround : Colors.base}
         />
@@ -127,8 +157,7 @@ const MasterScreen = () => {
           title='adjct'
           onPress={() => {
             setLevelA((prev) => !prev);
-            // setIndex(0);
-            // setRange(0);
+            setIndex(0);
           }}
           color={levelA ? Colors.surround : Colors.base}
         />
@@ -136,8 +165,7 @@ const MasterScreen = () => {
           title='100'
           onPress={() => {
             setLevelH((prev) => !prev);
-            // setIndex(0);
-            // setRange(0);
+            setIndex(0);
           }}
           color={levelH ? Colors.surround : Colors.base}
         />
@@ -145,8 +173,7 @@ const MasterScreen = () => {
           title='500'
           onPress={() => {
             setLevelF((prev) => !prev);
-            // setIndex(0);
-            // setRange(0);
+            setIndex(0);
           }}
           color={levelF ? Colors.surround : Colors.base}
         />
@@ -154,8 +181,7 @@ const MasterScreen = () => {
           title='1000'
           onPress={() => {
             setLevelT((prev) => !prev);
-            // setIndex(0);
-            // setRange(0);
+            setIndex(0);
           }}
           color={levelT ? Colors.surround : Colors.base}
         />
@@ -163,8 +189,7 @@ const MasterScreen = () => {
           title='3000'
           onPress={() => {
             setLevelX((prev) => !prev);
-            // setIndex(0);
-            // setRange(0);
+            setIndex(0);
           }}
           color={levelX ? Colors.surround : Colors.base}
         />
@@ -180,33 +205,38 @@ const MasterScreen = () => {
           }}>
           <Buttons.ButtonNormal
             action={() => {
-              setSelect(0);
+              handleSelect(0);
             }}>
             {select === 0 ? (
-              <TxtButton style={{ color: Colors.accent }}>kuk</TxtButton>
+              <TxtButton style={{ color: Colors.accent }}>
+                {selectZero}
+              </TxtButton>
             ) : (
-              <TxtButton style={{ color: Colors.base }}>kuk</TxtButton>
+              <TxtButton style={{ color: Colors.base }}>{selectZero}</TxtButton>
             )}
           </Buttons.ButtonNormal>
           <Buttons.ButtonNormal
             action={() => {
-              setSelect(1);
+              handleSelect(1);
             }}>
             {select === 1 ? (
-              <TxtButton style={{ color: Colors.backSecond }}>kuk</TxtButton>
+              <TxtButton style={{ color: Colors.backSecond }}>
+                {selectOne}
+              </TxtButton>
             ) : (
-              <TxtButton style={{ color: Colors.base }}>kuk</TxtButton>
+              <TxtButton style={{ color: Colors.base }}>{selectOne}</TxtButton>
             )}
           </Buttons.ButtonNormal>
           <Buttons.ButtonNormal
             action={() => {
-              setSelect(2);
-              console.log('set');
+              handleSelect(2);
             }}>
             {select === 2 ? (
-              <TxtButton style={{ color: Colors.backPrimary }}>kuk</TxtButton>
+              <TxtButton style={{ color: Colors.backPrimary }}>
+                {selectTwo}
+              </TxtButton>
             ) : (
-              <TxtButton style={{ color: Colors.base }}>kuk</TxtButton>
+              <TxtButton style={{ color: Colors.base }}>{selectTwo}</TxtButton>
             )}
           </Buttons.ButtonNormal>
         </View>
