@@ -31,6 +31,7 @@ const MasterScreen = () => {
   const [index, setIndex] = useState(0);
   const [range, setRange] = useState(0);
   const [show, setShow] = useState(0);
+  const [select, setSelect] = useState(0);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -43,19 +44,19 @@ const MasterScreen = () => {
 
   const words = data.filter(
     (word) =>
-      (word.userlvl === 'a' && levelA) ||
-      (word.userlvl === 'n' && levelN) ||
-      (word.userlvl === 'v' && levelV) ||
-      (word.userlvl === 'h' && levelH) ||
-      (word.userlvl === 'f' && levelF) ||
-      (word.userlvl === 't' && levelT) ||
-      (word.userlvl === 'x' && levelX) ||
-      word.iden === 2999
+      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === select) ||
+      (word.userlvl === 't' && levelT && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === select) ||
+      word.iden === 3000
   );
 
   useEffect(() => {
     setRange(words.length);
-  }, [words, range]);
+  }, [select, levelA, levelN, levelV, levelH, levelF, levelT, levelX]);
 
   const handleIndex = (jump) => {
     if (index + jump >= range) {
@@ -68,7 +69,7 @@ const MasterScreen = () => {
   };
 
   const handleStatus = (status) => {
-    if (words[index]['st' + lngscnd] !== status) {
+    if (words[index]['st' + lngscnd] !== status && words.iden !== 3000) {
       dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
     }
   };
@@ -152,10 +153,42 @@ const MasterScreen = () => {
           color={levelX ? Colors.surround : Colors.base}
         />
       </View>
+      <View style={{ alignItems: 'center' }}>
+        <View
+          style={{
+            marginTop: 20,
+            width: '50%',
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}>
+          <Buttons.ButtonNormal action={() => setSelect(0)}>
+            {select === 0 ? (
+              <TxtButton style={{ color: Colors.accent }}>kuk</TxtButton>
+            ) : (
+              <TxtButton style={{ color: Colors.base }}>kuk</TxtButton>
+            )}
+          </Buttons.ButtonNormal>
+          <Buttons.ButtonNormal action={() => setSelect(1)}>
+            {select === 1 ? (
+              <TxtButton style={{ color: Colors.backSecond }}>kuk</TxtButton>
+            ) : (
+              <TxtButton style={{ color: Colors.base }}>kuk</TxtButton>
+            )}
+          </Buttons.ButtonNormal>
+          <Buttons.ButtonNormal action={() => setSelect(2)}>
+            {select === 2 ? (
+              <TxtButton style={{ color: Colors.backPrimary }}>kuk</TxtButton>
+            ) : (
+              <TxtButton style={{ color: Colors.base }}>kuk</TxtButton>
+            )}
+          </Buttons.ButtonNormal>
+        </View>
+      </View>
 
       <View
         style={{
-          height: 120,
+          height: 150,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -170,35 +203,39 @@ const MasterScreen = () => {
       <View style={{ alignItems: 'center' }}>
         <View
           style={{
-            width: '70%',
+            width: '50%',
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-evenly',
           }}>
           <Buttons.ButtonNormal action={() => handleStatus(0)}>
             <Ionicons
-              name='ios-help-circle-outline'
+              name='ios-infinite'
               size={40}
               color={
-                words[index]['st' + lngscnd] === 0 ? 'brown' : Colors.surround
+                words[index]['st' + lngscnd] === 0 ? Colors.accent : Colors.base
               }
             />
           </Buttons.ButtonNormal>
           <Buttons.ButtonNormal action={() => handleStatus(1)}>
             <Ionicons
-              name='ios-add'
+              name='ios-attach'
               size={40}
               color={
-                words[index]['st' + lngscnd] === 1 ? 'yellow' : Colors.surround
+                words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : Colors.base
               }
             />
           </Buttons.ButtonNormal>
           <Buttons.ButtonNormal action={() => handleStatus(2)}>
             <Ionicons
-              name='ios-funnel'
+              name='ios-checkmark'
               size={40}
               color={
-                words[index]['st' + lngscnd] === 2 ? 'green' : Colors.surround
+                words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.base
               }
             />
           </Buttons.ButtonNormal>
