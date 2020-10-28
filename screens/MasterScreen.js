@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Dimensions } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Colors from '../constants/Colors';
 import {
@@ -19,9 +19,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as wordActions from '../store/actions/words';
 import WordShow from '../components/UI/WordShow';
 import { Ionicons } from '@expo/vector-icons';
+import Fonts from '../constants/Fonts';
 
 const MasterScreen = () => {
-  const [levelA, setLevelA] = useState(true);
+  const [levelA, setLevelA] = useState(false);
   const [levelN, setLevelN] = useState(false);
   const [levelV, setLevelV] = useState(false);
   const [levelH, setLevelH] = useState(false);
@@ -126,211 +127,317 @@ const MasterScreen = () => {
   //* render **************************************
   return (
     <ScreenFrame>
-      {/* <View style={{ alignItems: 'center', margin: 10 }}>
-        <TxtHeader>W|O|R|D</TxtHeader>
-      </View> */}
-      {/* <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>{txtfrst.title}</TxtLabel>
-      </CardFrame> */}
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'center',
+          alignContent: 'space-between',
+          width: '70%',
+          alignSelf: 'center',
         }}>
-        <Button
-          title='Verbs'
-          onPress={() => {
+        <Buttons.ButtonBox
+          action={() => {
             setLevelV((prev) => !prev);
             setIndex(0);
           }}
-          color={levelV ? Colors.surround : Colors.base}
-        />
+          bodyStyle={
+            levelV
+              ? {
+                  borderWidth: 3,
+                  borderRadius: 25,
+                }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            levelV
+              ? {
+                  color: Colors.textPrimary,
+                }
+              : null
+          }>
+          50v
+        </Buttons.ButtonBox>
 
-        <Button
-          title='nouns'
-          onPress={() => {
+        <Buttons.ButtonBox
+          action={() => {
             setLevelN((prev) => !prev);
             setIndex(0);
           }}
-          color={levelN ? Colors.surround : Colors.base}
-        />
-        <Button
-          title='adjct'
-          onPress={() => {
+          bodyStyle={
+            levelN
+              ? { borderWidth: 3, borderRadius: 25 }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            levelN
+              ? {
+                  color: Colors.textPrimary,
+                }
+              : null
+          }>
+          50n
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
             setLevelA((prev) => !prev);
             setIndex(0);
           }}
-          color={levelA ? Colors.surround : Colors.base}
-        />
-        <Button
-          title='100'
-          onPress={() => {
+          bodyStyle={
+            levelA
+              ? { borderWidth: 3, borderRadius: 25 }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            levelA
+              ? {
+                  color: Colors.textPrimary,
+                }
+              : null
+          }>
+          50a
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
             setLevelH((prev) => !prev);
             setIndex(0);
           }}
-          color={levelH ? Colors.surround : Colors.base}
-        />
-        <Button
-          title='500'
-          onPress={() => {
+          bodyStyle={
+            levelH
+              ? { borderWidth: 3, borderRadius: 25 }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            levelH
+              ? {
+                  color: Colors.textPrimary,
+                }
+              : null
+          }>
+          100
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
             setLevelF((prev) => !prev);
             setIndex(0);
           }}
-          color={levelF ? Colors.surround : Colors.base}
-        />
-        <Button
-          title='1000'
-          onPress={() => {
+          bodyStyle={
+            levelF
+              ? { borderWidth: 3, borderRadius: 25 }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            levelF
+              ? {
+                  color: Colors.textPrimary,
+                }
+              : null
+          }>
+          500
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
             setLevelT((prev) => !prev);
             setIndex(0);
           }}
-          color={levelT ? Colors.surround : Colors.base}
-        />
-        <Button
-          title='3000'
-          onPress={() => {
+          bodyStyle={
+            levelT
+              ? { borderWidth: 3, borderRadius: 25 }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            levelT
+              ? {
+                  color: Colors.textPrimary,
+                }
+              : null
+          }>
+          1000
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
             setLevelX((prev) => !prev);
             setIndex(0);
           }}
-          color={levelX ? Colors.surround : Colors.base}
-        />
+          bodyStyle={
+            levelX
+              ? { borderWidth: 3, borderRadius: 25 }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            levelX
+              ? {
+                  color: Colors.textPrimary,
+                }
+              : null
+          }>
+          3000
+        </Buttons.ButtonBox>
       </View>
       <View style={{ alignItems: 'center' }}>
         <View
           style={{
             marginTop: 20,
-            width: '50%',
+            marginBottom: 10,
+            width: '60%',
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-evenly',
           }}>
-          <Buttons.ButtonNormal
+          <Buttons.ButtonCircle
             action={() => {
               handleSelect(0);
-            }}>
-            {select === 0 ? (
-              <TxtButton style={{ color: Colors.accent }}>
-                {selectZero}
-              </TxtButton>
-            ) : (
-              <TxtButton style={{ color: Colors.base }}>{selectZero}</TxtButton>
-            )}
-          </Buttons.ButtonNormal>
-          <Buttons.ButtonNormal
+            }}
+            bodyStyle={
+              select === 0
+                ? {
+                    width: 80,
+                    height: 50,
+                    borderRadius: 25,
+                    borderColor: Colors.accent,
+                    borderWidth: 3,
+                  }
+                : { borderColor: Colors.accent, borderWidth: 1 }
+            }
+            insideStyle={
+              select === 0
+                ? {
+                    color: Colors.accent,
+                    fontSize: Dimensions.get('window').height / 30,
+                    fontFamily: Fonts.bold,
+                  }
+                : {
+                    color: Colors.surround,
+                  }
+            }>
+            {selectZero}
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
             action={() => {
               handleSelect(1);
-            }}>
-            {select === 1 ? (
-              <TxtButton style={{ color: Colors.backSecond }}>
-                {selectOne}
-              </TxtButton>
-            ) : (
-              <TxtButton style={{ color: Colors.base }}>{selectOne}</TxtButton>
-            )}
-          </Buttons.ButtonNormal>
-          <Buttons.ButtonNormal
+            }}
+            bodyStyle={
+              select === 1
+                ? {
+                    width: 80,
+                    height: 50,
+                    borderRadius: 25,
+                    borderColor: Colors.backSecond,
+                    borderWidth: 3,
+                  }
+                : { borderColor: Colors.backSecond, borderWidth: 1 }
+            }
+            insideStyle={
+              select === 1
+                ? {
+                    color: Colors.backSecond,
+                    fontSize: Dimensions.get('window').height / 30,
+                    fontFamily: Fonts.bold,
+                  }
+                : { color: Colors.surround }
+            }>
+            {selectOne}
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
             action={() => {
               handleSelect(2);
-            }}>
-            {select === 2 ? (
-              <TxtButton style={{ color: Colors.backPrimary }}>
-                {selectTwo}
-              </TxtButton>
-            ) : (
-              <TxtButton style={{ color: Colors.base }}>{selectTwo}</TxtButton>
-            )}
-          </Buttons.ButtonNormal>
+            }}
+            bodyStyle={
+              select === 2
+                ? {
+                    width: 80,
+                    height: 50,
+                    borderRadius: 25,
+                    borderColor: Colors.backPrimary,
+                    borderWidth: 3,
+                  }
+                : { borderColor: Colors.backPrimary, borderWidth: 1 }
+            }
+            insideStyle={
+              select === 2
+                ? {
+                    color: Colors.backPrimary,
+                    fontSize: Dimensions.get('window').height / 30,
+                    fontFamily: Fonts.bold,
+                  }
+                : {
+                    color: Colors.surround,
+                  }
+            }>
+            {selectTwo}
+          </Buttons.ButtonCircle>
         </View>
       </View>
 
       <View
         style={{
-          height: 150,
+          height: 80,
+          marginTop: 25,
+          marginBottom: 10,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
         <TxtNormal>
           {range > 0 ? (
-            <WordShow word={words[index][lngscnd]} show={show} key={index} />
+            <WordShow
+              word={words[index][lngscnd]}
+              show={show}
+              key={index}
+              color={words[index]['st' + lngscnd]}
+            />
           ) : (
             <TxtItalic>{txtscnd.noRange}</TxtItalic>
           )}
         </TxtNormal>
       </View>
-      <View style={{ alignItems: 'center' }}>
-        <View
-          style={{
-            width: '50%',
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-          }}>
-          <Buttons.ButtonNormal action={() => handleStatus(0)}>
-            <Ionicons
-              name='ios-infinite'
-              size={40}
-              color={
-                words[index]['st' + lngscnd] === 0 ? Colors.accent : Colors.base
-              }
-            />
-          </Buttons.ButtonNormal>
-          <Buttons.ButtonNormal action={() => handleStatus(1)}>
-            <Ionicons
-              name='ios-attach'
-              size={40}
-              color={
-                words[index]['st' + lngscnd] === 1
-                  ? Colors.backSecond
-                  : Colors.base
-              }
-            />
-          </Buttons.ButtonNormal>
-          <Buttons.ButtonNormal action={() => handleStatus(2)}>
-            <Ionicons
-              name='ios-checkmark'
-              size={40}
-              color={
-                words[index]['st' + lngscnd] === 2
-                  ? Colors.backPrimary
-                  : Colors.base
-              }
-            />
-          </Buttons.ButtonNormal>
-        </View>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: 20,
+        }}>
+        <TxtLabel
+          style={{ margin: 10, color: Colors.backSecond, fontSize: 30 }}>
+          {range > 0 ? (
+            words[index][lngfrst]
+          ) : (
+            <TxtItalic>{txtfrst.noRange}</TxtItalic>
+          )}
+        </TxtLabel>
       </View>
-      <CardFrame style={{ margin: 25, alignItems: 'center' }}>
-        <TxtButton>{txtfrst.show}</TxtButton>
+
+      <CardFrame style={{ margin: 15, alignItems: 'center' }}>
+        {/* <TxtButton>{txtfrst.show}</TxtButton> */}
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
           <Button
-            title=' ??? '
+            title='     ?     '
             onPress={() => {
               setShow(0);
             }}
-            color={show === 0 ? Colors.surround : Colors.base}
+            color={show === 0 ? Colors.base : Colors.base}
           />
           <Button
-            title='_ _ _'
+            title='_ | _ | _'
             onPress={() => {
               setShow(1);
             }}
             color={show === 1 ? Colors.surround : Colors.base}
           />
           <Button
-            title='_ _ X'
+            title='_ | _ | X'
             onPress={() => {
               setShow(2);
             }}
             color={show === 2 ? Colors.surround : Colors.base}
           />
           <Button
-            title='X _ X'
+            title='X | _ | X'
             onPress={() => {
               setShow(3);
             }}
             color={show === 3 ? Colors.surround : Colors.base}
           />
           <Button
-            title='X X X'
+            title='X | X | X'
             onPress={() => {
               setShow(4);
             }}
@@ -339,87 +446,202 @@ const MasterScreen = () => {
         </View>
       </CardFrame>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-        <Button
-          title='|<'
-          onPress={() => {
+      <View style={{ alignItems: 'center' }}>
+        <View
+          style={{
+            width: '50%',
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}>
+          <Buttons.ButtonCircle
+            action={() => handleStatus(0)}
+            bodyStyle={{ borderWidth: 0 }}>
+            <Ionicons
+              name='ios-infinite'
+              size={40}
+              color={
+                words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => handleStatus(1)}
+            bodyStyle={{ borderWidth: 0 }}>
+            <Ionicons
+              name='ios-attach'
+              size={40}
+              color={
+                words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => handleStatus(2)}
+            bodyStyle={{ borderWidth: 0 }}>
+            <Ionicons
+              name='ios-checkmark'
+              size={40}
+              color={
+                words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+        </View>
+      </View>
+
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignSelf: 'center',
+          justifyContent: 'space-around',
+          width: Dimensions.get('window').width * 0.75,
+          marginTop: 20,
+        }}>
+        {/* <Buttons.ButtonCircle
+          action={() => {
             setIndex(0);
-          }}
-          color={Colors.base}
-        />
-        <Button
-          title='<100'
-          onPress={() => {
-            handleIndex(-100);
-          }}
-          color={Colors.base}
-        />
-        <Button
-          title='<10'
-          onPress={() => {
-            handleIndex(-10);
-          }}
-          color={Colors.base}
-        />
-        <Button
-          title='<1'
-          onPress={() => {
+          }}>
+          <Ionicons
+            name='md-skip-backward'
+            size={30}
+            color={
+              words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle> */}
+
+        <Buttons.ButtonCircle
+          action={() => {
+            handleIndex(-Math.floor(range / 7));
+          }}>
+          <Ionicons
+            name='md-rewind'
+            size={30}
+            color={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+        <Buttons.ButtonCircle
+          action={() => {
             handleIndex(-1);
           }}
-          color={Colors.base}
-        />
-        <Button
-          title='| |'
-          onPress={() => {
-            setIndex(Math.floor(range / 2));
+          color={Colors.base}>
+          <Ionicons
+            name='md-arrow-dropleft'
+            size={30}
+            color={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+        <Buttons.ButtonCircle
+          action={() => {
+            setIndex(Math.floor(Math.random() * range));
           }}
-          color={Colors.base}
-        />
-        <Button
-          title='1>'
-          onPress={() => {
+          color={Colors.base}>
+          <Ionicons
+            name='ios-color-wand'
+            size={40}
+            color={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+        <Buttons.ButtonCircle
+          action={() => {
             handleIndex(1);
           }}
-          color={Colors.base}
-        />
-        <Button
-          title='10>'
-          onPress={() => {
-            handleIndex(10);
+          color={Colors.base}>
+          <Ionicons
+            name='md-arrow-dropright'
+            size={30}
+            color={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+
+        <Buttons.ButtonCircle
+          action={() => {
+            handleIndex(Math.floor(range / 7));
           }}
-          color={Colors.base}
-        />
-        <Button
-          title='100>'
-          onPress={() => {
-            handleIndex(100);
-          }}
-          color={Colors.base}
-        />
-        <Button
-          title='>|'
-          onPress={() => {
+          color={Colors.base}>
+          <Ionicons
+            name='md-fastforward'
+            size={30}
+            color={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+        {/* <Buttons.ButtonCircle
+          action={() => {
             setIndex(range - 1);
           }}
-          color={Colors.base}
-        />
+          color={Colors.base}>
+          <Ionicons
+            name='md-skip-forward'
+            size={30}
+            color={
+              words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle> */}
       </View>
       <View
         style={{
           justifyContent: 'center',
           alignItems: 'center',
+          marginTop: 10,
         }}>
         <TxtItalic>
-          {txtfrst.index}: {index + 1} {txtfrst.range}: {range}
+          {/* {txtfrst.index}: {index + 1} {txtfrst.range}: {range} */}
+          {index + 1} / {range}
         </TxtItalic>
-
-        <TxtLabel style={{ margin: 20 }}>
-          {range > 0 ? (
-            words[index][lngfrst]
-          ) : (
-            <TxtItalic>{txtfrst.noRange}</TxtItalic>
-          )}
-        </TxtLabel>
       </View>
     </ScreenFrame>
   );

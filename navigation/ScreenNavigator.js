@@ -231,7 +231,7 @@ export const SideNavigator = () => {
       />
 
       <SideDrawerNavigator.Screen
-        name='F|U|N|N|E|L'
+        name='F|U|N|N|E|L Pub'
         component={MasterNavigator}
         options={{
           drawerIcon: (props) => (

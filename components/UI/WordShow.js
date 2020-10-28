@@ -76,6 +76,14 @@ const WordShow = (props) => {
           style={{
             fontSize:
               Dimensions.get('window').height / 10 - wordToShow.length * 2.5,
+            color:
+              props.color === 0
+                ? Colors.accent
+                : props.color === 1
+                ? Colors.backSecond
+                : props.color === 2
+                ? Colors.backPrimary
+                : Colors.surround,
           }}
           key={props.ltr}>
           {child}
@@ -92,7 +100,11 @@ const WordShow = (props) => {
             <TouchableOpacity
               onPress={() => handleLetterShow(index)}
               key={index}>
-              <ShowCard show={props.show} ltr={index} key={index}>
+              <ShowCard
+                show={props.show}
+                ltr={index}
+                key={index}
+                color={props.color}>
                 {ltr}
               </ShowCard>
             </TouchableOpacity>
