@@ -20,6 +20,7 @@ import * as wordActions from '../store/actions/words';
 import WordShow from '../components/UI/WordShow';
 import { Ionicons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
+import { setEnabled } from 'react-native/Libraries/Performance/Systrace';
 
 const MasterScreen = () => {
   const [levelA, setLevelA] = useState(false);
@@ -40,6 +41,12 @@ const MasterScreen = () => {
   const [sizeIconAttach, setSizeIconAttach] = useState(35);
   const [sizeIconCheck, setSizeIconCheck] = useState(35);
   const [status, setStatus] = useState(false);
+
+  const [sizeIconRewind, setSizeIconRewind] = useState(30);
+  const [sizeIconBack, setSizeIconBack] = useState(30);
+  const [sizeIconRandom, setSizeIconRandom] = useState(40);
+  const [sizeIconNext, setSizeIconNext] = useState(30);
+  const [sizeIconFastF, setSizeIconFastF] = useState(30);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -156,6 +163,47 @@ const MasterScreen = () => {
       0
     );
     setSelectTwo(countTwo);
+  };
+
+  const animeIcon = (icon) => {
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    async function delayedConfirmation(icon) {
+      switch (icon) {
+        case 'Rewind': {
+          setSizeIconRewind(50);
+          await sleep(300);
+          setSizeIconRewind(35);
+          return;
+        }
+        case 'Back': {
+          setSizeIconBack(50);
+          await sleep(300);
+          setSizeIconBack(35);
+          return;
+        }
+        case 'Random': {
+          setSizeIconRandom(50);
+          await sleep(300);
+          setSizeIconRandom(35);
+          return;
+        }
+        case 'Next': {
+          setSizeIconNext(50);
+          await sleep(300);
+          setSizeIconNext(35);
+          return;
+        }
+        case 'FastF': {
+          setSizeIconFastF(50);
+          await sleep(300);
+          setSizeIconFastF(35);
+          return;
+        }
+      }
+    }
+    delayedConfirmation(icon);
   };
 
   //* render **************************************
@@ -564,10 +612,11 @@ const MasterScreen = () => {
         <Buttons.ButtonCircle
           action={() => {
             handleIndex(-Math.floor(range / 7));
+            animeIcon('Rewind');
           }}>
           <Ionicons
             name='md-rewind'
-            size={30}
+            size={sizeIconRewind}
             color={
               words[index]['st' + lngscnd] === 0
                 ? Colors.accent
@@ -582,11 +631,12 @@ const MasterScreen = () => {
         <Buttons.ButtonCircle
           action={() => {
             handleIndex(-1);
+            animeIcon('Back');
           }}
           color={Colors.base}>
           <Ionicons
             name='md-arrow-dropleft'
-            size={30}
+            size={sizeIconBack}
             color={
               words[index]['st' + lngscnd] === 0
                 ? Colors.accent
@@ -601,11 +651,12 @@ const MasterScreen = () => {
         <Buttons.ButtonCircle
           action={() => {
             setIndex(Math.floor(Math.random() * range));
+            animeIcon('Random');
           }}
           color={Colors.base}>
           <Ionicons
             name='ios-color-wand'
-            size={40}
+            size={sizeIconRandom}
             color={
               words[index]['st' + lngscnd] === 0
                 ? Colors.accent
@@ -620,11 +671,12 @@ const MasterScreen = () => {
         <Buttons.ButtonCircle
           action={() => {
             handleIndex(1);
+            animeIcon('Next');
           }}
           color={Colors.base}>
           <Ionicons
             name='md-arrow-dropright'
-            size={30}
+            size={sizeIconNext}
             color={
               words[index]['st' + lngscnd] === 0
                 ? Colors.accent
@@ -640,11 +692,12 @@ const MasterScreen = () => {
         <Buttons.ButtonCircle
           action={() => {
             handleIndex(Math.floor(range / 7));
+            animeIcon('FastF');
           }}
           color={Colors.base}>
           <Ionicons
             name='md-fastforward'
-            size={30}
+            size={sizeIconFastF}
             color={
               words[index]['st' + lngscnd] === 0
                 ? Colors.accent
