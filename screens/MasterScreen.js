@@ -36,6 +36,10 @@ const MasterScreen = () => {
   const [selectZero, setSelectZero] = useState(0);
   const [selectOne, setSelectOne] = useState(0);
   const [selectTwo, setSelectTwo] = useState(0);
+  const [sizeIconInfinity, setSizeIconInfinity] = useState(35);
+  const [sizeIconAttach, setSizeIconAttach] = useState(35);
+  const [sizeIconCheck, setSizeIconCheck] = useState(35);
+  const [status, setStatus] = useState(false);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -63,6 +67,7 @@ const MasterScreen = () => {
     setIndex(0);
     counter();
   }, [
+    status,
     range,
     setRange,
     setSelect,
@@ -90,6 +95,35 @@ const MasterScreen = () => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
+        setStatus((prev) => !prev);
+
+        function sleep(ms) {
+          return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+        async function delayedConfirmation(status) {
+          switch (status) {
+            case 0: {
+              setSizeIconInfinity(50);
+              await sleep(300);
+              setSizeIconInfinity(35);
+              return;
+            }
+            case 1: {
+              setSizeIconAttach(50);
+              await sleep(300);
+              setSizeIconAttach(35);
+              return;
+            }
+            case 2: {
+              setSizeIconCheck(50);
+              await sleep(300);
+              setSizeIconCheck(35);
+              return;
+            }
+          }
+        }
+
+        delayedConfirmation(status);
         counter();
       }
     }
@@ -413,7 +447,7 @@ const MasterScreen = () => {
             onPress={() => {
               setShow(0);
             }}
-            color={show === 0 ? Colors.base : Colors.base}
+            color={show === 0 ? Colors.surround : Colors.base}
           />
           <Button
             title='_ | _ | _'
@@ -459,9 +493,11 @@ const MasterScreen = () => {
             bodyStyle={{ borderWidth: 0 }}>
             <Ionicons
               name='ios-infinite'
-              size={40}
+              size={sizeIconInfinity}
               color={
                 words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : sizeIconInfinity > 35
                   ? Colors.accent
                   : Colors.surround
               }
@@ -472,9 +508,11 @@ const MasterScreen = () => {
             bodyStyle={{ borderWidth: 0 }}>
             <Ionicons
               name='ios-attach'
-              size={40}
+              size={sizeIconAttach}
               color={
                 words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : sizeIconAttach > 35
                   ? Colors.backSecond
                   : Colors.surround
               }
@@ -484,10 +522,12 @@ const MasterScreen = () => {
             action={() => handleStatus(2)}
             bodyStyle={{ borderWidth: 0 }}>
             <Ionicons
-              name='ios-checkmark'
-              size={40}
+              name='md-checkmark'
+              size={sizeIconCheck}
               color={
                 words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : sizeIconCheck > 35
                   ? Colors.backPrimary
                   : Colors.surround
               }
