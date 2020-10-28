@@ -487,44 +487,117 @@ const MasterScreen = () => {
         </TxtLabel>
       </View>
 
-      <CardFrame style={{ margin: 15, alignItems: 'center' }}>
-        {/* <TxtButton>{txtfrst.show}</TxtButton> */}
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <Button
-            title='     ?     '
-            onPress={() => {
+      <CardFrame style={{ margin: 20, alignItems: 'center' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}>
+          <Buttons.ButtonBox
+            action={() => {
               setShow(0);
             }}
-            color={show === 0 ? Colors.surround : Colors.base}
-          />
-          <Button
-            title='_ | _ | _'
-            onPress={() => {
+            bodyStyle={
+              show === 0
+                ? {
+                    borderWidth: 3,
+                    borderRadius: 25,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 0
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            ?
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
               setShow(1);
             }}
-            color={show === 1 ? Colors.surround : Colors.base}
-          />
-          <Button
-            title='_ | _ | X'
-            onPress={() => {
+            bodyStyle={
+              show === 1
+                ? {
+                    borderWidth: 3,
+                    borderRadius: 25,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 1
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            _ _ _
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
               setShow(2);
             }}
-            color={show === 2 ? Colors.surround : Colors.base}
-          />
-          <Button
-            title='X | _ | X'
-            onPress={() => {
+            bodyStyle={
+              show === 2
+                ? {
+                    borderWidth: 3,
+                    borderRadius: 25,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 2
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            _ _ X
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
               setShow(3);
             }}
-            color={show === 3 ? Colors.surround : Colors.base}
-          />
-          <Button
-            title='X | X | X'
-            onPress={() => {
+            bodyStyle={
+              show === 3
+                ? {
+                    borderWidth: 3,
+                    borderRadius: 25,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 3
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            X _ X
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
               setShow(4);
             }}
-            color={show === 4 ? Colors.surround : Colors.base}
-          />
+            bodyStyle={
+              show === 4
+                ? {
+                    borderWidth: 3,
+                    borderRadius: 25,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 4
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            X X X
+          </Buttons.ButtonBox>
         </View>
       </CardFrame>
 
