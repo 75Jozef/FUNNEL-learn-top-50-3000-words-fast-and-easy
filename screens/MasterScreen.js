@@ -449,11 +449,14 @@ const MasterScreen = () => {
           </Buttons.ButtonCircle>
         </View>
       </View>
+
+      {/* ***********************************WORD SHOW */}
+
       <View
         style={{
-          height: 80,
+          height: 60,
           marginTop: 25,
-          marginBottom: 10,
+          marginBottom: 20,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -474,10 +477,9 @@ const MasterScreen = () => {
         style={{
           justifyContent: 'center',
           alignItems: 'center',
-          marginBottom: 20,
         }}>
         <TxtLabel
-          style={{ margin: 10, color: Colors.backSecond, fontSize: 30 }}>
+          style={{ marginTop: 10, color: Colors.backSecond, fontSize: 30 }}>
           {range > 0 ? (
             words[index][lngfrst]
           ) : (
@@ -486,7 +488,8 @@ const MasterScreen = () => {
         </TxtLabel>
       </View>
       {/* ***********************************************************************SHOW */}
-      <CardFrame style={{ margin: 20, alignItems: 'center' }}>
+      <CardFrame
+        style={{ marginTop: 10, alignItems: 'center', marginBottom: 20 }}>
         <View
           style={{
             flexDirection: 'row',
