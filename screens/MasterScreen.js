@@ -449,7 +449,6 @@ const MasterScreen = () => {
           </Buttons.ButtonCircle>
         </View>
       </View>
-
       <View
         style={{
           height: 80,
@@ -486,7 +485,7 @@ const MasterScreen = () => {
           )}
         </TxtLabel>
       </View>
-
+      {/* ***********************************************************************SHOW */}
       <CardFrame style={{ margin: 20, alignItems: 'center' }}>
         <View
           style={{
@@ -500,8 +499,9 @@ const MasterScreen = () => {
             bodyStyle={
               show === 0
                 ? {
-                    borderWidth: 3,
-                    borderRadius: 25,
+                    width: 60,
+                    borderWidth: 2,
+                    borderRadius: 60,
                   }
                 : { backgroundColor: Colors.base }
             }
@@ -520,10 +520,7 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 1
-                ? {
-                    borderWidth: 3,
-                    borderRadius: 25,
-                  }
+                ? { width: 60, borderWidth: 2, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
@@ -541,10 +538,7 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 2
-                ? {
-                    borderWidth: 3,
-                    borderRadius: 25,
-                  }
+                ? { width: 60, borderWidth: 2, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
@@ -562,10 +556,7 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 3
-                ? {
-                    borderWidth: 3,
-                    borderRadius: 25,
-                  }
+                ? { width: 60, borderWidth: 2, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
@@ -583,10 +574,7 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 4
-                ? {
-                    borderWidth: 3,
-                    borderRadius: 25,
-                  }
+                ? { width: 60, borderWidth: 2, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
@@ -600,7 +588,6 @@ const MasterScreen = () => {
           </Buttons.ButtonBox>
         </View>
       </CardFrame>
-
       <View style={{ alignItems: 'center' }}>
         <View
           style={{
@@ -656,7 +643,6 @@ const MasterScreen = () => {
           </Buttons.ButtonCircle>
         </View>
       </View>
-
       <View
         style={{
           flexDirection: 'row',
