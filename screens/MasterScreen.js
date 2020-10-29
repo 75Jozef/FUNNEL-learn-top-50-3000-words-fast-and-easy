@@ -101,6 +101,7 @@ const MasterScreen = () => {
   const handleStatus = (status) => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
+        delayedConfirmation(status);
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
         setStatus((prev) => !prev);
 
@@ -130,7 +131,6 @@ const MasterScreen = () => {
           }
         }
 
-        delayedConfirmation(status);
         counter();
       }
     }
@@ -166,6 +166,7 @@ const MasterScreen = () => {
   };
 
   const animeIcon = (icon) => {
+    delayedConfirmation(icon);
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
@@ -203,7 +204,6 @@ const MasterScreen = () => {
         }
       }
     }
-    delayedConfirmation(icon);
   };
 
   //* render **************************************
@@ -211,452 +211,458 @@ const MasterScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignContent: 'space-between',
-          width: '70%',
-          alignSelf: 'center',
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between',
         }}>
-        <Buttons.ButtonBox
-          action={() => {
-            setLevelV((prev) => !prev);
-            setIndex(0);
-          }}
-          bodyStyle={
-            levelV
-              ? {
-                  borderWidth: 3,
-                  borderRadius: 25,
-                }
-              : { backgroundColor: Colors.base }
-          }
-          insideStyle={
-            levelV
-              ? {
-                  color: Colors.textPrimary,
-                }
-              : null
-          }>
-          50v
-        </Buttons.ButtonBox>
-
-        <Buttons.ButtonBox
-          action={() => {
-            setLevelN((prev) => !prev);
-            setIndex(0);
-          }}
-          bodyStyle={
-            levelN
-              ? { borderWidth: 3, borderRadius: 25 }
-              : { backgroundColor: Colors.base }
-          }
-          insideStyle={
-            levelN
-              ? {
-                  color: Colors.textPrimary,
-                }
-              : null
-          }>
-          50n
-        </Buttons.ButtonBox>
-        <Buttons.ButtonBox
-          action={() => {
-            setLevelA((prev) => !prev);
-            setIndex(0);
-          }}
-          bodyStyle={
-            levelA
-              ? { borderWidth: 3, borderRadius: 25 }
-              : { backgroundColor: Colors.base }
-          }
-          insideStyle={
-            levelA
-              ? {
-                  color: Colors.textPrimary,
-                }
-              : null
-          }>
-          50a
-        </Buttons.ButtonBox>
-        <Buttons.ButtonBox
-          action={() => {
-            setLevelH((prev) => !prev);
-            setIndex(0);
-          }}
-          bodyStyle={
-            levelH
-              ? { borderWidth: 3, borderRadius: 25 }
-              : { backgroundColor: Colors.base }
-          }
-          insideStyle={
-            levelH
-              ? {
-                  color: Colors.textPrimary,
-                }
-              : null
-          }>
-          100
-        </Buttons.ButtonBox>
-        <Buttons.ButtonBox
-          action={() => {
-            setLevelF((prev) => !prev);
-            setIndex(0);
-          }}
-          bodyStyle={
-            levelF
-              ? { borderWidth: 3, borderRadius: 25 }
-              : { backgroundColor: Colors.base }
-          }
-          insideStyle={
-            levelF
-              ? {
-                  color: Colors.textPrimary,
-                }
-              : null
-          }>
-          500
-        </Buttons.ButtonBox>
-        <Buttons.ButtonBox
-          action={() => {
-            setLevelT((prev) => !prev);
-            setIndex(0);
-          }}
-          bodyStyle={
-            levelT
-              ? { borderWidth: 3, borderRadius: 25 }
-              : { backgroundColor: Colors.base }
-          }
-          insideStyle={
-            levelT
-              ? {
-                  color: Colors.textPrimary,
-                }
-              : null
-          }>
-          1000
-        </Buttons.ButtonBox>
-        <Buttons.ButtonBox
-          action={() => {
-            setLevelX((prev) => !prev);
-            setIndex(0);
-          }}
-          bodyStyle={
-            levelX
-              ? { borderWidth: 3, borderRadius: 25 }
-              : { backgroundColor: Colors.base }
-          }
-          insideStyle={
-            levelX
-              ? {
-                  color: Colors.textPrimary,
-                }
-              : null
-          }>
-          3000
-        </Buttons.ButtonBox>
-      </View>
-      <View style={{ alignItems: 'center' }}>
-        <View
-          style={{
-            marginTop: 20,
-            marginBottom: 10,
-            width: '60%',
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-          }}>
-          <Buttons.ButtonCircle
-            action={() => {
-              handleSelect(0);
-            }}
-            bodyStyle={
-              select === 0
-                ? {
-                    width: 80,
-                    height: 50,
-                    borderRadius: 25,
-                    borderColor: Colors.accent,
-                    borderWidth: 3,
-                  }
-                : { borderColor: Colors.accent, borderWidth: 1 }
-            }
-            insideStyle={
-              select === 0
-                ? {
-                    color: Colors.accent,
-                    fontSize: Dimensions.get('window').height / 30,
-                    fontFamily: Fonts.bold,
-                  }
-                : {
-                    color: Colors.surround,
-                  }
-            }>
-            {selectZero}
-          </Buttons.ButtonCircle>
-          <Buttons.ButtonCircle
-            action={() => {
-              handleSelect(1);
-            }}
-            bodyStyle={
-              select === 1
-                ? {
-                    width: 80,
-                    height: 50,
-                    borderRadius: 25,
-                    borderColor: Colors.backSecond,
-                    borderWidth: 3,
-                  }
-                : { borderColor: Colors.backSecond, borderWidth: 1 }
-            }
-            insideStyle={
-              select === 1
-                ? {
-                    color: Colors.backSecond,
-                    fontSize: Dimensions.get('window').height / 30,
-                    fontFamily: Fonts.bold,
-                  }
-                : { color: Colors.surround }
-            }>
-            {selectOne}
-          </Buttons.ButtonCircle>
-          <Buttons.ButtonCircle
-            action={() => {
-              handleSelect(2);
-            }}
-            bodyStyle={
-              select === 2
-                ? {
-                    width: 80,
-                    height: 50,
-                    borderRadius: 25,
-                    borderColor: Colors.backPrimary,
-                    borderWidth: 3,
-                  }
-                : { borderColor: Colors.backPrimary, borderWidth: 1 }
-            }
-            insideStyle={
-              select === 2
-                ? {
-                    color: Colors.backPrimary,
-                    fontSize: Dimensions.get('window').height / 30,
-                    fontFamily: Fonts.bold,
-                  }
-                : {
-                    color: Colors.surround,
-                  }
-            }>
-            {selectTwo}
-          </Buttons.ButtonCircle>
-        </View>
-      </View>
-
-      {/* ***********************************WORD SHOW */}
-
-      <View
-        style={{
-          height: 60,
-          marginTop: 25,
-          marginBottom: 20,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <TxtNormal>
-          {range > 0 ? (
-            <WordShow
-              word={words[index][lngscnd]}
-              show={show}
-              key={index}
-              color={words[index]['st' + lngscnd]}
-            />
-          ) : (
-            <TxtItalic>{txtscnd.noRange}</TxtItalic>
-          )}
-        </TxtNormal>
-      </View>
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <TxtLabel
-          style={{ marginTop: 10, color: Colors.backSecond, fontSize: 30 }}>
-          {range > 0 ? (
-            words[index][lngfrst]
-          ) : (
-            <TxtItalic>{txtfrst.noRange}</TxtItalic>
-          )}
-        </TxtLabel>
-      </View>
-      {/* ***********************************************************************SHOW */}
-      <CardFrame
-        style={{ marginTop: 10, alignItems: 'center', marginBottom: 20 }}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
+            alignContent: 'space-between',
+            width: '70%',
+            alignSelf: 'center',
           }}>
           <Buttons.ButtonBox
             action={() => {
-              setShow(0);
+              setLevelV((prev) => !prev);
+              setIndex(0);
             }}
             bodyStyle={
-              show === 0
+              levelV
                 ? {
-                    width: 60,
-                    borderWidth: 2,
-                    borderRadius: 60,
+                    borderWidth: 3,
+                    borderRadius: 25,
                   }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
-              show === 0
+              levelV
                 ? {
                     color: Colors.textPrimary,
                   }
                 : null
             }>
-            ?
+            50v
+          </Buttons.ButtonBox>
+
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelN((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelN
+                ? { borderWidth: 3, borderRadius: 25 }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelN
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            50n
           </Buttons.ButtonBox>
           <Buttons.ButtonBox
             action={() => {
-              setShow(1);
+              setLevelA((prev) => !prev);
+              setIndex(0);
             }}
             bodyStyle={
-              show === 1
-                ? { width: 60, borderWidth: 2, borderRadius: 25 }
+              levelA
+                ? { borderWidth: 3, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
-              show === 1
+              levelA
                 ? {
                     color: Colors.textPrimary,
                   }
                 : null
             }>
-            _ _ _
+            50a
           </Buttons.ButtonBox>
           <Buttons.ButtonBox
             action={() => {
-              setShow(2);
+              setLevelH((prev) => !prev);
+              setIndex(0);
             }}
             bodyStyle={
-              show === 2
-                ? { width: 60, borderWidth: 2, borderRadius: 25 }
+              levelH
+                ? { borderWidth: 3, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
-              show === 2
+              levelH
                 ? {
                     color: Colors.textPrimary,
                   }
                 : null
             }>
-            _ _ X
+            100
           </Buttons.ButtonBox>
           <Buttons.ButtonBox
             action={() => {
-              setShow(3);
+              setLevelF((prev) => !prev);
+              setIndex(0);
             }}
             bodyStyle={
-              show === 3
-                ? { width: 60, borderWidth: 2, borderRadius: 25 }
+              levelF
+                ? { borderWidth: 3, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
-              show === 3
+              levelF
                 ? {
                     color: Colors.textPrimary,
                   }
                 : null
             }>
-            X _ X
+            500
           </Buttons.ButtonBox>
           <Buttons.ButtonBox
             action={() => {
-              setShow(4);
+              setLevelT((prev) => !prev);
+              setIndex(0);
             }}
             bodyStyle={
-              show === 4
-                ? { width: 60, borderWidth: 2, borderRadius: 25 }
+              levelT
+                ? { borderWidth: 3, borderRadius: 25 }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
-              show === 4
+              levelT
                 ? {
                     color: Colors.textPrimary,
                   }
                 : null
             }>
-            X X X
+            1000
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelX((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelX
+                ? { borderWidth: 3, borderRadius: 25 }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelX
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            3000
           </Buttons.ButtonBox>
         </View>
-      </CardFrame>
-      <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: 'center' }}>
+          <View
+            style={{
+              marginTop: 20,
+              marginBottom: 10,
+              width: '60%',
+              alignItems: 'center',
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+            }}>
+            <Buttons.ButtonCircle
+              action={() => {
+                handleSelect(0);
+              }}
+              bodyStyle={
+                select === 0
+                  ? {
+                      width: 80,
+                      height: 50,
+                      borderRadius: 25,
+                      borderColor: Colors.accent,
+                      borderWidth: 3,
+                    }
+                  : { borderColor: Colors.accent, borderWidth: 1 }
+              }
+              insideStyle={
+                select === 0
+                  ? {
+                      color: Colors.accent,
+                      fontSize: Dimensions.get('window').height / 30,
+                      fontFamily: Fonts.bold,
+                    }
+                  : {
+                      color: Colors.surround,
+                    }
+              }>
+              {selectZero}
+            </Buttons.ButtonCircle>
+            <Buttons.ButtonCircle
+              action={() => {
+                handleSelect(1);
+              }}
+              bodyStyle={
+                select === 1
+                  ? {
+                      width: 80,
+                      height: 50,
+                      borderRadius: 25,
+                      borderColor: Colors.backSecond,
+                      borderWidth: 3,
+                    }
+                  : { borderColor: Colors.backSecond, borderWidth: 1 }
+              }
+              insideStyle={
+                select === 1
+                  ? {
+                      color: Colors.backSecond,
+                      fontSize: Dimensions.get('window').height / 30,
+                      fontFamily: Fonts.bold,
+                    }
+                  : { color: Colors.surround }
+              }>
+              {selectOne}
+            </Buttons.ButtonCircle>
+            <Buttons.ButtonCircle
+              action={() => {
+                handleSelect(2);
+              }}
+              bodyStyle={
+                select === 2
+                  ? {
+                      width: 80,
+                      height: 50,
+                      borderRadius: 25,
+                      borderColor: Colors.backPrimary,
+                      borderWidth: 3,
+                    }
+                  : { borderColor: Colors.backPrimary, borderWidth: 1 }
+              }
+              insideStyle={
+                select === 2
+                  ? {
+                      color: Colors.backPrimary,
+                      fontSize: Dimensions.get('window').height / 30,
+                      fontFamily: Fonts.bold,
+                    }
+                  : {
+                      color: Colors.surround,
+                    }
+              }>
+              {selectTwo}
+            </Buttons.ButtonCircle>
+          </View>
+        </View>
+
+        {/* ***********************************WORD SHOW */}
+
         <View
           style={{
-            width: '50%',
+            height: 60,
+            marginTop: 25,
+            marginBottom: 20,
+            justifyContent: 'center',
             alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
           }}>
-          <Buttons.ButtonCircle
-            action={() => handleStatus(0)}
-            bodyStyle={{ borderWidth: 0 }}>
-            <Ionicons
-              name='ios-infinite'
-              size={sizeIconInfinity}
-              color={
-                words[index]['st' + lngscnd] === 0
-                  ? Colors.accent
-                  : sizeIconInfinity > 35
-                  ? Colors.accent
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
-          <Buttons.ButtonCircle
-            action={() => handleStatus(1)}
-            bodyStyle={{ borderWidth: 0 }}>
-            <Ionicons
-              name='ios-attach'
-              size={sizeIconAttach}
-              color={
-                words[index]['st' + lngscnd] === 1
-                  ? Colors.backSecond
-                  : sizeIconAttach > 35
-                  ? Colors.backSecond
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
-          <Buttons.ButtonCircle
-            action={() => handleStatus(2)}
-            bodyStyle={{ borderWidth: 0 }}>
-            <Ionicons
-              name='md-checkmark'
-              size={sizeIconCheck}
-              color={
-                words[index]['st' + lngscnd] === 2
-                  ? Colors.backPrimary
-                  : sizeIconCheck > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
+          <TxtNormal>
+            {range > 0 ? (
+              <WordShow
+                word={words[index][lngscnd]}
+                show={show}
+                key={index}
+                color={words[index]['st' + lngscnd]}
+              />
+            ) : (
+              <TxtItalic>{txtscnd.noRange}</TxtItalic>
+            )}
+          </TxtNormal>
         </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          alignSelf: 'center',
-          justifyContent: 'space-around',
-          width: Dimensions.get('window').width * 0.75,
-          marginTop: 20,
-        }}>
-        {/* <Buttons.ButtonCircle
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <TxtLabel
+            style={{ marginTop: 5, color: Colors.backSecond, fontSize: 30 }}>
+            {range > 0 ? (
+              words[index][lngfrst]
+            ) : (
+              <TxtItalic>{txtfrst.noRange}</TxtItalic>
+            )}
+          </TxtLabel>
+        </View>
+        {/* ***********************************************************************SHOW */}
+        <CardFrame
+          style={{ marginTop: 20, alignItems: 'center', marginBottom: 20 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+            }}>
+            <Buttons.ButtonBox
+              action={() => {
+                setShow(0);
+              }}
+              bodyStyle={
+                show === 0
+                  ? {
+                      width: 60,
+                      borderWidth: 2,
+                      borderRadius: 60,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                show === 0
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              ?
+            </Buttons.ButtonBox>
+            <Buttons.ButtonBox
+              action={() => {
+                setShow(1);
+              }}
+              bodyStyle={
+                show === 1
+                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                show === 1
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              _ _ _
+            </Buttons.ButtonBox>
+            <Buttons.ButtonBox
+              action={() => {
+                setShow(2);
+              }}
+              bodyStyle={
+                show === 2
+                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                show === 2
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              _ _ X
+            </Buttons.ButtonBox>
+            <Buttons.ButtonBox
+              action={() => {
+                setShow(3);
+              }}
+              bodyStyle={
+                show === 3
+                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                show === 3
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              X _ X
+            </Buttons.ButtonBox>
+            <Buttons.ButtonBox
+              action={() => {
+                setShow(4);
+              }}
+              bodyStyle={
+                show === 4
+                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                show === 4
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              X X X
+            </Buttons.ButtonBox>
+          </View>
+        </CardFrame>
+        <View style={{ alignItems: 'center' }}>
+          <View
+            style={{
+              width: '50%',
+              alignItems: 'center',
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+            }}>
+            <Buttons.ButtonCircle
+              action={() => handleStatus(0)}
+              bodyStyle={{ borderWidth: 0 }}>
+              <Ionicons
+                name='ios-infinite'
+                size={sizeIconInfinity}
+                color={
+                  words[index]['st' + lngscnd] === 0
+                    ? Colors.accent
+                    : sizeIconInfinity > 35
+                    ? Colors.accent
+                    : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
+            <Buttons.ButtonCircle
+              action={() => handleStatus(1)}
+              bodyStyle={{ borderWidth: 0 }}>
+              <Ionicons
+                name='ios-attach'
+                size={sizeIconAttach}
+                color={
+                  words[index]['st' + lngscnd] === 1
+                    ? Colors.backSecond
+                    : sizeIconAttach > 35
+                    ? Colors.backSecond
+                    : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
+            <Buttons.ButtonCircle
+              action={() => handleStatus(2)}
+              bodyStyle={{ borderWidth: 0 }}>
+              <Ionicons
+                name='md-checkmark'
+                size={sizeIconCheck}
+                color={
+                  words[index]['st' + lngscnd] === 2
+                    ? Colors.backPrimary
+                    : sizeIconCheck > 35
+                    ? Colors.backPrimary
+                    : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
+            justifyContent: 'space-around',
+            width: Dimensions.get('window').width * 0.75,
+            marginTop: 20,
+          }}>
+          {/* <Buttons.ButtonCircle
           action={() => {
             setIndex(0);
           }}>
@@ -671,107 +677,107 @@ const MasterScreen = () => {
           />
         </Buttons.ButtonCircle> */}
 
-        <Buttons.ButtonCircle
-          action={() => {
-            handleIndex(-Math.floor(range / 7));
-            animeIcon('Rewind');
-          }}>
-          <Ionicons
-            name='md-rewind'
-            size={sizeIconRewind}
-            color={
-              words[index]['st' + lngscnd] === 0
-                ? Colors.accent
-                : words[index]['st' + lngscnd] === 1
-                ? Colors.backSecond
-                : words[index]['st' + lngscnd] === 2
-                ? Colors.backPrimary
-                : Colors.surround
-            }
-          />
-        </Buttons.ButtonCircle>
-        <Buttons.ButtonCircle
-          action={() => {
-            handleIndex(-1);
-            animeIcon('Back');
-          }}
-          color={Colors.base}>
-          <Ionicons
-            name='md-arrow-dropleft'
-            size={sizeIconBack}
-            color={
-              words[index]['st' + lngscnd] === 0
-                ? Colors.accent
-                : words[index]['st' + lngscnd] === 1
-                ? Colors.backSecond
-                : words[index]['st' + lngscnd] === 2
-                ? Colors.backPrimary
-                : Colors.surround
-            }
-          />
-        </Buttons.ButtonCircle>
-        <Buttons.ButtonCircle
-          action={() => {
-            setIndex(Math.floor(Math.random() * range));
-            animeIcon('Random');
-          }}
-          color={Colors.base}>
-          <Ionicons
-            name='ios-color-wand'
-            size={sizeIconRandom}
-            color={
-              words[index]['st' + lngscnd] === 0
-                ? Colors.accent
-                : words[index]['st' + lngscnd] === 1
-                ? Colors.backSecond
-                : words[index]['st' + lngscnd] === 2
-                ? Colors.backPrimary
-                : Colors.surround
-            }
-          />
-        </Buttons.ButtonCircle>
-        <Buttons.ButtonCircle
-          action={() => {
-            handleIndex(1);
-            animeIcon('Next');
-          }}
-          color={Colors.base}>
-          <Ionicons
-            name='md-arrow-dropright'
-            size={sizeIconNext}
-            color={
-              words[index]['st' + lngscnd] === 0
-                ? Colors.accent
-                : words[index]['st' + lngscnd] === 1
-                ? Colors.backSecond
-                : words[index]['st' + lngscnd] === 2
-                ? Colors.backPrimary
-                : Colors.surround
-            }
-          />
-        </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => {
+              handleIndex(-Math.floor(range / 7));
+              animeIcon('Rewind');
+            }}>
+            <Ionicons
+              name='md-rewind'
+              size={sizeIconRewind}
+              color={
+                words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => {
+              handleIndex(-1);
+              animeIcon('Back');
+            }}
+            color={Colors.base}>
+            <Ionicons
+              name='md-arrow-dropleft'
+              size={sizeIconBack}
+              color={
+                words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => {
+              setIndex(Math.floor(Math.random() * range));
+              animeIcon('Random');
+            }}
+            color={Colors.base}>
+            <Ionicons
+              name='ios-color-wand'
+              size={sizeIconRandom}
+              color={
+                words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => {
+              handleIndex(1);
+              animeIcon('Next');
+            }}
+            color={Colors.base}>
+            <Ionicons
+              name='md-arrow-dropright'
+              size={sizeIconNext}
+              color={
+                words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
 
-        <Buttons.ButtonCircle
-          action={() => {
-            handleIndex(Math.floor(range / 7));
-            animeIcon('FastF');
-          }}
-          color={Colors.base}>
-          <Ionicons
-            name='md-fastforward'
-            size={sizeIconFastF}
-            color={
-              words[index]['st' + lngscnd] === 0
-                ? Colors.accent
-                : words[index]['st' + lngscnd] === 1
-                ? Colors.backSecond
-                : words[index]['st' + lngscnd] === 2
-                ? Colors.backPrimary
-                : Colors.surround
-            }
-          />
-        </Buttons.ButtonCircle>
-        {/* <Buttons.ButtonCircle
+          <Buttons.ButtonCircle
+            action={() => {
+              handleIndex(Math.floor(range / 7));
+              animeIcon('FastF');
+            }}
+            color={Colors.base}>
+            <Ionicons
+              name='md-fastforward'
+              size={sizeIconFastF}
+              color={
+                words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          {/* <Buttons.ButtonCircle
           action={() => {
             setIndex(range - 1);
           }}
@@ -786,17 +792,18 @@ const MasterScreen = () => {
             }
           />
         </Buttons.ButtonCircle> */}
-      </View>
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: 10,
-        }}>
-        <TxtItalic>
-          {/* {txtfrst.index}: {index + 1} {txtfrst.range}: {range} */}
-          {index + 1} / {range}
-        </TxtItalic>
+        </View>
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 10,
+          }}>
+          <TxtItalic>
+            {/* {txtfrst.index}: {index + 1} {txtfrst.range}: {range} */}
+            {index + 1} / {range}
+          </TxtItalic>
+        </View>
       </View>
     </ScreenFrame>
   );
