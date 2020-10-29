@@ -43,6 +43,28 @@ const MasterScreen = () => {
   const [sizeIconCheck, setSizeIconCheck] = useState(35);
   const [status, setStatus] = useState(false);
 
+  const [countVZero, setCountVZero] = useState();
+  const [countVOne, setCountVOne] = useState();
+  const [countVTwo, setCountVTwo] = useState();
+  const [countAZer, setCountAZero] = useState();
+  const [countAOne, setCountAOne] = useState();
+  const [countATwo, setCountATwo] = useState();
+  const [countNZero, setCountNZero] = useState();
+  const [countNOne, setCountNOne] = useState();
+  const [countNTwo, setCountNTwo] = useState();
+  const [countHZero, setCountHZero] = useState();
+  const [countHOne, setCountHOne] = useState();
+  const [countHTwo, setCountHTwo] = useState();
+  const [countFZero, setCountFZero] = useState();
+  const [countFOne, setCountFOne] = useState();
+  const [countFTwo, setCountFTwo] = useState();
+  const [countTZero, setCountTZero] = useState();
+  const [countTOne, setCountTOne] = useState();
+  const [countTTwo, setCountTTwo] = useState();
+  const [countXZero, setCountXZero] = useState();
+  const [countXOne, setCountXOne] = useState();
+  const [countXTwo, setCountXTwo] = useState();
+
   const [sizeIconRewind, setSizeIconRewind] = useState(30);
   const [sizeIconBack, setSizeIconBack] = useState(30);
   const [sizeIconRandom, setSizeIconRandom] = useState(40);
@@ -164,6 +186,15 @@ const MasterScreen = () => {
       0
     );
     setSelectTwo(countTwo);
+
+    const countVZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 && word['userlvl'] === 'v'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountVZero(countVZero);
   };
 
   const animeIcon = (icon) => {
@@ -247,16 +278,13 @@ const MasterScreen = () => {
               }>
               50v
             </Buttons.ButtonBox>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignSelf: 'stretch',
-                justifyContent: 'p',
-              }}>
-              <InfoLine infoStyle={{ backgroundColor: 'red' }} />
-              <InfoLine infoStyle={{ backgroundColor: 'blue' }} />
-              <InfoLine infoStyle={{ backgroundColor: 'violet' }} />
-            </View>
+
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countVZero / 50) * 100 + '%',
+              }}
+            />
           </ComboAround>
 
           <Buttons.ButtonBox

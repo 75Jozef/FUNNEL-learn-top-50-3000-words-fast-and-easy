@@ -9,8 +9,13 @@ export const InfoLine = (props) => {
 
 const styles = StyleSheet.create({
   info: {
-    height: 7,
-    width: 13,
-    backgroundColor: 'pink',
+    flexDirection: 'row',
+    margin: 1,
+    height: 2,
+    width: 1,
+    backgroundColor: Colors.base,
+    justifyContent: 'center',
+    // alignContent: 'stretch',
+    width: '0%',
   },
 });
