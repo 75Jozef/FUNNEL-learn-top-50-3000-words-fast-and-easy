@@ -11,11 +11,8 @@ const styles = StyleSheet.create({
   info: {
     flexDirection: 'row',
     margin: 1,
-    height: 2,
+    height: 3,
     width: 1,
     backgroundColor: Colors.base,
-    justifyContent: 'center',
-    // alignContent: 'stretch',
-    width: '0%',
   },
 });

@@ -52,13 +52,14 @@ const styles = StyleSheet.create({
   buttonBoxBody: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 40,
-    height: 22,
+    width: 42,
+    height: 25,
     borderRadius: 7,
     backgroundColor: Colors.base,
     borderWidth: 0.5,
     borderColor: Colors.surround,
-    margin: 3,
+    marginHorizontal: 4,
+    marginBottom: 4,
   },
   buttonBoxInside: {
     fontFamily: Fonts.normal,

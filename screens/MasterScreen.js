@@ -41,12 +41,12 @@ const MasterScreen = () => {
   const [sizeIconInfinity, setSizeIconInfinity] = useState(35);
   const [sizeIconAttach, setSizeIconAttach] = useState(35);
   const [sizeIconCheck, setSizeIconCheck] = useState(35);
-  const [status, setStatus] = useState(false);
+  const [stat, setStat] = useState(false);
 
   const [countVZero, setCountVZero] = useState();
   const [countVOne, setCountVOne] = useState();
   const [countVTwo, setCountVTwo] = useState();
-  const [countAZer, setCountAZero] = useState();
+  const [countAZero, setCountAZero] = useState();
   const [countAOne, setCountAOne] = useState();
   const [countATwo, setCountATwo] = useState();
   const [countNZero, setCountNZero] = useState();
@@ -92,15 +92,46 @@ const MasterScreen = () => {
       word.userlvl === 'l'
   );
 
+  const wordsZero = data.filter(
+    (word) =>
+      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 0) ||
+      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 0) ||
+      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 0) ||
+      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 0) ||
+      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 0) ||
+      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 0) ||
+      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 0)
+  );
+
+  const wordsOne = data.filter(
+    (word) =>
+      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 1) ||
+      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 1) ||
+      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 1) ||
+      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 1) ||
+      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 1) ||
+      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 1) ||
+      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 1)
+  );
+
+  const wordsTwo = data.filter(
+    (word) =>
+      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 2) ||
+      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 2) ||
+      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 2) ||
+      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 2) ||
+      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 2) ||
+      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 2) ||
+      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 2)
+  );
+
   useEffect(() => {
     setRange(words.length);
-    setIndex(0);
+    // setIndex(0);
     counter();
   }, [
-    status,
+    stat,
     range,
-    setRange,
-    setSelect,
     select,
     levelA,
     levelN,
@@ -109,6 +140,9 @@ const MasterScreen = () => {
     levelF,
     levelT,
     levelX,
+    selectZero,
+    selectOne,
+    selectTwo,
   ]);
 
   const handleIndex = (jump) => {
@@ -126,7 +160,7 @@ const MasterScreen = () => {
       if (words[index]['st' + lngscnd] !== status) {
         delayedConfirmation(status);
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
-        setStatus((prev) => !prev);
+        setStat((prev) => !prev);
 
         function sleep(ms) {
           return new Promise((resolve) => setTimeout(resolve, ms));
@@ -154,7 +188,7 @@ const MasterScreen = () => {
           }
         }
 
-        counter();
+        // counter();
       }
     }
   };
@@ -162,10 +196,11 @@ const MasterScreen = () => {
   const handleSelect = (select) => {
     setSelect(select);
     setIndex(0);
+    counter();
   };
 
   const counter = () => {
-    const countZero = data.reduce(
+    const countZero = wordsZero.reduce(
       (counter, word) =>
         word['st' + lngscnd] === 0 ? (counter += 1) : counter,
       0
@@ -173,14 +208,14 @@ const MasterScreen = () => {
 
     setSelectZero(countZero);
 
-    const countOne = data.reduce(
+    const countOne = wordsOne.reduce(
       (counter, word) =>
         word['st' + lngscnd] === 1 ? (counter += 1) : counter,
       0
     );
     setSelectOne(countOne);
 
-    const countTwo = data.reduce(
+    const countTwo = wordsTwo.reduce(
       (counter, word) =>
         word['st' + lngscnd] === 2 ? (counter += 1) : counter,
       0
@@ -195,6 +230,186 @@ const MasterScreen = () => {
       0
     );
     setCountVZero(countVZero);
+
+    const countVOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 && word['userlvl'] === 'v'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountVOne(countVOne);
+
+    const countVTwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 && word['userlvl'] === 'v'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountVTwo(countVTwo);
+
+    const countNZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 && word['userlvl'] === 'n'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountNZero(countNZero);
+
+    const countNOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 && word['userlvl'] === 'n'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountNOne(countNOne);
+
+    const countNTwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 && word['userlvl'] === 'n'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountNTwo(countNTwo);
+
+    const countAZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 && word['userlvl'] === 'a'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountAZero(countAZero);
+
+    const countAOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 && word['userlvl'] === 'a'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountAOne(countAOne);
+
+    const countATwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 && word['userlvl'] === 'a'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountATwo(countATwo);
+
+    const countHZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 && word['userlvl'] === 'h'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountHZero(countHZero);
+
+    const countHOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 && word['userlvl'] === 'h'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountHOne(countHOne);
+
+    const countHTwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 && word['userlvl'] === 'h'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountHTwo(countHTwo);
+
+    const countFZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 && word['userlvl'] === 'f'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountFZero(countFZero);
+
+    const countFOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 && word['userlvl'] === 'f'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountFOne(countFOne);
+
+    const countFTwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 && word['userlvl'] === 'f'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountFTwo(countFTwo);
+
+    const countTZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 && word['userlvl'] === 't'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountTZero(countTZero);
+
+    const countTOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 && word['userlvl'] === 't'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountTOne(countTOne);
+
+    const countTTwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 && word['userlvl'] === 't'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountTTwo(countTTwo);
+
+    const countXZero = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 0 && word['userlvl'] === 'x'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountXZero(countXZero);
+
+    const countXOne = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 1 && word['userlvl'] === 'x'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountXOne(countXOne);
+
+    const countXTwo = data.reduce(
+      (counter, word) =>
+        word['st' + lngscnd] === 2 && word['userlvl'] === 'x'
+          ? (counter += 1)
+          : counter,
+      0
+    );
+    setCountXTwo(countXTwo);
   };
 
   const animeIcon = (icon) => {
@@ -266,6 +481,14 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 3,
                       borderRadius: 25,
+                      borderColor:
+                        select === 0
+                          ? Colors.accent
+                          : select === 1
+                          ? Colors.backSecond
+                          : select === 2
+                          ? Colors.backPrimary
+                          : Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -285,122 +508,322 @@ const MasterScreen = () => {
                 width: (countVZero / 50) * 100 + '%',
               }}
             />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countVOne / 50) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countVTwo / 50) * 100 + '%',
+              }}
+            />
           </ComboAround>
 
-          <Buttons.ButtonBox
-            action={() => {
-              setLevelN((prev) => !prev);
-              setIndex(0);
-            }}
-            bodyStyle={
-              levelN
-                ? { borderWidth: 3, borderRadius: 25 }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              levelN
-                ? {
-                    color: Colors.textPrimary,
-                  }
-                : null
-            }>
-            50n
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setLevelA((prev) => !prev);
-              setIndex(0);
-            }}
-            bodyStyle={
-              levelA
-                ? { borderWidth: 3, borderRadius: 25 }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              levelA
-                ? {
-                    color: Colors.textPrimary,
-                  }
-                : null
-            }>
-            50a
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setLevelH((prev) => !prev);
-              setIndex(0);
-            }}
-            bodyStyle={
-              levelH
-                ? { borderWidth: 3, borderRadius: 25 }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              levelH
-                ? {
-                    color: Colors.textPrimary,
-                  }
-                : null
-            }>
-            100
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setLevelF((prev) => !prev);
-              setIndex(0);
-            }}
-            bodyStyle={
-              levelF
-                ? { borderWidth: 3, borderRadius: 25 }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              levelF
-                ? {
-                    color: Colors.textPrimary,
-                  }
-                : null
-            }>
-            500
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setLevelT((prev) => !prev);
-              setIndex(0);
-            }}
-            bodyStyle={
-              levelT
-                ? { borderWidth: 3, borderRadius: 25 }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              levelT
-                ? {
-                    color: Colors.textPrimary,
-                  }
-                : null
-            }>
-            1000
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setLevelX((prev) => !prev);
-              setIndex(0);
-            }}
-            bodyStyle={
-              levelX
-                ? { borderWidth: 3, borderRadius: 25 }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              levelX
-                ? {
-                    color: Colors.textPrimary,
-                  }
-                : null
-            }>
-            3000
-          </Buttons.ButtonBox>
+          <ComboAround>
+            <Buttons.ButtonBox
+              action={() => {
+                setLevelN((prev) => !prev);
+                setIndex(0);
+              }}
+              bodyStyle={
+                levelN
+                  ? {
+                      borderWidth: 3,
+                      borderRadius: 25,
+                      borderColor:
+                        select === 0
+                          ? Colors.accent
+                          : select === 1
+                          ? Colors.backSecond
+                          : select === 2
+                          ? Colors.backPrimary
+                          : Colors.surround,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                levelN
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              50n
+            </Buttons.ButtonBox>
+
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countNZero / 48) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countNOne / 48) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countNTwo / 48) * 100 + '%',
+              }}
+            />
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonBox
+              action={() => {
+                setLevelA((prev) => !prev);
+                setIndex(0);
+              }}
+              bodyStyle={
+                levelA
+                  ? {
+                      borderWidth: 3,
+                      borderRadius: 25,
+                      borderColor:
+                        select === 0
+                          ? Colors.accent
+                          : select === 1
+                          ? Colors.backSecond
+                          : select === 2
+                          ? Colors.backPrimary
+                          : Colors.surround,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                levelA
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              50a
+            </Buttons.ButtonBox>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countAZero / 47) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countAOne / 47) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countATwo / 47) * 100 + '%',
+              }}
+            />
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonBox
+              action={() => {
+                setLevelH((prev) => !prev);
+                setIndex(0);
+              }}
+              bodyStyle={
+                levelH
+                  ? {
+                      borderWidth: 3,
+                      borderRadius: 25,
+                      borderColor:
+                        select === 0
+                          ? Colors.accent
+                          : select === 1
+                          ? Colors.backSecond
+                          : select === 2
+                          ? Colors.backPrimary
+                          : Colors.surround,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                levelH
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              100
+            </Buttons.ButtonBox>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countAZero / 70) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countAOne / 70) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countATwo / 70) * 100 + '%',
+              }}
+            />
+          </ComboAround>
+
+          <ComboAround>
+            <Buttons.ButtonBox
+              action={() => {
+                setLevelF((prev) => !prev);
+                setIndex(0);
+              }}
+              bodyStyle={
+                levelF
+                  ? {
+                      borderWidth: 3,
+                      borderRadius: 25,
+                      borderColor:
+                        select === 0
+                          ? Colors.accent
+                          : select === 1
+                          ? Colors.backSecond
+                          : select === 2
+                          ? Colors.backPrimary
+                          : Colors.surround,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                levelF
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              500
+            </Buttons.ButtonBox>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countFZero / 280) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countFOne / 280) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countFTwo / 280) * 100 + '%',
+              }}
+            />
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonBox
+              action={() => {
+                setLevelT((prev) => !prev);
+                setIndex(0);
+              }}
+              bodyStyle={
+                levelT
+                  ? {
+                      borderWidth: 3,
+                      borderRadius: 25,
+                      borderColor:
+                        select === 0
+                          ? Colors.accent
+                          : select === 1
+                          ? Colors.backSecond
+                          : select === 2
+                          ? Colors.backPrimary
+                          : Colors.surround,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                levelT
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              1000
+            </Buttons.ButtonBox>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countTZero / 553) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countTOne / 553) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countTTwo / 553) * 100 + '%',
+              }}
+            />
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonBox
+              action={() => {
+                setLevelX((prev) => !prev);
+                setIndex(0);
+              }}
+              bodyStyle={
+                levelX
+                  ? {
+                      borderWidth: 3,
+                      borderRadius: 25,
+                      borderColor:
+                        select === 0
+                          ? Colors.accent
+                          : select === 1
+                          ? Colors.backSecond
+                          : select === 2
+                          ? Colors.backPrimary
+                          : Colors.surround,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                levelX
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              3000
+            </Buttons.ButtonBox>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countXZero / 1951) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countXOne / 1951) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countXTwo / 1951) * 100 + '%',
+              }}
+            />
+          </ComboAround>
         </View>
         <View style={{ alignItems: 'center' }}>
           <View
@@ -818,31 +1241,25 @@ const MasterScreen = () => {
               }
             />
           </Buttons.ButtonCircle>
-          {/* <Buttons.ButtonCircle
-          action={() => {
-            setIndex(range - 1);
-          }}
-          color={Colors.base}>
-          <Ionicons
-            name='md-skip-forward'
-            size={30}
-            color={
-              words[index]['st' + lngscnd] === 1
-                ? Colors.backSecond
-                : Colors.surround
-            }
-          />
-        </Buttons.ButtonCircle> */}
         </View>
         <View
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 10,
+            marginTop: 1,
           }}>
-          <TxtItalic>
-            {/* {txtfrst.index}: {index + 1} {txtfrst.range}: {range} */}
-            {index + 1} / {range}
+          <TxtItalic
+            style={{
+              color:
+                words[index]['st' + lngscnd] === 0
+                  ? Colors.accent
+                  : words[index]['st' + lngscnd] === 1
+                  ? Colors.backSecond
+                  : words[index]['st' + lngscnd] === 2
+                  ? Colors.backPrimary
+                  : Colors.surround,
+            }}>
+            {words[index]['userlvl'] === 'l' ? '< >' : index + 1} / {range - 1}
           </TxtItalic>
         </View>
       </View>
