@@ -501,25 +501,31 @@ const MasterScreen = () => {
               }>
               50v
             </Buttons.ButtonBox>
-
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countVZero / 50) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countVOne / 50) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countVTwo / 50) * 100 + '%',
-              }}
-            />
+            <View
+              style={{
+                width: '90%',
+                alignItems: 'center',
+                marginHorizontal: 2,
+              }}>
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.accent,
+                  width: (countVZero / 50) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backSecond,
+                  width: (countVOne / 50) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backPrimary,
+                  width: (countVTwo / 50) * 100 + '%',
+                }}
+              />
+            </View>
           </ComboAround>
 
           <ComboAround>
@@ -553,25 +559,31 @@ const MasterScreen = () => {
               }>
               50n
             </Buttons.ButtonBox>
-
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countNZero / 48) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countNOne / 48) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countNTwo / 48) * 100 + '%',
-              }}
-            />
+            <View
+              style={{
+                width: '90%',
+                alignItems: 'center',
+                marginHorizontal: 2,
+              }}>
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.accent,
+                  width: (countNZero / 48) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backSecond,
+                  width: (countNOne / 48) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backPrimary,
+                  width: (countNTwo / 48) * 100 + '%',
+                }}
+              />
+            </View>
           </ComboAround>
           <ComboAround>
             <Buttons.ButtonBox
@@ -604,24 +616,31 @@ const MasterScreen = () => {
               }>
               50a
             </Buttons.ButtonBox>
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countAZero / 47) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countAOne / 47) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countATwo / 47) * 100 + '%',
-              }}
-            />
+            <View
+              style={{
+                width: '90%',
+                alignItems: 'center',
+                marginHorizontal: 2,
+              }}>
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.accent,
+                  width: (countAZero / 47) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backSecond,
+                  width: (countAOne / 47) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backPrimary,
+                  width: (countATwo / 47) * 100 + '%',
+                }}
+              />
+            </View>
           </ComboAround>
           <ComboAround>
             <Buttons.ButtonBox
@@ -654,24 +673,31 @@ const MasterScreen = () => {
               }>
               100
             </Buttons.ButtonBox>
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countAZero / 70) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countAOne / 70) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countATwo / 70) * 100 + '%',
-              }}
-            />
+            <View
+              style={{
+                width: '90%',
+                alignItems: 'center',
+                marginHorizontal: 2,
+              }}>
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.accent,
+                  width: (countAZero / 70) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backSecond,
+                  width: (countAOne / 70) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backPrimary,
+                  width: (countATwo / 70) * 100 + '%',
+                }}
+              />
+            </View>
           </ComboAround>
 
           <ComboAround>
@@ -705,24 +731,31 @@ const MasterScreen = () => {
               }>
               500
             </Buttons.ButtonBox>
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countFZero / 280) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countFOne / 280) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countFTwo / 280) * 100 + '%',
-              }}
-            />
+            <View
+              style={{
+                width: '90%',
+                alignItems: 'center',
+                marginHorizontal: 2,
+              }}>
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.accent,
+                  width: (countFZero / 280) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backSecond,
+                  width: (countFOne / 280) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backPrimary,
+                  width: (countFTwo / 280) * 100 + '%',
+                }}
+              />
+            </View>
           </ComboAround>
           <ComboAround>
             <Buttons.ButtonBox
@@ -755,24 +788,31 @@ const MasterScreen = () => {
               }>
               1000
             </Buttons.ButtonBox>
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countTZero / 553) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countTOne / 553) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countTTwo / 553) * 100 + '%',
-              }}
-            />
+            <View
+              style={{
+                width: '90%',
+                alignItems: 'center',
+                marginHorizontal: 2,
+              }}>
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.accent,
+                  width: (countTZero / 553) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backSecond,
+                  width: (countTOne / 553) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backPrimary,
+                  width: (countTTwo / 553) * 100 + '%',
+                }}
+              />
+            </View>
           </ComboAround>
           <ComboAround>
             <Buttons.ButtonBox
@@ -805,24 +845,31 @@ const MasterScreen = () => {
               }>
               3000
             </Buttons.ButtonBox>
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countXZero / 1951) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countXOne / 1951) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countXTwo / 1951) * 100 + '%',
-              }}
-            />
+            <View
+              style={{
+                width: '90%',
+                alignItems: 'center',
+                marginHorizontal: 2,
+              }}>
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.accent,
+                  width: (countXZero / 1951) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backSecond,
+                  width: (countXOne / 1951) * 100 + '%',
+                }}
+              />
+              <InfoLine
+                infoStyle={{
+                  backgroundColor: Colors.backPrimary,
+                  width: (countXTwo / 1951) * 100 + '%',
+                }}
+              />
+            </View>
           </ComboAround>
         </View>
         <View style={{ alignItems: 'center' }}>
