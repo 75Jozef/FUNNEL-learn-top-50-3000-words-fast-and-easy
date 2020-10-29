@@ -11,6 +11,7 @@ import {
   TxtButton,
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
+import ComboAround from '../components/UI/ComboAround';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
@@ -20,7 +21,7 @@ import * as wordActions from '../store/actions/words';
 import WordShow from '../components/UI/WordShow';
 import { Ionicons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
-import { setEnabled } from 'react-native/Libraries/Performance/Systrace';
+import { InfoLine } from '../components/UI/InfoLine';
 
 const MasterScreen = () => {
   const [levelA, setLevelA] = useState(false);
@@ -223,28 +224,40 @@ const MasterScreen = () => {
             width: '70%',
             alignSelf: 'center',
           }}>
-          <Buttons.ButtonBox
-            action={() => {
-              setLevelV((prev) => !prev);
-              setIndex(0);
-            }}
-            bodyStyle={
-              levelV
-                ? {
-                    borderWidth: 3,
-                    borderRadius: 25,
-                  }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              levelV
-                ? {
-                    color: Colors.textPrimary,
-                  }
-                : null
-            }>
-            50v
-          </Buttons.ButtonBox>
+          <ComboAround>
+            <Buttons.ButtonBox
+              action={() => {
+                setLevelV((prev) => !prev);
+                setIndex(0);
+              }}
+              bodyStyle={
+                levelV
+                  ? {
+                      borderWidth: 3,
+                      borderRadius: 25,
+                    }
+                  : { backgroundColor: Colors.base }
+              }
+              insideStyle={
+                levelV
+                  ? {
+                      color: Colors.textPrimary,
+                    }
+                  : null
+              }>
+              50v
+            </Buttons.ButtonBox>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignSelf: 'stretch',
+                justifyContent: 'p',
+              }}>
+              <InfoLine infoStyle={{ backgroundColor: 'red' }} />
+              <InfoLine infoStyle={{ backgroundColor: 'blue' }} />
+              <InfoLine infoStyle={{ backgroundColor: 'violet' }} />
+            </View>
+          </ComboAround>
 
           <Buttons.ButtonBox
             action={() => {
