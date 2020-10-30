@@ -197,7 +197,12 @@ export const SideNavigator = () => {
     <SideDrawerNavigator.Navigator
       drawerContent={(props) => {
         return (
-          <View style={{ flex: 1, paddingTop: 50 }}>
+          <View
+            style={{
+              flex: 1,
+              paddingTop: 50,
+              backgroundColor: 'black',
+            }}>
             <SafeAreaView forceInset={{ top: 'always' }}>
               <DrawerItemList {...props} />
               <Button
@@ -209,73 +214,81 @@ export const SideNavigator = () => {
           </View>
         );
       }}
-      drawerContentOptions={{ activeTintColor: Colors.accent }}>
+      drawerContentOptions={{
+        activeTintColor: Colors.textPrimary,
+        inactiveTintColor: Colors.surround,
+        labelStyle: {
+          fontSize: 15,
+          marginLeft: 5,
+        },
+      }}
+      drawerStyle={{
+        initialRouteName: 'Home',
+        drawerPosition: 'left',
+        drawerOpenRoute: 'DrawerOpen',
+        drawerToggleRoute: 'DrawerToggle',
+        drawerCloseRoute: 'DrawerClose',
+      }}>
       <SideDrawerNavigator.Screen
         name='Welcome'
         component={WelcomeNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-home'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-home'} size={30} color={Colors.surround} />
           ),
         }}
       />
-
       <SideDrawerNavigator.Screen
         name='Instructions'
         component={InstructionsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-fitness'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-fitness'} size={30} color={Colors.surround} />
           ),
         }}
       />
-
       <SideDrawerNavigator.Screen
         name='F|U|N|N|E|L Pub'
         component={MasterNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-funnel'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-funnel'} size={30} color={Colors.surround} />
           ),
         }}
       />
-
       <SideDrawerNavigator.Screen
         name='Challenges'
         component={ChallengesNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-pulse'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-pulse'} size={30} color={Colors.surround} />
           ),
         }}
       />
-
       <SideDrawerNavigator.Screen
         name='Statistics'
         component={StatsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-stats'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-stats'} size={30} color={Colors.surround} />
           ),
         }}
       />
-
       <SideDrawerNavigator.Screen
         name='Options'
         component={OptionsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-options'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-options'} size={23} color={Colors.surround} />
           ),
         }}
       />
-
       <SideDrawerNavigator.Screen
         name='About'
         component={AboutNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-options'} size={23} color={Colors.base} />
+            <Ionicons name={'ios-options'} size={30} color={Colors.surround} />
           ),
         }}
       />

@@ -37,17 +37,17 @@ const styles = StyleSheet.create({
   buttonCircleBody: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: Dimensions.get('window').width / 8,
+    width: Dimensions.get('window').width / 7,
     height: Dimensions.get('window').height / 17,
-    borderRadius: 25,
+    borderRadius: 18,
     backgroundColor: Colors.base,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: Colors.surround,
   },
   buttonCircleInside: {
     fontFamily: Fonts.normal,
     color: Colors.base,
-    fontSize: Dimensions.get('window').height / 40,
+    fontSize: Dimensions.get('window').width / 25,
   },
   buttonBoxBody: {
     justifyContent: 'center',
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
   buttonBoxInside: {
     fontFamily: Fonts.normal,
     color: Colors.surround,
-    fontSize: Dimensions.get('window').height / 50,
+    fontSize: Dimensions.get('window').width / 33,
   },
 });

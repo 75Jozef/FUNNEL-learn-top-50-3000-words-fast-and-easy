@@ -129,7 +129,6 @@ const MasterScreen = () => {
   useEffect(() => {
     counter();
     setRange(words.length);
-    console.log('effect', new Date());
   }, [
     stat,
     range,
@@ -529,7 +528,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'v' ? (
-                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -590,7 +589,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'n' ? (
-                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -650,7 +649,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'a' ? (
-                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -710,7 +709,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'h' ? (
-                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -771,7 +770,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'f' ? (
-                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -831,7 +830,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 't' ? (
-                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -891,7 +890,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'x' ? (
-                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -917,10 +916,10 @@ const MasterScreen = () => {
                   select === 0
                     ? {
                         width: Dimensions.get('window').width / 6,
-                        height: Dimensions.get('window').height / 20,
+                        height: Dimensions.get('window').height / 17,
                         borderRadius: 35,
                         borderColor: Colors.accent,
-                        borderWidth: 3,
+                        borderWidth: 2,
                       }
                     : { borderColor: Colors.accent, borderWidth: 1 }
                 }
@@ -928,7 +927,7 @@ const MasterScreen = () => {
                   select === 0
                     ? {
                         color: Colors.accent,
-                        fontSize: Dimensions.get('window').width / 20,
+                        fontSize: Dimensions.get('window').width / 22,
                         fontFamily: Fonts.bold,
                       }
                     : {
@@ -950,7 +949,7 @@ const MasterScreen = () => {
                         height: Dimensions.get('window').height / 20,
                         borderRadius: 35,
                         borderColor: Colors.backSecond,
-                        borderWidth: 3,
+                        borderWidth: 2,
                       }
                     : { borderColor: Colors.backSecond, borderWidth: 1 }
                 }
@@ -958,7 +957,7 @@ const MasterScreen = () => {
                   select === 1
                     ? {
                         color: Colors.backSecond,
-                        fontSize: Dimensions.get('window').width / 20,
+                        fontSize: Dimensions.get('window').width / 22,
                         fontFamily: Fonts.bold,
                       }
                     : { color: Colors.surround }
@@ -978,7 +977,7 @@ const MasterScreen = () => {
                         height: Dimensions.get('window').height / 20,
                         borderRadius: 35,
                         borderColor: Colors.backPrimary,
-                        borderWidth: 3,
+                        borderWidth: 2,
                       }
                     : { borderColor: Colors.backPrimary, borderWidth: 1 }
                 }
@@ -986,7 +985,7 @@ const MasterScreen = () => {
                   select === 2
                     ? {
                         color: Colors.backPrimary,
-                        fontSize: Dimensions.get('window').width / 20,
+                        fontSize: Dimensions.get('window').width / 22,
                         fontFamily: Fonts.bold,
                       }
                     : {
