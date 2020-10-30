@@ -9,8 +9,8 @@ const ComboAround = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
+    height: 70,
     flexDirection: 'column',
-    height: 60,
     backgroundColor: Colors.base,
     justifyContent: 'center',
   },

@@ -9,6 +9,7 @@ import {
   TxtItalic,
   TxtLabel,
   TxtButton,
+  TxtError,
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import ComboAround from '../components/UI/ComboAround';
@@ -469,6 +470,7 @@ const MasterScreen = () => {
             alignContent: 'space-between',
             width: '70%',
             alignSelf: 'center',
+            height: '15%',
           }}>
           <ComboAround>
             <Buttons.ButtonBox
@@ -525,6 +527,9 @@ const MasterScreen = () => {
                   width: (countVTwo / 50) * 100 + '%',
                 }}
               />
+              {words[index]['userlvl'] === 'v' ? (
+                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+              ) : null}
             </View>
           </ComboAround>
 
@@ -583,6 +588,9 @@ const MasterScreen = () => {
                   width: (countNTwo / 48) * 100 + '%',
                 }}
               />
+              {words[index]['userlvl'] === 'n' ? (
+                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+              ) : null}
             </View>
           </ComboAround>
           <ComboAround>
@@ -640,6 +648,9 @@ const MasterScreen = () => {
                   width: (countATwo / 47) * 100 + '%',
                 }}
               />
+              {words[index]['userlvl'] === 'a' ? (
+                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+              ) : null}
             </View>
           </ComboAround>
           <ComboAround>
@@ -697,6 +708,9 @@ const MasterScreen = () => {
                   width: (countHTwo / 70) * 100 + '%',
                 }}
               />
+              {words[index]['userlvl'] === 'h' ? (
+                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+              ) : null}
             </View>
           </ComboAround>
 
@@ -755,6 +769,9 @@ const MasterScreen = () => {
                   width: (countFTwo / 280) * 100 + '%',
                 }}
               />
+              {words[index]['userlvl'] === 'f' ? (
+                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+              ) : null}
             </View>
           </ComboAround>
           <ComboAround>
@@ -812,6 +829,9 @@ const MasterScreen = () => {
                   width: (countTTwo / 553) * 100 + '%',
                 }}
               />
+              {words[index]['userlvl'] === 't' ? (
+                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+              ) : null}
             </View>
           </ComboAround>
           <ComboAround>
@@ -869,14 +889,19 @@ const MasterScreen = () => {
                   width: (countXTwo / 1951) * 100 + '%',
                 }}
               />
+              {words[index]['userlvl'] === 'x' ? (
+                <TxtButton style={{ marginTop: 10 }}>*</TxtButton>
+              ) : null}
             </View>
           </ComboAround>
         </View>
-        <View style={{ alignItems: 'center' }}>
+        <View
+          style={{
+            alignItems: 'center',
+            height: '10%',
+          }}>
           <View
             style={{
-              marginTop: 20,
-              marginBottom: 10,
               width: '60%',
               alignItems: 'center',
               flexDirection: 'row',
@@ -977,9 +1002,7 @@ const MasterScreen = () => {
 
         <View
           style={{
-            height: 60,
-            marginTop: 25,
-            marginBottom: 20,
+            height: '20%',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
@@ -998,6 +1021,7 @@ const MasterScreen = () => {
         </View>
         <View
           style={{
+            height: '10%',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
@@ -1015,113 +1039,113 @@ const MasterScreen = () => {
           </TxtLabel>
         </View>
         {/* ***********************************************************************SHOW */}
-        <CardFrame
-          style={{ marginTop: 20, alignItems: 'center', marginBottom: 20 }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignContent: 'space-between',
-              width: '70%',
-              alignSelf: 'center',
-            }}>
-            <Buttons.ButtonBox
-              action={() => {
-                setShow(0);
-              }}
-              bodyStyle={
-                show === 0
-                  ? {
-                      borderWidth: 2,
-                      borderRadius: 25,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                show === 0
-                  ? {
-                      color: Colors.textPrimary,
-                    }
-                  : null
-              }>
-              ?
-            </Buttons.ButtonBox>
 
-            <Buttons.ButtonBox
-              action={() => {
-                setShow(1);
-              }}
-              bodyStyle={
-                show === 1
-                  ? { borderWidth: 2, borderRadius: 25 }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                show === 1
-                  ? {
-                      color: Colors.textPrimary,
-                    }
-                  : null
-              }>
-              _ _ _
-            </Buttons.ButtonBox>
-            <Buttons.ButtonBox
-              action={() => {
-                setShow(2);
-              }}
-              bodyStyle={
-                show === 2
-                  ? { borderWidth: 2, borderRadius: 25 }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                show === 2
-                  ? {
-                      color: Colors.textPrimary,
-                    }
-                  : null
-              }>
-              _ _ x
-            </Buttons.ButtonBox>
-            <Buttons.ButtonBox
-              action={() => {
-                setShow(3);
-              }}
-              bodyStyle={
-                show === 3
-                  ? { borderWidth: 2, borderRadius: 25 }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                show === 3
-                  ? {
-                      color: Colors.textPrimary,
-                    }
-                  : null
-              }>
-              x _ x
-            </Buttons.ButtonBox>
-            <Buttons.ButtonBox
-              action={() => {
-                setShow(4);
-              }}
-              bodyStyle={
-                show === 4
-                  ? { borderWidth: 2, borderRadius: 25 }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                show === 4
-                  ? {
-                      color: Colors.textPrimary,
-                    }
-                  : null
-              }>
-              x x x
-            </Buttons.ButtonBox>
-          </View>
-        </CardFrame>
-        <View style={{ alignItems: 'center' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignContent: 'space-between',
+            width: '70%',
+            alignSelf: 'center',
+            height: '10%',
+          }}>
+          <Buttons.ButtonBox
+            action={() => {
+              setShow(0);
+            }}
+            bodyStyle={
+              show === 0
+                ? {
+                    borderWidth: 2,
+                    borderRadius: 25,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 0
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            ?
+          </Buttons.ButtonBox>
+
+          <Buttons.ButtonBox
+            action={() => {
+              setShow(1);
+            }}
+            bodyStyle={
+              show === 1
+                ? { borderWidth: 2, borderRadius: 25 }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 1
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            _ _ _
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
+              setShow(2);
+            }}
+            bodyStyle={
+              show === 2
+                ? { borderWidth: 2, borderRadius: 25 }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 2
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            _ _ x
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
+              setShow(3);
+            }}
+            bodyStyle={
+              show === 3
+                ? { borderWidth: 2, borderRadius: 25 }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 3
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            x _ x
+          </Buttons.ButtonBox>
+          <Buttons.ButtonBox
+            action={() => {
+              setShow(4);
+            }}
+            bodyStyle={
+              show === 4
+                ? { borderWidth: 2, borderRadius: 25 }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              show === 4
+                ? {
+                    color: Colors.textPrimary,
+                  }
+                : null
+            }>
+            x x x
+          </Buttons.ButtonBox>
+        </View>
+
+        <View style={{ alignItems: 'center', height: '10%' }}>
           <View
             style={{
               width: '50%',
@@ -1179,13 +1203,12 @@ const MasterScreen = () => {
 
         <View
           style={{
+            height: '15%',
             flexDirection: 'row',
-            justifyContent: 'center',
             alignItems: 'center',
             alignSelf: 'center',
             justifyContent: 'space-around',
             width: Dimensions.get('window').width * 0.7,
-            marginTop: 20,
           }}>
           <Buttons.ButtonCircle
             action={() => {
@@ -1290,9 +1313,8 @@ const MasterScreen = () => {
         </View>
         <View
           style={{
-            justifyContent: 'center',
+            height: '5%',
             alignItems: 'center',
-            marginTop: 1,
           }}>
           <TxtItalic
             style={{
