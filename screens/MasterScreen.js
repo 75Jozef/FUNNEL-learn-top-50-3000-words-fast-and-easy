@@ -479,7 +479,7 @@ const MasterScreen = () => {
               bodyStyle={
                 levelV
                   ? {
-                      borderWidth: 3,
+                      borderWidth: 1,
                       borderRadius: 25,
                       borderColor:
                         select === 0
@@ -495,7 +495,7 @@ const MasterScreen = () => {
               insideStyle={
                 levelV
                   ? {
-                      color: Colors.textPrimary,
+                      fontFamily: Fonts.bold,
                     }
                   : null
               }>
@@ -537,7 +537,7 @@ const MasterScreen = () => {
               bodyStyle={
                 levelN
                   ? {
-                      borderWidth: 3,
+                      borderWidth: 1,
                       borderRadius: 25,
                       borderColor:
                         select === 0
@@ -553,7 +553,7 @@ const MasterScreen = () => {
               insideStyle={
                 levelN
                   ? {
-                      color: Colors.textPrimary,
+                      fontFamily: Fonts.bold,
                     }
                   : null
               }>
@@ -594,7 +594,7 @@ const MasterScreen = () => {
               bodyStyle={
                 levelA
                   ? {
-                      borderWidth: 3,
+                      borderWidth: 1,
                       borderRadius: 25,
                       borderColor:
                         select === 0
@@ -610,7 +610,7 @@ const MasterScreen = () => {
               insideStyle={
                 levelA
                   ? {
-                      color: Colors.textPrimary,
+                      fontFamily: Fonts.bold,
                     }
                   : null
               }>
@@ -651,7 +651,7 @@ const MasterScreen = () => {
               bodyStyle={
                 levelH
                   ? {
-                      borderWidth: 3,
+                      borderWidth: 1,
                       borderRadius: 25,
                       borderColor:
                         select === 0
@@ -667,7 +667,7 @@ const MasterScreen = () => {
               insideStyle={
                 levelH
                   ? {
-                      color: Colors.textPrimary,
+                      fontFamily: Fonts.bold,
                     }
                   : null
               }>
@@ -682,19 +682,19 @@ const MasterScreen = () => {
               <InfoLine
                 infoStyle={{
                   backgroundColor: Colors.accent,
-                  width: (countAZero / 70) * 100 + '%',
+                  width: (countHZero / 70) * 100 + '%',
                 }}
               />
               <InfoLine
                 infoStyle={{
                   backgroundColor: Colors.backSecond,
-                  width: (countAOne / 70) * 100 + '%',
+                  width: (countHOne / 70) * 100 + '%',
                 }}
               />
               <InfoLine
                 infoStyle={{
                   backgroundColor: Colors.backPrimary,
-                  width: (countATwo / 70) * 100 + '%',
+                  width: (countHTwo / 70) * 100 + '%',
                 }}
               />
             </View>
@@ -709,7 +709,7 @@ const MasterScreen = () => {
               bodyStyle={
                 levelF
                   ? {
-                      borderWidth: 3,
+                      borderWidth: 1,
                       borderRadius: 25,
                       borderColor:
                         select === 0
@@ -725,7 +725,7 @@ const MasterScreen = () => {
               insideStyle={
                 levelF
                   ? {
-                      color: Colors.textPrimary,
+                      fontFamily: Fonts.bold,
                     }
                   : null
               }>
@@ -766,7 +766,7 @@ const MasterScreen = () => {
               bodyStyle={
                 levelT
                   ? {
-                      borderWidth: 3,
+                      borderWidth: 1,
                       borderRadius: 25,
                       borderColor:
                         select === 0
@@ -782,7 +782,7 @@ const MasterScreen = () => {
               insideStyle={
                 levelT
                   ? {
-                      color: Colors.textPrimary,
+                      fontFamily: Fonts.bold,
                     }
                   : null
               }>
@@ -823,7 +823,7 @@ const MasterScreen = () => {
               bodyStyle={
                 levelX
                   ? {
-                      borderWidth: 3,
+                      borderWidth: 1,
                       borderRadius: 25,
                       borderColor:
                         select === 0
@@ -839,7 +839,7 @@ const MasterScreen = () => {
               insideStyle={
                 levelX
                   ? {
-                      color: Colors.textPrimary,
+                      fontFamily: Fonts.bold,
                     }
                   : null
               }>
@@ -882,88 +882,94 @@ const MasterScreen = () => {
               flexDirection: 'row',
               justifyContent: 'space-evenly',
             }}>
-            <Buttons.ButtonCircle
-              action={() => {
-                handleSelect(0);
-              }}
-              bodyStyle={
-                select === 0
-                  ? {
-                      width: 80,
-                      height: 50,
-                      borderRadius: 25,
-                      borderColor: Colors.accent,
-                      borderWidth: 3,
-                    }
-                  : { borderColor: Colors.accent, borderWidth: 1 }
-              }
-              insideStyle={
-                select === 0
-                  ? {
-                      color: Colors.accent,
-                      fontSize: Dimensions.get('window').height / 30,
-                      fontFamily: Fonts.bold,
-                    }
-                  : {
-                      color: Colors.surround,
-                    }
-              }>
-              {selectZero}
-            </Buttons.ButtonCircle>
-            <Buttons.ButtonCircle
-              action={() => {
-                handleSelect(1);
-              }}
-              bodyStyle={
-                select === 1
-                  ? {
-                      width: 80,
-                      height: 50,
-                      borderRadius: 25,
-                      borderColor: Colors.backSecond,
-                      borderWidth: 3,
-                    }
-                  : { borderColor: Colors.backSecond, borderWidth: 1 }
-              }
-              insideStyle={
-                select === 1
-                  ? {
-                      color: Colors.backSecond,
-                      fontSize: Dimensions.get('window').height / 30,
-                      fontFamily: Fonts.bold,
-                    }
-                  : { color: Colors.surround }
-              }>
-              {selectOne}
-            </Buttons.ButtonCircle>
-            <Buttons.ButtonCircle
-              action={() => {
-                handleSelect(2);
-              }}
-              bodyStyle={
-                select === 2
-                  ? {
-                      width: 80,
-                      height: 50,
-                      borderRadius: 25,
-                      borderColor: Colors.backPrimary,
-                      borderWidth: 3,
-                    }
-                  : { borderColor: Colors.backPrimary, borderWidth: 1 }
-              }
-              insideStyle={
-                select === 2
-                  ? {
-                      color: Colors.backPrimary,
-                      fontSize: Dimensions.get('window').height / 30,
-                      fontFamily: Fonts.bold,
-                    }
-                  : {
-                      color: Colors.surround,
-                    }
-              }>
-              {selectTwo}
-            </Buttons.ButtonCircle>
+            <ComboAround>
+              <Buttons.ButtonCircle
+                action={() => {
+                  handleSelect(0);
+                }}
+                bodyStyle={
+                  select === 0
+                    ? {
+                        width: Dimensions.get('window').width / 6,
+                        height: Dimensions.get('window').height / 20,
+                        borderRadius: 35,
+                        borderColor: Colors.accent,
+                        borderWidth: 3,
+                      }
+                    : { borderColor: Colors.accent, borderWidth: 1 }
+                }
+                insideStyle={
+                  select === 0
+                    ? {
+                        color: Colors.accent,
+                        fontSize: Dimensions.get('window').width / 20,
+                        fontFamily: Fonts.bold,
+                      }
+                    : {
+                        color: Colors.surround,
+                      }
+                }>
+                {selectZero}
+              </Buttons.ButtonCircle>
+            </ComboAround>
+            <ComboAround>
+              <Buttons.ButtonCircle
+                action={() => {
+                  handleSelect(1);
+                }}
+                bodyStyle={
+                  select === 1
+                    ? {
+                        width: Dimensions.get('window').width / 6,
+                        height: Dimensions.get('window').height / 20,
+                        borderRadius: 35,
+                        borderColor: Colors.backSecond,
+                        borderWidth: 3,
+                      }
+                    : { borderColor: Colors.backSecond, borderWidth: 1 }
+                }
+                insideStyle={
+                  select === 1
+                    ? {
+                        color: Colors.backSecond,
+                        fontSize: Dimensions.get('window').width / 20,
+                        fontFamily: Fonts.bold,
+                      }
+                    : { color: Colors.surround }
+                }>
+                {selectOne}
+              </Buttons.ButtonCircle>
+            </ComboAround>
+            <ComboAround>
+              <Buttons.ButtonCircle
+                action={() => {
+                  handleSelect(2);
+                }}
+                bodyStyle={
+                  select === 2
+                    ? {
+                        width: Dimensions.get('window').width / 6,
+                        height: Dimensions.get('window').height / 20,
+                        borderRadius: 35,
+                        borderColor: Colors.backPrimary,
+                        borderWidth: 3,
+                      }
+                    : { borderColor: Colors.backPrimary, borderWidth: 1 }
+                }
+                insideStyle={
+                  select === 2
+                    ? {
+                        color: Colors.backPrimary,
+                        fontSize: Dimensions.get('window').width / 20,
+                        fontFamily: Fonts.bold,
+                      }
+                    : {
+                        color: Colors.surround,
+                      }
+                }>
+                {selectTwo}
+              </Buttons.ButtonCircle>
+            </ComboAround>
           </View>
         </View>
 
@@ -996,7 +1002,11 @@ const MasterScreen = () => {
             alignItems: 'center',
           }}>
           <TxtLabel
-            style={{ marginTop: 5, color: Colors.backSecond, fontSize: 30 }}>
+            style={{
+              marginTop: 5,
+              color: Colors.surround,
+              fontSize: Dimensions.get('window').height / 25,
+            }}>
             {range > 0 ? (
               words[index][lngfrst]
             ) : (
@@ -1011,6 +1021,9 @@ const MasterScreen = () => {
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
+              alignContent: 'space-between',
+              width: '70%',
+              alignSelf: 'center',
             }}>
             <Buttons.ButtonBox
               action={() => {
@@ -1019,9 +1032,8 @@ const MasterScreen = () => {
               bodyStyle={
                 show === 0
                   ? {
-                      width: 60,
                       borderWidth: 2,
-                      borderRadius: 60,
+                      borderRadius: 25,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -1034,13 +1046,14 @@ const MasterScreen = () => {
               }>
               ?
             </Buttons.ButtonBox>
+
             <Buttons.ButtonBox
               action={() => {
                 setShow(1);
               }}
               bodyStyle={
                 show === 1
-                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  ? { borderWidth: 2, borderRadius: 25 }
                   : { backgroundColor: Colors.base }
               }
               insideStyle={
@@ -1058,7 +1071,7 @@ const MasterScreen = () => {
               }}
               bodyStyle={
                 show === 2
-                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  ? { borderWidth: 2, borderRadius: 25 }
                   : { backgroundColor: Colors.base }
               }
               insideStyle={
@@ -1068,7 +1081,7 @@ const MasterScreen = () => {
                     }
                   : null
               }>
-              _ _ X
+              _ _ x
             </Buttons.ButtonBox>
             <Buttons.ButtonBox
               action={() => {
@@ -1076,7 +1089,7 @@ const MasterScreen = () => {
               }}
               bodyStyle={
                 show === 3
-                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  ? { borderWidth: 2, borderRadius: 25 }
                   : { backgroundColor: Colors.base }
               }
               insideStyle={
@@ -1086,7 +1099,7 @@ const MasterScreen = () => {
                     }
                   : null
               }>
-              X _ X
+              x _ x
             </Buttons.ButtonBox>
             <Buttons.ButtonBox
               action={() => {
@@ -1094,7 +1107,7 @@ const MasterScreen = () => {
               }}
               bodyStyle={
                 show === 4
-                  ? { width: 60, borderWidth: 2, borderRadius: 25 }
+                  ? { borderWidth: 2, borderRadius: 25 }
                   : { backgroundColor: Colors.base }
               }
               insideStyle={
@@ -1104,7 +1117,7 @@ const MasterScreen = () => {
                     }
                   : null
               }>
-              X X X
+              x x x
             </Buttons.ButtonBox>
           </View>
         </CardFrame>
@@ -1163,6 +1176,7 @@ const MasterScreen = () => {
             </Buttons.ButtonCircle>
           </View>
         </View>
+
         <View
           style={{
             flexDirection: 'row',
@@ -1170,24 +1184,9 @@ const MasterScreen = () => {
             alignItems: 'center',
             alignSelf: 'center',
             justifyContent: 'space-around',
-            width: Dimensions.get('window').width * 0.75,
+            width: Dimensions.get('window').width * 0.7,
             marginTop: 20,
           }}>
-          {/* <Buttons.ButtonCircle
-          action={() => {
-            setIndex(0);
-          }}>
-          <Ionicons
-            name='md-skip-backward'
-            size={30}
-            color={
-              words[index]['st' + lngscnd] === 1
-                ? Colors.backSecond
-                : Colors.surround
-            }
-          />
-        </Buttons.ButtonCircle> */}
-
           <Buttons.ButtonCircle
             action={() => {
               handleIndex(-Math.floor(range / 7));

@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
   buttonCircleBody: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 60,
-    height: 50,
-    borderRadius: 14,
+    width: Dimensions.get('window').width / 8,
+    height: Dimensions.get('window').height / 17,
+    borderRadius: 25,
     backgroundColor: Colors.base,
     borderWidth: 1,
     borderColor: Colors.surround,
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
   buttonBoxBody: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 42,
-    height: 25,
-    borderRadius: 7,
+    width: Dimensions.get('window').width / 9,
+    height: Dimensions.get('window').height / 28,
+    borderRadius: 15,
     backgroundColor: Colors.base,
     borderWidth: 0.5,
     borderColor: Colors.surround,
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
   buttonBoxInside: {
     fontFamily: Fonts.normal,
     color: Colors.surround,
-    fontSize: Dimensions.get('window').height / 60,
+    fontSize: Dimensions.get('window').height / 50,
   },
 });
