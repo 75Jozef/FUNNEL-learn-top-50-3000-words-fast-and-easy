@@ -127,13 +127,12 @@ const MasterScreen = () => {
   );
 
   useEffect(() => {
-    setRange(words.length);
-    // setIndex(0);
     counter();
+    setRange(words.length);
+    console.log('effect', new Date());
   }, [
     stat,
     range,
-    select,
     levelA,
     levelN,
     levelV,
@@ -144,6 +143,7 @@ const MasterScreen = () => {
     selectZero,
     selectOne,
     selectTwo,
+    select,
   ]);
 
   const handleIndex = (jump) => {
@@ -161,7 +161,6 @@ const MasterScreen = () => {
       if (words[index]['st' + lngscnd] !== status) {
         delayedConfirmation(status);
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
-        setStat((prev) => !prev);
 
         function sleep(ms) {
           return new Promise((resolve) => setTimeout(resolve, ms));
@@ -170,34 +169,36 @@ const MasterScreen = () => {
           switch (status) {
             case 0: {
               setSizeIconInfinity(50);
+              setStat((prev) => !prev);
               await sleep(300);
               setSizeIconInfinity(35);
               return;
             }
             case 1: {
               setSizeIconAttach(50);
+              setStat((prev) => !prev);
               await sleep(300);
               setSizeIconAttach(35);
               return;
             }
             case 2: {
               setSizeIconCheck(50);
+              setStat((prev) => !prev);
               await sleep(300);
               setSizeIconCheck(35);
               return;
             }
           }
         }
-
-        // counter();
       }
     }
   };
 
   const handleSelect = (select) => {
     setSelect(select);
-    setIndex(0);
     counter();
+    setRange(words.length);
+    setIndex(0);
   };
 
   const counter = () => {
