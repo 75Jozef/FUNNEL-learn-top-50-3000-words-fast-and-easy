@@ -1113,7 +1113,7 @@ const MasterScreen = () => {
               action={() => handleStatus(0)}
               bodyStyle={
                 words[index]['st' + lngscnd] === 0
-                  ? { borderColor: Colors.inactive }
+                  ? { borderColor: Colors.base }
                   : { borderColor: Colors.inactive }
               }>
               <Ionicons
@@ -1134,7 +1134,7 @@ const MasterScreen = () => {
               action={() => handleStatus(1)}
               bodyStyle={
                 words[index]['st' + lngscnd] === 1
-                  ? { borderColor: Colors.inactive }
+                  ? { borderColor: Colors.base }
                   : { borderColor: Colors.inactive }
               }>
               <Ionicons
@@ -1153,7 +1153,7 @@ const MasterScreen = () => {
               action={() => handleStatus(2)}
               bodyStyle={
                 words[index]['st' + lngscnd] === 2
-                  ? { borderColor: Colors.inactive }
+                  ? { borderColor: Colors.base }
                   : { borderColor: Colors.inactive }
               }>
               <Ionicons
