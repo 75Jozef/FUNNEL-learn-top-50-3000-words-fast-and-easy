@@ -5,6 +5,9 @@ import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
 
+import * as Languages from '../data/languages';
+import * as Buttons from './../components/UI/Buttons';
+
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   createDrawerNavigator,
@@ -18,14 +21,6 @@ import AboutScreen, {
 import AuthScreen, {
   screenOptions as authScreenOptions,
 } from '../screens/AuthScreen';
-
-import ChallengesScreen, {
-  screenOptions as challengesScreenOptions,
-} from '../screens/ChallengesScreen';
-
-import ChallengeScreen, {
-  screenOptions as challengeScreenOptions,
-} from '../screens/ChallengeScreen';
 
 import MasterScreen, {
   screenOptions as masterScreenOptions,
@@ -46,6 +41,7 @@ import WelcomeScreen, {
 import InstructionsScreen, {
   screenOptions as instructionsScrenOptions,
 } from '../screens/InstructionsScreen';
+import { TxtItalic } from '../components/UI/Txt';
 
 //* Default Navigation Options
 const defaultNavOptions = {
@@ -121,27 +117,6 @@ export const MasterNavigator = () => {
   );
 };
 
-//* Challenges Navigation ***************************
-
-const ChallengesStackNavigator = createStackNavigator();
-
-export const ChallengesNavigator = () => {
-  return (
-    <ChallengesStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <ChallengesStackNavigator.Screen
-        name='Challenges'
-        component={ChallengesScreen}
-        options={challengesScreenOptions}
-      />
-      <ChallengesStackNavigator.Screen
-        name='Challenge'
-        component={ChallengeScreen}
-        options={challengeScreenOptions}
-      />
-    </ChallengesStackNavigator.Navigator>
-  );
-};
-
 //* Stats Navigation ***************************
 
 const StatsStackNavigator = createStackNavigator();
@@ -201,15 +176,35 @@ export const SideNavigator = () => {
             style={{
               flex: 1,
               paddingTop: 50,
-              backgroundColor: 'black',
+              backgroundColor: Colors.base,
             }}>
             <SafeAreaView forceInset={{ top: 'always' }}>
               <DrawerItemList {...props} />
-              <Button
-                title='Logout!'
-                color={Colors.accent}
-                onPress={() => {}}
-              />
+              {/* <Button title='Exit' color={Colors.inactive} onPress={() => {}} /> */}
+
+              <View
+                style={{
+                  marginTop: 30,
+                  marginLeft: 6,
+                  flexDirection: 'row',
+                  alignContent: 'center',
+                  backgroundColor: Colors.base,
+                }}>
+                <Buttons.ButtonBox
+                  action={() => {}}
+                  bodyStyle={{
+                    borderWidth: 0,
+                    backgroundColor: Colors.base,
+                  }}
+                  insideStyle={{ color: Colors.surround }}>
+                  <Ionicons
+                    name={'md-exit'}
+                    size={30}
+                    color={Colors.surround}
+                  />
+                </Buttons.ButtonBox>
+                <TxtItalic style={{ marginLeft: 15 }}>EXIT</TxtItalic>
+              </View>
             </SafeAreaView>
           </View>
         );
@@ -219,7 +214,7 @@ export const SideNavigator = () => {
         inactiveTintColor: Colors.surround,
         labelStyle: {
           fontSize: 15,
-          marginLeft: 5,
+          marginLeft: 1,
         },
       }}
       drawerStyle={{
@@ -248,20 +243,11 @@ export const SideNavigator = () => {
         }}
       />
       <SideDrawerNavigator.Screen
-        name='F|U|N|N|E|L Pub'
+        name='F|U|N|N|E|L'
         component={MasterNavigator}
         options={{
           drawerIcon: (props) => (
             <Ionicons name={'ios-funnel'} size={30} color={Colors.surround} />
-          ),
-        }}
-      />
-      <SideDrawerNavigator.Screen
-        name='Challenges'
-        component={ChallengesNavigator}
-        options={{
-          drawerIcon: (props) => (
-            <Ionicons name={'ios-pulse'} size={30} color={Colors.surround} />
           ),
         }}
       />
@@ -274,12 +260,13 @@ export const SideNavigator = () => {
           ),
         }}
       />
+
       <SideDrawerNavigator.Screen
         name='Options'
         component={OptionsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-options'} size={23} color={Colors.surround} />
+            <Ionicons name={'ios-options'} size={30} color={Colors.surround} />
           ),
         }}
       />
@@ -288,7 +275,7 @@ export const SideNavigator = () => {
         component={AboutNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-options'} size={30} color={Colors.surround} />
+            <Ionicons name={'ios-heart'} size={30} color={Colors.surround} />
           ),
         }}
       />

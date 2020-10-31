@@ -8,14 +8,6 @@ export const en = {
     header: 'Auth header',
     title: 'Auth title',
   },
-  Challenges: {
-    header: 'Challenges header',
-    title: 'Challenges title',
-  },
-  Challenge: {
-    header: 'Challenge header',
-    title: 'Challenge title',
-  },
   Instructions: {
     header: 'Instructions Header',
     title: 'Instructions title',

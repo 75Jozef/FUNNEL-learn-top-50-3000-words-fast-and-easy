@@ -11,7 +11,7 @@ import {
   TxtButton,
   TxtError,
 } from '../components/UI/Txt';
-import CardFrame from '../components/UI/CardFrame';
+
 import ComboAround from '../components/UI/ComboAround';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
