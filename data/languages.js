@@ -44,10 +44,7 @@ export const sk = {
     header: 'Auth hlavička',
     title: 'Auth nadpis',
   },
-  Challenges: {
-    header: 'Challenges hlavička',
-    title: 'Challenges nadpis',
-  },
+
   Instructions: {
     header: 'Instructions hlavička',
     title: 'Instructions nadpis',
@@ -64,7 +61,7 @@ export const sk = {
     header: 'Options hlavička',
     title: 'Options nadpis',
   },
-  Stats: {
+  Statistics: {
     header: 'Statistics hlavička',
     title: 'Stats nadpis',
   },

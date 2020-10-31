@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: Colors.base,
-    // borderColor: 'white',
-    // borderWidth: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
 });
 

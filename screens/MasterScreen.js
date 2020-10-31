@@ -459,866 +459,857 @@ const MasterScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-between',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignContent: 'space-between',
+          width: '70%',
+          alignSelf: 'center',
+          height: '15%',
+        }}>
+        <ComboAround>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelV((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelV
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelV
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : null
+            }>
+            50v
+          </Buttons.ButtonBox>
+          <View
+            style={{
+              width: '90%',
+              alignItems: 'center',
+              marginHorizontal: 2,
+            }}>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countVZero / 50) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countVOne / 50) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countVTwo / 50) * 100 + '%',
+              }}
+            />
+            {words[index]['userlvl'] === 'v' ? (
+              <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
+            ) : null}
+          </View>
+        </ComboAround>
+
+        <ComboAround>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelN((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelN
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+
+                    borderColor: Colors.surround,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelN
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : null
+            }>
+            50n
+          </Buttons.ButtonBox>
+          <View
+            style={{
+              width: '90%',
+              alignItems: 'center',
+              marginHorizontal: 2,
+            }}>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countNZero / 48) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countNOne / 48) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countNTwo / 48) * 100 + '%',
+              }}
+            />
+            {words[index]['userlvl'] === 'n' ? (
+              <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
+            ) : null}
+          </View>
+        </ComboAround>
+        <ComboAround>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelA((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelA
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelA
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : null
+            }>
+            50a
+          </Buttons.ButtonBox>
+          <View
+            style={{
+              width: '90%',
+              alignItems: 'center',
+              marginHorizontal: 2,
+            }}>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countAZero / 47) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countAOne / 47) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countATwo / 47) * 100 + '%',
+              }}
+            />
+            {words[index]['userlvl'] === 'a' ? (
+              <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
+            ) : null}
+          </View>
+        </ComboAround>
+        <ComboAround>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelH((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelH
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelH
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : null
+            }>
+            100
+          </Buttons.ButtonBox>
+          <View
+            style={{
+              width: '90%',
+              alignItems: 'center',
+              marginHorizontal: 2,
+            }}>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countHZero / 70) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countHOne / 70) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countHTwo / 70) * 100 + '%',
+              }}
+            />
+            {words[index]['userlvl'] === 'h' ? (
+              <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
+            ) : null}
+          </View>
+        </ComboAround>
+
+        <ComboAround>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelF((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelF
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelF
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : null
+            }>
+            500
+          </Buttons.ButtonBox>
+          <View
+            style={{
+              width: '90%',
+              alignItems: 'center',
+              marginHorizontal: 2,
+            }}>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countFZero / 280) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countFOne / 280) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countFTwo / 280) * 100 + '%',
+              }}
+            />
+            {words[index]['userlvl'] === 'f' ? (
+              <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
+            ) : null}
+          </View>
+        </ComboAround>
+        <ComboAround>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelT((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelT
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelT
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : null
+            }>
+            1000
+          </Buttons.ButtonBox>
+          <View
+            style={{
+              width: '90%',
+              alignItems: 'center',
+              marginHorizontal: 2,
+            }}>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countTZero / 553) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countTOne / 553) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countTTwo / 553) * 100 + '%',
+              }}
+            />
+            {words[index]['userlvl'] === 't' ? (
+              <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
+            ) : null}
+          </View>
+        </ComboAround>
+        <ComboAround>
+          <Buttons.ButtonBox
+            action={() => {
+              setLevelX((prev) => !prev);
+              setIndex(0);
+            }}
+            bodyStyle={
+              levelX
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
+                : { backgroundColor: Colors.base }
+            }
+            insideStyle={
+              levelX
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : null
+            }>
+            3000
+          </Buttons.ButtonBox>
+          <View
+            style={{
+              width: '90%',
+              alignItems: 'center',
+              marginHorizontal: 2,
+            }}>
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.accent,
+                width: (countXZero / 1951) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backSecond,
+                width: (countXOne / 1951) * 100 + '%',
+              }}
+            />
+            <InfoLine
+              infoStyle={{
+                backgroundColor: Colors.backPrimary,
+                width: (countXTwo / 1951) * 100 + '%',
+              }}
+            />
+            {words[index]['userlvl'] === 'x' ? (
+              <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
+            ) : null}
+          </View>
+        </ComboAround>
+      </View>
+      <View
+        style={{
+          alignItems: 'center',
+          height: '10%',
         }}>
         <View
           style={{
+            width: '60%',
+            alignItems: 'center',
             flexDirection: 'row',
-            justifyContent: 'center',
-            alignContent: 'space-between',
-            width: '70%',
-            alignSelf: 'center',
-            height: '15%',
+            justifyContent: 'space-evenly',
           }}>
           <ComboAround>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelV((prev) => !prev);
-                setIndex(0);
-              }}
-              bodyStyle={
-                levelV
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-                      borderColor: Colors.surround,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                levelV
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              50v
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                marginHorizontal: 2,
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countVZero / 50) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countVOne / 50) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countVTwo / 50) * 100 + '%',
-                }}
-              />
-              {words[index]['userlvl'] === 'v' ? (
-                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
-              ) : null}
-            </View>
-          </ComboAround>
-
-          <ComboAround>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelN((prev) => !prev);
-                setIndex(0);
-              }}
-              bodyStyle={
-                levelN
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-
-                      borderColor: Colors.surround,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                levelN
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              50n
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                marginHorizontal: 2,
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countNZero / 48) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countNOne / 48) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countNTwo / 48) * 100 + '%',
-                }}
-              />
-              {words[index]['userlvl'] === 'n' ? (
-                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
-              ) : null}
-            </View>
-          </ComboAround>
-          <ComboAround>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelA((prev) => !prev);
-                setIndex(0);
-              }}
-              bodyStyle={
-                levelA
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-                      borderColor: Colors.surround,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                levelA
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              50a
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                marginHorizontal: 2,
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countAZero / 47) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countAOne / 47) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countATwo / 47) * 100 + '%',
-                }}
-              />
-              {words[index]['userlvl'] === 'a' ? (
-                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
-              ) : null}
-            </View>
-          </ComboAround>
-          <ComboAround>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelH((prev) => !prev);
-                setIndex(0);
-              }}
-              bodyStyle={
-                levelH
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-                      borderColor: Colors.surround,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                levelH
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              100
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                marginHorizontal: 2,
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countHZero / 70) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countHOne / 70) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countHTwo / 70) * 100 + '%',
-                }}
-              />
-              {words[index]['userlvl'] === 'h' ? (
-                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
-              ) : null}
-            </View>
-          </ComboAround>
-
-          <ComboAround>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelF((prev) => !prev);
-                setIndex(0);
-              }}
-              bodyStyle={
-                levelF
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-                      borderColor: Colors.surround,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                levelF
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              500
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                marginHorizontal: 2,
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countFZero / 280) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countFOne / 280) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countFTwo / 280) * 100 + '%',
-                }}
-              />
-              {words[index]['userlvl'] === 'f' ? (
-                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
-              ) : null}
-            </View>
-          </ComboAround>
-          <ComboAround>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelT((prev) => !prev);
-                setIndex(0);
-              }}
-              bodyStyle={
-                levelT
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-                      borderColor: Colors.surround,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                levelT
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              1000
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                marginHorizontal: 2,
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countTZero / 553) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countTOne / 553) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countTTwo / 553) * 100 + '%',
-                }}
-              />
-              {words[index]['userlvl'] === 't' ? (
-                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
-              ) : null}
-            </View>
-          </ComboAround>
-          <ComboAround>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelX((prev) => !prev);
-                setIndex(0);
-              }}
-              bodyStyle={
-                levelX
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-                      borderColor: Colors.surround,
-                    }
-                  : { backgroundColor: Colors.base }
-              }
-              insideStyle={
-                levelX
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              3000
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                marginHorizontal: 2,
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countXZero / 1951) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countXOne / 1951) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countXTwo / 1951) * 100 + '%',
-                }}
-              />
-              {words[index]['userlvl'] === 'x' ? (
-                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
-              ) : null}
-            </View>
-          </ComboAround>
-        </View>
-        <View
-          style={{
-            alignItems: 'center',
-            height: '10%',
-          }}>
-          <View
-            style={{
-              width: '60%',
-              alignItems: 'center',
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-            }}>
-            <ComboAround>
-              <Buttons.ButtonCircle
-                action={() => {
-                  handleSelect(0);
-                }}
-                bodyStyle={
-                  select === 0
-                    ? {
-                        borderColor: Colors.base,
-                        borderWidth: 1,
-                      }
-                    : { borderColor: Colors.inactive, borderWidth: 1 }
-                }
-                insideStyle={
-                  select === 0
-                    ? {
-                        color: Colors.accent,
-                        fontSize: Dimensions.get('window').width / 22,
-                        // fontFamily: Fonts.bold,
-                      }
-                    : sizeIconInfinity > 41
-                    ? {
-                        color: Colors.accent,
-                        fontSize: Dimensions.get('window').width / 22,
-                      }
-                    : { color: Colors.surround }
-                }>
-                {selectZero}
-              </Buttons.ButtonCircle>
-            </ComboAround>
-            <ComboAround>
-              <Buttons.ButtonCircle
-                action={() => {
-                  handleSelect(1);
-                }}
-                bodyStyle={
-                  select === 1
-                    ? {
-                        borderColor: Colors.base,
-                        borderWidth: 1,
-                      }
-                    : { borderColor: Colors.inactive, borderWidth: 1 }
-                }
-                insideStyle={
-                  select === 1
-                    ? {
-                        color: Colors.backSecond,
-                        fontSize: Dimensions.get('window').width / 22,
-                        // fontFamily: Fonts.bold,
-                      }
-                    : sizeIconAttach > 41
-                    ? {
-                        color: Colors.backSecond,
-                        fontSize: Dimensions.get('window').width / 22,
-                      }
-                    : { color: Colors.surround }
-                }>
-                {selectOne}
-              </Buttons.ButtonCircle>
-            </ComboAround>
-            <ComboAround>
-              <Buttons.ButtonCircle
-                action={() => {
-                  handleSelect(2);
-                }}
-                bodyStyle={
-                  select === 2
-                    ? {
-                        borderColor: Colors.base,
-                        borderWidth: 1,
-                      }
-                    : { borderColor: Colors.inactive, borderWidth: 1 }
-                }
-                insideStyle={
-                  select === 2
-                    ? {
-                        color: Colors.backPrimary,
-                        fontSize: Dimensions.get('window').width / 22,
-                        // fontFamily: Fonts.bold,
-                      }
-                    : sizeIconCheck > 41
-                    ? {
-                        color: Colors.backPrimary,
-                        fontSize: Dimensions.get('window').width / 22,
-                      }
-                    : { color: Colors.surround }
-                }>
-                {selectTwo}
-              </Buttons.ButtonCircle>
-            </ComboAround>
-          </View>
-        </View>
-
-        {/* ***********************************WORD SHOW */}
-
-        <View
-          style={{
-            height: '20%',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <TxtNormal>
-            {range > 0 ? (
-              <WordShow
-                word={words[index][lngscnd]}
-                show={show}
-                key={index}
-                color={words[index]['st' + lngscnd]}
-              />
-            ) : (
-              <TxtItalic>{txtscnd.noRange}</TxtItalic>
-            )}
-          </TxtNormal>
-        </View>
-        <View
-          style={{
-            height: '10%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: 20,
-          }}>
-          <TxtLabel
-            style={{
-              marginTop: 5,
-              color: Colors.surround,
-              fontSize: Dimensions.get('window').height / 25,
-            }}>
-            {range > 0 ? (
-              words[index][lngfrst]
-            ) : (
-              <TxtItalic>{txtfrst.noRange}</TxtItalic>
-            )}
-          </TxtLabel>
-        </View>
-        {/* ***********************************************************************SHOW */}
-
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignContent: 'space-between',
-            width: '70%',
-            alignSelf: 'center',
-            height: '10%',
-          }}>
-          <Buttons.ButtonBox
-            action={() => {
-              setShow(0);
-            }}
-            bodyStyle={
-              show === 0
-                ? {
-                    borderWidth: 1,
-                    borderRadius: 25,
-                    borderColor: Colors.surround,
-                  }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              show === 0
-                ? {
-                    fontFamily: Fonts.bold,
-                    color: Colors.surround,
-                  }
-                : null
-            }>
-            ?
-          </Buttons.ButtonBox>
-
-          <Buttons.ButtonBox
-            action={() => {
-              setShow(1);
-            }}
-            bodyStyle={
-              show === 1
-                ? {
-                    borderWidth: 1,
-                    borderRadius: 25,
-                    borderColor: Colors.surround,
-                  }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              show === 1
-                ? {
-                    fontFamily: Fonts.bold,
-                    color: Colors.surround,
-                  }
-                : null
-            }>
-            _ _ _
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setShow(2);
-            }}
-            bodyStyle={
-              show === 2
-                ? {
-                    borderWidth: 1,
-                    borderRadius: 25,
-                    borderColor: Colors.surround,
-                  }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              show === 2
-                ? {
-                    fontFamily: Fonts.bold,
-                    color: Colors.surround,
-                  }
-                : null
-            }>
-            _ _ x
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setShow(3);
-            }}
-            bodyStyle={
-              show === 3
-                ? {
-                    borderWidth: 1,
-                    borderRadius: 25,
-                    borderColor: Colors.surround,
-                  }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              show === 3
-                ? {
-                    fontFamily: Fonts.bold,
-                    color: Colors.surround,
-                  }
-                : null
-            }>
-            x _ x
-          </Buttons.ButtonBox>
-          <Buttons.ButtonBox
-            action={() => {
-              setShow(4);
-            }}
-            bodyStyle={
-              show === 4
-                ? {
-                    borderWidth: 1,
-                    borderRadius: 25,
-                    borderColor: Colors.surround,
-                  }
-                : { backgroundColor: Colors.base }
-            }
-            insideStyle={
-              show === 4
-                ? {
-                    fontFamily: Fonts.bold,
-                    color: Colors.surround,
-                  }
-                : null
-            }>
-            x x x
-          </Buttons.ButtonBox>
-        </View>
-
-        <View style={{ alignItems: 'center', height: '10%' }}>
-          <View
-            style={{
-              width: '50%',
-              alignItems: 'center',
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-            }}>
             <Buttons.ButtonCircle
-              action={() => handleStatus(0)}
+              action={() => {
+                handleSelect(0);
+              }}
               bodyStyle={
+                select === 0
+                  ? {
+                      borderColor: Colors.base,
+                      borderWidth: 1,
+                    }
+                  : { borderColor: Colors.inactive, borderWidth: 1 }
+              }
+              insideStyle={
+                select === 0
+                  ? {
+                      color: Colors.accent,
+                      fontSize: Dimensions.get('window').width / 22,
+                      // fontFamily: Fonts.bold,
+                    }
+                  : sizeIconInfinity > 41
+                  ? {
+                      color: Colors.accent,
+                      fontSize: Dimensions.get('window').width / 22,
+                    }
+                  : { color: Colors.surround }
+              }>
+              {selectZero}
+            </Buttons.ButtonCircle>
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonCircle
+              action={() => {
+                handleSelect(1);
+              }}
+              bodyStyle={
+                select === 1
+                  ? {
+                      borderColor: Colors.base,
+                      borderWidth: 1,
+                    }
+                  : { borderColor: Colors.inactive, borderWidth: 1 }
+              }
+              insideStyle={
+                select === 1
+                  ? {
+                      color: Colors.backSecond,
+                      fontSize: Dimensions.get('window').width / 22,
+                      // fontFamily: Fonts.bold,
+                    }
+                  : sizeIconAttach > 41
+                  ? {
+                      color: Colors.backSecond,
+                      fontSize: Dimensions.get('window').width / 22,
+                    }
+                  : { color: Colors.surround }
+              }>
+              {selectOne}
+            </Buttons.ButtonCircle>
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonCircle
+              action={() => {
+                handleSelect(2);
+              }}
+              bodyStyle={
+                select === 2
+                  ? {
+                      borderColor: Colors.base,
+                      borderWidth: 1,
+                    }
+                  : { borderColor: Colors.inactive, borderWidth: 1 }
+              }
+              insideStyle={
+                select === 2
+                  ? {
+                      color: Colors.backPrimary,
+                      fontSize: Dimensions.get('window').width / 22,
+                      // fontFamily: Fonts.bold,
+                    }
+                  : sizeIconCheck > 41
+                  ? {
+                      color: Colors.backPrimary,
+                      fontSize: Dimensions.get('window').width / 22,
+                    }
+                  : { color: Colors.surround }
+              }>
+              {selectTwo}
+            </Buttons.ButtonCircle>
+          </ComboAround>
+        </View>
+      </View>
+
+      {/* ***********************************WORD SHOW */}
+
+      <View
+        style={{
+          height: '20%',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <TxtNormal>
+          {range > 0 ? (
+            <WordShow
+              word={words[index][lngscnd]}
+              show={show}
+              key={index}
+              color={words[index]['st' + lngscnd]}
+            />
+          ) : (
+            <TxtItalic>{txtscnd.noRange}</TxtItalic>
+          )}
+        </TxtNormal>
+      </View>
+      <View
+        style={{
+          height: '10%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: 20,
+        }}>
+        <TxtLabel
+          style={{
+            marginTop: 5,
+            color: Colors.surround,
+            fontSize: Dimensions.get('window').height / 25,
+          }}>
+          {range > 0 ? (
+            words[index][lngfrst]
+          ) : (
+            <TxtItalic>{txtfrst.noRange}</TxtItalic>
+          )}
+        </TxtLabel>
+      </View>
+      {/* ***********************************************************************SHOW */}
+
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignContent: 'space-between',
+          width: '70%',
+          alignSelf: 'center',
+          height: '10%',
+        }}>
+        <Buttons.ButtonBox
+          action={() => {
+            setShow(0);
+          }}
+          bodyStyle={
+            show === 0
+              ? {
+                  borderWidth: 1,
+                  borderRadius: 25,
+                  borderColor: Colors.surround,
+                }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            show === 0
+              ? {
+                  fontFamily: Fonts.bold,
+                  color: Colors.surround,
+                }
+              : null
+          }>
+          ?
+        </Buttons.ButtonBox>
+
+        <Buttons.ButtonBox
+          action={() => {
+            setShow(1);
+          }}
+          bodyStyle={
+            show === 1
+              ? {
+                  borderWidth: 1,
+                  borderRadius: 25,
+                  borderColor: Colors.surround,
+                }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            show === 1
+              ? {
+                  fontFamily: Fonts.bold,
+                  color: Colors.surround,
+                }
+              : null
+          }>
+          _ _ _
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
+            setShow(2);
+          }}
+          bodyStyle={
+            show === 2
+              ? {
+                  borderWidth: 1,
+                  borderRadius: 25,
+                  borderColor: Colors.surround,
+                }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            show === 2
+              ? {
+                  fontFamily: Fonts.bold,
+                  color: Colors.surround,
+                }
+              : null
+          }>
+          _ _ x
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
+            setShow(3);
+          }}
+          bodyStyle={
+            show === 3
+              ? {
+                  borderWidth: 1,
+                  borderRadius: 25,
+                  borderColor: Colors.surround,
+                }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            show === 3
+              ? {
+                  fontFamily: Fonts.bold,
+                  color: Colors.surround,
+                }
+              : null
+          }>
+          x _ x
+        </Buttons.ButtonBox>
+        <Buttons.ButtonBox
+          action={() => {
+            setShow(4);
+          }}
+          bodyStyle={
+            show === 4
+              ? {
+                  borderWidth: 1,
+                  borderRadius: 25,
+                  borderColor: Colors.surround,
+                }
+              : { backgroundColor: Colors.base }
+          }
+          insideStyle={
+            show === 4
+              ? {
+                  fontFamily: Fonts.bold,
+                  color: Colors.surround,
+                }
+              : null
+          }>
+          x x x
+        </Buttons.ButtonBox>
+      </View>
+
+      <View style={{ alignItems: 'center', height: '10%' }}>
+        <View
+          style={{
+            width: '50%',
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}>
+          <Buttons.ButtonCircle
+            action={() => handleStatus(0)}
+            bodyStyle={
+              words[index]['st' + lngscnd] === 0
+                ? { borderColor: Colors.base }
+                : { borderColor: Colors.inactive }
+            }>
+            <Ionicons
+              name='ios-infinite'
+              size={words[index]['st' + lngscnd] === 0 ? 30 : sizeIconInfinity}
+              color={
                 words[index]['st' + lngscnd] === 0
-                  ? { borderColor: Colors.base }
-                  : { borderColor: Colors.inactive }
-              }>
-              <Ionicons
-                name='ios-infinite'
-                size={
-                  words[index]['st' + lngscnd] === 0 ? 30 : sizeIconInfinity
-                }
-                color={
-                  words[index]['st' + lngscnd] === 0
-                    ? Colors.inactive
-                    : sizeIconInfinity > 41
-                    ? Colors.accent
-                    : Colors.surround
-                }
-              />
-            </Buttons.ButtonCircle>
-            <Buttons.ButtonCircle
-              action={() => handleStatus(1)}
-              bodyStyle={
+                  ? Colors.inactive
+                  : sizeIconInfinity > 41
+                  ? Colors.accent
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => handleStatus(1)}
+            bodyStyle={
+              words[index]['st' + lngscnd] === 1
+                ? { borderColor: Colors.base }
+                : { borderColor: Colors.inactive }
+            }>
+            <Ionicons
+              name='ios-attach'
+              size={words[index]['st' + lngscnd] === 1 ? 30 : sizeIconAttach}
+              color={
                 words[index]['st' + lngscnd] === 1
-                  ? { borderColor: Colors.base }
-                  : { borderColor: Colors.inactive }
-              }>
-              <Ionicons
-                name='ios-attach'
-                size={words[index]['st' + lngscnd] === 1 ? 30 : sizeIconAttach}
-                color={
-                  words[index]['st' + lngscnd] === 1
-                    ? Colors.inactive
-                    : sizeIconAttach > 41
-                    ? Colors.backSecond
-                    : Colors.surround
-                }
-              />
-            </Buttons.ButtonCircle>
-            <Buttons.ButtonCircle
-              action={() => handleStatus(2)}
-              bodyStyle={
+                  ? Colors.inactive
+                  : sizeIconAttach > 41
+                  ? Colors.backSecond
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
+          <Buttons.ButtonCircle
+            action={() => handleStatus(2)}
+            bodyStyle={
+              words[index]['st' + lngscnd] === 2
+                ? { borderColor: Colors.base }
+                : { borderColor: Colors.inactive }
+            }>
+            <Ionicons
+              name='md-checkmark'
+              size={words[index]['st' + lngscnd] === 2 ? 30 : sizeIconCheck}
+              color={
                 words[index]['st' + lngscnd] === 2
-                  ? { borderColor: Colors.base }
-                  : { borderColor: Colors.inactive }
-              }>
-              <Ionicons
-                name='md-checkmark'
-                size={words[index]['st' + lngscnd] === 2 ? 30 : sizeIconCheck}
-                color={
-                  words[index]['st' + lngscnd] === 2
-                    ? Colors.inactive
-                    : sizeIconCheck > 41
-                    ? Colors.backPrimary
-                    : Colors.surround
-                }
-              />
-            </Buttons.ButtonCircle>
-          </View>
+                  ? Colors.inactive
+                  : sizeIconCheck > 41
+                  ? Colors.backPrimary
+                  : Colors.surround
+              }
+            />
+          </Buttons.ButtonCircle>
         </View>
+      </View>
 
-        <View
-          style={{
-            height: '10%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            alignSelf: 'center',
-            justifyContent: 'space-around',
-            width: Dimensions.get('window').width * 0.7,
+      <View
+        style={{
+          height: '10%',
+          flexDirection: 'row',
+          alignItems: 'center',
+          alignSelf: 'center',
+          justifyContent: 'space-around',
+          width: Dimensions.get('window').width * 0.7,
+        }}>
+        <Buttons.ButtonCircle
+          action={() => {
+            handleIndex(-Math.floor(range / 7));
+            animeIcon('Rewind');
           }}>
-          <Buttons.ButtonCircle
-            action={() => {
-              handleIndex(-Math.floor(range / 7));
-              animeIcon('Rewind');
-            }}>
-            <Ionicons
-              name='md-rewind'
-              size={sizeIconRewind}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconRewind > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconRewind > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconRewind > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
-          <Buttons.ButtonCircle
-            action={() => {
-              handleIndex(-1);
-              animeIcon('Back');
-            }}
-            color={Colors.base}>
-            <Ionicons
-              name='md-arrow-dropleft'
-              size={sizeIconBack}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconBack > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconBack > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconBack > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
-          <Buttons.ButtonCircle
-            action={() => {
-              setIndex(Math.floor(Math.random() * range));
-              animeIcon('Random');
-            }}
-            color={Colors.base}>
-            <Ionicons
-              name='ios-color-wand'
-              size={sizeIconRandom}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconRandom > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconRandom > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconRandom > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
-          <Buttons.ButtonCircle
-            action={() => {
-              handleIndex(1);
-              animeIcon('Next');
-            }}
-            color={Colors.base}>
-            <Ionicons
-              name='md-arrow-dropright'
-              size={sizeIconNext}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconNext > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconNext > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconNext > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
+          <Ionicons
+            name='md-rewind'
+            size={sizeIconRewind}
+            color={
+              words[index]['st' + lngscnd] === 0 && sizeIconRewind > 35
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1 && sizeIconRewind > 35
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2 && sizeIconRewind > 35
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+        <Buttons.ButtonCircle
+          action={() => {
+            handleIndex(-1);
+            animeIcon('Back');
+          }}
+          color={Colors.base}>
+          <Ionicons
+            name='md-arrow-dropleft'
+            size={sizeIconBack}
+            color={
+              words[index]['st' + lngscnd] === 0 && sizeIconBack > 35
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1 && sizeIconBack > 35
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2 && sizeIconBack > 35
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+        <Buttons.ButtonCircle
+          action={() => {
+            setIndex(Math.floor(Math.random() * range));
+            animeIcon('Random');
+          }}
+          color={Colors.base}>
+          <Ionicons
+            name='ios-color-wand'
+            size={sizeIconRandom}
+            color={
+              words[index]['st' + lngscnd] === 0 && sizeIconRandom > 35
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1 && sizeIconRandom > 35
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2 && sizeIconRandom > 35
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+        <Buttons.ButtonCircle
+          action={() => {
+            handleIndex(1);
+            animeIcon('Next');
+          }}
+          color={Colors.base}>
+          <Ionicons
+            name='md-arrow-dropright'
+            size={sizeIconNext}
+            color={
+              words[index]['st' + lngscnd] === 0 && sizeIconNext > 35
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1 && sizeIconNext > 35
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2 && sizeIconNext > 35
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
 
-          <Buttons.ButtonCircle
-            action={() => {
-              handleIndex(Math.floor(range / 7));
-              animeIcon('FastF');
-            }}
-            color={Colors.base}>
-            <Ionicons
-              name='md-fastforward'
-              size={sizeIconFastF}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconFastF > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconFastF > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconFastF > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
-          </Buttons.ButtonCircle>
-        </View>
-        <View
-          style={{
-            height: '5%',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-          }}>
-          <TxtButton style={{ color: Colors.surround }}>
-            {words[index]['userlvl'] === 'l' ? '< >' : index + 1} / {range - 1}
-          </TxtButton>
-        </View>
+        <Buttons.ButtonCircle
+          action={() => {
+            handleIndex(Math.floor(range / 7));
+            animeIcon('FastF');
+          }}
+          color={Colors.base}>
+          <Ionicons
+            name='md-fastforward'
+            size={sizeIconFastF}
+            color={
+              words[index]['st' + lngscnd] === 0 && sizeIconFastF > 35
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1 && sizeIconFastF > 35
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2 && sizeIconFastF > 35
+                ? Colors.backPrimary
+                : Colors.surround
+            }
+          />
+        </Buttons.ButtonCircle>
+      </View>
+      <View
+        style={{
+          height: '5%',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+        }}>
+        <TxtButton style={{ color: Colors.surround }}>
+          {words[index]['userlvl'] === 'l' ? '< >' : index + 1} / {range - 1}
+        </TxtButton>
       </View>
     </ScreenFrame>
   );
