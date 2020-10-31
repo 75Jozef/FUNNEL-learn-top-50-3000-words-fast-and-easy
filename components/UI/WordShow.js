@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import Colors from '../../constants/Colors';
 import { TxtHeader, TxtItalic } from './Txt';
+import { Ionicons } from '@expo/vector-icons';
 
 const WordShow = (props) => {
   const [see, setSee] = useState(-1);
@@ -115,7 +116,11 @@ const WordShow = (props) => {
   } else {
     return (
       <View style={styles.showka}>
-        <TxtItalic>? ? ?</TxtItalic>
+        <Ionicons
+          name='ios-help'
+          size={Dimensions.get('window').height / 6}
+          color={Colors.surround}
+        />
       </View>
     );
   }

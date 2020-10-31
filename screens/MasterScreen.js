@@ -66,11 +66,11 @@ const MasterScreen = () => {
   const [countXOne, setCountXOne] = useState();
   const [countXTwo, setCountXTwo] = useState();
 
-  const [sizeIconRewind, setSizeIconRewind] = useState(30);
-  const [sizeIconBack, setSizeIconBack] = useState(30);
-  const [sizeIconRandom, setSizeIconRandom] = useState(40);
-  const [sizeIconNext, setSizeIconNext] = useState(30);
-  const [sizeIconFastF, setSizeIconFastF] = useState(30);
+  const [sizeIconRewind, setSizeIconRewind] = useState(34);
+  const [sizeIconBack, setSizeIconBack] = useState(34);
+  const [sizeIconRandom, setSizeIconRandom] = useState(34);
+  const [sizeIconNext, setSizeIconNext] = useState(34);
+  const [sizeIconFastF, setSizeIconFastF] = useState(34);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -167,24 +167,24 @@ const MasterScreen = () => {
         async function delayedConfirmation(status) {
           switch (status) {
             case 0: {
-              setSizeIconInfinity(50);
+              setSizeIconInfinity(60);
               setStat((prev) => !prev);
               await sleep(300);
-              setSizeIconInfinity(35);
+              setSizeIconInfinity(40);
               return;
             }
             case 1: {
-              setSizeIconAttach(50);
+              setSizeIconAttach(60);
               setStat((prev) => !prev);
               await sleep(300);
-              setSizeIconAttach(35);
+              setSizeIconAttach(40);
               return;
             }
             case 2: {
-              setSizeIconCheck(50);
+              setSizeIconCheck(60);
               setStat((prev) => !prev);
               await sleep(300);
-              setSizeIconCheck(35);
+              setSizeIconCheck(40);
               return;
             }
           }
@@ -483,14 +483,7 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 1,
                       borderRadius: 25,
-                      borderColor:
-                        select === 0
-                          ? Colors.accent
-                          : select === 1
-                          ? Colors.backSecond
-                          : select === 2
-                          ? Colors.backPrimary
-                          : Colors.surround,
+                      borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -544,14 +537,8 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 1,
                       borderRadius: 25,
-                      borderColor:
-                        select === 0
-                          ? Colors.accent
-                          : select === 1
-                          ? Colors.backSecond
-                          : select === 2
-                          ? Colors.backPrimary
-                          : Colors.surround,
+
+                      borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -604,14 +591,7 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 1,
                       borderRadius: 25,
-                      borderColor:
-                        select === 0
-                          ? Colors.accent
-                          : select === 1
-                          ? Colors.backSecond
-                          : select === 2
-                          ? Colors.backPrimary
-                          : Colors.surround,
+                      borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -664,14 +644,7 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 1,
                       borderRadius: 25,
-                      borderColor:
-                        select === 0
-                          ? Colors.accent
-                          : select === 1
-                          ? Colors.backSecond
-                          : select === 2
-                          ? Colors.backPrimary
-                          : Colors.surround,
+                      borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -725,14 +698,7 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 1,
                       borderRadius: 25,
-                      borderColor:
-                        select === 0
-                          ? Colors.accent
-                          : select === 1
-                          ? Colors.backSecond
-                          : select === 2
-                          ? Colors.backPrimary
-                          : Colors.surround,
+                      borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -785,14 +751,7 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 1,
                       borderRadius: 25,
-                      borderColor:
-                        select === 0
-                          ? Colors.accent
-                          : select === 1
-                          ? Colors.backSecond
-                          : select === 2
-                          ? Colors.backPrimary
-                          : Colors.surround,
+                      borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -845,14 +804,7 @@ const MasterScreen = () => {
                   ? {
                       borderWidth: 1,
                       borderRadius: 25,
-                      borderColor:
-                        select === 0
-                          ? Colors.accent
-                          : select === 1
-                          ? Colors.backSecond
-                          : select === 2
-                          ? Colors.backPrimary
-                          : Colors.surround,
+                      borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
               }
@@ -915,24 +867,24 @@ const MasterScreen = () => {
                 bodyStyle={
                   select === 0
                     ? {
-                        width: Dimensions.get('window').width / 6,
-                        height: Dimensions.get('window').height / 17,
-                        borderRadius: 35,
-                        borderColor: Colors.accent,
-                        borderWidth: 2,
+                        borderColor: Colors.surround,
+                        borderWidth: 1,
                       }
-                    : { borderColor: Colors.accent, borderWidth: 1 }
+                    : { borderColor: Colors.inactive, borderWidth: 1 }
                 }
                 insideStyle={
                   select === 0
                     ? {
                         color: Colors.accent,
                         fontSize: Dimensions.get('window').width / 22,
-                        fontFamily: Fonts.bold,
+                        // fontFamily: Fonts.bold,
                       }
-                    : {
-                        color: Colors.surround,
+                    : sizeIconInfinity > 41
+                    ? {
+                        color: Colors.accent,
+                        fontSize: Dimensions.get('window').width / 22,
                       }
+                    : { color: Colors.surround }
                 }>
                 {selectZero}
               </Buttons.ButtonCircle>
@@ -945,20 +897,22 @@ const MasterScreen = () => {
                 bodyStyle={
                   select === 1
                     ? {
-                        width: Dimensions.get('window').width / 6,
-                        height: Dimensions.get('window').height / 20,
-                        borderRadius: 35,
-                        borderColor: Colors.backSecond,
-                        borderWidth: 2,
+                        borderColor: Colors.surround,
+                        borderWidth: 1,
                       }
-                    : { borderColor: Colors.backSecond, borderWidth: 1 }
+                    : { borderColor: Colors.inactive, borderWidth: 1 }
                 }
                 insideStyle={
                   select === 1
                     ? {
                         color: Colors.backSecond,
                         fontSize: Dimensions.get('window').width / 22,
-                        fontFamily: Fonts.bold,
+                        // fontFamily: Fonts.bold,
+                      }
+                    : sizeIconAttach > 41
+                    ? {
+                        color: Colors.backSecond,
+                        fontSize: Dimensions.get('window').width / 22,
                       }
                     : { color: Colors.surround }
                 }>
@@ -973,24 +927,24 @@ const MasterScreen = () => {
                 bodyStyle={
                   select === 2
                     ? {
-                        width: Dimensions.get('window').width / 6,
-                        height: Dimensions.get('window').height / 20,
-                        borderRadius: 35,
-                        borderColor: Colors.backPrimary,
-                        borderWidth: 2,
+                        borderColor: Colors.surround,
+                        borderWidth: 1,
                       }
-                    : { borderColor: Colors.backPrimary, borderWidth: 1 }
+                    : { borderColor: Colors.inactive, borderWidth: 1 }
                 }
                 insideStyle={
                   select === 2
                     ? {
                         color: Colors.backPrimary,
                         fontSize: Dimensions.get('window').width / 22,
-                        fontFamily: Fonts.bold,
+                        // fontFamily: Fonts.bold,
                       }
-                    : {
-                        color: Colors.surround,
+                    : sizeIconCheck > 41
+                    ? {
+                        color: Colors.backPrimary,
+                        fontSize: Dimensions.get('window').width / 22,
                       }
+                    : { color: Colors.surround }
                 }>
                 {selectTwo}
               </Buttons.ButtonCircle>
@@ -1024,6 +978,7 @@ const MasterScreen = () => {
             height: '10%',
             justifyContent: 'center',
             alignItems: 'center',
+            marginBottom: 20,
           }}>
           <TxtLabel
             style={{
@@ -1058,6 +1013,7 @@ const MasterScreen = () => {
                 ? {
                     borderWidth: 2,
                     borderRadius: 25,
+                    borderColor: Colors.surround,
                   }
                 : { backgroundColor: Colors.base }
             }
@@ -1155,14 +1111,20 @@ const MasterScreen = () => {
             }}>
             <Buttons.ButtonCircle
               action={() => handleStatus(0)}
-              bodyStyle={{ borderWidth: 0 }}>
+              bodyStyle={
+                words[index]['st' + lngscnd] === 0
+                  ? { borderColor: Colors.inactive }
+                  : { borderColor: Colors.inactive }
+              }>
               <Ionicons
                 name='ios-infinite'
-                size={sizeIconInfinity}
+                size={
+                  words[index]['st' + lngscnd] === 0 ? 30 : sizeIconInfinity
+                }
                 color={
                   words[index]['st' + lngscnd] === 0
-                    ? Colors.accent
-                    : sizeIconInfinity > 35
+                    ? Colors.inactive
+                    : sizeIconInfinity > 41
                     ? Colors.accent
                     : Colors.surround
                 }
@@ -1170,14 +1132,18 @@ const MasterScreen = () => {
             </Buttons.ButtonCircle>
             <Buttons.ButtonCircle
               action={() => handleStatus(1)}
-              bodyStyle={{ borderWidth: 0 }}>
+              bodyStyle={
+                words[index]['st' + lngscnd] === 1
+                  ? { borderColor: Colors.inactive }
+                  : { borderColor: Colors.inactive }
+              }>
               <Ionicons
                 name='ios-attach'
-                size={sizeIconAttach}
+                size={words[index]['st' + lngscnd] === 1 ? 30 : sizeIconAttach}
                 color={
                   words[index]['st' + lngscnd] === 1
-                    ? Colors.backSecond
-                    : sizeIconAttach > 35
+                    ? Colors.inactive
+                    : sizeIconAttach > 41
                     ? Colors.backSecond
                     : Colors.surround
                 }
@@ -1185,14 +1151,18 @@ const MasterScreen = () => {
             </Buttons.ButtonCircle>
             <Buttons.ButtonCircle
               action={() => handleStatus(2)}
-              bodyStyle={{ borderWidth: 0 }}>
+              bodyStyle={
+                words[index]['st' + lngscnd] === 2
+                  ? { borderColor: Colors.inactive }
+                  : { borderColor: Colors.inactive }
+              }>
               <Ionicons
                 name='md-checkmark'
-                size={sizeIconCheck}
+                size={words[index]['st' + lngscnd] === 2 ? 30 : sizeIconCheck}
                 color={
                   words[index]['st' + lngscnd] === 2
-                    ? Colors.backPrimary
-                    : sizeIconCheck > 35
+                    ? Colors.inactive
+                    : sizeIconCheck > 41
                     ? Colors.backPrimary
                     : Colors.surround
                 }
@@ -1203,7 +1173,7 @@ const MasterScreen = () => {
 
         <View
           style={{
-            height: '15%',
+            height: '10%',
             flexDirection: 'row',
             alignItems: 'center',
             alignSelf: 'center',
@@ -1219,11 +1189,11 @@ const MasterScreen = () => {
               name='md-rewind'
               size={sizeIconRewind}
               color={
-                words[index]['st' + lngscnd] === 0
+                words[index]['st' + lngscnd] === 0 && sizeIconRewind > 35
                   ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1
+                  : words[index]['st' + lngscnd] === 1 && sizeIconRewind > 35
                   ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2
+                  : words[index]['st' + lngscnd] === 2 && sizeIconRewind > 35
                   ? Colors.backPrimary
                   : Colors.surround
               }
@@ -1239,11 +1209,11 @@ const MasterScreen = () => {
               name='md-arrow-dropleft'
               size={sizeIconBack}
               color={
-                words[index]['st' + lngscnd] === 0
+                words[index]['st' + lngscnd] === 0 && sizeIconBack > 35
                   ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1
+                  : words[index]['st' + lngscnd] === 1 && sizeIconBack > 35
                   ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2
+                  : words[index]['st' + lngscnd] === 2 && sizeIconBack > 35
                   ? Colors.backPrimary
                   : Colors.surround
               }
@@ -1259,11 +1229,11 @@ const MasterScreen = () => {
               name='ios-color-wand'
               size={sizeIconRandom}
               color={
-                words[index]['st' + lngscnd] === 0
+                words[index]['st' + lngscnd] === 0 && sizeIconRandom > 35
                   ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1
+                  : words[index]['st' + lngscnd] === 1 && sizeIconRandom > 35
                   ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2
+                  : words[index]['st' + lngscnd] === 2 && sizeIconRandom > 35
                   ? Colors.backPrimary
                   : Colors.surround
               }
@@ -1279,11 +1249,11 @@ const MasterScreen = () => {
               name='md-arrow-dropright'
               size={sizeIconNext}
               color={
-                words[index]['st' + lngscnd] === 0
+                words[index]['st' + lngscnd] === 0 && sizeIconNext > 35
                   ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1
+                  : words[index]['st' + lngscnd] === 1 && sizeIconNext > 35
                   ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2
+                  : words[index]['st' + lngscnd] === 2 && sizeIconNext > 35
                   ? Colors.backPrimary
                   : Colors.surround
               }
@@ -1300,11 +1270,11 @@ const MasterScreen = () => {
               name='md-fastforward'
               size={sizeIconFastF}
               color={
-                words[index]['st' + lngscnd] === 0
+                words[index]['st' + lngscnd] === 0 && sizeIconFastF > 35
                   ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1
+                  : words[index]['st' + lngscnd] === 1 && sizeIconFastF > 35
                   ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2
+                  : words[index]['st' + lngscnd] === 2 && sizeIconFastF > 35
                   ? Colors.backPrimary
                   : Colors.surround
               }
@@ -1315,20 +1285,11 @@ const MasterScreen = () => {
           style={{
             height: '5%',
             alignItems: 'center',
+            justifyContent: 'flex-start',
           }}>
-          <TxtItalic
-            style={{
-              color:
-                words[index]['st' + lngscnd] === 0
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2
-                  ? Colors.backPrimary
-                  : Colors.surround,
-            }}>
+          <TxtButton style={{ color: Colors.surround }}>
             {words[index]['userlvl'] === 'l' ? '< >' : index + 1} / {range - 1}
-          </TxtItalic>
+          </TxtButton>
         </View>
       </View>
     </ScreenFrame>
