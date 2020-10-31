@@ -9,6 +9,7 @@ import {
   TxtNormal,
   TxtItalic,
   TxtLabel,
+  TxtButton,
 } from '../components/UI/Txt';
 import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -20,9 +21,9 @@ import { Ionicons } from '@expo/vector-icons';
 import ComboAround from '../components/UI/ComboAround';
 
 const StatisticsScreen = () => {
-  const [iconSize] = useState(25);
+  const [iconSize] = useState(20);
   const [textSize] = useState(Dimensions.get('window').width / 25);
-  const [buttonSize] = useState(Dimensions.get('window').width / 6);
+  const [buttonSize] = useState(Dimensions.get('window').width / 5);
   const [buttonBodyColor] = useState(Colors.surround);
   const [buttonTextColor] = useState(Colors.textPrimary);
 
@@ -59,7 +60,7 @@ const StatisticsScreen = () => {
   const data = useSelector((state) => state.words.words);
 
   const word = data.filter((word) => word['id' + lngscnd] === 2999);
-  const actLng = word[0][lngscnd];
+  const actLngScnd = word[0][lngscnd];
 
   useEffect(() => {
     counter();
@@ -287,19 +288,13 @@ const StatisticsScreen = () => {
             alignItems: 'center',
             justifyContent: 'space-evenly',
             margin: 3,
-            borderBottomColor: Colors.inactive,
-            borderTopColor: Colors.inactive,
-            borderBottomWidth: 1,
-            borderTopWidth: 1,
-            paddingBottom: 5,
-            paddingTop: 5,
           }}>
           <Ionicons
             name='ios-globe'
             size={iconSize}
             color={Colors.textPrimary}
           />
-          <TxtBold>{actLng}</TxtBold>
+          <TxtNormal>{actLngScnd}</TxtNormal>
         </View>
       </View>
       <View>
@@ -308,12 +303,7 @@ const StatisticsScreen = () => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
-            borderBottomColor: Colors.inactive,
-            borderTopColor: Colors.inactive,
-            borderBottomWidth: 1,
-            borderTopWidth: 1,
-            paddingBottom: 5,
-            paddingTop: 5,
+            margin: 3,
           }}>
           <Buttons.ButtonBox
             bodyStyle={{
@@ -680,6 +670,19 @@ const StatisticsScreen = () => {
             <TxtNormal style={{ fontSize: textSize }}>{countXTwo}</TxtNormal>
           </ComboAround>
         </View>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: 10,
+        }}>
+        <Ionicons name='md-time' size={iconSize} color={Colors.surround} />
+        <TxtButton>
+          {'   '}
+          {new Date().toDateString().slice(4)}
+        </TxtButton>
       </View>
     </ScreenFrame>
   );
