@@ -15,7 +15,7 @@ export const ButtonCircle = (props) => {
     <TouchableNativeFeedback
       background={
         Platform.Version >= 21
-          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.5)')
+          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
           : TouchableNativeFeedback.SelectableBackground()
       }
       delayPressIn={0}
@@ -34,7 +34,7 @@ export const ButtonBox = (props) => {
     <TouchableNativeFeedback
       background={
         Platform.Version >= 21
-          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.5)')
+          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
           : TouchableNativeFeedback.SelectableBackground()
       }
       delayPressIn={0}
