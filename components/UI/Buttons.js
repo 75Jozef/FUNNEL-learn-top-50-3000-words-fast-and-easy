@@ -3,33 +3,48 @@ import {
   StyleSheet,
   Dimensions,
   Text,
-  TouchableOpacity,
+  TouchableNativeFeedback,
   View,
+  Platform,
 } from 'react-native';
 import Fonts from './../../constants/Fonts';
 import Colors from './../../constants/Colors';
 
 export const ButtonCircle = (props) => {
   return (
-    <TouchableOpacity onPress={props.action}>
+    <TouchableNativeFeedback
+      background={
+        Platform.Version >= 21
+          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.5)')
+          : TouchableNativeFeedback.SelectableBackground()
+      }
+      delayPressIn={0}
+      onPress={props.action}>
       <View style={{ ...styles.buttonCircleBody, ...props.bodyStyle }}>
         <Text style={{ ...styles.buttonCircleInside, ...props.insideStyle }}>
           {props.children}
         </Text>
       </View>
-    </TouchableOpacity>
+    </TouchableNativeFeedback>
   );
 };
 
 export const ButtonBox = (props) => {
   return (
-    <TouchableOpacity onPress={props.action}>
+    <TouchableNativeFeedback
+      background={
+        Platform.Version >= 21
+          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.5)')
+          : TouchableNativeFeedback.SelectableBackground()
+      }
+      delayPressIn={0}
+      onPress={props.action}>
       <View style={{ ...styles.buttonBoxBody, ...props.bodyStyle }}>
         <Text style={{ ...styles.buttonBoxInside, ...props.insideStyle }}>
           {props.children}
         </Text>
       </View>
-    </TouchableOpacity>
+    </TouchableNativeFeedback>
   );
 };
 

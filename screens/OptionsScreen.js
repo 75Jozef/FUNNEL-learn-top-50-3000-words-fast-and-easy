@@ -43,6 +43,9 @@ const OptionsScreen = () => {
 
   useEffect(() => {});
 
+  const handleFirstLng = (props) => {};
+  const handleSecondLng = (props) => {};
+
   return (
     <ScreenFrame>
       <View>
@@ -54,7 +57,7 @@ const OptionsScreen = () => {
             marginTop: 30,
           }}>
           <View style={{ width: 80 }}>
-            <Buttons.ButtonCircle>
+            <Buttons.ButtonCircle action={handleFirstLng}>
               <Ionicons
                 name='ios-refresh'
                 size={iconSize}
@@ -83,7 +86,7 @@ const OptionsScreen = () => {
             marginTop: 30,
           }}>
           <View style={{ width: 80 }}>
-            <Buttons.ButtonCircle>
+            <Buttons.ButtonCircle action={handleSecondLng}>
               <Ionicons
                 name='ios-refresh'
                 size={iconSize}
