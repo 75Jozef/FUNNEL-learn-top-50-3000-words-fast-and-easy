@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   buttonBoxInside: {
     fontFamily: Fonts.normal,
-    color: Colors.surround,
+    color: Colors.inactive,
     fontSize: Dimensions.get('window').width / 33,
   },
 });

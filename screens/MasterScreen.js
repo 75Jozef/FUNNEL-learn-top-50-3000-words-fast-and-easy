@@ -66,11 +66,11 @@ const MasterScreen = () => {
   const [countXOne, setCountXOne] = useState();
   const [countXTwo, setCountXTwo] = useState();
 
-  const [sizeIconRewind, setSizeIconRewind] = useState(34);
-  const [sizeIconBack, setSizeIconBack] = useState(34);
-  const [sizeIconRandom, setSizeIconRandom] = useState(34);
-  const [sizeIconNext, setSizeIconNext] = useState(34);
-  const [sizeIconFastF, setSizeIconFastF] = useState(34);
+  const [sizeIconRewind, setSizeIconRewind] = useState(30);
+  const [sizeIconBack, setSizeIconBack] = useState(30);
+  const [sizeIconRandom, setSizeIconRandom] = useState(30);
+  const [sizeIconNext, setSizeIconNext] = useState(30);
+  const [sizeIconFastF, setSizeIconFastF] = useState(30);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -491,6 +491,7 @@ const MasterScreen = () => {
                 levelV
                   ? {
                       fontFamily: Fonts.bold,
+                      color: Colors.surround,
                     }
                   : null
               }>
@@ -521,7 +522,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'v' ? (
-                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
+                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -546,6 +547,7 @@ const MasterScreen = () => {
                 levelN
                   ? {
                       fontFamily: Fonts.bold,
+                      color: Colors.surround,
                     }
                   : null
               }>
@@ -576,7 +578,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'n' ? (
-                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
+                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -599,6 +601,7 @@ const MasterScreen = () => {
                 levelA
                   ? {
                       fontFamily: Fonts.bold,
+                      color: Colors.surround,
                     }
                   : null
               }>
@@ -629,7 +632,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'a' ? (
-                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
+                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -652,6 +655,7 @@ const MasterScreen = () => {
                 levelH
                   ? {
                       fontFamily: Fonts.bold,
+                      color: Colors.surround,
                     }
                   : null
               }>
@@ -682,7 +686,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'h' ? (
-                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
+                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -706,6 +710,7 @@ const MasterScreen = () => {
                 levelF
                   ? {
                       fontFamily: Fonts.bold,
+                      color: Colors.surround,
                     }
                   : null
               }>
@@ -736,7 +741,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'f' ? (
-                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
+                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -759,6 +764,7 @@ const MasterScreen = () => {
                 levelT
                   ? {
                       fontFamily: Fonts.bold,
+                      color: Colors.surround,
                     }
                   : null
               }>
@@ -789,7 +795,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 't' ? (
-                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
+                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -812,6 +818,7 @@ const MasterScreen = () => {
                 levelX
                   ? {
                       fontFamily: Fonts.bold,
+                      color: Colors.surround,
                     }
                   : null
               }>
@@ -842,7 +849,7 @@ const MasterScreen = () => {
                 }}
               />
               {words[index]['userlvl'] === 'x' ? (
-                <TxtButton style={{ marginTop: 5 }}>^</TxtButton>
+                <TxtButton style={{ marginTop: 3 }}>^</TxtButton>
               ) : null}
             </View>
           </ComboAround>
@@ -867,7 +874,7 @@ const MasterScreen = () => {
                 bodyStyle={
                   select === 0
                     ? {
-                        borderColor: Colors.surround,
+                        borderColor: Colors.base,
                         borderWidth: 1,
                       }
                     : { borderColor: Colors.inactive, borderWidth: 1 }
@@ -897,7 +904,7 @@ const MasterScreen = () => {
                 bodyStyle={
                   select === 1
                     ? {
-                        borderColor: Colors.surround,
+                        borderColor: Colors.base,
                         borderWidth: 1,
                       }
                     : { borderColor: Colors.inactive, borderWidth: 1 }
@@ -927,7 +934,7 @@ const MasterScreen = () => {
                 bodyStyle={
                   select === 2
                     ? {
-                        borderColor: Colors.surround,
+                        borderColor: Colors.base,
                         borderWidth: 1,
                       }
                     : { borderColor: Colors.inactive, borderWidth: 1 }
@@ -1011,7 +1018,7 @@ const MasterScreen = () => {
             bodyStyle={
               show === 0
                 ? {
-                    borderWidth: 2,
+                    borderWidth: 1,
                     borderRadius: 25,
                     borderColor: Colors.surround,
                   }
@@ -1020,7 +1027,8 @@ const MasterScreen = () => {
             insideStyle={
               show === 0
                 ? {
-                    color: Colors.textPrimary,
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
                   }
                 : null
             }>
@@ -1033,13 +1041,18 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 1
-                ? { borderWidth: 2, borderRadius: 25 }
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
               show === 1
                 ? {
-                    color: Colors.textPrimary,
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
                   }
                 : null
             }>
@@ -1051,13 +1064,18 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 2
-                ? { borderWidth: 2, borderRadius: 25 }
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
               show === 2
                 ? {
-                    color: Colors.textPrimary,
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
                   }
                 : null
             }>
@@ -1069,13 +1087,18 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 3
-                ? { borderWidth: 2, borderRadius: 25 }
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
               show === 3
                 ? {
-                    color: Colors.textPrimary,
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
                   }
                 : null
             }>
@@ -1087,13 +1110,18 @@ const MasterScreen = () => {
             }}
             bodyStyle={
               show === 4
-                ? { borderWidth: 2, borderRadius: 25 }
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                  }
                 : { backgroundColor: Colors.base }
             }
             insideStyle={
               show === 4
                 ? {
-                    color: Colors.textPrimary,
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
                   }
                 : null
             }>
