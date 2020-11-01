@@ -176,7 +176,7 @@ export default class Word {
     this.hu = hu;
     this.idel = idel;
     this.stel = stel;
-    this.rl = el;
+    this.el = el;
     this.idcs = idcs;
     this.stcs = stcs;
     this.cs = cs;
