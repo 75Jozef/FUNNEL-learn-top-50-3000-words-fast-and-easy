@@ -105,8 +105,6 @@ const OptionsScreen = () => {
     'bg',
   ];
 
-  console.log(wordFrst[0]['cs']);
-
   const handleFirstLng = (props) => {
     if (selectSecondLanguage) {
       setSelectSecondLanguage(false);

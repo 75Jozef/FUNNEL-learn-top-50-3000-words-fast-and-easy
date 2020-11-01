@@ -4,8 +4,7 @@ import {
   Dimensions,
   TouchableNativeFeedback,
   Platform,
-  ScrollView,
-  SafeAreaView,
+  FlatList,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Colors from '../constants/Colors';
@@ -544,44 +543,44 @@ const MasterScreen = () => {
             marginBottom: 10,
             marginTop: 14,
           }}>
-          <ScrollView>
-            {words.map((item, ind) => {
+          <FlatList
+            data={words}
+            keyExtractor={(item) => item['id' + lngfrst]}
+            renderItem={({ item, ind }) => {
               return (
-                <View key={ind}>
-                  <Buttons.ButtonBox
-                    bodyStyle={
-                      words[index][lngfrst] === item[lngfrst]
-                        ? {
-                            width: Dimensions.get('window').width / 1.5,
-                            height: Dimensions.get('window').height / 18,
-                            borderColor: Colors.base,
-                            backgroundColor: Colors.inactive,
-                            padding: 3,
-                          }
-                        : {
-                            width: Dimensions.get('window').width / 1.5,
-                            height: Dimensions.get('window').height / 18,
-                            borderColor: Colors.base,
-                            padding: 3,
-                          }
-                    }
-                    action={() => {
-                      setIndex(ind);
-                      setWordSelector(false);
+                <Buttons.ButtonBox
+                  bodyStyle={
+                    words[index][lngfrst] === item[lngfrst]
+                      ? {
+                          width: Dimensions.get('window').width / 1.5,
+                          height: Dimensions.get('window').height / 18,
+                          borderColor: Colors.base,
+                          backgroundColor: Colors.inactive,
+                          padding: 3,
+                        }
+                      : {
+                          width: Dimensions.get('window').width / 1.5,
+                          height: Dimensions.get('window').height / 18,
+                          borderColor: Colors.base,
+                          padding: 3,
+                        }
+                  }
+                  action={() => {
+                    setIndex(ind);
+                    setWordSelector(false);
+                  }}>
+                  <TxtLabel
+                    style={{
+                      marginTop: 5,
+                      color: Colors.surround,
+                      fontSize: Dimensions.get('window').height / 25,
                     }}>
-                    <TxtLabel
-                      style={{
-                        marginTop: 5,
-                        color: Colors.surround,
-                        fontSize: Dimensions.get('window').height / 25,
-                      }}>
-                      {item[lngfrst]}
-                    </TxtLabel>
-                  </Buttons.ButtonBox>
-                </View>
+                    {item[lngfrst]}
+                  </TxtLabel>
+                </Buttons.ButtonBox>
               );
-            })}
-          </ScrollView>
+            }}
+          />
         </View>
       </>
     );
