@@ -1,51 +1,7 @@
 //english*
-let languages = [
-  'en',
-  'it',
-  'pa',
-  'jv',
-  'th',
-  'pl',
-  'fa',
-  'ur',
-  'uk',
-  'ro',
-  'nl',
-  'sr',
-  'hr',
-  'hu',
-  'el',
-  'cs',
-  'sv',
-  'be',
-  'fi',
-  'da',
-  'cn',
-  'es',
-  'ar',
-  'pt',
-  'id',
-  'ms',
-  'fr',
-  'ru',
-  'de',
-  'ja',
-  'hi',
-  'bn',
-  'tr',
-  'mr',
-  'ko',
-  'vi',
-  'ta',
-  'sk',
-  'af',
-  'lv',
-  'eo',
-  'et',
-  'bg',
-];
 
 export const en = {
+  Language: 'English',
   About: {
     header: 'About header',
     title: 'About title',
@@ -82,6 +38,7 @@ export const en = {
 
 //slovak
 export const sk = {
+  Language: 'Slovenský jazyk',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -119,6 +76,7 @@ export const sk = {
 
 //italiano
 export const it = {
+  Language: 'Italiano',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -156,6 +114,7 @@ export const it = {
 
 //Punjabi
 export const pa = {
+  Language: 'ਪੰਜਾਬ',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -193,6 +152,7 @@ export const pa = {
 
 //Javanese
 export const jv = {
+  Language: 'Basa Jawa',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -230,6 +190,7 @@ export const jv = {
 
 //Thai
 export const th = {
+  Language: 'ไทย',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -267,6 +228,7 @@ export const th = {
 
 //Polish
 export const pl = {
+  Language: 'polszczyzna',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -304,6 +266,7 @@ export const pl = {
 
 //Persian
 export const fa = {
+  Language: 'فارسی',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -341,6 +304,7 @@ export const fa = {
 
 //Urdu
 export const ur = {
+  Language: 'اردو',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -378,6 +342,7 @@ export const ur = {
 
 //Ukrainian
 export const uk = {
+  Language: 'Українська',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -415,6 +380,7 @@ export const uk = {
 
 //Romanian
 export const ro = {
+  Lanugage: 'Română',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -452,6 +418,7 @@ export const ro = {
 
 //Dutch
 export const nl = {
+  Language: 'Nederlands',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -489,6 +456,7 @@ export const nl = {
 
 //Serbian
 export const sr = {
+  Language: 'српски језик',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -526,6 +494,7 @@ export const sr = {
 
 //Croatian
 export const hr = {
+  Language: 'hrvatski jezik',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -563,6 +532,7 @@ export const hr = {
 
 //Hungarian
 export const hu = {
+  Language: 'magyar',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -600,6 +570,7 @@ export const hu = {
 
 //Greek
 export const el = {
+  Language: 'ελληνικά',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -637,6 +608,7 @@ export const el = {
 
 //Czech
 export const cs = {
+  Language: 'čeština',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -674,6 +646,7 @@ export const cs = {
 
 //Swedish
 export const sv = {
+  Language: 'Svenska',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -711,6 +684,7 @@ export const sv = {
 
 //Belarusian
 export const be = {
+  Language: 'беларуская мова',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -748,6 +722,7 @@ export const be = {
 
 //Finnish
 export const fi = {
+  Language: 'suomen kieli',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -785,6 +760,7 @@ export const fi = {
 
 //Danish
 export const da = {
+  Language: 'dansk',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -822,6 +798,7 @@ export const da = {
 
 //Chinese Simpl
 export const zh = {
+  Language: '汉字',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -859,6 +836,7 @@ export const zh = {
 
 //Spanish
 export const es = {
+  Language: 'Español',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -896,6 +874,7 @@ export const es = {
 
 //Arabic
 export const ar = {
+  Language: 'العربية',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -933,6 +912,7 @@ export const ar = {
 
 //Portuguese_Brasil
 export const pt = {
+  Language: 'Português',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -970,6 +950,7 @@ export const pt = {
 
 //Indonesian
 export const id = {
+  Language: 'Bahasa Indonesia',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1007,6 +988,7 @@ export const id = {
 
 //Malay
 export const ms = {
+  Language: 'Bahasa Melayu',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1044,6 +1026,7 @@ export const ms = {
 
 //French
 export const fr = {
+  Language: 'français',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1081,6 +1064,7 @@ export const fr = {
 
 //German
 export const de = {
+  Language: 'Deutsch',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1118,6 +1102,7 @@ export const de = {
 
 //Japanese
 export const ja = {
+  Language: '日本語',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1155,6 +1140,7 @@ export const ja = {
 
 //Hindi
 export const hi = {
+  Language: 'हिन्दी, हिंदी',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1192,6 +1178,7 @@ export const hi = {
 
 //Bengali
 export const bn = {
+  Language: 'বাংলা',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1229,6 +1216,7 @@ export const bn = {
 
 //Turkish
 export const tr = {
+  Language: 'Türkçe',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1266,6 +1254,7 @@ export const tr = {
 
 //Marathi
 export const mr = {
+  Language: 'मराठी',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1303,6 +1292,7 @@ export const mr = {
 
 //Korean
 export const ko = {
+  Language: '한국어',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1340,6 +1330,7 @@ export const ko = {
 
 //Vietnamese
 export const vi = {
+  Language: 'Tiếng Việt',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1377,6 +1368,7 @@ export const vi = {
 
 //Tamil
 export const ta = {
+  Language: 'தமிழ்',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1414,6 +1406,7 @@ export const ta = {
 
 //Africaans
 export const af = {
+  Language: 'Africaans',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1451,6 +1444,7 @@ export const af = {
 
 //Latvian
 export const lv = {
+  Language: 'latviešu valoda',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1488,6 +1482,7 @@ export const lv = {
 
 //Esperanto
 export const eo = {
+  Language: 'Esperanto',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1525,6 +1520,7 @@ export const eo = {
 
 //Estonian
 export const et = {
+  Language: 'eesti keel',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -1562,6 +1558,45 @@ export const et = {
 
 //Bulgarian
 export const bg = {
+  Language: 'български език',
+  About: {
+    header: 'O appke hlavička',
+    title: 'O appke nadpis',
+  },
+  Auth: {
+    header: 'Auth hlavička',
+    title: 'Auth nadpis',
+  },
+
+  Instructions: {
+    header: 'Instructions hlavička',
+    title: 'Instructions nadpis',
+  },
+  Master: {
+    header: 'Majster screen',
+    title: 'Majster nadpis',
+    noRange: 'Najprv vyber rozsah...',
+    range: 'Rozsah',
+    index: 'Číslo',
+    show: 'Obtiažnosť zobrazenia',
+  },
+  Options: {
+    header: 'Options hlavička',
+    title: 'Options nadpis',
+  },
+  Statistics: {
+    header: 'Statistics hlavička',
+    title: 'Stats nadpis',
+  },
+  Welcome: {
+    header: 'Welcome my friend',
+    title: 'Welcome nadpis',
+  },
+};
+
+//Russian
+export const ru = {
+  Language: 'русский',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',

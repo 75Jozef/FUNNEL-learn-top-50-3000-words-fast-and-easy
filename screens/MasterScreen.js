@@ -143,6 +143,8 @@ const MasterScreen = () => {
     selectOne,
     selectTwo,
     select,
+    lngfrst,
+    lngscnd,
   ]);
 
   const handleIndex = (jump) => {
@@ -1318,6 +1320,7 @@ const MasterScreen = () => {
 export const screenOptions = (navData) => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const txtfrst = Languages[lngfrst].Master;
+
   return {
     headerTitle: `${txtfrst.header}`,
     headerLeft: () => (
