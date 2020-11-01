@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Dimensions, Text } from 'react-native';
+import { View, Dimensions, Text, FlatList } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
 import Colors from '../constants/Colors';
@@ -21,8 +21,7 @@ import * as Languages from '../data/languages';
 import * as Buttons from './../components/UI/Buttons';
 import { Ionicons } from '@expo/vector-icons';
 import ComboAround from '../components/UI/ComboAround';
-import { FlatList } from 'react-native-gesture-handler';
-import { set } from 'react-native-reanimated';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -31,7 +30,7 @@ const OptionsScreen = () => {
   const txtscnd = Languages[lngscnd].Options;
 
   const [iconSize] = useState(20);
-  const [textSize] = useState(Dimensions.get('window').width / 35);
+  const [textSize] = useState(Dimensions.get('window').width / 32);
   const [buttonSize] = useState(Dimensions.get('window').width / 5);
   const [buttonBodyColor] = useState(Colors.surround);
   const [buttonTextColor] = useState(Colors.textPrimary);
@@ -121,21 +120,24 @@ const OptionsScreen = () => {
     return (
       <View
         style={{
+          marginTop: 20,
           flexWrap: 'wrap',
-          borderWidth: 1,
-          borderColor: 'white',
-          alignSelf: 'center',
         }}>
-        {languages.map((lng) => {
+        {languages.map((lng, index) => {
           return (
-            <Buttons.ButtonBox
-              bodyStyle={{
-                width: Dimensions.get('window').width / 4,
-                borderColor: Colors.inactive,
-              }}
-              action={() => {}}>
-              <TxtButton>{wordFrst[0][lng]}</TxtButton>;
-            </Buttons.ButtonBox>
+            <View key={index}>
+              <Buttons.ButtonBox
+                bodyStyle={{
+                  width: Dimensions.get('window').width / 5,
+                  height: Dimensions.get('window').height / 20,
+                  borderColor: Colors.inactive,
+                }}
+                action={() => {}}>
+                <TxtButton style={{ fontSize: textSize }}>
+                  {wordFrst[0][lng]}
+                </TxtButton>
+              </Buttons.ButtonBox>
+            </View>
           );
         })}
       </View>
@@ -143,15 +145,34 @@ const OptionsScreen = () => {
   };
   const SelectSecondLanguage = (props) => {
     return (
-      <View>
-        <TxtBold>second</TxtBold>
+      <View
+        style={{
+          marginTop: 20,
+          flexWrap: 'wrap',
+        }}>
+        {languages.map((lng, index) => {
+          return (
+            <View key={index}>
+              <Buttons.ButtonBox
+                bodyStyle={{
+                  width: Dimensions.get('window').width / 5,
+                  height: Dimensions.get('window').height / 20,
+                  borderColor: Colors.inactive,
+                }}
+                action={() => {}}>
+                <TxtButton style={{ fontSize: textSize }}>
+                  {wordFrst[0][lng]}
+                </TxtButton>
+              </Buttons.ButtonBox>
+            </View>
+          );
+        })}
       </View>
     );
   };
-
   return (
     <ScreenFrame>
-      <View style={{ height: '20%' }}>
+      <View>
         <View
           style={{
             flexDirection: 'row',
@@ -214,18 +235,21 @@ const OptionsScreen = () => {
       </View>
       <View
         style={{
-          marginTop: 3,
-          marginLeft: 5,
-          marginRight: 5,
-          flexWrap: 'wrap',
           alignContent: 'center',
-          height: '70%',
+          alignItems: 'center',
+          width: '95%',
+          height: '98%',
         }}>
-        {selectFirstLanguage ? <SelectFirstLanguage /> : null}
-        {selectSecondLanguage ? <SelectSecondLanguage /> : null}
-      </View>
-      <View style={{ height: '10%' }}>
-        <Buttons.ButtonBox>extra</Buttons.ButtonBox>
+        <View
+          style={{
+            alignContent: 'space-around',
+            marginTop: 3,
+            flexWrap: 'wrap',
+            height: '80%',
+          }}>
+          {selectFirstLanguage ? <SelectFirstLanguage /> : null}
+          {selectSecondLanguage ? <SelectSecondLanguage /> : null}
+        </View>
       </View>
     </ScreenFrame>
   );
