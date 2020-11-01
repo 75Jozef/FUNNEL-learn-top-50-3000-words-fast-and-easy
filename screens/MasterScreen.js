@@ -566,7 +566,7 @@ const MasterScreen = () => {
                         }
                   }
                   action={() => {
-                    setIndex(ind);
+                    setSelectorIndex(item[lngfrst]);
                     setWordSelector(false);
                   }}>
                   <TxtLabel
@@ -584,6 +584,11 @@ const MasterScreen = () => {
         </View>
       </>
     );
+  };
+
+  const setSelectorIndex = (props) => {
+    let newIndex = words.findIndex((word) => word[lngfrst] === props);
+    setIndex(newIndex);
   };
 
   //* render **************************************
