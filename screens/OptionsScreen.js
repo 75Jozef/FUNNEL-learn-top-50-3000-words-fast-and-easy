@@ -105,8 +105,6 @@ const OptionsScreen = () => {
     'bg',
   ];
 
-  useEffect(() => {}, []);
-
   const handleFirstLng = (props) => {
     if (selectSecondLanguage) {
       setSelectSecondLanguage(false);
