@@ -216,7 +216,9 @@ const OptionsScreen = () => {
               <Ionicons
                 name='ios-body'
                 size={iconSize}
-                color={Colors.textPrimary}
+                color={
+                  selectFirstLanguage ? Colors.textPrimary : Colors.inactive
+                }
               />
             </Buttons.ButtonCircle>
           </View>
@@ -254,7 +256,9 @@ const OptionsScreen = () => {
               <Ionicons
                 name='ios-globe'
                 size={iconSize}
-                color={Colors.textPrimary}
+                color={
+                  selectSecondLanguage ? Colors.textPrimary : Colors.inactive
+                }
               />
             </Buttons.ButtonCircle>
           </View>
