@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Button, Dimensions } from 'react-native';
+import {
+  View,
+  Dimensions,
+  TouchableNativeFeedback,
+  Platform,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Colors from '../constants/Colors';
 import {
@@ -71,6 +78,8 @@ const MasterScreen = () => {
   const [sizeIconRandom, setSizeIconRandom] = useState(30);
   const [sizeIconNext, setSizeIconNext] = useState(30);
   const [sizeIconFastF, setSizeIconFastF] = useState(30);
+
+  const [wordSelector, setWordSelector] = useState(false);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -454,6 +463,128 @@ const MasterScreen = () => {
         }
       }
     }
+  };
+
+  const WordShowWindow = (props) => {
+    return (
+      <>
+        <View
+          style={{
+            height: '20%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <TxtNormal>
+            {range > 0 ? (
+              <WordShow
+                word={
+                  lngscnd !== 'ar' || lngscnd !== 'fa' || lngscnd !== 'ur'
+                    ? words[index][lngscnd]
+                    : words[index][lngscnd].split('').reverse().join('')
+                }
+                show={show}
+                key={index}
+                color={words[index]['st' + lngscnd]}
+              />
+            ) : (
+              <TxtItalic>{txtscnd.noRange}</TxtItalic>
+            )}
+          </TxtNormal>
+        </View>
+        <TouchableNativeFeedback
+          background={
+            Platform.Version >= 21
+              ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
+              : TouchableNativeFeedback.SelectableBackground()
+          }
+          delayPressIn={0}
+          onPress={() => setWordSelector(true)}>
+          <View
+            style={{
+              width: '80%',
+              height: '10%',
+              justifyContent: 'center',
+              alignSelf: 'center',
+              marginBottom: 20,
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <Ionicons name='ios-list' size={30} color={Colors.inactive} />
+              <TxtLabel
+                style={{
+                  color: Colors.surround,
+                  fontSize: Dimensions.get('window').height / 25,
+                }}>
+                {range > 0 ? (
+                  words[index][lngfrst]
+                ) : (
+                  <TxtItalic>{txtfrst.noRange}</TxtItalic>
+                )}
+              </TxtLabel>
+              <Ionicons name='ios-list' size={30} color={Colors.inactive} />
+            </View>
+          </View>
+        </TouchableNativeFeedback>
+      </>
+    );
+  };
+
+  const WordSelectorWindow = (props) => {
+    return (
+      <>
+        <View
+          style={{
+            height: '30%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: 10,
+            marginTop: 14,
+          }}>
+          <ScrollView>
+            {words.map((item, ind) => {
+              return (
+                <View key={ind}>
+                  <Buttons.ButtonBox
+                    bodyStyle={
+                      words[index][lngfrst] === item[lngfrst]
+                        ? {
+                            width: Dimensions.get('window').width / 1.5,
+                            height: Dimensions.get('window').height / 18,
+                            borderColor: Colors.base,
+                            backgroundColor: Colors.inactive,
+                            padding: 3,
+                          }
+                        : {
+                            width: Dimensions.get('window').width / 1.5,
+                            height: Dimensions.get('window').height / 18,
+                            borderColor: Colors.base,
+                            padding: 3,
+                          }
+                    }
+                    action={() => {
+                      setIndex(ind);
+                      setWordSelector(false);
+                    }}>
+                    <TxtLabel
+                      style={{
+                        marginTop: 5,
+                        color: Colors.surround,
+                        fontSize: Dimensions.get('window').height / 25,
+                      }}>
+                      {item[lngfrst]}
+                    </TxtLabel>
+                  </Buttons.ButtonBox>
+                </View>
+              );
+            })}
+          </ScrollView>
+        </View>
+      </>
+    );
   };
 
   //* render **************************************
@@ -957,49 +1088,8 @@ const MasterScreen = () => {
 
       {/* ***********************************WORD SHOW */}
 
-      <View
-        style={{
-          height: '20%',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <TxtNormal>
-          {range > 0 ? (
-            <WordShow
-              word={
-                lngscnd !== 'ar' || lngscnd !== 'fa' || lngscnd !== 'ur'
-                  ? words[index][lngscnd]
-                  : words[index][lngscnd].split('').reverse().join('')
-              }
-              show={show}
-              key={index}
-              color={words[index]['st' + lngscnd]}
-            />
-          ) : (
-            <TxtItalic>{txtscnd.noRange}</TxtItalic>
-          )}
-        </TxtNormal>
-      </View>
-      <View
-        style={{
-          height: '10%',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: 20,
-        }}>
-        <TxtLabel
-          style={{
-            marginTop: 5,
-            color: Colors.surround,
-            fontSize: Dimensions.get('window').height / 25,
-          }}>
-          {range > 0 ? (
-            words[index][lngfrst]
-          ) : (
-            <TxtItalic>{txtfrst.noRange}</TxtItalic>
-          )}
-        </TxtLabel>
-      </View>
+      {wordSelector ? <WordSelectorWindow /> : <WordShowWindow />}
+
       {/* ***********************************************************************SHOW */}
 
       <View
