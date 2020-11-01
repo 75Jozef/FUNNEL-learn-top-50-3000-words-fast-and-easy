@@ -571,7 +571,7 @@ const MasterScreen = () => {
                   }}>
                   <TxtLabel
                     style={{
-                      marginTop: 5,
+                      paddingTop: 3,
                       color: Colors.surround,
                       fontSize: Dimensions.get('window').height / 25,
                     }}>
