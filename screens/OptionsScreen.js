@@ -15,13 +15,13 @@ import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as Languages from '../data/languages';
 
 import * as Buttons from './../components/UI/Buttons';
 import { Ionicons } from '@expo/vector-icons';
-import ComboAround from '../components/UI/ComboAround';
-import { ScrollView } from 'react-native-gesture-handler';
+
+import * as lngActions from '../store/actions/lang';
 
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -34,7 +34,7 @@ const OptionsScreen = () => {
   const [buttonSize] = useState(Dimensions.get('window').width / 5);
   const [buttonBodyColor] = useState(Colors.surround);
   const [buttonTextColor] = useState(Colors.textPrimary);
-  const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
+  const [selectFirstLanguage, setSelectFirstLanguage] = useState(true);
   const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
 
   const data = useSelector((state) => state.words.words);
@@ -44,6 +44,8 @@ const OptionsScreen = () => {
   const actLngFrst = wordScnd[0][lngfrst];
 
   const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
+
+  const dispatch = useDispatch();
 
   let languages = [
     'en',
@@ -98,9 +100,6 @@ const OptionsScreen = () => {
       setSelectSecondLanguage(false);
       setSelectFirstLanguage(true);
       return;
-    } else if (selectFirstLanguage) {
-      setSelectFirstLanguage(false);
-      return;
     }
     setSelectFirstLanguage(true);
   };
@@ -108,9 +107,6 @@ const OptionsScreen = () => {
     if (selectFirstLanguage) {
       setSelectFirstLanguage(false);
       setSelectSecondLanguage(true);
-      return;
-    } else if (selectSecondLanguage) {
-      setSelectSecondLanguage(false);
       return;
     }
     setSelectSecondLanguage(true);
@@ -127,12 +123,23 @@ const OptionsScreen = () => {
           return (
             <View key={index}>
               <Buttons.ButtonBox
-                bodyStyle={{
-                  width: Dimensions.get('window').width / 5,
-                  height: Dimensions.get('window').height / 20,
-                  borderColor: Colors.inactive,
-                }}
-                action={() => {}}>
+                bodyStyle={
+                  lng === lngfrst
+                    ? {
+                        width: Dimensions.get('window').width / 5,
+                        height: Dimensions.get('window').height / 19,
+                        borderColor: Colors.textPrimary,
+                        backgroundColor: Colors.inactive,
+                        padding: 3,
+                      }
+                    : {
+                        width: Dimensions.get('window').width / 5,
+                        height: Dimensions.get('window').height / 19,
+                        borderColor: Colors.inactive,
+                        padding: 3,
+                      }
+                }
+                action={() => setLanguageFirst(lng)}>
                 <TxtButton style={{ fontSize: textSize }}>
                   {wordFrst[0][lng]}
                 </TxtButton>
@@ -154,12 +161,23 @@ const OptionsScreen = () => {
           return (
             <View key={index}>
               <Buttons.ButtonBox
-                bodyStyle={{
-                  width: Dimensions.get('window').width / 5,
-                  height: Dimensions.get('window').height / 20,
-                  borderColor: Colors.inactive,
-                }}
-                action={() => {}}>
+                bodyStyle={
+                  lng === lngscnd
+                    ? {
+                        width: Dimensions.get('window').width / 5,
+                        height: Dimensions.get('window').height / 19,
+                        borderColor: Colors.textPrimary,
+                        backgroundColor: Colors.inactive,
+                        padding: 3,
+                      }
+                    : {
+                        width: Dimensions.get('window').width / 5,
+                        height: Dimensions.get('window').height / 19,
+                        borderColor: Colors.inactive,
+                        padding: 3,
+                      }
+                }
+                action={() => setLanguageSecond(lng)}>
                 <TxtButton style={{ fontSize: textSize }}>
                   {wordFrst[0][lng]}
                 </TxtButton>
@@ -170,6 +188,14 @@ const OptionsScreen = () => {
       </View>
     );
   };
+
+  const setLanguageFirst = (props) => {
+    dispatch(lngActions.setLngFrst(props));
+  };
+  const setLanguageSecond = (props) => {
+    dispatch(lngActions.setLngScnd(props));
+  };
+
   return (
     <ScreenFrame>
       <View>
@@ -180,27 +206,21 @@ const OptionsScreen = () => {
             marginLeft: 30,
             marginTop: 5,
           }}>
-          <View style={{ width: 80 }}>
+          <View>
             <Buttons.ButtonCircle action={handleFirstLng}>
               <Ionicons
-                name='ios-refresh'
+                name='ios-body'
                 size={iconSize}
                 color={Colors.textPrimary}
               />
             </Buttons.ButtonCircle>
           </View>
 
-          <Ionicons
-            name='ios-body'
-            size={iconSize}
-            color={Colors.textPrimary}
-          />
-
           <View style={{ marginLeft: 20 }}>
             <TxtNormal
               style={
                 selectFirstLanguage
-                  ? { color: Colors.accent }
+                  ? { color: Colors.textPrimary }
                   : { color: Colors.inactive }
               }>
               {actLngFrst}
@@ -214,22 +234,25 @@ const OptionsScreen = () => {
             marginLeft: 30,
             marginTop: 10,
           }}>
-          <View style={{ width: 80 }}>
+          <View>
             <Buttons.ButtonCircle action={handleSecondLng}>
               <Ionicons
-                name='ios-refresh'
+                name='ios-globe'
                 size={iconSize}
                 color={Colors.textPrimary}
               />
             </Buttons.ButtonCircle>
           </View>
-          <Ionicons
-            name='ios-globe'
-            size={iconSize}
-            color={Colors.textPrimary}
-          />
+
           <View style={{ marginLeft: 20 }}>
-            <TxtNormal>{actLngScnd}</TxtNormal>
+            <TxtNormal
+              style={
+                selectSecondLanguage
+                  ? { color: Colors.textPrimary }
+                  : { color: Colors.inactive }
+              }>
+              {actLngScnd}
+            </TxtNormal>
           </View>
         </View>
       </View>

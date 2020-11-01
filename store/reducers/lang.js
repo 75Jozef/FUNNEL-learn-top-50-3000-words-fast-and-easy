@@ -1,4 +1,5 @@
-import { LANG } from '../actions/lang';
+import { SET_LNG_FRST } from '../actions/lang';
+import { SET_LNG_SCND } from '../actions/lang';
 
 import { NativeModules, Platform } from 'react-native';
 
@@ -24,6 +25,23 @@ const initialState = {
 };
 
 const langReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_LNG_FRST: {
+      const lngfrst = action.lngfrst;
+      return {
+        ...state,
+        lngfrst: lngfrst,
+      };
+    }
+    case SET_LNG_SCND: {
+      const lngscnd = action.lngscnd;
+      return {
+        ...state,
+        lngscnd: lngscnd,
+      };
+    }
+  }
+
   return state;
 };
 
