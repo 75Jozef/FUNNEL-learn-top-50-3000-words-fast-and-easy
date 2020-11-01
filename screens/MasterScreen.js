@@ -966,7 +966,11 @@ const MasterScreen = () => {
         <TxtNormal>
           {range > 0 ? (
             <WordShow
-              word={words[index][lngscnd]}
+              word={
+                lngscnd !== 'ar' || lngscnd !== 'fa' || lngscnd !== 'ur'
+                  ? words[index][lngscnd]
+                  : words[index][lngscnd].split('').reverse().join('')
+              }
               show={show}
               key={index}
               color={words[index]['st' + lngscnd]}
@@ -1319,10 +1323,12 @@ const MasterScreen = () => {
 
 export const screenOptions = (navData) => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
-  const txtfrst = Languages[lngfrst].Master;
+  const lngscnd = useSelector((state) => state.language.lngscnd);
+  const langfrst = Languages[lngfrst]['Language'].slice(0, 10);
+  const langscnd = Languages[lngscnd]['Language'].slice(0, 10);
 
   return {
-    headerTitle: `${txtfrst.header}`,
+    headerTitle: `${langfrst} > ${langscnd}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

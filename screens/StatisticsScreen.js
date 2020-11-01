@@ -62,6 +62,9 @@ const StatisticsScreen = () => {
   const word = data.filter((word) => word['id' + lngscnd] === 2999);
   const actLngScnd = word[0][lngscnd];
 
+  const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
+  const actLngScndEng = wordEng[0][lngscnd];
+
   useEffect(() => {
     counter();
   });
@@ -294,7 +297,10 @@ const StatisticsScreen = () => {
             size={iconSize}
             color={Colors.textPrimary}
           />
-          <TxtNormal>{actLngScnd}</TxtNormal>
+          <ComboAround>
+            <TxtNormal>{actLngScnd}</TxtNormal>
+            <TxtNormal>({actLngScndEng})</TxtNormal>
+          </ComboAround>
         </View>
       </View>
       <View>

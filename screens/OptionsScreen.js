@@ -22,6 +22,7 @@ import * as Buttons from './../components/UI/Buttons';
 import { Ionicons } from '@expo/vector-icons';
 
 import * as lngActions from '../store/actions/lang';
+import ComboAround from '../components/UI/ComboAround';
 
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -42,6 +43,10 @@ const OptionsScreen = () => {
   const wordScnd = data.filter((word) => word['id' + lngscnd] === 2999);
   const actLngScnd = wordScnd[0][lngscnd];
   const actLngFrst = wordScnd[0][lngfrst];
+
+  const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
+  const actLngScndEng = wordEng[0][lngscnd];
+  const actLngFrstEng = wordEng[0][lngfrst];
 
   const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
 
@@ -217,14 +222,24 @@ const OptionsScreen = () => {
           </View>
 
           <View style={{ marginLeft: 20 }}>
-            <TxtNormal
-              style={
-                selectFirstLanguage
-                  ? { color: Colors.textPrimary }
-                  : { color: Colors.inactive }
-              }>
-              {actLngFrst}
-            </TxtNormal>
+            <ComboAround>
+              <TxtNormal
+                style={
+                  selectFirstLanguage
+                    ? { color: Colors.textPrimary }
+                    : { color: Colors.inactive }
+                }>
+                {actLngFrst}
+              </TxtNormal>
+              <TxtNormal
+                style={
+                  selectFirstLanguage
+                    ? { color: Colors.textPrimary }
+                    : { color: Colors.inactive }
+                }>
+                ({actLngFrstEng})
+              </TxtNormal>
+            </ComboAround>
           </View>
         </View>
         <View
@@ -245,14 +260,24 @@ const OptionsScreen = () => {
           </View>
 
           <View style={{ marginLeft: 20 }}>
-            <TxtNormal
-              style={
-                selectSecondLanguage
-                  ? { color: Colors.textPrimary }
-                  : { color: Colors.inactive }
-              }>
-              {actLngScnd}
-            </TxtNormal>
+            <ComboAround>
+              <TxtNormal
+                style={
+                  selectSecondLanguage
+                    ? { color: Colors.textPrimary }
+                    : { color: Colors.inactive }
+                }>
+                {actLngScnd}
+              </TxtNormal>
+              <TxtNormal
+                style={
+                  selectSecondLanguage
+                    ? { color: Colors.textPrimary }
+                    : { color: Colors.inactive }
+                }>
+                ({actLngScndEng})
+              </TxtNormal>
+            </ComboAround>
           </View>
         </View>
       </View>

@@ -136,3 +136,5 @@ const styles = StyleSheet.create({
 });
 
 export default WordShow;
+
+// fa, ur, ar

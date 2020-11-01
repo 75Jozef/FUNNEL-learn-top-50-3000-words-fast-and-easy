@@ -266,7 +266,7 @@ export const SideNavigator = () => {
         component={OptionsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-options'} size={30} color={Colors.surround} />
+            <Ionicons name={'ios-globe'} size={30} color={Colors.surround} />
           ),
         }}
       />
