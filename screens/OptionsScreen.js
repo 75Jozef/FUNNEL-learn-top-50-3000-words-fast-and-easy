@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Dimensions, Text, FlatList } from 'react-native';
+import {
+  View,
+  Dimensions,
+  TouchableNativeFeedback,
+  Platform,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
 import Colors from '../constants/Colors';
@@ -31,7 +38,7 @@ const OptionsScreen = () => {
   const txtscnd = Languages[lngscnd].Options;
 
   const [iconSize] = useState(20);
-  const [textSize] = useState(Dimensions.get('window').width / 32);
+  const [textSize] = useState(Dimensions.get('window').width / 22);
   const [buttonSize] = useState(Dimensions.get('window').width / 5);
   const [buttonBodyColor] = useState(Colors.surround);
   const [buttonTextColor] = useState(Colors.textPrimary);
@@ -119,11 +126,7 @@ const OptionsScreen = () => {
 
   const SelectFirstLanguage = (props) => {
     return (
-      <View
-        style={{
-          marginTop: 20,
-          flexWrap: 'wrap',
-        }}>
+      <ScrollView>
         {languages.map((lng, index) => {
           return (
             <View key={index}>
@@ -131,15 +134,15 @@ const OptionsScreen = () => {
                 bodyStyle={
                   lng === lngfrst
                     ? {
-                        width: Dimensions.get('window').width / 5,
-                        height: Dimensions.get('window').height / 19,
+                        width: Dimensions.get('window').width / 1.5,
+                        height: Dimensions.get('window').height / 10,
                         borderColor: Colors.textPrimary,
                         backgroundColor: Colors.inactive,
                         padding: 3,
                       }
                     : {
-                        width: Dimensions.get('window').width / 5,
-                        height: Dimensions.get('window').height / 19,
+                        width: Dimensions.get('window').width / 1.5,
+                        height: Dimensions.get('window').height / 10,
                         borderColor: Colors.inactive,
                         padding: 3,
                       }
@@ -152,16 +155,12 @@ const OptionsScreen = () => {
             </View>
           );
         })}
-      </View>
+      </ScrollView>
     );
   };
   const SelectSecondLanguage = (props) => {
     return (
-      <View
-        style={{
-          marginTop: 20,
-          flexWrap: 'wrap',
-        }}>
+      <ScrollView>
         {languages.map((lng, index) => {
           return (
             <View key={index}>
@@ -169,15 +168,15 @@ const OptionsScreen = () => {
                 bodyStyle={
                   lng === lngscnd
                     ? {
-                        width: Dimensions.get('window').width / 5,
-                        height: Dimensions.get('window').height / 19,
+                        width: Dimensions.get('window').width / 1.5,
+                        height: Dimensions.get('window').height / 10,
                         borderColor: Colors.textPrimary,
                         backgroundColor: Colors.inactive,
                         padding: 3,
                       }
                     : {
-                        width: Dimensions.get('window').width / 5,
-                        height: Dimensions.get('window').height / 19,
+                        width: Dimensions.get('window').width / 1.5,
+                        height: Dimensions.get('window').height / 10,
                         borderColor: Colors.inactive,
                         padding: 3,
                       }
@@ -190,7 +189,7 @@ const OptionsScreen = () => {
             </View>
           );
         })}
-      </View>
+      </ScrollView>
     );
   };
 
@@ -204,105 +203,116 @@ const OptionsScreen = () => {
   return (
     <ScreenFrame>
       <View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginLeft: 30,
-            marginTop: 5,
-          }}>
-          <View>
-            <Buttons.ButtonCircle action={handleFirstLng}>
-              <Ionicons
-                name='ios-body'
-                size={iconSize}
-                color={
-                  selectFirstLanguage ? Colors.textPrimary : Colors.inactive
-                }
-              />
-            </Buttons.ButtonCircle>
-          </View>
+        <TouchableNativeFeedback
+          background={
+            Platform.Version >= 21
+              ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
+              : TouchableNativeFeedback.SelectableBackground()
+          }
+          delayPressIn={0}
+          onPress={() => handleFirstLng()}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginLeft: 30,
+              marginTop: 5,
+            }}>
+            <View>
+              <Buttons.ButtonCircle action={() => handleFirstLng()}>
+                <Ionicons
+                  name='ios-body'
+                  size={iconSize}
+                  color={
+                    selectFirstLanguage ? Colors.textPrimary : Colors.inactive
+                  }
+                />
+              </Buttons.ButtonCircle>
+            </View>
 
-          <View style={{ marginLeft: 20 }}>
-            <ComboAround>
-              <TxtNormal
-                style={
-                  selectFirstLanguage
-                    ? { color: Colors.textPrimary }
-                    : { color: Colors.inactive }
-                }>
-                {actLngFrst}
-              </TxtNormal>
-              <TxtNormal
-                style={
-                  selectFirstLanguage
-                    ? { color: Colors.textPrimary }
-                    : { color: Colors.inactive }
-                }>
-                ({actLngFrstEng})
-              </TxtNormal>
-            </ComboAround>
+            <View style={{ marginLeft: 20 }}>
+              <ComboAround>
+                <TxtNormal
+                  style={
+                    selectFirstLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.inactive }
+                  }>
+                  {actLngFrst}
+                </TxtNormal>
+                <TxtNormal
+                  style={
+                    selectFirstLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.inactive }
+                  }>
+                  ({actLngFrstEng})
+                </TxtNormal>
+              </ComboAround>
+            </View>
           </View>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginLeft: 30,
-            marginTop: 10,
-          }}>
-          <View>
-            <Buttons.ButtonCircle action={handleSecondLng}>
-              <Ionicons
-                name='ios-globe'
-                size={iconSize}
-                color={
-                  selectSecondLanguage ? Colors.textPrimary : Colors.inactive
-                }
-              />
-            </Buttons.ButtonCircle>
-          </View>
+        </TouchableNativeFeedback>
+        <TouchableNativeFeedback
+          background={
+            Platform.Version >= 21
+              ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
+              : TouchableNativeFeedback.SelectableBackground()
+          }
+          delayPressIn={0}
+          onPress={() => handleSecondLng()}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginLeft: 30,
+              marginTop: 10,
+            }}>
+            <View>
+              <Buttons.ButtonCircle action={() => handleSecondLng()}>
+                <Ionicons
+                  name='ios-globe'
+                  size={iconSize}
+                  color={
+                    selectSecondLanguage ? Colors.textPrimary : Colors.inactive
+                  }
+                />
+              </Buttons.ButtonCircle>
+            </View>
 
-          <View style={{ marginLeft: 20 }}>
-            <ComboAround>
-              <TxtNormal
-                style={
-                  selectSecondLanguage
-                    ? { color: Colors.textPrimary }
-                    : { color: Colors.inactive }
-                }>
-                {actLngScnd}
-              </TxtNormal>
-              <TxtNormal
-                style={
-                  selectSecondLanguage
-                    ? { color: Colors.textPrimary }
-                    : { color: Colors.inactive }
-                }>
-                ({actLngScndEng})
-              </TxtNormal>
-            </ComboAround>
+            <View style={{ marginLeft: 20 }}>
+              <ComboAround>
+                <TxtNormal
+                  style={
+                    selectSecondLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.inactive }
+                  }>
+                  {actLngScnd}
+                </TxtNormal>
+                <TxtNormal
+                  style={
+                    selectSecondLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.inactive }
+                  }>
+                  ({actLngScndEng})
+                </TxtNormal>
+              </ComboAround>
+            </View>
           </View>
-        </View>
+        </TouchableNativeFeedback>
       </View>
-      <View
-        style={{
-          alignContent: 'center',
-          alignItems: 'center',
-          width: '95%',
-          height: '98%',
-        }}>
+      <SafeAreaView>
         <View
           style={{
-            alignContent: 'space-around',
-            marginTop: 3,
-            flexWrap: 'wrap',
+            marginTop: 20,
             height: '80%',
+            alignItems: 'center',
           }}>
           {selectFirstLanguage ? <SelectFirstLanguage /> : null}
           {selectSecondLanguage ? <SelectSecondLanguage /> : null}
         </View>
-      </View>
+      </SafeAreaView>
     </ScreenFrame>
   );
 };
