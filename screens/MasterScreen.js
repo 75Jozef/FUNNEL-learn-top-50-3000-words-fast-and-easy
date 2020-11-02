@@ -153,6 +153,7 @@ const MasterScreen = () => {
     select,
     lngfrst,
     lngscnd,
+    index,
   ]);
 
   const handleIndex = (jump) => {
@@ -168,36 +169,38 @@ const MasterScreen = () => {
   const handleStatus = (status) => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
-        delayedConfirmation(status);
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
-
-        function sleep(ms) {
-          return new Promise((resolve) => setTimeout(resolve, ms));
+        delayedConfirmation(status);
+        return;
+      }
+    } else {
+      return;
+    }
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    async function delayedConfirmation(status) {
+      switch (status) {
+        case 0: {
+          setSizeIconInfinity(60);
+          setStat((prev) => !prev);
+          await sleep(50);
+          setSizeIconInfinity(40);
+          return;
         }
-        async function delayedConfirmation(status) {
-          switch (status) {
-            case 0: {
-              setSizeIconInfinity(60);
-              setStat((prev) => !prev);
-              await sleep(300);
-              setSizeIconInfinity(40);
-              return;
-            }
-            case 1: {
-              setSizeIconAttach(60);
-              setStat((prev) => !prev);
-              await sleep(300);
-              setSizeIconAttach(40);
-              return;
-            }
-            case 2: {
-              setSizeIconCheck(60);
-              setStat((prev) => !prev);
-              await sleep(300);
-              setSizeIconCheck(40);
-              return;
-            }
-          }
+        case 1: {
+          setSizeIconAttach(60);
+          setStat((prev) => !prev);
+          await sleep(50);
+          setSizeIconAttach(40);
+          return;
+        }
+        case 2: {
+          setSizeIconCheck(60);
+          setStat((prev) => !prev);
+          await sleep(50);
+          setSizeIconCheck(40);
+          return;
         }
       }
     }
@@ -425,42 +428,43 @@ const MasterScreen = () => {
 
   const animeIcon = (icon) => {
     delayedConfirmation(icon);
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
+
     async function delayedConfirmation(icon) {
       switch (icon) {
         case 'Rewind': {
           setSizeIconRewind(50);
-          await sleep(300);
+          await sleep(10);
           setSizeIconRewind(35);
           return;
         }
         case 'Back': {
           setSizeIconBack(50);
-          await sleep(300);
+          await sleep(10);
           setSizeIconBack(35);
           return;
         }
         case 'Random': {
           setSizeIconRandom(50);
-          await sleep(300);
+          await sleep(10);
           setSizeIconRandom(35);
           return;
         }
         case 'Next': {
           setSizeIconNext(50);
-          await sleep(300);
+          await sleep(10);
           setSizeIconNext(35);
           return;
         }
         case 'FastF': {
           setSizeIconFastF(50);
-          await sleep(300);
+          await sleep(10);
           setSizeIconFastF(35);
           return;
         }
       }
+    }
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
     }
   };
 
@@ -672,7 +676,13 @@ const MasterScreen = () => {
           <FlatList
             data={words}
             keyExtractor={(item) => item['id' + lngfrst]}
-            renderItem={({ item, ind }) => {
+            getItemLayout={(item, index) => ({
+              length: Dimensions.get('window').height / 17,
+              offset: (Dimensions.get('window').height / 17) * index,
+              index,
+            })}
+            initialScrollIndex={index}
+            renderItem={({ item }) => {
               return (
                 <Buttons.ButtonBox
                   bodyStyle={
