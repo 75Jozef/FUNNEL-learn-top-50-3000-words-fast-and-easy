@@ -467,7 +467,7 @@ const MasterScreen = () => {
   const WordShowWindow = (props) => {
     return (
       <>
-        <View style={{ height: '85%', justifyContent: 'space-evenly' }}>
+        <View style={{ height: '60%', justifyContent: 'space-evenly' }}>
           <View
             style={{
               justifyContent: 'center',
@@ -490,6 +490,8 @@ const MasterScreen = () => {
               )}
             </TxtNormal>
           </View>
+        </View>
+        <View style={{ height: '25%', justifyContent: 'space-evenly' }}>
           <TouchableNativeFeedback
             background={
               Platform.Version >= 21
