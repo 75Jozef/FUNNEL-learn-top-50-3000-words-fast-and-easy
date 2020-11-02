@@ -233,15 +233,7 @@ export const SideNavigator = () => {
           ),
         }}
       />
-      <SideDrawerNavigator.Screen
-        name='Instructions'
-        component={InstructionsNavigator}
-        options={{
-          drawerIcon: (props) => (
-            <Ionicons name={'ios-fitness'} size={30} color={Colors.surround} />
-          ),
-        }}
-      />
+
       <SideDrawerNavigator.Screen
         name='F|U|N|N|E|L'
         component={MasterNavigator}
@@ -260,13 +252,12 @@ export const SideNavigator = () => {
           ),
         }}
       />
-
       <SideDrawerNavigator.Screen
         name='Options'
         component={OptionsNavigator}
         options={{
           drawerIcon: (props) => (
-            <Ionicons name={'ios-globe'} size={30} color={Colors.surround} />
+            <Ionicons name={'ios-options'} size={30} color={Colors.surround} />
           ),
         }}
       />
@@ -279,6 +270,15 @@ export const SideNavigator = () => {
           ),
         }}
       />
+      {/* <SideDrawerNavigator.Screen
+        name='Instructions'
+        component={InstructionsNavigator}
+        options={{
+          drawerIcon: (props) => (
+            <Ionicons name={'ios-fitness'} size={30} color={Colors.surround} />
+          ),
+        }}
+      /> */}
     </SideDrawerNavigator.Navigator>
   );
 };

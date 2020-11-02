@@ -10,8 +10,8 @@ export const InfoLine = (props) => {
 const styles = StyleSheet.create({
   info: {
     flexDirection: 'row',
-    marginTop: 5,
-    height: 2,
+    margin: 1,
+    height: 1,
     backgroundColor: Colors.base,
   },
 });
