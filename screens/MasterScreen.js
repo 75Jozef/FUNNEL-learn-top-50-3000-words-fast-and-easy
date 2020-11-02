@@ -495,7 +495,7 @@ const MasterScreen = () => {
             </TxtNormal>
           </View>
         </View>
-        <View style={{ height: '25%', justifyContent: 'space-evenly' }}>
+        <View style={{ height: '28%', justifyContent: 'space-evenly' }}>
           <TouchableNativeFeedback
             background={
               Platform.Version >= 21
@@ -533,14 +533,14 @@ const MasterScreen = () => {
             </View>
           </TouchableNativeFeedback>
         </View>
-        <View style={{ height: '15%' }}>
+        <View style={{ height: '12%' }}>
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
               alignContent: 'space-between',
               alignItems: 'center',
-              width: '70%',
+
               alignSelf: 'center',
             }}>
             <Buttons.ButtonBox
@@ -564,7 +564,7 @@ const MasterScreen = () => {
                     }
                   : null
               }>
-              ?
+              <Ionicons name='md-eye' size={18} />
             </Buttons.ButtonBox>
 
             <Buttons.ButtonBox
@@ -732,7 +732,7 @@ const MasterScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          height: '17%',
+          height: '20%',
           justifyContent: 'space-between',
         }}>
         <View
@@ -1154,11 +1154,20 @@ const MasterScreen = () => {
           }}>
           <View
             style={{
-              width: '60%',
+              width: '80%',
               alignItems: 'center',
               flexDirection: 'row',
-              justifyContent: 'space-evenly',
+              justifyContent: 'space-between',
             }}>
+            <ComboAround>
+              <Buttons.ButtonCircle bodyStyle={{ borderStyle: 'dotted' }}>
+                <Ionicons name='ios-body' size={30} color={Colors.inactive} />
+              </Buttons.ButtonCircle>
+            </ComboAround>
+            <ComboAround>
+              <View
+                style={{ width: Dimensions.get('window').width / 12 }}></View>
+            </ComboAround>
             <ComboAround>
               <Buttons.ButtonCircle
                 action={() => {
@@ -1249,6 +1258,12 @@ const MasterScreen = () => {
                 {selectTwo}
               </Buttons.ButtonCircle>
             </ComboAround>
+            <View style={{ width: Dimensions.get('window').width / 12 }}></View>
+            <ComboAround>
+              <Buttons.ButtonCircle bodyStyle={{ borderStyle: 'dotted' }}>
+                <Ionicons name='ios-globe' size={30} color={Colors.inactive} />
+              </Buttons.ButtonCircle>
+            </ComboAround>
           </View>
         </View>
       </View>
@@ -1257,7 +1272,7 @@ const MasterScreen = () => {
       <View
         style={{
           width: '90%',
-          height: '50%',
+          height: '47%',
           justifyContent: 'space-evenly',
           borderWidth: 0.5,
           borderColor: Colors.inactive,

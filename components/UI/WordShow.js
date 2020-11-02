@@ -117,9 +117,9 @@ const WordShow = (props) => {
     return (
       <View style={styles.showka}>
         <Ionicons
-          name='ios-globe'
+          name='md-eye'
           size={Dimensions.get('window').height / 9}
-          color={Colors.surround}
+          color={Colors.inactive}
         />
       </View>
     );
