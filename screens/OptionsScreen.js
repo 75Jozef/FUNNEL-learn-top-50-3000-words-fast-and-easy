@@ -221,6 +221,9 @@ const OptionsScreen = () => {
       <View
         style={{
           height: '25%',
+          width: '70%',
+          justifyContent: 'center',
+          alignItems: 'baseline',
         }}>
         <TouchableNativeFeedback
           background={
@@ -234,9 +237,9 @@ const OptionsScreen = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              margin: 10,
+              margin: 5,
             }}>
-            <View style={{}}>
+            <View style={{ width: Dimensions.get('window').width / 8 }}>
               <Buttons.ButtonCircle action={() => handleFirstLng()}>
                 <Ionicons
                   name='ios-body'
@@ -282,9 +285,9 @@ const OptionsScreen = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              margin: 10,
+              margin: 5,
             }}>
-            <View>
+            <View style={{ width: Dimensions.get('window').width / 8 }}>
               <Buttons.ButtonCircle action={() => handleSecondLng()}>
                 <Ionicons
                   name='ios-globe'
