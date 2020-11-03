@@ -5,7 +5,6 @@ import {
   TouchableNativeFeedback,
   Platform,
   ScrollView,
-  SafeAreaView,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
@@ -30,6 +29,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import * as lngActions from '../store/actions/lang';
 import ComboAround from '../components/UI/ComboAround';
+import Fonts from '../constants/Fonts';
 
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -39,11 +39,9 @@ const OptionsScreen = () => {
 
   const [iconSize] = useState(20);
   const [textSize] = useState(Dimensions.get('window').width / 22);
-  const [buttonSize] = useState(Dimensions.get('window').width / 5);
-  const [buttonBodyColor] = useState(Colors.surround);
-  const [buttonTextColor] = useState(Colors.textPrimary);
-  const [selectFirstLanguage, setSelectFirstLanguage] = useState(true);
-  const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
+
+  const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
+  const [selectSecondLanguage, setSelectSecondLanguage] = useState(true);
 
   const data = useSelector((state) => state.words.words);
 
@@ -111,12 +109,22 @@ const OptionsScreen = () => {
       setSelectFirstLanguage(true);
       return;
     }
+
+    if (selectFirstLanguage) {
+      setSelectFirstLanguage(false);
+      return;
+    }
     setSelectFirstLanguage(true);
   };
   const handleSecondLng = (props) => {
     if (selectFirstLanguage) {
       setSelectFirstLanguage(false);
       setSelectSecondLanguage(true);
+      return;
+    }
+
+    if (selectSecondLanguage) {
+      setSelectSecondLanguage(false);
       return;
     }
     setSelectSecondLanguage(true);
@@ -133,22 +141,26 @@ const OptionsScreen = () => {
                   lng === lngfrst
                     ? {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 10,
-                        borderColor: Colors.textPrimary,
+                        height: Dimensions.get('window').height / 18,
                         backgroundColor: Colors.inactive,
                         padding: 3,
                       }
                     : {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 10,
-                        borderColor: Colors.inactive,
+                        height: Dimensions.get('window').height / 18,
+                        borderColor: Colors.base,
                         padding: 3,
                       }
                 }
                 action={() => setLanguageFirst(lng)}>
-                <TxtButton style={{ fontSize: textSize }}>
+                <TxtLabel
+                  style={{
+                    paddingTop: 3,
+                    color: Colors.surround,
+                    fontSize: Dimensions.get('window').height / 25,
+                  }}>
                   {wordFrst[0][lng]}
-                </TxtButton>
+                </TxtLabel>
               </Buttons.ButtonBox>
             </View>
           );
@@ -167,22 +179,26 @@ const OptionsScreen = () => {
                   lng === lngscnd
                     ? {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 10,
-                        borderColor: Colors.textPrimary,
+                        height: Dimensions.get('window').height / 18,
                         backgroundColor: Colors.inactive,
                         padding: 3,
                       }
                     : {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 10,
-                        borderColor: Colors.inactive,
+                        height: Dimensions.get('window').height / 18,
+                        borderColor: Colors.base,
                         padding: 3,
                       }
                 }
                 action={() => setLanguageSecond(lng)}>
-                <TxtButton style={{ fontSize: textSize }}>
+                <TxtLabel
+                  style={{
+                    paddingTop: 3,
+                    color: Colors.surround,
+                    fontSize: Dimensions.get('window').height / 25,
+                  }}>
                   {wordFrst[0][lng]}
-                </TxtButton>
+                </TxtLabel>
               </Buttons.ButtonBox>
             </View>
           );
@@ -193,14 +209,19 @@ const OptionsScreen = () => {
 
   const setLanguageFirst = (props) => {
     dispatch(lngActions.setLngFrst(props));
+    setSelectFirstLanguage(false);
   };
   const setLanguageSecond = (props) => {
     dispatch(lngActions.setLngScnd(props));
+    setSelectSecondLanguage(false);
   };
 
   return (
     <ScreenFrame>
-      <View>
+      <View
+        style={{
+          height: '25%',
+        }}>
         <TouchableNativeFeedback
           background={
             Platform.Version >= 21
@@ -213,16 +234,15 @@ const OptionsScreen = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              marginLeft: 30,
-              marginTop: 5,
+              margin: 10,
             }}>
-            <View>
+            <View style={{}}>
               <Buttons.ButtonCircle action={() => handleFirstLng()}>
                 <Ionicons
                   name='ios-body'
                   size={iconSize}
                   color={
-                    selectFirstLanguage ? Colors.textPrimary : Colors.inactive
+                    selectFirstLanguage ? Colors.backSecond : Colors.inactive
                   }
                 />
               </Buttons.ButtonCircle>
@@ -233,7 +253,7 @@ const OptionsScreen = () => {
                 <TxtNormal
                   style={
                     selectFirstLanguage
-                      ? { color: Colors.textPrimary }
+                      ? { color: Colors.surround }
                       : { color: Colors.inactive }
                   }>
                   {actLngFrst}
@@ -241,7 +261,7 @@ const OptionsScreen = () => {
                 <TxtNormal
                   style={
                     selectFirstLanguage
-                      ? { color: Colors.textPrimary }
+                      ? { color: Colors.surround }
                       : { color: Colors.inactive }
                   }>
                   ({actLngFrstEng})
@@ -262,8 +282,7 @@ const OptionsScreen = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              marginLeft: 30,
-              marginTop: 10,
+              margin: 10,
             }}>
             <View>
               <Buttons.ButtonCircle action={() => handleSecondLng()}>
@@ -271,7 +290,7 @@ const OptionsScreen = () => {
                   name='ios-globe'
                   size={iconSize}
                   color={
-                    selectSecondLanguage ? Colors.textPrimary : Colors.inactive
+                    selectSecondLanguage ? Colors.backSecond : Colors.inactive
                   }
                 />
               </Buttons.ButtonCircle>
@@ -282,7 +301,7 @@ const OptionsScreen = () => {
                 <TxtNormal
                   style={
                     selectSecondLanguage
-                      ? { color: Colors.textPrimary }
+                      ? { color: Colors.surround }
                       : { color: Colors.inactive }
                   }>
                   {actLngScnd}
@@ -290,7 +309,7 @@ const OptionsScreen = () => {
                 <TxtNormal
                   style={
                     selectSecondLanguage
-                      ? { color: Colors.textPrimary }
+                      ? { color: Colors.surround }
                       : { color: Colors.inactive }
                   }>
                   ({actLngScndEng})
@@ -300,17 +319,22 @@ const OptionsScreen = () => {
           </View>
         </TouchableNativeFeedback>
       </View>
-      <SafeAreaView>
-        <View
-          style={{
-            marginTop: 20,
-            height: '80%',
-            alignItems: 'center',
-          }}>
-          {selectFirstLanguage ? <SelectFirstLanguage /> : null}
-          {selectSecondLanguage ? <SelectSecondLanguage /> : null}
-        </View>
-      </SafeAreaView>
+
+      <View
+        style={{
+          marginTop: 20,
+          height: '65%',
+          alignItems: 'center',
+        }}>
+        {selectFirstLanguage ? <SelectFirstLanguage /> : null}
+        {selectSecondLanguage ? <SelectSecondLanguage /> : null}
+      </View>
+      <View
+        style={{
+          marginTop: 20,
+          height: '10%',
+          alignItems: 'center',
+        }}></View>
     </ScreenFrame>
   );
 };

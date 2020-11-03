@@ -20,6 +20,7 @@ import * as Languages from '../data/languages';
 const WelcomeScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
+
   const txtfrst = Languages[lngfrst].Welcome;
   const txtscnd = Languages[lngscnd].Welcome;
 

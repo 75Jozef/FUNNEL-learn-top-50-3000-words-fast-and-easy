@@ -664,7 +664,7 @@ const MasterScreen = () => {
       </>
     );
   };
-
+  //! *******************************************************************
   const WordSelectorWindow = (props) => {
     return (
       <>
@@ -675,10 +675,10 @@ const MasterScreen = () => {
           }}>
           <FlatList
             data={words}
-            keyExtractor={(item) => item['id' + lngfrst]}
-            getItemLayout={(item, index) => ({
-              length: Dimensions.get('window').height / 17,
-              offset: (Dimensions.get('window').height / 17) * index,
+            keyExtractor={(item) => item['id' + lngfrst].toString()}
+            getItemLayout={(data, index) => ({
+              length: 53,
+              offset: 53 * index,
               index,
             })}
             initialScrollIndex={index}
@@ -1148,22 +1148,13 @@ const MasterScreen = () => {
         <View
           style={{
             alignItems: 'center',
-
-            alignSelf: 'center',
-            justifyContent: 'center',
           }}>
           <View
             style={{
               width: '80%',
-              alignItems: 'center',
-              flexDirection: 'row',
               justifyContent: 'space-between',
+              flexDirection: 'row',
             }}>
-            <ComboAround>
-              <Buttons.ButtonCircle bodyStyle={{ borderStyle: 'dotted' }}>
-                <Ionicons name='ios-body' size={30} color={Colors.inactive} />
-              </Buttons.ButtonCircle>
-            </ComboAround>
             <ComboAround>
               <View
                 style={{ width: Dimensions.get('window').width / 12 }}></View>
@@ -1258,11 +1249,9 @@ const MasterScreen = () => {
                 {selectTwo}
               </Buttons.ButtonCircle>
             </ComboAround>
-            <View style={{ width: Dimensions.get('window').width / 12 }}></View>
             <ComboAround>
-              <Buttons.ButtonCircle bodyStyle={{ borderStyle: 'dotted' }}>
-                <Ionicons name='ios-globe' size={30} color={Colors.inactive} />
-              </Buttons.ButtonCircle>
+              <View
+                style={{ width: Dimensions.get('window').width / 12 }}></View>
             </ComboAround>
           </View>
         </View>
