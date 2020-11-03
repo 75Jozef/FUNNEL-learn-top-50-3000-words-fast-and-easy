@@ -17,34 +17,28 @@ import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
 
 const InstructionsScreen = () => {
-  const lngfrst = useSelector((state) => state.language.lngfrst);
-  const lngscnd = useSelector((state) => state.language.lngscnd);
-  const txtscnd = Languages[lngscnd].Instructions;
-  const txtfrst = Languages[lngfrst].Instructions;
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>{txtfrst.title} </TxtLabel>
+        <TxtLabel>InstructionsScreen</TxtLabel>
       </CardFrame>
     </ScreenFrame>
   );
 };
 
 export const screenOptions = (navData) => {
-  const lngfrst = useSelector((state) => state.language.lngfrst);
-  const txtfrst = Languages[lngfrst].Instructions;
   return {
-    headerTitle: `${txtfrst.header}`,
+    headerTitle: 'kuk',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
-          title='Menu'
+          title='Master'
           iconName={'ios-menu'}
           onPress={() => {
-            navData.navigation.toggleDrawer();
+            navData.navigation.goBack();
           }}
         />
       </HeaderButtons>
