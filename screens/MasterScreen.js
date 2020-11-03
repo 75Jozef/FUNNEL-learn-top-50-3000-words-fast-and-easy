@@ -1488,6 +1488,17 @@ export const screenOptions = (navData) => {
         />
       </HeaderButtons>
     ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='Instructions'
+          iconName={'md-help'}
+          onPress={() => {
+            navData.navigation.navigate('Instructions');
+          }}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 

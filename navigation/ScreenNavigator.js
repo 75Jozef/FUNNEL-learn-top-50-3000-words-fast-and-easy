@@ -39,7 +39,7 @@ import WelcomeScreen, {
 } from './../screens/WelcomeScreen';
 
 import InstructionsScreen, {
-  screenOptions as instructionsScrenOptions,
+  screenOptions as instructionsScreenOptions,
 } from '../screens/InstructionsScreen';
 import { TxtItalic } from '../components/UI/Txt';
 
@@ -85,22 +85,6 @@ export const WelcomeNavigator = () => {
   );
 };
 
-//* Instructions Navigation ****************************
-
-const InstructionsStackNavigator = createStackNavigator();
-
-export const InstructionsNavigator = () => {
-  return (
-    <InstructionsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <InstructionsStackNavigator.Screen
-        name='Instructions'
-        component={InstructionsScreen}
-        options={instructionsScrenOptions}
-      />
-    </InstructionsStackNavigator.Navigator>
-  );
-};
-
 //* Master Navigation ***************************
 
 const MasterStackNavigator = createStackNavigator();
@@ -112,6 +96,11 @@ export const MasterNavigator = () => {
         name='Master'
         component={MasterScreen}
         options={masterScreenOptions}
+      />
+      <MasterStackNavigator.Screen
+        name='Instructions'
+        component={InstructionsScreen}
+        options={instructionsScreenOptions}
       />
     </MasterStackNavigator.Navigator>
   );
@@ -270,15 +259,6 @@ export const SideNavigator = () => {
           ),
         }}
       />
-      {/* <SideDrawerNavigator.Screen
-        name='Instructions'
-        component={InstructionsNavigator}
-        options={{
-          drawerIcon: (props) => (
-            <Ionicons name={'ios-fitness'} size={30} color={Colors.surround} />
-          ),
-        }}
-      /> */}
     </SideDrawerNavigator.Navigator>
   );
 };
