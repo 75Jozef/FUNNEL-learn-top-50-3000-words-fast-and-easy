@@ -220,10 +220,11 @@ const OptionsScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          height: '25%',
-          width: '70%',
+          height: '20%',
+          width: '80%',
           justifyContent: 'center',
           alignItems: 'baseline',
+          backgroundColor: 'pink',
         }}>
         <TouchableNativeFeedback
           background={
@@ -334,8 +335,8 @@ const OptionsScreen = () => {
       </View>
       <View
         style={{
-          marginTop: 20,
-          height: '10%',
+          marginTop: 10,
+          height: '5%',
           alignItems: 'center',
         }}></View>
     </ScreenFrame>
