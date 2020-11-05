@@ -1028,7 +1028,7 @@ const MasterScreen = () => {
           }}>
           <View
             style={{
-              width: '90%',
+              width: '80%',
               justifyContent: 'space-between',
               flexDirection: 'row',
               alignItems: 'center',
@@ -1068,7 +1068,8 @@ const MasterScreen = () => {
                   name='ios-infinite'
                   size={18}
                   color={select === 0 ? Colors.accent : Colors.inactive}
-                />{' '}
+                />
+                {'\n'}
                 {selectZero}
               </Buttons.ButtonCircle>
             </ComboAround>
@@ -1103,7 +1104,8 @@ const MasterScreen = () => {
                   name='ios-attach'
                   size={18}
                   color={select === 1 ? Colors.backSecond : Colors.inactive}
-                />{' '}
+                />
+                {'\n'}
                 {selectOne}
               </Buttons.ButtonCircle>
             </ComboAround>
@@ -1138,7 +1140,8 @@ const MasterScreen = () => {
                   name='md-checkmark'
                   size={18}
                   color={select === 2 ? Colors.backPrimary : Colors.inactive}
-                />{' '}
+                />
+                {'\n'}
                 {selectTwo}
               </Buttons.ButtonCircle>
             </ComboAround>
@@ -1198,7 +1201,7 @@ const MasterScreen = () => {
               />{' '}
               <Ionicons
                 name='ios-infinite'
-                size={words[index]['st' + lngscnd] === 0 ? 28 : 35}
+                size={25}
                 color={
                   words[index]['st' + lngscnd] === 0
                     ? Colors.base
@@ -1227,7 +1230,7 @@ const MasterScreen = () => {
               />{' '}
               <Ionicons
                 name='ios-attach'
-                size={words[index]['st' + lngscnd] === 1 ? 28 : 35}
+                size={25}
                 color={
                   words[index]['st' + lngscnd] === 1
                     ? Colors.base
@@ -1256,7 +1259,7 @@ const MasterScreen = () => {
               />{' '}
               <Ionicons
                 name='md-checkmark'
-                size={words[index]['st' + lngscnd] === 2 ? 28 : 35}
+                size={25}
                 color={
                   words[index]['st' + lngscnd] === 2
                     ? Colors.base
