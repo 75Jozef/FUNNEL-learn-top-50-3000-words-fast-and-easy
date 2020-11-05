@@ -157,7 +157,7 @@ const OptionsScreen = () => {
                   style={{
                     paddingTop: 3,
                     color: Colors.surround,
-                    fontSize: Dimensions.get('window').height / 25,
+                    fontSize: Dimensions.get('window').height / 30,
                   }}>
                   {wordFrst[0][lng]}
                 </TxtLabel>
@@ -195,7 +195,7 @@ const OptionsScreen = () => {
                   style={{
                     paddingTop: 3,
                     color: Colors.surround,
-                    fontSize: Dimensions.get('window').height / 25,
+                    fontSize: Dimensions.get('window').height / 30,
                   }}>
                   {wordFrst[0][lng]}
                 </TxtLabel>
@@ -223,100 +223,69 @@ const OptionsScreen = () => {
           height: '20%',
           width: '80%',
           justifyContent: 'center',
-          alignItems: 'baseline',
-          backgroundColor: 'pink',
         }}>
         <TouchableNativeFeedback
-          background={
-            Platform.Version >= 21
-              ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
-              : TouchableNativeFeedback.SelectableBackground()
-          }
+          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
           delayPressIn={0}
           onPress={() => handleFirstLng()}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              margin: 5,
             }}>
-            <View style={{ width: Dimensions.get('window').width / 8 }}>
-              <Buttons.ButtonCircle action={() => handleFirstLng()}>
-                <Ionicons
-                  name='ios-body'
-                  size={iconSize}
-                  color={
-                    selectFirstLanguage ? Colors.backSecond : Colors.inactive
-                  }
-                />
-              </Buttons.ButtonCircle>
-            </View>
-
+            <Buttons.ButtonCircle action={() => handleFirstLng()}>
+              <Ionicons
+                name='ios-body'
+                size={iconSize}
+                color={
+                  selectFirstLanguage ? Colors.backSecond : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20 }}>
               <ComboAround>
                 <TxtNormal
                   style={
                     selectFirstLanguage
-                      ? { color: Colors.surround }
-                      : { color: Colors.inactive }
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.surround }
                   }>
                   {actLngFrst}
-                </TxtNormal>
-                <TxtNormal
-                  style={
-                    selectFirstLanguage
-                      ? { color: Colors.surround }
-                      : { color: Colors.inactive }
-                  }>
-                  ({actLngFrstEng})
+                  {'\n'}({actLngFrstEng})
                 </TxtNormal>
               </ComboAround>
             </View>
           </View>
         </TouchableNativeFeedback>
+
         <TouchableNativeFeedback
-          background={
-            Platform.Version >= 21
-              ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
-              : TouchableNativeFeedback.SelectableBackground()
-          }
+          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
           delayPressIn={0}
           onPress={() => handleSecondLng()}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              margin: 5,
             }}>
-            <View style={{ width: Dimensions.get('window').width / 8 }}>
-              <Buttons.ButtonCircle action={() => handleSecondLng()}>
-                <Ionicons
-                  name='ios-globe'
-                  size={iconSize}
-                  color={
-                    selectSecondLanguage ? Colors.backSecond : Colors.inactive
-                  }
-                />
-              </Buttons.ButtonCircle>
-            </View>
-
+            <Buttons.ButtonCircle action={() => handleSecondLng()}>
+              <Ionicons
+                name='ios-globe'
+                size={iconSize}
+                color={
+                  selectSecondLanguage ? Colors.backSecond : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20 }}>
               <ComboAround>
                 <TxtNormal
                   style={
                     selectSecondLanguage
-                      ? { color: Colors.surround }
-                      : { color: Colors.inactive }
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.surround }
                   }>
                   {actLngScnd}
-                </TxtNormal>
-                <TxtNormal
-                  style={
-                    selectSecondLanguage
-                      ? { color: Colors.surround }
-                      : { color: Colors.inactive }
-                  }>
-                  ({actLngScndEng})
+                  {'\n'}({actLngScndEng})
                 </TxtNormal>
               </ComboAround>
             </View>
@@ -326,7 +295,7 @@ const OptionsScreen = () => {
 
       <View
         style={{
-          marginTop: 20,
+          marginTop: 10,
           height: '65%',
           alignItems: 'center',
         }}>
