@@ -314,13 +314,14 @@ const MasterScreen = () => {
             </TxtNormal>
           </View>
         </View>
-        <View style={{ height: '28%', justifyContent: 'space-evenly' }}>
+        <View
+          style={{
+            height: '28%',
+            justifyContent: 'space-evenly',
+            overflow: 'hidden',
+          }}>
           <TouchableNativeFeedback
-            background={
-              Platform.Version >= 21
-                ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
-                : TouchableNativeFeedback.SelectableBackground()
-            }
+            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
             delayPressIn={0}
             onPress={() => setWordSelector(true)}>
             <View
@@ -328,6 +329,7 @@ const MasterScreen = () => {
                 width: '90%',
                 justifyContent: 'center',
                 alignSelf: 'center',
+                overflow: 'hidden',
               }}>
               <View
                 style={{

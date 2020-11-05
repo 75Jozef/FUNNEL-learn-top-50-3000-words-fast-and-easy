@@ -41,7 +41,7 @@ export const ButtonBox = (props) => {
     <View
       style={{
         overflow: 'hidden',
-        borderRadius: 15,
+        borderRadius: 25,
       }}>
       <TouchableNativeFeedback
         background={
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: Dimensions.get('window').width / 6,
     height: Dimensions.get('window').height / 15,
-    borderRadius: 18,
+    borderRadius: 25,
     backgroundColor: Colors.base,
     borderWidth: 1,
     borderColor: Colors.inactive,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: Dimensions.get('window').width / 9,
     height: Dimensions.get('window').height / 27,
-    borderRadius: 15,
+    borderRadius: 25,
     backgroundColor: Colors.base,
     borderWidth: 1,
     borderColor: Colors.inactive,

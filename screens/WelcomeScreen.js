@@ -4,6 +4,7 @@ import { View, Button } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from './../components/UI/Input';
 import Colors from '../constants/Colors';
+
 import {
   TxtHeader,
   TxtBold,
@@ -20,7 +21,7 @@ import * as Languages from '../data/languages';
 const WelcomeScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
-
+  const theme = useSelector((state) => state.theme.theme);
   const txtfrst = Languages[lngfrst].Welcome;
   const txtscnd = Languages[lngscnd].Welcome;
 
@@ -28,6 +29,7 @@ const WelcomeScreen = () => {
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
+        <TxtHeader>{theme.toString()}</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
         <TxtLabel>frst{txtfrst.title}</TxtLabel>
