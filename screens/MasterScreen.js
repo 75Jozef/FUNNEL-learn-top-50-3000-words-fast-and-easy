@@ -126,50 +126,12 @@ const MasterScreen = () => {
     }
   };
 
-  // const handleStatus = (status) => {
-  //   if (words[index]['userlvl'] !== 'l') {
-  //     if (words[index]['st' + lngscnd] !== status) {
-  //       dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
-  //       delayedConfirmation(status);
-  //       return;
-  //     }
-  //   } else {
-  //     return;
-  //   }
-  //   function sleep(ms) {
-  //     return new Promise((resolve) => setTimeout(resolve, ms));
-  //   }
-  //   async function delayedConfirmation(status) {
-  //     switch (status) {
-  //       case 0: {
-  //         setSizeIconInfinity(60);
-  //         setStat((prev) => !prev);
-  //         await sleep(50);
-  //         setSizeIconInfinity(40);
-  //         return;
-  //       }
-  //       case 1: {
-  //         setSizeIconAttach(60);
-  //         setStat((prev) => !prev);
-  //         await sleep(50);
-  //         setSizeIconAttach(40);
-  //         return;
-  //       }
-  //       case 2: {
-  //         setSizeIconCheck(60);
-  //         setStat((prev) => !prev);
-  //         await sleep(50);
-  //         setSizeIconCheck(40);
-  //         return;
-  //       }
-  //     }
-  //   }
-  // };
-
   const handleStatus = (status) => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
+        counter();
+        setRange(words.length);
       }
     }
   };
