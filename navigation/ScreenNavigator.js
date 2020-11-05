@@ -8,7 +8,10 @@ import Fonts from '../constants/Fonts';
 import * as Languages from '../data/languages';
 import * as Buttons from './../components/UI/Buttons';
 
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
 import {
   createDrawerNavigator,
   DrawerItemList,
@@ -53,6 +56,7 @@ const defaultNavOptions = {
   },
   headerTintColor: Colors.surround,
   gestureEnabled: true,
+  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 
 //* Auth Navigation ****************************

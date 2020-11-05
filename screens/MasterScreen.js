@@ -96,7 +96,7 @@ const MasterScreen = () => {
     counter();
     setRange(words.length);
   }, [
-    range,
+    // range,
     levelA,
     levelN,
     levelV,
@@ -1103,7 +1103,7 @@ const MasterScreen = () => {
           justifyContent: 'space-evenly',
           borderWidth: 0.5,
           borderColor: Colors.inactive,
-          borderStyle: 'dashed',
+          borderStyle: 'dotted',
         }}>
         {wordSelector ? <WordSelectorWindow /> : <WordShowWindow />}
       </View>
@@ -1218,7 +1218,7 @@ const MasterScreen = () => {
             alignItems: 'center',
             alignSelf: 'center',
             justifyContent: 'space-around',
-            width: Dimensions.get('window').width * 0.7,
+            width: '80%',
           }}>
           <Buttons.ButtonCircle
             touchColor={
