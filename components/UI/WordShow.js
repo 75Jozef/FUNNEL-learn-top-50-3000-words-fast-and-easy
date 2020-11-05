@@ -76,7 +76,7 @@ const WordShow = (props) => {
         <TxtHeader
           style={{
             fontSize:
-              Dimensions.get('window').height / 10 - wordToShow.length * 2.5,
+              Dimensions.get('window').height / 10 - wordToShow.length * 3,
             color:
               props.color === 0
                 ? Colors.accent
