@@ -220,7 +220,7 @@ const OptionsScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          height: '20%',
+          height: '50%',
           width: '80%',
           justifyContent: 'center',
         }}>
@@ -233,7 +233,9 @@ const OptionsScreen = () => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Buttons.ButtonCircle action={() => handleFirstLng()}>
+            <Buttons.ButtonCircle
+              action={() => handleFirstLng()}
+              touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-body'
                 size={iconSize}
@@ -267,7 +269,9 @@ const OptionsScreen = () => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Buttons.ButtonCircle action={() => handleSecondLng()}>
+            <Buttons.ButtonCircle
+              action={() => handleSecondLng()}
+              touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-globe'
                 size={iconSize}
@@ -291,12 +295,84 @@ const OptionsScreen = () => {
             </View>
           </View>
         </TouchableNativeFeedback>
+
+        <TouchableNativeFeedback
+          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+          delayPressIn={0}
+          onPress={() => handleSecondLng()}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Buttons.ButtonCircle
+              action={() => handleSecondLng()}
+              touchColor={Colors.backSecond}>
+              <Ionicons
+                name='ios-moon'
+                size={iconSize}
+                color={
+                  selectSecondLanguage ? Colors.backSecond : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
+            <View style={{ marginLeft: 20 }}>
+              <ComboAround>
+                <TxtNormal
+                  style={
+                    selectSecondLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.surround }
+                  }>
+                  dark theme
+                  {'\n'}(black)
+                </TxtNormal>
+              </ComboAround>
+            </View>
+          </View>
+        </TouchableNativeFeedback>
+
+        <TouchableNativeFeedback
+          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+          delayPressIn={0}
+          onPress={() => handleSecondLng()}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Buttons.ButtonCircle
+              action={() => handleSecondLng()}
+              touchColor={Colors.backSecond}>
+              <Ionicons
+                name='ios-sunny'
+                size={iconSize}
+                color={
+                  selectSecondLanguage ? Colors.backSecond : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
+            <View style={{ marginLeft: 20 }}>
+              <ComboAround>
+                <TxtNormal
+                  style={
+                    selectSecondLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.surround }
+                  }>
+                  light theme
+                  {'\n'}(white)
+                </TxtNormal>
+              </ComboAround>
+            </View>
+          </View>
+        </TouchableNativeFeedback>
       </View>
 
       <View
         style={{
           marginTop: 10,
-          height: '65%',
+          height: '35%',
           alignItems: 'center',
         }}>
         {selectFirstLanguage ? <SelectFirstLanguage /> : null}

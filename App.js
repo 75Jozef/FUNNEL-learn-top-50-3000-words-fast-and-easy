@@ -10,10 +10,12 @@ import ReduxThunk from 'redux-thunk';
 
 import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
+import themeReducer from './store/reducers/theme';
 
 const rootReducer = combineReducers({
   language: langReducer,
   words: wordsReducer,
+  theme: themeReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
