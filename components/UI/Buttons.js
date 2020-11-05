@@ -6,45 +6,58 @@ import {
   TouchableNativeFeedback,
   View,
   Platform,
+  ProgressViewIOSComponent,
 } from 'react-native';
 import Fonts from './../../constants/Fonts';
 import Colors from './../../constants/Colors';
 
 export const ButtonCircle = (props) => {
   return (
-    <TouchableNativeFeedback
-      background={
-        Platform.Version >= 21
-          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
-          : TouchableNativeFeedback.SelectableBackground()
-      }
-      delayPressIn={0}
-      onPress={props.action}>
-      <View style={{ ...styles.buttonCircleBody, ...props.bodyStyle }}>
-        <Text style={{ ...styles.buttonCircleInside, ...props.insideStyle }}>
-          {props.children}
-        </Text>
-      </View>
-    </TouchableNativeFeedback>
+    <View
+      style={{
+        overflow: 'hidden',
+        borderRadius: 18,
+      }}>
+      <TouchableNativeFeedback
+        background={
+          props.touchColor
+            ? TouchableNativeFeedback.Ripple(props.touchColor)
+            : TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
+        }
+        delayPressIn={0}
+        onPress={props.action}>
+        <View style={{ ...styles.buttonCircleBody, ...props.bodyStyle }}>
+          <Text style={{ ...styles.buttonCircleInside, ...props.insideStyle }}>
+            {props.children}
+          </Text>
+        </View>
+      </TouchableNativeFeedback>
+    </View>
   );
 };
 
 export const ButtonBox = (props) => {
   return (
-    <TouchableNativeFeedback
-      background={
-        Platform.Version >= 21
-          ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
-          : TouchableNativeFeedback.SelectableBackground()
-      }
-      delayPressIn={0}
-      onPress={props.action}>
-      <View style={{ ...styles.buttonBoxBody, ...props.bodyStyle }}>
-        <Text style={{ ...styles.buttonBoxInside, ...props.insideStyle }}>
-          {props.children}
-        </Text>
-      </View>
-    </TouchableNativeFeedback>
+    <View
+      style={{
+        overflow: 'hidden',
+        borderRadius: 15,
+      }}>
+      <TouchableNativeFeedback
+        background={
+          props.touchColor
+            ? TouchableNativeFeedback.Ripple(props.touchColor)
+            : TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
+        }
+        delayPressIn={0}
+        onPress={props.action}>
+        <View style={{ ...styles.buttonBoxBody, ...props.bodyStyle }}>
+          <Text style={{ ...styles.buttonBoxInside, ...props.insideStyle }}>
+            {props.children}
+          </Text>
+        </View>
+      </TouchableNativeFeedback>
+    </View>
   );
 };
 

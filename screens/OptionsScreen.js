@@ -41,7 +41,7 @@ const OptionsScreen = () => {
   const [textSize] = useState(Dimensions.get('window').width / 22);
 
   const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
-  const [selectSecondLanguage, setSelectSecondLanguage] = useState(true);
+  const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
 
   const data = useSelector((state) => state.words.words);
 

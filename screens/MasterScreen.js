@@ -41,15 +41,11 @@ const MasterScreen = () => {
   const [index, setIndex] = useState(0);
   const [range, setRange] = useState(0);
   const [show, setShow] = useState(0);
+
   const [select, setSelect] = useState(0);
   const [selectZero, setSelectZero] = useState(0);
   const [selectOne, setSelectOne] = useState(0);
   const [selectTwo, setSelectTwo] = useState(0);
-  const [sizeIconInfinity, setSizeIconInfinity] = useState(35);
-  const [sizeIconAttach, setSizeIconAttach] = useState(35);
-  const [sizeIconCheck, setSizeIconCheck] = useState(35);
-  const [stat, setStat] = useState(false);
-
   const [countVZero, setCountVZero] = useState();
   const [countVOne, setCountVOne] = useState();
   const [countVTwo, setCountVTwo] = useState();
@@ -72,12 +68,6 @@ const MasterScreen = () => {
   const [countXOne, setCountXOne] = useState();
   const [countXTwo, setCountXTwo] = useState();
 
-  const [sizeIconRewind, setSizeIconRewind] = useState(30);
-  const [sizeIconBack, setSizeIconBack] = useState(30);
-  const [sizeIconRandom, setSizeIconRandom] = useState(30);
-  const [sizeIconNext, setSizeIconNext] = useState(30);
-  const [sizeIconFastF, setSizeIconFastF] = useState(30);
-
   const [wordSelector, setWordSelector] = useState(false);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -89,56 +79,26 @@ const MasterScreen = () => {
 
   const dispatch = useDispatch();
 
-  const words = data.filter(
+  const selectedWords = data.filter(
     (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === select) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'a' && levelA) ||
+      (word.userlvl === 'n' && levelN) ||
+      (word.userlvl === 'v' && levelV) ||
+      (word.userlvl === 'h' && levelH) ||
+      (word.userlvl === 'f' && levelF) ||
+      (word.userlvl === 't' && levelT) ||
+      (word.userlvl === 'x' && levelX) ||
       word.userlvl === 'l'
   );
 
-  const wordsZero = data.filter(
-    (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 0)
-  );
-
-  const wordsOne = data.filter(
-    (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 1)
-  );
-
-  const wordsTwo = data.filter(
-    (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 2)
+  const words = selectedWords.filter(
+    (word) => word['st' + lngscnd] === select || word.userlvl === 'l'
   );
 
   useEffect(() => {
     counter();
     setRange(words.length);
   }, [
-    stat,
     range,
     levelA,
     levelN,
@@ -166,46 +126,53 @@ const MasterScreen = () => {
     }
   };
 
+  // const handleStatus = (status) => {
+  //   if (words[index]['userlvl'] !== 'l') {
+  //     if (words[index]['st' + lngscnd] !== status) {
+  //       dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
+  //       delayedConfirmation(status);
+  //       return;
+  //     }
+  //   } else {
+  //     return;
+  //   }
+  //   function sleep(ms) {
+  //     return new Promise((resolve) => setTimeout(resolve, ms));
+  //   }
+  //   async function delayedConfirmation(status) {
+  //     switch (status) {
+  //       case 0: {
+  //         setSizeIconInfinity(60);
+  //         setStat((prev) => !prev);
+  //         await sleep(50);
+  //         setSizeIconInfinity(40);
+  //         return;
+  //       }
+  //       case 1: {
+  //         setSizeIconAttach(60);
+  //         setStat((prev) => !prev);
+  //         await sleep(50);
+  //         setSizeIconAttach(40);
+  //         return;
+  //       }
+  //       case 2: {
+  //         setSizeIconCheck(60);
+  //         setStat((prev) => !prev);
+  //         await sleep(50);
+  //         setSizeIconCheck(40);
+  //         return;
+  //       }
+  //     }
+  //   }
+  // };
+
   const handleStatus = (status) => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
-        delayedConfirmation(status);
-        return;
-      }
-    } else {
-      return;
-    }
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-    async function delayedConfirmation(status) {
-      switch (status) {
-        case 0: {
-          setSizeIconInfinity(60);
-          setStat((prev) => !prev);
-          await sleep(50);
-          setSizeIconInfinity(40);
-          return;
-        }
-        case 1: {
-          setSizeIconAttach(60);
-          setStat((prev) => !prev);
-          await sleep(50);
-          setSizeIconAttach(40);
-          return;
-        }
-        case 2: {
-          setSizeIconCheck(60);
-          setStat((prev) => !prev);
-          await sleep(50);
-          setSizeIconCheck(40);
-          return;
-        }
       }
     }
   };
-
   const handleSelect = (select) => {
     setSelect(select);
     counter();
@@ -214,27 +181,17 @@ const MasterScreen = () => {
   };
 
   const counter = () => {
-    const countZero = wordsZero.reduce(
-      (counter, word) =>
-        word['st' + lngscnd] === 0 ? (counter += 1) : counter,
-      0
-    );
+    const wordsZero = selectedWords.filter((word) => word['st' + lngscnd] === 0)
+      .length;
+    setSelectZero(wordsZero);
 
-    setSelectZero(countZero);
+    const wordsOne = selectedWords.filter((word) => word['st' + lngscnd] === 1)
+      .length;
+    setSelectOne(wordsOne);
 
-    const countOne = wordsOne.reduce(
-      (counter, word) =>
-        word['st' + lngscnd] === 1 ? (counter += 1) : counter,
-      0
-    );
-    setSelectOne(countOne);
-
-    const countTwo = wordsTwo.reduce(
-      (counter, word) =>
-        word['st' + lngscnd] === 2 ? (counter += 1) : counter,
-      0
-    );
-    setSelectTwo(countTwo);
+    const wordsTwo = selectedWords.filter((word) => word['st' + lngscnd] === 2)
+      .length;
+    setSelectTwo(wordsTwo);
 
     const countVZero = data.reduce(
       (counter, word) =>
@@ -424,48 +381,6 @@ const MasterScreen = () => {
       0
     );
     setCountXTwo(countXTwo);
-  };
-
-  const animeIcon = (icon) => {
-    delayedConfirmation(icon);
-
-    async function delayedConfirmation(icon) {
-      switch (icon) {
-        case 'Rewind': {
-          setSizeIconRewind(50);
-          await sleep(10);
-          setSizeIconRewind(35);
-          return;
-        }
-        case 'Back': {
-          setSizeIconBack(50);
-          await sleep(10);
-          setSizeIconBack(35);
-          return;
-        }
-        case 'Random': {
-          setSizeIconRandom(50);
-          await sleep(10);
-          setSizeIconRandom(35);
-          return;
-        }
-        case 'Next': {
-          setSizeIconNext(50);
-          await sleep(10);
-          setSizeIconNext(35);
-          return;
-        }
-        case 'FastF': {
-          setSizeIconFastF(50);
-          await sleep(10);
-          setSizeIconFastF(35);
-          return;
-        }
-      }
-    }
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
   };
 
   const WordShowWindow = (props) => {
@@ -1151,16 +1066,21 @@ const MasterScreen = () => {
           }}>
           <View
             style={{
-              width: '80%',
+              width: '90%',
               justifyContent: 'space-between',
               flexDirection: 'row',
+              alignItems: 'center',
             }}>
             <ComboAround>
               <View
-                style={{ width: Dimensions.get('window').width / 12 }}></View>
+                style={{ width: Dimensions.get('window').width / 15 }}></View>
             </ComboAround>
+
             <ComboAround>
               <Buttons.ButtonCircle
+                touchColor={
+                  words[index]['st' + lngscnd] === 0 ? null : Colors.accent
+                }
                 action={() => {
                   handleSelect(0);
                 }}
@@ -1168,29 +1088,34 @@ const MasterScreen = () => {
                   select === 0
                     ? {
                         borderColor: Colors.base,
-                        borderWidth: 1,
                       }
-                    : { borderColor: Colors.inactive, borderWidth: 1 }
+                    : { borderColor: Colors.inactive }
                 }
                 insideStyle={
                   select === 0
                     ? {
                         color: Colors.accent,
-                        fontSize: Dimensions.get('window').width / 22,
-                        // fontFamily: Fonts.bold,
+                        fontSize: Dimensions.get('window').width / 30,
                       }
-                    : sizeIconInfinity > 41
-                    ? {
-                        color: Colors.accent,
-                        fontSize: Dimensions.get('window').width / 22,
+                    : {
+                        color: Colors.surround,
+                        fontSize: Dimensions.get('window').width / 30,
                       }
-                    : { color: Colors.surround }
                 }>
+                <Ionicons
+                  name='ios-infinite'
+                  size={18}
+                  color={select === 0 ? Colors.accent : Colors.inactive}
+                />{' '}
                 {selectZero}
               </Buttons.ButtonCircle>
             </ComboAround>
+
             <ComboAround>
               <Buttons.ButtonCircle
+                touchColor={
+                  words[index]['st' + lngscnd] === 1 ? null : Colors.backSecond
+                }
                 action={() => {
                   handleSelect(1);
                 }}
@@ -1198,29 +1123,34 @@ const MasterScreen = () => {
                   select === 1
                     ? {
                         borderColor: Colors.base,
-                        borderWidth: 1,
                       }
-                    : { borderColor: Colors.inactive, borderWidth: 1 }
+                    : { borderColor: Colors.inactive }
                 }
                 insideStyle={
                   select === 1
                     ? {
                         color: Colors.backSecond,
-                        fontSize: Dimensions.get('window').width / 22,
-                        // fontFamily: Fonts.bold,
+                        fontSize: Dimensions.get('window').width / 30,
                       }
-                    : sizeIconAttach > 41
-                    ? {
-                        color: Colors.backSecond,
-                        fontSize: Dimensions.get('window').width / 22,
+                    : {
+                        color: Colors.surround,
+                        fontSize: Dimensions.get('window').width / 30,
                       }
-                    : { color: Colors.surround }
                 }>
+                <Ionicons
+                  name='ios-attach'
+                  size={18}
+                  color={select === 1 ? Colors.backSecond : Colors.inactive}
+                />{' '}
                 {selectOne}
               </Buttons.ButtonCircle>
             </ComboAround>
+
             <ComboAround>
               <Buttons.ButtonCircle
+                touchColor={
+                  words[index]['st' + lngscnd] === 2 ? null : Colors.backPrimary
+                }
                 action={() => {
                   handleSelect(2);
                 }}
@@ -1228,30 +1158,31 @@ const MasterScreen = () => {
                   select === 2
                     ? {
                         borderColor: Colors.base,
-                        borderWidth: 1,
                       }
-                    : { borderColor: Colors.inactive, borderWidth: 1 }
+                    : { borderColor: Colors.inactive }
                 }
                 insideStyle={
                   select === 2
                     ? {
                         color: Colors.backPrimary,
-                        fontSize: Dimensions.get('window').width / 22,
-                        // fontFamily: Fonts.bold,
+                        fontSize: Dimensions.get('window').width / 30,
                       }
-                    : sizeIconCheck > 41
-                    ? {
-                        color: Colors.backPrimary,
-                        fontSize: Dimensions.get('window').width / 22,
+                    : {
+                        color: Colors.surround,
+                        fontSize: Dimensions.get('window').width / 30,
                       }
-                    : { color: Colors.surround }
                 }>
+                <Ionicons
+                  name='md-checkmark'
+                  size={18}
+                  color={select === 2 ? Colors.backPrimary : Colors.inactive}
+                />{' '}
                 {selectTwo}
               </Buttons.ButtonCircle>
             </ComboAround>
             <ComboAround>
               <View
-                style={{ width: Dimensions.get('window').width / 12 }}></View>
+                style={{ width: Dimensions.get('window').width / 15 }}></View>
             </ComboAround>
           </View>
         </View>
@@ -1279,66 +1210,94 @@ const MasterScreen = () => {
         <View style={{ alignItems: 'center' }}>
           <View
             style={{
-              width: '60%',
+              width: '65%',
+
               flexDirection: 'row',
               justifyContent: 'space-between',
-              alignSelf: 'center',
             }}>
             <Buttons.ButtonCircle
               action={() => handleStatus(0)}
+              touchColor={
+                words[index]['st' + lngscnd] === 0 ? null : Colors.accent
+              }
               bodyStyle={
                 words[index]['st' + lngscnd] === 0
                   ? { borderColor: Colors.base }
                   : { borderColor: Colors.inactive }
               }>
               <Ionicons
-                name='ios-infinite'
-                size={
-                  words[index]['st' + lngscnd] === 0 ? 30 : sizeIconInfinity
-                }
+                name='ios-add'
+                size={20}
                 color={
                   words[index]['st' + lngscnd] === 0
-                    ? Colors.inactive
-                    : sizeIconInfinity > 41
-                    ? Colors.accent
+                    ? Colors.base
+                    : Colors.surround
+                }
+              />{' '}
+              <Ionicons
+                name='ios-infinite'
+                size={words[index]['st' + lngscnd] === 0 ? 28 : 35}
+                color={
+                  words[index]['st' + lngscnd] === 0
+                    ? Colors.base
                     : Colors.surround
                 }
               />
             </Buttons.ButtonCircle>
             <Buttons.ButtonCircle
               action={() => handleStatus(1)}
+              touchColor={
+                words[index]['st' + lngscnd] === 1 ? null : Colors.backSecond
+              }
               bodyStyle={
                 words[index]['st' + lngscnd] === 1
                   ? { borderColor: Colors.base }
                   : { borderColor: Colors.inactive }
               }>
               <Ionicons
-                name='ios-attach'
-                size={words[index]['st' + lngscnd] === 1 ? 30 : sizeIconAttach}
+                name='ios-add'
+                size={20}
                 color={
                   words[index]['st' + lngscnd] === 1
-                    ? Colors.inactive
-                    : sizeIconAttach > 41
-                    ? Colors.backSecond
+                    ? Colors.base
+                    : Colors.surround
+                }
+              />{' '}
+              <Ionicons
+                name='ios-attach'
+                size={words[index]['st' + lngscnd] === 1 ? 28 : 35}
+                color={
+                  words[index]['st' + lngscnd] === 1
+                    ? Colors.base
                     : Colors.surround
                 }
               />
             </Buttons.ButtonCircle>
             <Buttons.ButtonCircle
               action={() => handleStatus(2)}
+              touchColor={
+                words[index]['st' + lngscnd] === 2 ? null : Colors.backPrimary
+              }
               bodyStyle={
                 words[index]['st' + lngscnd] === 2
                   ? { borderColor: Colors.base }
                   : { borderColor: Colors.inactive }
               }>
               <Ionicons
-                name='md-checkmark'
-                size={words[index]['st' + lngscnd] === 2 ? 30 : sizeIconCheck}
+                name='ios-add'
+                size={20}
                 color={
                   words[index]['st' + lngscnd] === 2
-                    ? Colors.inactive
-                    : sizeIconCheck > 41
-                    ? Colors.backPrimary
+                    ? Colors.base
+                    : Colors.surround
+                }
+              />{' '}
+              <Ionicons
+                name='md-checkmark'
+                size={words[index]['st' + lngscnd] === 2 ? 28 : 35}
+                color={
+                  words[index]['st' + lngscnd] === 2
+                    ? Colors.base
                     : Colors.surround
                 }
               />
@@ -1355,104 +1314,88 @@ const MasterScreen = () => {
             width: Dimensions.get('window').width * 0.7,
           }}>
           <Buttons.ButtonCircle
+            touchColor={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : null
+            }
             action={() => {
               handleIndex(-Math.floor(range / 7));
-              animeIcon('Rewind');
             }}>
-            <Ionicons
-              name='md-rewind'
-              size={sizeIconRewind}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconRewind > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconRewind > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconRewind > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
+            <Ionicons name='md-rewind' size={30} color={Colors.surround} />
           </Buttons.ButtonCircle>
           <Buttons.ButtonCircle
+            touchColor={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : null
+            }
             action={() => {
               handleIndex(-1);
-              animeIcon('Back');
-            }}
-            color={Colors.base}>
+            }}>
             <Ionicons
               name='md-arrow-dropleft'
-              size={sizeIconBack}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconBack > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconBack > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconBack > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
+              size={30}
+              color={Colors.surround}
             />
           </Buttons.ButtonCircle>
           <Buttons.ButtonCircle
+            touchColor={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : null
+            }
             action={() => {
               setIndex(Math.floor(Math.random() * range));
-              animeIcon('Random');
-            }}
-            color={Colors.base}>
-            <Ionicons
-              name='ios-color-wand'
-              size={sizeIconRandom}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconRandom > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconRandom > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconRandom > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
+            }}>
+            <Ionicons name='ios-color-wand' size={35} color={Colors.surround} />
           </Buttons.ButtonCircle>
           <Buttons.ButtonCircle
+            touchColor={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : null
+            }
             action={() => {
               handleIndex(1);
-              animeIcon('Next');
-            }}
-            color={Colors.base}>
+            }}>
             <Ionicons
               name='md-arrow-dropright'
-              size={sizeIconNext}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconNext > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconNext > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconNext > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
+              size={30}
+              color={Colors.surround}
             />
           </Buttons.ButtonCircle>
 
           <Buttons.ButtonCircle
+            touchColor={
+              words[index]['st' + lngscnd] === 0
+                ? Colors.accent
+                : words[index]['st' + lngscnd] === 1
+                ? Colors.backSecond
+                : words[index]['st' + lngscnd] === 2
+                ? Colors.backPrimary
+                : null
+            }
             action={() => {
               handleIndex(Math.floor(range / 7));
-              animeIcon('FastF');
-            }}
-            color={Colors.base}>
-            <Ionicons
-              name='md-fastforward'
-              size={sizeIconFastF}
-              color={
-                words[index]['st' + lngscnd] === 0 && sizeIconFastF > 35
-                  ? Colors.accent
-                  : words[index]['st' + lngscnd] === 1 && sizeIconFastF > 35
-                  ? Colors.backSecond
-                  : words[index]['st' + lngscnd] === 2 && sizeIconFastF > 35
-                  ? Colors.backPrimary
-                  : Colors.surround
-              }
-            />
+            }}>
+            <Ionicons name='md-fastforward' size={30} color={Colors.surround} />
           </Buttons.ButtonCircle>
         </View>
         <View
