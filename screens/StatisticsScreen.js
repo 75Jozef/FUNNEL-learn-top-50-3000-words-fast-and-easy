@@ -305,6 +305,7 @@ const StatisticsScreen = () => {
 
   const setLanguageSecond = (props) => {
     dispatch(lngActions.setLngScnd(props));
+    setSelectSecondLanguage(false);
   };
 
   const SelectSecondLanguage = (props) => {
@@ -469,59 +470,38 @@ const StatisticsScreen = () => {
             justifyContent: 'space-evenly',
             alignItems: 'center',
           }}>
-          <View
-            style={{
-              backgroundColor: 'black',
-              height: '16%',
-              flexDirection: 'column',
-            }}>
-            <Buttons.ButtonBox
-              action={() => {
-                setLevelV((prev) => !prev);
-              }}
-              bodyStyle={
-                levelV
-                  ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
-                      borderColor: Colors.surround,
-                      marginBottom: null,
-                    }
-                  : { backgroundColor: Colors.base, marginBottom: null }
-              }
-              insideStyle={
-                levelV
-                  ? {
-                      fontFamily: Fonts.bold,
-                      color: Colors.surround,
-                    }
-                  : null
-              }>
-              50v
-            </Buttons.ButtonBox>
-            <TxtBold>kuk</TxtBold>
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.accent,
-                width: (countVZero / 50) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backSecond,
-                width: (countVOne / 50) * 100 + '%',
-              }}
-            />
-            <InfoLine
-              infoStyle={{
-                backgroundColor: Colors.backPrimary,
-                width: (countVTwo / 50) * 100 + '%',
-              }}
-            />
-          </View>
+          <Buttons.ButtonCircle
+            touchColor={Colors.backSecond}
+            action={() => {
+              setLevelV((prev) => !prev);
+            }}
+            bodyStyle={
+              levelV
+                ? {
+                    borderWidth: 1,
+                    borderRadius: 25,
+                    borderColor: Colors.surround,
+                    marginBottom: null,
+                  }
+                : { backgroundColor: Colors.base, marginBottom: null }
+            }
+            insideStyle={
+              levelV
+                ? {
+                    fontFamily: Fonts.bold,
+                    color: Colors.surround,
+                  }
+                : {
+                    fontFamily: Fonts.bold,
+                    color: Colors.inactive,
+                  }
+            }>
+            50v
+          </Buttons.ButtonCircle>
 
           <ComboAround>
-            <Buttons.ButtonBox
+            <Buttons.ButtonCircle
+              touchColor={Colors.backSecond}
               action={() => {
                 setLevelN((prev) => !prev);
               }}
@@ -541,38 +521,17 @@ const StatisticsScreen = () => {
                       fontFamily: Fonts.bold,
                       color: Colors.surround,
                     }
-                  : null
+                  : {
+                      fontFamily: Fonts.bold,
+                      color: Colors.inactive,
+                    }
               }>
               50n
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countNZero / 48) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countNOne / 48) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countNTwo / 48) * 100 + '%',
-                }}
-              />
-            </View>
+            </Buttons.ButtonCircle>
           </ComboAround>
           <ComboAround>
-            <Buttons.ButtonBox
+            <Buttons.ButtonCircle
+              touchColor={Colors.backSecond}
               action={() => {
                 setLevelA((prev) => !prev);
               }}
@@ -592,38 +551,17 @@ const StatisticsScreen = () => {
                       fontFamily: Fonts.bold,
                       color: Colors.surround,
                     }
-                  : null
+                  : {
+                      fontFamily: Fonts.bold,
+                      color: Colors.inactive,
+                    }
               }>
               50a
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countAZero / 47) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countAOne / 47) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countATwo / 47) * 100 + '%',
-                }}
-              />
-            </View>
+            </Buttons.ButtonCircle>
           </ComboAround>
           <ComboAround>
-            <Buttons.ButtonBox
+            <Buttons.ButtonCircle
+              touchColor={Colors.backSecond}
               action={() => {
                 setLevelH((prev) => !prev);
               }}
@@ -643,38 +581,17 @@ const StatisticsScreen = () => {
                       fontFamily: Fonts.bold,
                       color: Colors.surround,
                     }
-                  : null
+                  : {
+                      fontFamily: Fonts.bold,
+                      color: Colors.inactive,
+                    }
               }>
               100
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countHZero / 70) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countHOne / 70) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countHTwo / 70) * 100 + '%',
-                }}
-              />
-            </View>
+            </Buttons.ButtonCircle>
           </ComboAround>
           <ComboAround>
-            <Buttons.ButtonBox
+            <Buttons.ButtonCircle
+              touchColor={Colors.backSecond}
               action={() => {
                 setLevelF((prev) => !prev);
               }}
@@ -694,38 +611,17 @@ const StatisticsScreen = () => {
                       fontFamily: Fonts.bold,
                       color: Colors.surround,
                     }
-                  : null
+                  : {
+                      fontFamily: Fonts.bold,
+                      color: Colors.inactive,
+                    }
               }>
               500
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countFZero / 280) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countFOne / 280) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countFTwo / 280) * 100 + '%',
-                }}
-              />
-            </View>
+            </Buttons.ButtonCircle>
           </ComboAround>
           <ComboAround>
-            <Buttons.ButtonBox
+            <Buttons.ButtonCircle
+              touchColor={Colors.backSecond}
               action={() => {
                 setLevelT((prev) => !prev);
               }}
@@ -745,38 +641,17 @@ const StatisticsScreen = () => {
                       fontFamily: Fonts.bold,
                       color: Colors.surround,
                     }
-                  : null
+                  : {
+                      fontFamily: Fonts.bold,
+                      color: Colors.inactive,
+                    }
               }>
               1000
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countTZero / 553) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countTOne / 553) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countTTwo / 553) * 100 + '%',
-                }}
-              />
-            </View>
+            </Buttons.ButtonCircle>
           </ComboAround>
           <ComboAround>
-            <Buttons.ButtonBox
+            <Buttons.ButtonCircle
+              touchColor={Colors.backSecond}
               action={() => {
                 setLevelX((prev) => !prev);
               }}
@@ -796,35 +671,13 @@ const StatisticsScreen = () => {
                       fontFamily: Fonts.bold,
                       color: Colors.surround,
                     }
-                  : null
+                  : {
+                      fontFamily: Fonts.bold,
+                      color: Colors.inactive,
+                    }
               }>
               3000
-            </Buttons.ButtonBox>
-            <View
-              style={{
-                width: '90%',
-                alignItems: 'center',
-                alignSelf: 'center',
-              }}>
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.accent,
-                  width: (countXZero / 1951) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backSecond,
-                  width: (countXOne / 1951) * 100 + '%',
-                }}
-              />
-              <InfoLine
-                infoStyle={{
-                  backgroundColor: Colors.backPrimary,
-                  width: (countXTwo / 1951) * 100 + '%',
-                }}
-              />
-            </View>
+            </Buttons.ButtonCircle>
           </ComboAround>
         </View>
         <View
