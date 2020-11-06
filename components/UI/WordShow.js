@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import Colors from '../../constants/Colors';
-import { TxtHeader, TxtItalic } from './Txt';
+import { TxtHeader } from './Txt';
 import { Ionicons } from '@expo/vector-icons';
 
 const WordShow = (props) => {
