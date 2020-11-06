@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Dimensions,
-  View,
-  ScrollView,
-  TouchableNativeFeedback,
-  Platform,
-  ColorPropType,
-} from 'react-native';
+import { Dimensions, View, ScrollView, FlatList } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
 import Colors from '../constants/Colors';
@@ -353,10 +346,53 @@ const StatisticsScreen = () => {
 
   const Statistics = () => {
     return (
-      <>
-        <TxtHeader>Statistics</TxtHeader>
-        <TxtLabel>Some % numbers</TxtLabel>
-      </>
+      <View
+        style={{
+          width: '100%',
+          height: '100%',
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+        }}>
+        <Ionicons name='ios-menu' size={40} color={Colors.textPrimary} />
+        <Ionicons name='ios-infinite' size={40} color={Colors.accent} />
+        <Ionicons name='ios-attach' size={40} color={Colors.backSecond} />
+        <Ionicons name='md-checkmark' size={40} color={Colors.backPrimary} />
+      </View>
+    );
+  };
+
+  const WordsWindow = (props) => {
+    return (
+      <View>
+        <FlatList
+          data={selectedWords}
+          keyExtractor={(item) => item['id' + lngscnd].toString()}
+          renderItem={({ item }) => {
+            return (
+              <Buttons.ButtonBox
+                bodyStyle={{
+                  width: Dimensions.get('window').width / 1.5,
+                  height: Dimensions.get('window').height / 25,
+                  borderColor: Colors.base,
+                }}
+                insideStyle={{
+                  color:
+                    item['st' + lngscnd] === 0
+                      ? Colors.accent
+                      : item['st' + lngscnd] === 1
+                      ? Colors.backSecond
+                      : item['st' + lngscnd] === 2
+                      ? Colors.backPrimary
+                      : Colors.base,
+                  fontSize: Dimensions.get('window').height / 30,
+                }}>
+                {item[lngscnd]}
+              </Buttons.ButtonBox>
+            );
+          }}
+        />
+      </View>
     );
   };
 
@@ -439,12 +475,11 @@ const StatisticsScreen = () => {
         style={{
           height: '22%',
           width: '90%',
-          alignItems: 'center',
-          paddingVertical: 5,
           borderColor: Colors.inactive,
           borderWidth: 1,
           borderStyle: 'dotted',
           borderRadius: 25,
+          alignItems: 'center',
         }}>
         {selectSecondLanguage ? <SelectSecondLanguage /> : <Statistics />}
       </View>
@@ -687,7 +722,17 @@ const StatisticsScreen = () => {
             borderWidth: 1,
             borderStyle: 'dotted',
             borderRadius: 25,
-          }}></View>
+          }}>
+          {levelA ||
+          levelV ||
+          levelN ||
+          levelH ||
+          levelF ||
+          levelT ||
+          levelX ? (
+            <WordsWindow />
+          ) : null}
+        </View>
       </View>
 
       <View

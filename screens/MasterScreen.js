@@ -525,15 +525,12 @@ const MasterScreen = () => {
                   action={() => {
                     setSelectorIndex(item[lngfrst]);
                     setWordSelector(false);
+                  }}
+                  insideStyle={{
+                    color: Colors.surround,
+                    fontSize: Dimensions.get('window').height / 25,
                   }}>
-                  <TxtLabel
-                    style={{
-                      paddingTop: 3,
-                      color: Colors.surround,
-                      fontSize: Dimensions.get('window').height / 25,
-                    }}>
-                    {item[lngfrst]}
-                  </TxtLabel>
+                  {item[lngfrst]}
                 </Buttons.ButtonBox>
               );
             }}
