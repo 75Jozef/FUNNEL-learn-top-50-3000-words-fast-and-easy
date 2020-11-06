@@ -28,7 +28,7 @@ const WelcomeScreen = () => {
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>
-        <TxtHeader>W|O|R|D</TxtHeader>
+        <TxtHeader>F|U|N|N|E|L</TxtHeader>
         <TxtHeader>{theme.toString()}</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>

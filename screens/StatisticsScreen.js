@@ -7,7 +7,7 @@ import {
   Platform,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Input from './../components/UI/Input';
+
 import Colors from '../constants/Colors';
 import {
   TxtHeader,
@@ -17,7 +17,7 @@ import {
   TxtLabel,
   TxtButton,
 } from '../components/UI/Txt';
-import CardFrame from '../components/UI/CardFrame';
+
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
@@ -58,16 +58,15 @@ const StatisticsScreen = () => {
   const [selectOne, setSelectOne] = useState(0);
   const [selectTwo, setSelectTwo] = useState(0);
 
+  const [select, setSelect] = useState();
+
   const [levelA, setLevelA] = useState(false);
   const [levelN, setLevelN] = useState(false);
   const [levelV, setLevelV] = useState(false);
   const [levelH, setLevelH] = useState(false);
   const [levelF, setLevelF] = useState(false);
   const [levelT, setLevelT] = useState(false);
-
   const [levelX, setLevelX] = useState(false);
-
-  const [select, setSelect] = useState(0);
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -76,11 +75,8 @@ const StatisticsScreen = () => {
 
   const data = useSelector((state) => state.words.words);
 
-  const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
-
   const word = data.filter((word) => word['id' + lngscnd] === 2999);
   const actLngScnd = word[0][lngscnd];
-
   const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
   const actLngScndEng = wordEng[0][lngscnd];
 
@@ -132,49 +128,20 @@ const StatisticsScreen = () => {
     'bg',
   ];
 
-  const words = data.filter(
+  const selectedWords = data.filter(
     (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === select) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === select) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === select) ||
+      (word.userlvl === 'a' && levelA) ||
+      (word.userlvl === 'n' && levelN) ||
+      (word.userlvl === 'v' && levelV) ||
+      (word.userlvl === 'h' && levelH) ||
+      (word.userlvl === 'f' && levelF) ||
+      (word.userlvl === 't' && levelT) ||
+      (word.userlvl === 'x' && levelX) ||
       word.userlvl === 'l'
   );
 
-  const wordsZero = data.filter(
-    (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 0) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 0)
-  );
-
-  const wordsOne = data.filter(
-    (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 1) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 1)
-  );
-
-  const wordsTwo = data.filter(
-    (word) =>
-      (word.userlvl === 'a' && levelA && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'n' && levelN && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'v' && levelV && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'h' && levelH && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'f' && levelF && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 't' && levelT && word['st' + lngscnd] === 2) ||
-      (word.userlvl === 'x' && levelX && word['st' + lngscnd] === 2)
+  const words = selectedWords.filter(
+    (word) => word['st' + lngscnd] === select || word.userlvl === 'l'
   );
 
   useEffect(() => {
@@ -182,415 +149,187 @@ const StatisticsScreen = () => {
   });
 
   const counter = () => {
-    setCountVZero(0);
-    setCountVOne(0);
-    setCountVTwo(0);
-    setCountAZero(0);
-    setCountAOne(0);
-    setCountATwo(0);
-    setCountNZero(0);
-    setCountNOne(0);
-    setCountNTwo(0);
-    setCountHZero(0);
-    setCountHOne(0);
-    setCountHTwo(0);
-    setCountFZero(0);
-    setCountFOne(0);
-    setCountFTwo(0);
-    setCountTZero(0);
-    setCountTOne(0);
-    setCountTTwo(0);
-    setCountXZero(0);
-    setCountXOne(0);
-    setCountXTwo(0);
-    setSelectZero(0);
-    setSelectOne(0);
-    setSelectTwo(0);
-    // let countZero, countOne, countTwo, countVZero, countVOne, countVTwo, countNZero, countNOne, countNTwo, countAZero, countAone, countATwo, countHZero, countHOne, countHTwo, countFZero, countFOne, countFTwo, countTZero, countTOne, countTTwo, countXZero, countXOne, countXTwo;
+    let cntZero = 0;
+    let cntOne = 0;
+    let cntTwo = 0;
+    let cntVZero = 0;
+    let cntAZero = 0;
+    let cntNZero = 0;
+    let cntHZero = 0;
+    let cntFZero = 0;
+    let cntTZero = 0;
+    let cntXZero = 0;
+    let cntVOne = 0;
+    let cntAOne = 0;
+    let cntNOne = 0;
+    let cntHOne = 0;
+    let cntFOne = 0;
+    let cntTOne = 0;
+    let cntXOne = 0;
+    let cntVTwo = 0;
+    let cntATwo = 0;
+    let cntNTwo = 0;
+    let cntHTwo = 0;
+    let cntFTwo = 0;
+    let cntTTwo = 0;
+    let cntXTwo = 0;
 
-    // word['st' + lngscnd] === 0 ? countZero += 1 :  word['st' + lngscnd] === 1 ? countOne +=1 :  word['st' + lngscnd] === 2 ? countTwo +=1 :  word['st' + lngscnd] === 0 && word['userlvl'] === 'v' ? countVZero +=1 : word['st' + lngscnd] === 1 && word['userlvl'] === 'v' ? countVOne +=1 : word['st' + lngscnd] === 2 && word['userlvl'] === 'v' ? countVTwo +=1 : word['st' + lngscnd] === 0 && word['userlvl'] === 'n' ? countNZero += 1 : word['st' + lngscnd] === 1 && word['userlvl'] === 'n' ? countNOne += 1 : word['st' + lngscnd] === 2 && word['userlvl'] === 'n' ? countNTwo +=1 : word['st' + lngscnd] === 0 && word['userlvl'] === 'a' ? countAZero += 1 : word['st' + lngscnd] === 1 && word['userlvl'] === 'a' ? countAone += 1 : word['st' + lngscnd] === 2 && word['userlvl'] === 'a' ? countATwo +=1 : word['st' + lngscnd] === 0 && word['userlvl'] === 'h' ? countHZero +=1 : word['st' + lngscnd] === 1 && word['userlvl'] === 'h' ? countHOne += 1 : word['st' + lngscnd] === 2 && word['userlvl'] === 'h' ? countHTwo += 1 : word['st' + lngscnd] === 0 && word['userlvl'] === 'f' ? countFZero += 1 : word['st' + lngscnd] === 1 && word['userlvl'] === 'h' ? countFOne += 1 : word['st' + lngscnd] === 2 && word['userlvl'] === 'f' ? countFTwo += 1 : word['st' + lngscnd] === 0 && word['userlvl'] === 't' ? countTZero += 1 : word['st' + lngscnd] === 1 && word['userlvl'] === 't' ? countTOne += 1 : word['st' + lngscnd] === 2 && word['userlvl'] === 't' ? countTTwo += 1 : word['st' + lngscnd] === 0 && word['userlvl'] === 'x' ? countXZero += 1 : word['st' + lngscnd] === 1 && word['userlvl'] === 'x' ? countXOne +=1 : word['st' + lngscnd] === 2 && word['userlvl'] === 'x' ? countXTwo += 1 : null
-
-    data.map((word) => {
-      word['st' + lngscnd] === 0
-        ? setSelectZero((prev) => prev++)
-        : word['st' + lngscnd] === 1
-        ? setSelectOne((prev) => prev++)
-        : word['st' + lngscnd] === 2
-        ? setSelectTwo((prev) => prev++)
-        : word['st' + lngscnd] === 0 && word['userlvl'] === 'v'
-        ? setCountVZero((prev) => prev++)
-        : word['st' + lngscnd] === 1 && word['userlvl'] === 'v'
-        ? setCountVOne((prev) => prev++)
-        : word['st' + lngscnd] === 2 && word['userlvl'] === 'v'
-        ? setCountVTwo((prev) => prev++)
-        : word['st' + lngscnd] === 0 && word['userlvl'] === 'n'
-        ? setCountNZero((prev) => prev++)
-        : word['st' + lngscnd] === 1 && word['userlvl'] === 'n'
-        ? setCountNOne((prev) => prev++)
-        : word['st' + lngscnd] === 2 && word['userlvl'] === 'n'
-        ? setCountNTwo((prev) => prev++)
-        : word['st' + lngscnd] === 0 && word['userlvl'] === 'a'
-        ? setCountAZero((prev) => prev++)
-        : word['st' + lngscnd] === 1 && word['userlvl'] === 'a'
-        ? setCountAOne((prev) => prev++)
-        : word['st' + lngscnd] === 2 && word['userlvl'] === 'a'
-        ? setCountATwo((prev) => prev++)
-        : word['st' + lngscnd] === 0 && word['userlvl'] === 'h'
-        ? setCountHZero((prev) => prev++)
-        : word['st' + lngscnd] === 1 && word['userlvl'] === 'h'
-        ? setCountHOne((prev) => prev++)
-        : word['st' + lngscnd] === 2 && word['userlvl'] === 'h'
-        ? setCountHTwo((prev) => prev++)
-        : word['st' + lngscnd] === 0 && word['userlvl'] === 'f'
-        ? setCountFZero((prev) => prev++)
-        : word['st' + lngscnd] === 1 && word['userlvl'] === 'h'
-        ? setCountFOne((prev) => prev++)
-        : word['st' + lngscnd] === 2 && word['userlvl'] === 'f'
-        ? setCountFTwo((prev) => prev++)
-        : word['st' + lngscnd] === 0 && word['userlvl'] === 't'
-        ? setCountTZero((prev) => prev++)
-        : word['st' + lngscnd] === 1 && word['userlvl'] === 't'
-        ? setCountTOne((prev) => prev++)
-        : word['st' + lngscnd] === 2 && word['userlvl'] === 't'
-        ? setCountTTwo((prev) => prev++)
-        : word['st' + lngscnd] === 0 && word['userlvl'] === 'x'
-        ? setCountXZero((prev) => prev++)
-        : word['st' + lngscnd] === 1 && word['userlvl'] === 'x'
-        ? setCountXOne((prev) => prev++)
-        : word['st' + lngscnd] === 2 && word['userlvl'] === 'x'
-        ? setCountXTwo((prev) => prev++)
-        : null;
+    selectedWords.forEach((word) => {
+      switch (word['st' + lngscnd]) {
+        case 0:
+          cntZero++;
+          if (word['userlvl'] === 'v') {
+            cntVZero++;
+            break;
+          }
+          if (word['userlvl'] === 'a') {
+            cntAZero++;
+            break;
+          }
+          if (word['userlvl'] === 'n') {
+            cntNZero++;
+            break;
+          }
+          if (word['userlvl'] === 'h') {
+            cntHZero++;
+            break;
+          }
+          if (word['userlvl'] === 'f') {
+            cntFZero++;
+            break;
+          }
+          if (word['userlvl'] === 't') {
+            cntTZero++;
+            break;
+          }
+          if (word['userlvl'] === 'x') {
+            cntXZero++;
+            break;
+          }
+          break;
+        case 1:
+          cntOne++;
+          if (word['userlvl'] === 'v') {
+            cntVOne++;
+            break;
+          }
+          if (word['userlvl'] === 'a') {
+            cntAOne++;
+            break;
+          }
+          if (word['userlvl'] === 'n') {
+            cntNOne++;
+            break;
+          }
+          if (word['userlvl'] === 'h') {
+            cntHOne++;
+            break;
+          }
+          if (word['userlvl'] === 'f') {
+            cntFOne++;
+            break;
+          }
+          if (word['userlvl'] === 't') {
+            cntTOne++;
+            break;
+          }
+          if (word['userlvl'] === 'x') {
+            cntXOne++;
+            break;
+          }
+          break;
+        case 2:
+          cntTwo++;
+          if (word['userlvl'] === 'v') {
+            cntVTwo++;
+            break;
+          }
+          if (word['userlvl'] === 'a') {
+            cntATwo++;
+            break;
+          }
+          if (word['userlvl'] === 'n') {
+            cntNTwo++;
+            break;
+          }
+          if (word['userlvl'] === 'h') {
+            cntHTwo++;
+            break;
+          }
+          if (word['userlvl'] === 'f') {
+            cntFTwo++;
+            break;
+          }
+          if (word['userlvl'] === 't') {
+            cntTTwo++;
+            break;
+          }
+          if (word['userlvl'] === 'x') {
+            cntXTwo++;
+            break;
+          }
+          break;
+      }
     });
 
-    // const countZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 ? (counter += 1) : counter,
-    //   0
-    // );
-
-    // setSelectZero(countZero);
-
-    // const countOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 ? (counter += 1) : counter,
-    //   0
-    // );
-    // setSelectOne(countOne);
-
-    // const countTwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 ? (counter += 1) : counter,
-    //   0
-    // );
-    // setSelectTwo(countTwo);
-
-    // const countVZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 && word['userlvl'] === 'v'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountVZero(countVZero);
-
-    // const countVOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 && word['userlvl'] === 'v'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountVOne(countVOne);
-
-    // const countVTwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 && word['userlvl'] === 'v'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountVTwo(countVTwo);
-
-    // const countNZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 && word['userlvl'] === 'n'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountNZero(countNZero);
-
-    // const countNOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 && word['userlvl'] === 'n'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountNOne(countNOne);
-
-    // const countNTwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 && word['userlvl'] === 'n'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountNTwo(countNTwo);
-
-    // const countAZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 && word['userlvl'] === 'a'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountAZero(countAZero);
-
-    // const countAOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 && word['userlvl'] === 'a'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountAOne(countAOne);
-
-    // const countATwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 && word['userlvl'] === 'a'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountATwo(countATwo);
-
-    // const countHZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 && word['userlvl'] === 'h'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountHZero(countHZero);
-
-    // const countHOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 && word['userlvl'] === 'h'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountHOne(countHOne);
-
-    // const countHTwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 && word['userlvl'] === 'h'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountHTwo(countHTwo);
-
-    // const countFZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 && word['userlvl'] === 'f'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountFZero(countFZero);
-
-    // const countFOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 && word['userlvl'] === 'f'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountFOne(countFOne);
-
-    // const countFTwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 && word['userlvl'] === 'f'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountFTwo(countFTwo);
-
-    // const countTZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 && word['userlvl'] === 't'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountTZero(countTZero);
-
-    // const countTOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 && word['userlvl'] === 't'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountTOne(countTOne);
-
-    // const countTTwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 && word['userlvl'] === 't'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountTTwo(countTTwo);
-
-    // const countXZero = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 0 && word['userlvl'] === 'x'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountXZero(countXZero);
-
-    // const countXOne = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 1 && word['userlvl'] === 'x'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountXOne(countXOne);
-
-    // const countXTwo = data.reduce(
-    //   (counter, word) =>
-    //     word['st' + lngscnd] === 2 && word['userlvl'] === 'x'
-    //       ? (counter += 1)
-    //       : counter,
-    //   0
-    // );
-    // setCountXTwo(countXTwo);
-  };
-
-  const handleSecondLng = (props) => {
-    if (selectSecondLanguage) {
-      setSelectSecondLanguage(false);
-      return;
-    }
-    setSelectSecondLanguage(true);
-  };
-
-  const SelectSecondLanguage = (props) => {
-    return (
-      <View
-        style={{
-          alignItems: 'center',
-          borderWidth: 0.5,
-          borderStyle: 'dotted',
-          borderColor: Colors.inactive,
-        }}>
-        <ScrollView>
-          {languages.map((lng, index) => {
-            return (
-              <View key={index}>
-                <Buttons.ButtonBox
-                  bodyStyle={
-                    lng === lngscnd
-                      ? {
-                          width: Dimensions.get('window').width / 2,
-                          height: Dimensions.get('window').height / 22,
-                          backgroundColor: Colors.inactive,
-                          padding: 3,
-                        }
-                      : {
-                          width: Dimensions.get('window').width / 2,
-                          height: Dimensions.get('window').height / 22,
-                          borderColor: Colors.base,
-                          padding: 3,
-                        }
-                  }
-                  action={() => setLanguageSecond(lng)}>
-                  <TxtLabel
-                    style={{
-                      paddingTop: 5,
-                      color: Colors.surround,
-                      fontSize: Dimensions.get('window').height / 40,
-                    }}>
-                    {word[0][lng]}
-                  </TxtLabel>
-                </Buttons.ButtonBox>
-              </View>
-            );
-          })}
-        </ScrollView>
-      </View>
-    );
-  };
-
-  const setLanguageSecond = (props) => {
-    dispatch(lngActions.setLngScnd(props));
-    setSelectSecondLanguage(false);
+    setSelectZero(cntZero);
+    setSelectOne(cntOne);
+    setSelectTwo(cntTwo);
+    setCountVZero(cntVZero);
+    setCountVOne(cntVOne);
+    setCountVTwo(cntVTwo);
+    setCountAZero(cntAZero);
+    setCountAOne(cntAOne);
+    setCountATwo(cntATwo);
+    setCountNZero(cntNZero);
+    setCountNOne(cntNOne);
+    setCountNTwo(cntNTwo);
+    setCountHZero(cntHZero);
+    setCountHOne(cntHOne);
+    setCountHTwo(cntHTwo);
+    setCountFZero(cntFZero);
+    setCountFOne(cntFOne);
+    setCountFTwo(cntFTwo);
+    setCountTZero(cntTZero);
+    setCountTOne(cntTOne);
+    setCountTTwo(cntTTwo);
+    setCountXZero(cntXZero);
+    setCountXOne(cntXOne);
+    setCountXTwo(cntXTwo);
   };
 
   return (
     <ScreenFrame>
-      <View style={{ backgroundColor: 'pink', height: '10%', width: '70%' }}>
-        <TouchableNativeFeedback
-          background={
-            Platform.Version >= 21
-              ? TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')
-              : TouchableNativeFeedback.SelectableBackground()
-          }
-          delayPressIn={0}
-          onPress={() => handleSecondLng()}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              margin: 5,
-            }}>
-            <View style={{ width: Dimensions.get('window').width / 8 }}>
-              <Buttons.ButtonCircle action={() => handleSecondLng()}>
-                <Ionicons
-                  name='ios-globe'
-                  size={iconSize}
-                  color={
-                    selectSecondLanguage ? Colors.backSecond : Colors.inactive
-                  }
-                />
-              </Buttons.ButtonCircle>
-            </View>
-
-            <View style={{ marginLeft: 20 }}>
-              <ComboAround>
-                <TxtNormal
-                  style={
-                    selectSecondLanguage
-                      ? { color: Colors.surround }
-                      : { color: Colors.inactive }
-                  }>
-                  {actLngScnd}
-                </TxtNormal>
-                <TxtNormal
-                  style={
-                    selectSecondLanguage
-                      ? { color: Colors.surround }
-                      : { color: Colors.inactive }
-                  }>
-                  ({actLngScndEng})
-                </TxtNormal>
-              </ComboAround>
-            </View>
+      <View style={{ backgroundColor: 'pink', height: '10%', width: '90%' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            margin: 5,
+          }}>
+          <View style={{ width: Dimensions.get('window').width / 8 }}>
+            <Buttons.ButtonCircle>
+              <Ionicons
+                name='ios-globe'
+                size={iconSize}
+                color={Colors.backSecond}
+              />
+            </Buttons.ButtonCircle>
           </View>
-        </TouchableNativeFeedback>
+
+          <View style={{ marginLeft: 20 }}>
+            <ComboAround>
+              <TxtNormal>{actLngScnd}</TxtNormal>
+              <TxtNormal>({actLngScndEng})</TxtNormal>
+            </ComboAround>
+          </View>
+        </View>
       </View>
       <View
         style={{
-          backgroundColor: 'yellow',
+          backgroundColor: 'green',
           height: '10%',
-          width: '70%',
+          width: '90%',
         }}></View>
       <View
         style={{
@@ -964,24 +703,24 @@ const StatisticsScreen = () => {
             </View>
           </ComboAround>
         </View>
-
         <View
           style={{
+            backgroundColor: 'yellow',
+
             width: '70%',
-          }}>
-          {selectSecondLanguage ? <SelectSecondLanguage /> : null}
-        </View>
+          }}></View>
       </View>
+
       <View
         style={{
           flexDirection: 'row',
           height: '10%',
           justifyContent: 'flex-start',
+          backgroundColor: 'brown',
         }}>
         <View
           style={{
             width: '90%',
-
             backgroundColor: 'brown',
             justifyContent: 'center',
           }}></View>
