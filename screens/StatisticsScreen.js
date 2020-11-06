@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableNativeFeedback,
   Platform,
+  ColorPropType,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
@@ -30,8 +31,6 @@ import { InfoLine } from '../components/UI/InfoLine';
 import Fonts from '../constants/Fonts';
 
 const StatisticsScreen = () => {
-  const [iconSize] = useState(20);
-
   const [countVZero, setCountVZero] = useState();
   const [countVOne, setCountVOne] = useState();
   const [countVTwo, setCountVTwo] = useState();
@@ -79,6 +78,8 @@ const StatisticsScreen = () => {
   const actLngScnd = word[0][lngscnd];
   const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
   const actLngScndEng = wordEng[0][lngscnd];
+
+  const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -298,50 +299,173 @@ const StatisticsScreen = () => {
     setCountXTwo(cntXTwo);
   };
 
+  const handleSecondLng = (props) => {
+    setSelectSecondLanguage((prev) => !prev);
+  };
+
+  const setLanguageSecond = (props) => {
+    dispatch(lngActions.setLngScnd(props));
+  };
+
+  const SelectSecondLanguage = (props) => {
+    return (
+      <ScrollView>
+        {languages.map((lng, index) => {
+          return (
+            <View key={index}>
+              <Buttons.ButtonBox
+                bodyStyle={
+                  lng === lngscnd
+                    ? {
+                        width: Dimensions.get('window').width / 1.5,
+                        height: Dimensions.get('window').height / 25,
+                        backgroundColor: Colors.inactive,
+                        padding: 3,
+                      }
+                    : {
+                        width: Dimensions.get('window').width / 1.5,
+                        height: Dimensions.get('window').height / 25,
+                        borderColor: Colors.base,
+                        padding: 3,
+                      }
+                }
+                action={() => setLanguageSecond(lng)}
+                insideStyle={
+                  lng === lngscnd
+                    ? {
+                        color: Colors.backSecond,
+                        fontSize: Dimensions.get('window').height / 35,
+                      }
+                    : {
+                        color: Colors.surround,
+                        fontSize: Dimensions.get('window').height / 35,
+                      }
+                }>
+                {word[0][lng]}
+              </Buttons.ButtonBox>
+            </View>
+          );
+        })}
+      </ScrollView>
+    );
+  };
+
+  const Statistics = () => {
+    return (
+      <>
+        <TxtHeader>Statistics</TxtHeader>
+        <TxtLabel>Some % numbers</TxtLabel>
+      </>
+    );
+  };
+
   return (
     <ScreenFrame>
-      <View style={{ backgroundColor: 'pink', height: '10%', width: '90%' }}>
+      <View
+        style={{
+          height: '18%',
+          width: '90%',
+          justifyContent: 'space-evenly',
+          borderColor: Colors.inactive,
+          borderWidth: 1,
+          borderStyle: 'dotted',
+          borderRadius: 25,
+        }}>
         <View
           style={{
             flexDirection: 'row',
+            marginLeft: 10,
             alignItems: 'center',
-            margin: 5,
           }}>
-          <View style={{ width: Dimensions.get('window').width / 8 }}>
-            <Buttons.ButtonCircle>
-              <Ionicons
-                name='ios-globe'
-                size={iconSize}
-                color={Colors.backSecond}
-              />
+          <View
+            style={{
+              width: Dimensions.get('window').width / 6,
+            }}>
+            <Buttons.ButtonCircle bodyStyle={{ borderColor: Colors.base }}>
+              <Ionicons name='ios-body' size={25} color={Colors.surround} />
             </Buttons.ButtonCircle>
           </View>
 
           <View style={{ marginLeft: 20 }}>
             <ComboAround>
-              <TxtNormal>{actLngScnd}</TxtNormal>
-              <TxtNormal>({actLngScndEng})</TxtNormal>
+              <TxtNormal style={{ color: Colors.surround }}>
+                Nick: {'Cabbage Head'}
+              </TxtNormal>
+            </ComboAround>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginLeft: 10,
+          }}>
+          <View style={{ width: Dimensions.get('window').width / 6 }}>
+            <Buttons.ButtonCircle
+              touchColor={Colors.backSecond}
+              bodyStyle={
+                selectSecondLanguage
+                  ? { borderColor: Colors.surround, borderWidth: 2 }
+                  : { borderColor: Colors.surround }
+              }
+              action={() => handleSecondLng()}>
+              <Ionicons
+                name='ios-globe'
+                size={25}
+                color={
+                  selectSecondLanguage ? Colors.backSecond : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
+          </View>
+
+          <View style={{ marginLeft: 20, alignItems: 'center' }}>
+            <ComboAround>
+              <TxtNormal
+                style={
+                  selectSecondLanguage
+                    ? { color: Colors.backSecond }
+                    : { color: Colors.surround }
+                }>
+                {actLngScnd}
+                {'\n'}({actLngScndEng})
+              </TxtNormal>
             </ComboAround>
           </View>
         </View>
       </View>
+
       <View
         style={{
-          backgroundColor: 'green',
-          height: '10%',
+          height: '22%',
           width: '90%',
-        }}></View>
+          alignItems: 'center',
+          paddingVertical: 5,
+          borderColor: Colors.inactive,
+          borderWidth: 1,
+          borderStyle: 'dotted',
+          borderRadius: 25,
+        }}>
+        {selectSecondLanguage ? <SelectSecondLanguage /> : <Statistics />}
+      </View>
       <View
         style={{
           flexDirection: 'row',
-          height: '70%',
+          height: '55%',
           justifyContent: 'flex-start',
           width: '90%',
+          borderColor: Colors.inactive,
+          borderWidth: 1,
+          borderStyle: 'dotted',
+          borderRadius: 25,
+          overflow: 'hidden',
         }}>
         <View
           style={{
             width: '30%',
-            backgroundColor: 'blue',
+            borderColor: Colors.inactive,
+            borderWidth: 1,
+            borderStyle: 'dotted',
+            borderRadius: 25,
             justifyContent: 'space-evenly',
             alignItems: 'center',
           }}>
@@ -705,23 +829,29 @@ const StatisticsScreen = () => {
         </View>
         <View
           style={{
-            backgroundColor: 'yellow',
-
             width: '70%',
+            borderColor: Colors.inactive,
+            borderWidth: 1,
+            borderStyle: 'dotted',
+            borderRadius: 25,
           }}></View>
       </View>
 
       <View
         style={{
           flexDirection: 'row',
-          height: '10%',
+          height: '5%',
           justifyContent: 'flex-start',
-          backgroundColor: 'brown',
+          overflow: 'hidden',
+          borderColor: Colors.inactive,
+          borderWidth: 1,
+          borderStyle: 'dotted',
+          borderRadius: 25,
         }}>
         <View
           style={{
             width: '90%',
-            backgroundColor: 'brown',
+
             justifyContent: 'center',
           }}></View>
       </View>

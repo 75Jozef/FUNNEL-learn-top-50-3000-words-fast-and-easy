@@ -37,9 +37,6 @@ const OptionsScreen = () => {
   const txtfrst = Languages[lngfrst].Options;
   const txtscnd = Languages[lngscnd].Options;
 
-  const [iconSize] = useState(20);
-  const [textSize] = useState(Dimensions.get('window').width / 22);
-
   const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
   const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
 
@@ -155,7 +152,6 @@ const OptionsScreen = () => {
                 action={() => setLanguageFirst(lng)}>
                 <TxtLabel
                   style={{
-                    paddingTop: 3,
                     color: Colors.surround,
                     fontSize: Dimensions.get('window').height / 30,
                   }}>
@@ -193,7 +189,6 @@ const OptionsScreen = () => {
                 action={() => setLanguageSecond(lng)}>
                 <TxtLabel
                   style={{
-                    paddingTop: 3,
                     color: Colors.surround,
                     fontSize: Dimensions.get('window').height / 30,
                   }}>
@@ -238,7 +233,7 @@ const OptionsScreen = () => {
               touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-body'
-                size={iconSize}
+                size={25}
                 color={
                   selectFirstLanguage ? Colors.backSecond : Colors.surround
                 }
@@ -274,7 +269,7 @@ const OptionsScreen = () => {
               touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-globe'
-                size={iconSize}
+                size={25}
                 color={
                   selectSecondLanguage ? Colors.backSecond : Colors.surround
                 }
@@ -310,7 +305,7 @@ const OptionsScreen = () => {
               touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-moon'
-                size={iconSize}
+                size={25}
                 color={
                   selectSecondLanguage ? Colors.backSecond : Colors.surround
                 }
@@ -346,7 +341,7 @@ const OptionsScreen = () => {
               touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-sunny'
-                size={iconSize}
+                size={25}
                 color={
                   selectSecondLanguage ? Colors.backSecond : Colors.surround
                 }

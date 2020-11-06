@@ -1106,6 +1106,7 @@ const MasterScreen = () => {
           borderWidth: 0.5,
           borderColor: Colors.inactive,
           borderStyle: 'dotted',
+          borderRadius: 25,
         }}>
         {wordSelector ? <WordSelectorWindow /> : <WordShowWindow />}
       </View>
