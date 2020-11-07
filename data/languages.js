@@ -380,7 +380,7 @@ export const uk = {
 
 //Romanian
 export const ro = {
-  Lanugage: 'Română',
+  Language: 'Română',
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',

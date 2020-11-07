@@ -370,25 +370,30 @@ const StatisticsScreen = () => {
           keyExtractor={(item) => item['id' + lngscnd].toString()}
           renderItem={({ item }) => {
             return (
-              <Buttons.ButtonBox
-                bodyStyle={{
-                  width: Dimensions.get('window').width / 1.5,
-                  height: Dimensions.get('window').height / 25,
-                  borderColor: Colors.base,
-                }}
-                insideStyle={{
-                  color:
-                    item['st' + lngscnd] === 0
-                      ? Colors.accent
-                      : item['st' + lngscnd] === 1
-                      ? Colors.backSecond
-                      : item['st' + lngscnd] === 2
-                      ? Colors.backPrimary
-                      : Colors.base,
-                  fontSize: Dimensions.get('window').height / 30,
-                }}>
-                {item[lngscnd]}
-              </Buttons.ButtonBox>
+              <View style={{ marginBottom: 10, alignItems: 'center' }}>
+                <Buttons.ButtonBox
+                  bodyStyle={{
+                    width: Dimensions.get('window').width / 1.5,
+                    height: Dimensions.get('window').height / 40,
+                    borderColor: Colors.base,
+                  }}
+                  insideStyle={{
+                    color:
+                      item['st' + lngscnd] === 0
+                        ? Colors.accent
+                        : item['st' + lngscnd] === 1
+                        ? Colors.backSecond
+                        : item['st' + lngscnd] === 2
+                        ? Colors.backPrimary
+                        : Colors.base,
+                    fontSize: Dimensions.get('window').height / 35,
+                  }}>
+                  {item[lngscnd]}
+                </Buttons.ButtonBox>
+                <TxtButton style={{ color: Colors.surround }}>
+                  {item[lngfrst]}
+                </TxtButton>
+              </View>
             );
           }}
         />
@@ -400,7 +405,7 @@ const StatisticsScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          height: '20%',
+          height: '15%',
           width: '90%',
           justifyContent: 'space-evenly',
           borderColor: Colors.inactive,
@@ -416,16 +421,20 @@ const StatisticsScreen = () => {
           }}>
           <View
             style={{
-              width: Dimensions.get('window').width / 6,
+              width: Dimensions.get('window').width / 7,
             }}>
-            <Buttons.ButtonCircle bodyStyle={{ borderColor: Colors.base }}>
-              <Ionicons name='ios-body' size={25} color={Colors.surround} />
-            </Buttons.ButtonCircle>
+            <ComboAround>
+              <Ionicons name='ios-body' size={20} color={Colors.surround} />
+            </ComboAround>
           </View>
 
           <View style={{ marginLeft: 20 }}>
             <ComboAround>
-              <TxtNormal style={{ color: Colors.surround }}>
+              <TxtNormal
+                style={{
+                  color: Colors.surround,
+                  fontSize: Dimensions.get('window').height / 45,
+                }}>
                 Nick: {'Cabbage Head'}
               </TxtNormal>
             </ComboAround>
@@ -436,18 +445,33 @@ const StatisticsScreen = () => {
             flexDirection: 'row',
             marginLeft: 10,
           }}>
-          <View style={{ width: Dimensions.get('window').width / 6 }}>
+          <View
+            style={{
+              overflow: 'hidden',
+              width: Dimensions.get('window').width / 7,
+            }}>
             <Buttons.ButtonCircle
               touchColor={Colors.backSecond}
               bodyStyle={
                 selectSecondLanguage
-                  ? { borderColor: Colors.surround, borderWidth: 2 }
-                  : { borderColor: Colors.surround }
+                  ? {
+                      overflow: 'hidden',
+                      borderColor: Colors.surround,
+                      borderWidth: 2,
+                      width: Dimensions.get('window').width / 7,
+                      height: Dimensions.get('window').height / 20,
+                    }
+                  : {
+                      overflow: 'hidden',
+                      borderColor: Colors.surround,
+                      width: Dimensions.get('window').width / 7,
+                      height: Dimensions.get('window').height / 20,
+                    }
               }
               action={() => handleSecondLng()}>
               <Ionicons
                 name='ios-globe'
-                size={25}
+                size={20}
                 color={
                   selectSecondLanguage ? Colors.backSecond : Colors.surround
                 }
@@ -460,8 +484,14 @@ const StatisticsScreen = () => {
               <TxtNormal
                 style={
                   selectSecondLanguage
-                    ? { color: Colors.backSecond }
-                    : { color: Colors.surround }
+                    ? {
+                        color: Colors.backSecond,
+                        fontSize: Dimensions.get('window').height / 45,
+                      }
+                    : {
+                        color: Colors.surround,
+                        fontSize: Dimensions.get('window').height / 45,
+                      }
                 }>
                 {actLngScnd}
                 {'\n'}({actLngScndEng})
@@ -473,7 +503,7 @@ const StatisticsScreen = () => {
 
       <View
         style={{
-          height: '20%',
+          height: '25%',
           width: '90%',
           borderColor: Colors.inactive,
           borderWidth: 1,
