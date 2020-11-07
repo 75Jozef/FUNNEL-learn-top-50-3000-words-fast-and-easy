@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   textButton: {
     fontFamily: Fonts.normal,
-    color: Colors.textPrimary,
+    color: Colors.surround,
     fontSize: Dimensions.get('window').height / 50,
   },
 });

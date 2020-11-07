@@ -50,7 +50,7 @@ const StatisticsScreen = () => {
   const [selectOne, setSelectOne] = useState(0);
   const [selectTwo, setSelectTwo] = useState(0);
 
-  const [select, setSelect] = useState();
+  const [select, setSelect] = useState(3);
 
   const [levelA, setLevelA] = useState(false);
   const [levelN, setLevelN] = useState(false);
@@ -346,19 +346,131 @@ const StatisticsScreen = () => {
 
   const Statistics = () => {
     return (
-      <View
-        style={{
-          width: '100%',
-          height: '100%',
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
-        }}>
-        <Ionicons name='ios-menu' size={40} color={Colors.textPrimary} />
-        <Ionicons name='ios-infinite' size={40} color={Colors.accent} />
-        <Ionicons name='ios-attach' size={40} color={Colors.backSecond} />
-        <Ionicons name='md-checkmark' size={40} color={Colors.backPrimary} />
-      </View>
+      <>
+        <View
+          style={{
+            height: '5%',
+            width: '80%',
+          }}></View>
+        <View
+          style={{
+            width: '100%',
+            height: '70%',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignItems: 'flex-start',
+          }}>
+          <ComboAround>
+            <Buttons.ButtonCircle
+              action={() => setSelect(3)}
+              touchColor={Colors.surround}
+              bodyStyle={
+                select === 3
+                  ? { borderWidth: 3, borderColor: Colors.surround }
+                  : null
+              }>
+              <Ionicons name='ios-menu' size={40} color={Colors.surround} />
+            </Buttons.ButtonCircle>
+            <TxtBold style={{ color: Colors.surround }}>{'100%'}</TxtBold>
+            <TxtButton>{selectZero + selectOne + selectTwo}</TxtButton>
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonCircle
+              action={() => setSelect(0)}
+              touchColor={Colors.accent}
+              bodyStyle={
+                select === 0
+                  ? { borderWidth: 3, borderColor: Colors.surround }
+                  : null
+              }>
+              <Ionicons name='ios-infinite' size={40} color={Colors.accent} />
+            </Buttons.ButtonCircle>
+            <TxtBold style={{ color: Colors.accent }}>
+              {Math.round(
+                (selectZero / (selectZero + selectOne + selectTwo)) * 100
+              )}
+              {'%'}
+            </TxtBold>
+            <TxtButton>{selectZero}</TxtButton>
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonCircle
+              action={() => setSelect(1)}
+              touchColor={Colors.backSecond}
+              bodyStyle={
+                select === 1
+                  ? { borderWidth: 3, borderColor: Colors.surround }
+                  : null
+              }>
+              <Ionicons name='ios-attach' size={40} color={Colors.backSecond} />
+            </Buttons.ButtonCircle>
+            <TxtBold style={{ color: Colors.backSecond }}>
+              {Math.round(
+                (selectOne / (selectZero + selectOne + selectTwo)) * 100
+              )}
+              {'%'}
+            </TxtBold>
+            <TxtButton>{selectOne}</TxtButton>
+          </ComboAround>
+          <ComboAround>
+            <Buttons.ButtonCircle
+              action={() => setSelect(2)}
+              touchColor={Colors.backPrimary}
+              bodyStyle={
+                select === 2
+                  ? { borderWidth: 3, borderColor: Colors.surround }
+                  : null
+              }>
+              <Ionicons
+                name='md-checkmark'
+                size={40}
+                color={Colors.backPrimary}
+              />
+            </Buttons.ButtonCircle>
+            <TxtBold style={{ color: Colors.backPrimary }}>
+              {Math.round(
+                (selectTwo / (selectZero + selectOne + selectTwo)) * 100
+              )}
+              {'%'}
+            </TxtBold>
+            <TxtButton>{selectTwo}</TxtButton>
+          </ComboAround>
+        </View>
+        <View
+          style={{
+            height: '10%',
+            width: '80%',
+            borderColor: Colors.surround,
+            borderWidth: 1,
+            borderRadius: 25,
+            flexDirection: 'row',
+            overflow: 'hidden',
+          }}>
+          <View
+            style={{
+              backgroundColor: Colors.accent,
+              width:
+                (selectZero / (selectZero + selectOne + selectTwo)) * 100 + '%',
+            }}></View>
+          <View
+            style={{
+              backgroundColor: Colors.backSecond,
+              width:
+                (selectOne / (selectZero + selectOne + selectTwo)) * 100 + '%',
+            }}></View>
+          <View
+            style={{
+              backgroundColor: Colors.backPrimary,
+              width:
+                (selectTwo / (selectZero + selectOne + selectTwo)) * 100 + '%',
+            }}></View>
+        </View>
+        <View
+          style={{
+            height: '15%',
+            width: '80%',
+          }}></View>
+      </>
     );
   };
 
@@ -366,7 +478,7 @@ const StatisticsScreen = () => {
     return (
       <View>
         <FlatList
-          data={selectedWords}
+          data={select === 3 ? selectedWords : words}
           keyExtractor={(item) => item['id' + lngscnd].toString()}
           renderItem={({ item }) => {
             return (
@@ -390,7 +502,12 @@ const StatisticsScreen = () => {
                   }}>
                   {item[lngscnd]}
                 </Buttons.ButtonBox>
-                <TxtButton style={{ color: Colors.surround }}>
+                <TxtButton
+                  style={
+                    item[lngfrst] === lngfrst
+                      ? { color: Colors.base }
+                      : { color: Colors.surround }
+                  }>
                   {item[lngfrst]}
                 </TxtButton>
               </View>
