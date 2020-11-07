@@ -1,6 +1,5 @@
 import { SET_LNG_FRST } from '../actions/lang';
 import { SET_LNG_SCND } from '../actions/lang';
-import WORDS from '../../data/words';
 
 import { NativeModules, Platform } from 'react-native';
 
@@ -26,18 +25,6 @@ const lngscnd = 'en';
 const initialState = {
   lngfrst: lngfrst,
   lngscnd: lngscnd,
-  actualWords: WORDS.map((wordObject) => {
-    return {
-      ['userlvl']: wordObject['userlvl'],
-      ['id' + lngfrst]: wordObject['id' + lngfrst],
-      ['st' + lngfrst]: wordObject['st' + lngfrst],
-      [lngfrst]: wordObject[lngfrst],
-      ['id' + lngscnd]: wordObject['id' + lngscnd],
-      ['st' + lngscnd]: wordObject['st' + lngscnd],
-      [lngscnd]: wordObject[lngscnd],
-      test: new Date(),
-    };
-  }),
 };
 
 const langReducer = (state = initialState, action) => {
@@ -48,18 +35,7 @@ const langReducer = (state = initialState, action) => {
       return {
         ...state,
         lngfrst: lngfrst,
-        actualWords: WORDS.map((wordObject) => {
-          return {
-            ['userlvl']: wordObject['userlvl'],
-            ['id' + lngfrst]: wordObject['id' + lngfrst],
-            ['st' + lngfrst]: wordObject['st' + lngfrst],
-            [lngfrst]: wordObject[lngfrst],
-            ['id' + lngscnd]: wordObject['id' + lngscnd],
-            ['st' + lngscnd]: wordObject['st' + lngscnd],
-            [lngscnd]: wordObject[lngscnd],
-            test: new Date(),
-          };
-        }),
+        lngscnd: lngscnd,
       };
     }
 
@@ -68,19 +44,8 @@ const langReducer = (state = initialState, action) => {
       const lngscnd = action.lngscnd;
       return {
         ...state,
+        lngfrst: lngfrst,
         lngscnd: lngscnd,
-        actualWords: WORDS.map((wordObject) => {
-          return {
-            ['userlvl']: wordObject['userlvl'],
-            ['id' + lngfrst]: wordObject['id' + lngfrst],
-            ['st' + lngfrst]: wordObject['st' + lngfrst],
-            [lngfrst]: wordObject[lngfrst],
-            ['id' + lngscnd]: wordObject['id' + lngscnd],
-            ['st' + lngscnd]: wordObject['st' + lngscnd],
-            [lngscnd]: wordObject[lngscnd],
-            test: new Date(),
-          };
-        }),
       };
     }
   }

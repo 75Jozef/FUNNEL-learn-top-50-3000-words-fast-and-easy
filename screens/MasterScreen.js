@@ -22,7 +22,6 @@ import * as Languages from '../data/languages';
 import * as Buttons from './../components/UI/Buttons';
 import { useSelector, useDispatch } from 'react-redux';
 import * as wordActions from '../store/actions/words';
-import * as lngActions from '../store/actions/lang';
 import WordShow from '../components/UI/WordShow';
 import { Ionicons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
@@ -73,8 +72,8 @@ const MasterScreen = () => {
   const txtfrst = Languages[lngfrst].Master;
   const txtscnd = Languages[lngscnd].Master;
 
-  const data = useSelector((state) => state.language.actualWords);
-  console.log(data[0].test);
+  const data = useSelector((state) => state.words.words);
+
   const dispatch = useDispatch();
 
   const selectedWords = data.filter(
@@ -94,8 +93,8 @@ const MasterScreen = () => {
   );
 
   useEffect(() => {
-    counter();
     setRange(words.length);
+    counter();
   }, [
     // range,
     levelA,
@@ -114,6 +113,7 @@ const MasterScreen = () => {
   ]);
 
   const handleIndex = (jump) => {
+    setRange(words.length);
     if (index + jump >= range) {
       setIndex(range - 1);
     } else if (index + jump < 0) {
@@ -127,7 +127,6 @@ const MasterScreen = () => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
-        dispatch(lngActions.setLngScnd(lngfrst, lngscnd));
         counter();
       }
     }
@@ -990,14 +989,14 @@ const MasterScreen = () => {
                   handleSelect(0);
                 }}
                 bodyStyle={
-                  select === 0
+                  select === 0 && selectZero > 0
                     ? {
                         borderColor: Colors.base,
                       }
                     : { borderColor: Colors.inactive }
                 }
                 insideStyle={
-                  select === 0
+                  select === 0 && selectZero > 0
                     ? {
                         color: Colors.accent,
                         fontSize: Dimensions.get('window').width / 30,
@@ -1010,7 +1009,11 @@ const MasterScreen = () => {
                 <Ionicons
                   name='ios-infinite'
                   size={18}
-                  color={select === 0 ? Colors.accent : Colors.inactive}
+                  color={
+                    select === 0 && selectZero > 0
+                      ? Colors.accent
+                      : Colors.inactive
+                  }
                 />
                 {'\n'}
                 {selectZero}
@@ -1026,14 +1029,14 @@ const MasterScreen = () => {
                   handleSelect(1);
                 }}
                 bodyStyle={
-                  select === 1
+                  select === 1 && selectOne > 0
                     ? {
                         borderColor: Colors.base,
                       }
                     : { borderColor: Colors.inactive }
                 }
                 insideStyle={
-                  select === 1
+                  select === 1 && selectOne > 0
                     ? {
                         color: Colors.backSecond,
                         fontSize: Dimensions.get('window').width / 30,
@@ -1046,7 +1049,11 @@ const MasterScreen = () => {
                 <Ionicons
                   name='ios-attach'
                   size={18}
-                  color={select === 1 ? Colors.backSecond : Colors.inactive}
+                  color={
+                    select === 1 && selectOne > 0
+                      ? Colors.backSecond
+                      : Colors.inactive
+                  }
                 />
                 {'\n'}
                 {selectOne}
@@ -1062,14 +1069,14 @@ const MasterScreen = () => {
                   handleSelect(2);
                 }}
                 bodyStyle={
-                  select === 2
+                  select === 2 && selectTwo > 0
                     ? {
                         borderColor: Colors.base,
                       }
                     : { borderColor: Colors.inactive }
                 }
                 insideStyle={
-                  select === 2
+                  select === 2 && selectTwo > 0
                     ? {
                         color: Colors.backPrimary,
                         fontSize: Dimensions.get('window').width / 30,
@@ -1082,7 +1089,11 @@ const MasterScreen = () => {
                 <Ionicons
                   name='md-checkmark'
                   size={18}
-                  color={select === 2 ? Colors.backPrimary : Colors.inactive}
+                  color={
+                    select === 2 && selectOne > 0
+                      ? Colors.backPrimary
+                      : Colors.inactive
+                  }
                 />
                 {'\n'}
                 {selectTwo}

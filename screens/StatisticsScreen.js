@@ -297,7 +297,7 @@ const StatisticsScreen = () => {
   };
 
   const setLanguageSecond = (props) => {
-    dispatch(lngActions.setLngScnd(lngfrst, props));
+    dispatch(lngActions.setLngScnd(lngfrst, props, data));
     setSelectSecondLanguage(false);
   };
 

@@ -203,11 +203,11 @@ const OptionsScreen = () => {
   };
 
   const setLanguageFirst = (props) => {
-    dispatch(lngActions.setLngFrst(props, lngscnd));
+    dispatch(lngActions.setLngFrst(props, lngscnd, data));
     setSelectFirstLanguage(false);
   };
   const setLanguageSecond = (props) => {
-    dispatch(lngActions.setLngScnd(lngfrst, props));
+    dispatch(lngActions.setLngScnd(lngfrst, props, data));
     setSelectSecondLanguage(false);
   };
 
