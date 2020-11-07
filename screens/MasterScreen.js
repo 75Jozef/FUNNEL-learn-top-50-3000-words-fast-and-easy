@@ -22,6 +22,7 @@ import * as Languages from '../data/languages';
 import * as Buttons from './../components/UI/Buttons';
 import { useSelector, useDispatch } from 'react-redux';
 import * as wordActions from '../store/actions/words';
+import * as lngActions from '../store/actions/lang';
 import WordShow from '../components/UI/WordShow';
 import { Ionicons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
@@ -72,8 +73,8 @@ const MasterScreen = () => {
   const txtfrst = Languages[lngfrst].Master;
   const txtscnd = Languages[lngscnd].Master;
 
-  const data = useSelector((state) => state.words.words);
-
+  const data = useSelector((state) => state.language.actualWords);
+  console.log(data[0].test);
   const dispatch = useDispatch();
 
   const selectedWords = data.filter(
@@ -126,6 +127,7 @@ const MasterScreen = () => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
         dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
+        dispatch(lngActions.setLngScnd(lngfrst, lngscnd));
         counter();
       }
     }

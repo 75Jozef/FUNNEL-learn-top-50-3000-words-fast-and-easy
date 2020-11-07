@@ -297,7 +297,7 @@ const StatisticsScreen = () => {
   };
 
   const setLanguageSecond = (props) => {
-    dispatch(lngActions.setLngScnd(props));
+    dispatch(lngActions.setLngScnd(lngfrst, props));
     setSelectSecondLanguage(false);
   };
 
@@ -400,7 +400,7 @@ const StatisticsScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          height: '18%',
+          height: '20%',
           width: '90%',
           justifyContent: 'space-evenly',
           borderColor: Colors.inactive,
@@ -473,7 +473,7 @@ const StatisticsScreen = () => {
 
       <View
         style={{
-          height: '22%',
+          height: '20%',
           width: '90%',
           borderColor: Colors.inactive,
           borderWidth: 1,
@@ -486,7 +486,7 @@ const StatisticsScreen = () => {
       <View
         style={{
           flexDirection: 'row',
-          height: '55%',
+          height: '57%',
           justifyContent: 'flex-start',
           width: '90%',
           borderColor: Colors.inactive,
@@ -738,7 +738,7 @@ const StatisticsScreen = () => {
       <View
         style={{
           flexDirection: 'row',
-          height: '5%',
+          height: '3%',
           justifyContent: 'flex-start',
           overflow: 'hidden',
           borderColor: Colors.inactive,
