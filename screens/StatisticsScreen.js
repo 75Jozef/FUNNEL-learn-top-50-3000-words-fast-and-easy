@@ -385,12 +385,23 @@ const StatisticsScreen = () => {
               }>
               <Ionicons name='ios-infinite' size={40} color={Colors.accent} />
             </Buttons.ButtonCircle>
-            <TxtBold style={{ color: Colors.accent }}>
-              {Math.round(
-                (selectZero / (selectZero + selectOne + selectTwo)) * 100
-              )}
-              {'%'}
-            </TxtBold>
+            {levelA ||
+            levelN ||
+            levelV ||
+            levelH ||
+            levelF ||
+            levelT ||
+            levelX ? (
+              <TxtBold style={{ color: Colors.accent }}>
+                {Math.round(
+                  (selectZero / (selectZero + selectOne + selectTwo)) * 100
+                )}
+                {'%'}
+              </TxtBold>
+            ) : (
+              <TxtBold></TxtBold>
+            )}
+
             <TxtButton>{selectZero}</TxtButton>
           </ComboAround>
           <ComboAround>
@@ -404,12 +415,22 @@ const StatisticsScreen = () => {
               }>
               <Ionicons name='ios-attach' size={40} color={Colors.backSecond} />
             </Buttons.ButtonCircle>
-            <TxtBold style={{ color: Colors.backSecond }}>
-              {Math.round(
-                (selectOne / (selectZero + selectOne + selectTwo)) * 100
-              )}
-              {'%'}
-            </TxtBold>
+            {levelA ||
+            levelN ||
+            levelV ||
+            levelH ||
+            levelF ||
+            levelT ||
+            levelX ? (
+              <TxtBold style={{ color: Colors.backSecond }}>
+                {Math.round(
+                  (selectOne / (selectZero + selectOne + selectTwo)) * 100
+                )}
+                {'%'}
+              </TxtBold>
+            ) : (
+              <TxtBold></TxtBold>
+            )}
             <TxtButton>{selectOne}</TxtButton>
           </ComboAround>
           <ComboAround>
@@ -427,12 +448,22 @@ const StatisticsScreen = () => {
                 color={Colors.backPrimary}
               />
             </Buttons.ButtonCircle>
-            <TxtBold style={{ color: Colors.backPrimary }}>
-              {Math.round(
-                (selectTwo / (selectZero + selectOne + selectTwo)) * 100
-              )}
-              {'%'}
-            </TxtBold>
+            {levelA ||
+            levelN ||
+            levelV ||
+            levelH ||
+            levelF ||
+            levelT ||
+            levelX ? (
+              <TxtBold style={{ color: Colors.backPrimary }}>
+                {Math.round(
+                  (selectTwo / (selectZero + selectOne + selectTwo)) * 100
+                )}
+                {'%'}
+              </TxtBold>
+            ) : (
+              <TxtBold></TxtBold>
+            )}
             <TxtButton>{selectTwo}</TxtButton>
           </ComboAround>
         </View>
@@ -878,7 +909,16 @@ const StatisticsScreen = () => {
           levelT ||
           levelX ? (
             <WordsWindow />
-          ) : null}
+          ) : (
+            <View
+              style={{
+                height: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <TxtItalic>{txtfrst.noRange}</TxtItalic>
+            </View>
+          )}
         </View>
       </View>
 

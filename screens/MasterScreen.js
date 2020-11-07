@@ -298,7 +298,7 @@ const MasterScreen = () => {
               alignItems: 'center',
             }}>
             <TxtNormal>
-              {range > 0 ? (
+              {range > 1 ? (
                 <WordShow
                   word={
                     lngscnd !== 'ar' || lngscnd !== 'fa' || lngscnd !== 'ur'
@@ -310,7 +310,7 @@ const MasterScreen = () => {
                   color={words[index]['st' + lngscnd]}
                 />
               ) : (
-                <TxtItalic>{txtscnd.noRange}</TxtItalic>
+                <TxtItalic>{txtfrst.noRange}</TxtItalic>
               )}
             </TxtNormal>
           </View>
@@ -321,39 +321,46 @@ const MasterScreen = () => {
             justifyContent: 'space-evenly',
             overflow: 'hidden',
           }}>
-          <TouchableNativeFeedback
-            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
-            delayPressIn={0}
-            onPress={() => setWordSelector(true)}>
-            <View
-              style={{
-                width: '90%',
-                justifyContent: 'center',
-                alignSelf: 'center',
-                overflow: 'hidden',
-              }}>
+          {range > 1 ? (
+            <TouchableNativeFeedback
+              background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+              delayPressIn={0}
+              onPress={() => setWordSelector(true)}>
               <View
                 style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
+                  width: '90%',
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                  overflow: 'hidden',
                 }}>
-                <Ionicons name='ios-list' size={30} color={Colors.inactive} />
-                <TxtLabel
+                <View
                   style={{
-                    color: Colors.surround,
-                    fontSize: Dimensions.get('window').height / 25,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}>
-                  {range > 0 ? (
-                    words[index][lngfrst]
-                  ) : (
-                    <TxtItalic>{txtfrst.noRange}</TxtItalic>
-                  )}
-                </TxtLabel>
-                <Ionicons name='ios-list' size={30} color={Colors.inactive} />
+                  <Ionicons name='ios-list' size={30} color={Colors.inactive} />
+                  <TxtLabel
+                    style={{
+                      color:
+                        words[index][lngfrst] === lngfrst
+                          ? Colors.base
+                          : Colors.surround,
+                      fontSize: Dimensions.get('window').height / 25,
+                    }}>
+                    {range > 0 ? (
+                      words[index][lngfrst]
+                    ) : (
+                      <TxtItalic>{txtfrst.noRange}</TxtItalic>
+                    )}
+                  </TxtLabel>
+                  <Ionicons name='ios-list' size={30} color={Colors.inactive} />
+                </View>
               </View>
-            </View>
-          </TouchableNativeFeedback>
+            </TouchableNativeFeedback>
+          ) : (
+            <></>
+          )}
         </View>
         <View style={{ height: '12%' }}>
           <View
@@ -513,7 +520,10 @@ const MasterScreen = () => {
                           width: Dimensions.get('window').width / 1.5,
                           height: Dimensions.get('window').height / 18,
                           borderColor: Colors.base,
-                          backgroundColor: Colors.inactive,
+                          backgroundColor:
+                            item[lngfrst] === lngfrst
+                              ? Colors.base
+                              : Colors.inactive,
                           padding: 3,
                         }
                       : {
@@ -528,7 +538,8 @@ const MasterScreen = () => {
                     setWordSelector(false);
                   }}
                   insideStyle={{
-                    color: Colors.surround,
+                    color:
+                      item[lngfrst] === lngfrst ? Colors.base : Colors.surround,
                     fontSize: Dimensions.get('window').height / 25,
                   }}>
                   {item[lngfrst]}

@@ -29,6 +29,7 @@ export const en = {
   Statistics: {
     header: 'Statistics header',
     title: 'Stats title',
+    noRange: 'select range first...',
   },
   Welcome: {
     header: 'Welcome my friend',
@@ -67,6 +68,7 @@ export const sk = {
   Statistics: {
     header: 'Statistics hlavička',
     title: 'Stats nadpis',
+    noRange: 'Najprv vyber rozsah...',
   },
   Welcome: {
     header: 'Welcome my friend',
