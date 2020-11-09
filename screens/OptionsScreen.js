@@ -4,6 +4,7 @@ import {
   Dimensions,
   TouchableNativeFeedback,
   ScrollView,
+  DevSettings,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
@@ -55,6 +56,8 @@ const OptionsScreen = () => {
 
   const dispatch = useDispatch();
 
+  const [theme, setTheme] = useState();
+
   let languages = [
     'en',
     'it',
@@ -100,12 +103,6 @@ const OptionsScreen = () => {
     'et',
     'bg',
   ];
-
-  const [theme, setTheme] = useState();
-
-  // useEffect(() => {
-  //   const theme = useSelector((state) => state.theme.theme);
-  // }, [theme]);
 
   const handleFirstLng = (props) => {
     if (selectSecondLanguage) {
@@ -220,10 +217,11 @@ const OptionsScreen = () => {
 
   const handleTheme = (props) => {
     dispatch(themeActions.theme(props));
+    setTheme(props);
   };
 
   return (
-    <ScreenFrame style={{ backgroundColor: Colors.base }}>
+    <ScreenFrame>
       <View
         style={{
           height: '50%',

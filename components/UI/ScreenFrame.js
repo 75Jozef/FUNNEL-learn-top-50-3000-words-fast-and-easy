@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import Colors from '../../constants/Colors';
 
 const ScreenFrame = (props) => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
+
   return (
-    <SafeAreaView style={{ ...styles.screen, ...props.style }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.base,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}>
       <StatusBar
-        barStyle={Colors.base === '#000000' ? 'light-content' : 'dark-content'}
         hidden={false}
-        backgroundColor={Colors.base === '#000000' ? '#000000' : '#FFFFFF'}
-        translucent={true}
+        backgroundColor={Colors.base}
+        translucent={false}
       />
 
       <>{props.children}</>
@@ -22,13 +33,7 @@ const ScreenFrame = (props) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: Colors.base,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
+  screen: {},
 });
 
 export default ScreenFrame;

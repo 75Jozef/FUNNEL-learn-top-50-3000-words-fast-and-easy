@@ -31,6 +31,7 @@ const WelcomeScreen = () => {
         style={{
           alignItems: 'center',
           margin: 10,
+          backgroundColor: Colors.base,
         }}>
         <TxtHeader>F|U|N|N|E|L</TxtHeader>
         <TxtHeader>{theme.toString()}</TxtHeader>

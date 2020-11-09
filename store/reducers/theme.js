@@ -4,7 +4,7 @@ import ColorsLight from './../../constants/ColorsLight';
 import Colors from './../../constants/Colors';
 
 const initialState = {
-  theme: Colors,
+  theme: 'dark',
 };
 
 const themeReducer = (state = initialState, action) => {
