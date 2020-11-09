@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import Fonts from './../../constants/Fonts';
 import Colors from './../../constants/Colors';
-
 export const ButtonCircle = (props) => {
   return (
     <View

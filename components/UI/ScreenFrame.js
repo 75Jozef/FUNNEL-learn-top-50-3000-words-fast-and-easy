@@ -8,8 +8,14 @@ import Colors from '../../constants/Colors';
 
 const ScreenFrame = (props) => {
   return (
-    <SafeAreaView style={styles.screen}>
-      <StatusBar style='auto' />
+    <SafeAreaView style={{ ...styles.screen, ...props.style }}>
+      <StatusBar
+        barStyle={Colors.base === '#000000' ? 'light-content' : 'dark-content'}
+        hidden={false}
+        backgroundColor={Colors.base === '#000000' ? '#000000' : '#FFFFFF'}
+        translucent={true}
+      />
+
       <>{props.children}</>
     </SafeAreaView>
   );

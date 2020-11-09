@@ -1,5 +1,5 @@
 export const THEME = 'THEME';
 
-export const setTheme = () => {
-  return { type: THEME };
+export const theme = (theme) => {
+  return { type: THEME, theme: theme };
 };

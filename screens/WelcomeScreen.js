@@ -24,10 +24,14 @@ const WelcomeScreen = () => {
   const theme = useSelector((state) => state.theme.theme);
   const txtfrst = Languages[lngfrst].Welcome;
   const txtscnd = Languages[lngscnd].Welcome;
-
+  console.log('welcome', Colors);
   return (
     <ScreenFrame>
-      <View style={{ alignItems: 'center', margin: 10 }}>
+      <View
+        style={{
+          alignItems: 'center',
+          margin: 10,
+        }}>
         <TxtHeader>F|U|N|N|E|L</TxtHeader>
         <TxtHeader>{theme.toString()}</TxtHeader>
       </View>

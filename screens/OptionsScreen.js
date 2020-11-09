@@ -3,7 +3,6 @@ import {
   View,
   Dimensions,
   TouchableNativeFeedback,
-  Platform,
   ScrollView,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
@@ -17,7 +16,7 @@ import {
   TxtLabel,
   TxtButton,
 } from '../components/UI/Txt';
-import CardFrame from '../components/UI/CardFrame';
+
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
@@ -28,6 +27,8 @@ import * as Buttons from './../components/UI/Buttons';
 import { Ionicons } from '@expo/vector-icons';
 
 import * as lngActions from '../store/actions/lang';
+import * as themeActions from '../store/actions/theme';
+
 import ComboAround from '../components/UI/ComboAround';
 import Fonts from '../constants/Fonts';
 
@@ -99,6 +100,12 @@ const OptionsScreen = () => {
     'et',
     'bg',
   ];
+
+  const [theme, setTheme] = useState();
+
+  // useEffect(() => {
+  //   const theme = useSelector((state) => state.theme.theme);
+  // }, [theme]);
 
   const handleFirstLng = (props) => {
     if (selectSecondLanguage) {
@@ -211,13 +218,18 @@ const OptionsScreen = () => {
     setSelectSecondLanguage(false);
   };
 
+  const handleTheme = (props) => {
+    dispatch(themeActions.theme(props));
+  };
+
   return (
-    <ScreenFrame>
+    <ScreenFrame style={{ backgroundColor: Colors.base }}>
       <View
         style={{
           height: '50%',
           width: '80%',
           justifyContent: 'center',
+          backgroundColor: Colors.base,
         }}>
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
@@ -294,14 +306,14 @@ const OptionsScreen = () => {
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
           delayPressIn={0}
-          onPress={() => handleSecondLng()}>
+          onPress={() => handleTheme('dark')}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
             }}>
             <Buttons.ButtonCircle
-              action={() => handleSecondLng()}
+              action={() => handleTheme('dark')}
               touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-moon'
@@ -330,14 +342,14 @@ const OptionsScreen = () => {
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
           delayPressIn={0}
-          onPress={() => handleSecondLng()}>
+          onPress={() => handleTheme('light')}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
             }}>
             <Buttons.ButtonCircle
-              action={() => handleSecondLng()}
+              action={() => handleTheme('light')}
               touchColor={Colors.backSecond}>
               <Ionicons
                 name='ios-sunny'
