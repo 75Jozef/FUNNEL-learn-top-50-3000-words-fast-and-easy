@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import { StyleSheet, View } from 'react-native';
 
 import Colors from '../../constants/Colors';
 
 const ComboAround = (props) => {
-  return <View style={styles.screen}>{props.children}</View>;
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
+  return (
+    <View
+      style={{
+        flexDirection: 'column',
+        backgroundColor: Colors.base,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      {props.children}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flexDirection: 'column',
-    backgroundColor: Colors.base,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  screen: {},
 });
 
 export default ComboAround;

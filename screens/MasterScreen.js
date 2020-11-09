@@ -92,6 +92,10 @@ const MasterScreen = () => {
     (word) => word['st' + lngscnd] === select || word.userlvl === 'l'
   );
 
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
+
   useEffect(() => {
     setRange(words.length);
     counter();

@@ -1,5 +1,6 @@
-import React from 'react';
-import { View, Button, SafeAreaView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { View, SafeAreaView } from 'react-native';
 
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -47,25 +48,29 @@ import InstructionsScreen, {
 import { TxtItalic } from '../components/UI/Txt';
 
 //* Default Navigation Options
-const defaultNavOptions = {
-  headerStyle: {
-    backgroundColor: Colors.base,
-  },
-  headerTitleStyle: {
-    fontFamily: Fonts.bold,
-  },
-  headerTintColor: Colors.surround,
-  gestureEnabled: true,
-  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-};
 
 //* Auth Navigation ****************************
 
 const AuthStackNavigator = createStackNavigator();
 
 export const AuthNavigator = () => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
+
   return (
-    <AuthStackNavigator.Navigator screenOptions={defaultNavOptions}>
+    <AuthStackNavigator.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.base,
+        },
+        headerTitleStyle: {
+          fontFamily: Fonts.bold,
+        },
+        headerTintColor: Colors.surround,
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <AuthStackNavigator.Screen
         name='Auth'
         component={AuthScreen}
@@ -78,8 +83,22 @@ export const AuthNavigator = () => {
 //* Welcome navigation ***********************
 const WelcomeStackNavigator = createStackNavigator();
 export const WelcomeNavigator = () => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
   return (
-    <WelcomeStackNavigator.Navigator screenOptions={defaultNavOptions}>
+    <WelcomeStackNavigator.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.base,
+        },
+        headerTitleStyle: {
+          fontFamily: Fonts.bold,
+        },
+        headerTintColor: Colors.surround,
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <WelcomeStackNavigator.Screen
         name='Welcome'
         component={WelcomeScreen}
@@ -94,8 +113,22 @@ export const WelcomeNavigator = () => {
 const MasterStackNavigator = createStackNavigator();
 
 export const MasterNavigator = () => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
   return (
-    <MasterStackNavigator.Navigator screenOptions={defaultNavOptions}>
+    <MasterStackNavigator.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.base,
+        },
+        headerTitleStyle: {
+          fontFamily: Fonts.bold,
+        },
+        headerTintColor: Colors.surround,
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <MasterStackNavigator.Screen
         name='Master'
         component={MasterScreen}
@@ -115,8 +148,22 @@ export const MasterNavigator = () => {
 const StatsStackNavigator = createStackNavigator();
 
 export const StatsNavigator = () => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
   return (
-    <StatsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+    <StatsStackNavigator.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.base,
+        },
+        headerTitleStyle: {
+          fontFamily: Fonts.bold,
+        },
+        headerTintColor: Colors.surround,
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <StatsStackNavigator.Screen
         name='Stats'
         component={StatisticsScreen}
@@ -131,8 +178,22 @@ export const StatsNavigator = () => {
 const OptionsStackNavigator = createStackNavigator();
 
 export const OptionsNavigator = () => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
   return (
-    <OptionsStackNavigator.Navigator screenOptions={defaultNavOptions}>
+    <OptionsStackNavigator.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.base,
+        },
+        headerTitleStyle: {
+          fontFamily: Fonts.bold,
+        },
+        headerTintColor: Colors.surround,
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <OptionsStackNavigator.Screen
         name='Options'
         component={OptionsScreen}
@@ -147,8 +208,22 @@ export const OptionsNavigator = () => {
 const AboutStackNavigator = createStackNavigator();
 
 export const AboutNavigator = () => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
   return (
-    <AboutStackNavigator.Navigator screenOptions={defaultNavOptions}>
+    <AboutStackNavigator.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.base,
+        },
+        headerTitleStyle: {
+          fontFamily: Fonts.bold,
+        },
+        headerTintColor: Colors.surround,
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <AboutStackNavigator.Screen
         name='About'
         component={AboutScreen}
@@ -161,6 +236,10 @@ export const AboutNavigator = () => {
 //* Side Drawer Navigation *******************
 const SideDrawerNavigator = createDrawerNavigator();
 export const SideNavigator = () => {
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
+
   return (
     <SideDrawerNavigator.Navigator
       drawerContent={(props) => {

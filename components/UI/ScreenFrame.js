@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { useSelector, useDispatch } from 'react-redux';
-
 import Colors from '../../constants/Colors';
 
 const ScreenFrame = (props) => {
