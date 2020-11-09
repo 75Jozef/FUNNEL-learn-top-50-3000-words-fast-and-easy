@@ -327,7 +327,7 @@ const StatisticsScreen = () => {
                 insideStyle={
                   lng === lngscnd
                     ? {
-                        color: Colors.backSecond,
+                        color: Colors.surround,
                         fontSize: Dimensions.get('window').height / 35,
                       }
                     : {
@@ -621,7 +621,7 @@ const StatisticsScreen = () => {
                 name='ios-globe'
                 size={20}
                 color={
-                  selectSecondLanguage ? Colors.backSecond : Colors.surround
+                  selectSecondLanguage ? Colors.textPrimary : Colors.inactive
                 }
               />
             </Buttons.ButtonCircle>
@@ -633,7 +633,7 @@ const StatisticsScreen = () => {
                 style={
                   selectSecondLanguage
                     ? {
-                        color: Colors.backSecond,
+                        color: Colors.textPrimary,
                         fontSize: Dimensions.get('window').height / 45,
                       }
                     : {
