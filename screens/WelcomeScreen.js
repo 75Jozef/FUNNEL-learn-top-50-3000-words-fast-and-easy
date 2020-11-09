@@ -24,7 +24,7 @@ const WelcomeScreen = () => {
   const theme = useSelector((state) => state.theme.theme);
   const txtfrst = Languages[lngfrst].Welcome;
   const txtscnd = Languages[lngscnd].Welcome;
-  console.log('welcome', Colors);
+
   return (
     <ScreenFrame>
       <View

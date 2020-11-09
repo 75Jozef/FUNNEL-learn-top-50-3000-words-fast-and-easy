@@ -60,11 +60,7 @@ export const ButtonBox = (props) => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => setTheme(actTheme));
   return (
-    <View
-      style={{
-        overflow: 'hidden',
-        borderRadius: 25,
-      }}>
+    <View style={{ overflow: 'hidden', borderRadius: 20 }}>
       <TouchableNativeFeedback
         background={
           props.touchColor
@@ -83,8 +79,6 @@ export const ButtonBox = (props) => {
             backgroundColor: Colors.base,
             borderWidth: 1,
             borderColor: Colors.inactive,
-            marginHorizontal: 4,
-            marginBottom: 4,
             ...props.bodyStyle,
           }}>
           <Text

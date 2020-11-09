@@ -370,11 +370,11 @@ const MasterScreen = () => {
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'center',
+              justifyContent: 'space-evenly',
               alignContent: 'space-between',
               alignItems: 'center',
-
               alignSelf: 'center',
+              width: '80%',
             }}>
             <Buttons.ButtonBox
               action={() => {
@@ -572,7 +572,7 @@ const MasterScreen = () => {
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
             width: '90%',
             alignSelf: 'center',
           }}>
