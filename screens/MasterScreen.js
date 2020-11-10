@@ -120,8 +120,10 @@ const MasterScreen = () => {
   const handleIndex = (jump) => {
     setRange(words.length);
     if (index + jump >= range) {
-      setIndex(range - 1);
+      setIndex(range - 2);
     } else if (index + jump < 0) {
+      setIndex(0);
+    } else if (words[index + jump][lngscnd] === lngscnd) {
       setIndex(0);
     } else {
       setIndex(index + jump);
