@@ -379,14 +379,11 @@ const MasterScreen = () => {
             }}>
             <Buttons.ButtonBox
               action={() => {
-                setShow((prev) => prev + 20);
                 Speech.speak(words[index][lngscnd], {
                   language: lngscnd,
                   voice: Speech.VoiceQuality.Enhanced,
                   pitch: 1.0,
                   rate: 0.2,
-                  onDone: setShow((prev) => prev - 20),
-                  onError: setShow((prev) => prev - 20),
                 });
               }}
               touchColor={Colors.accent}>

@@ -252,7 +252,6 @@ export const SideNavigator = () => {
             }}>
             <SafeAreaView forceInset={{ top: 'always' }}>
               <DrawerItemList {...props} />
-              {/* <Button title='Exit' color={Colors.inactive} onPress={() => {}} /> */}
 
               <View
                 style={{
