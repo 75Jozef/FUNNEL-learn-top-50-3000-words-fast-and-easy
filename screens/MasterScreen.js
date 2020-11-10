@@ -386,13 +386,14 @@ const MasterScreen = () => {
                   pitch: 1.0,
                   rate: 0.2,
                   onDone: setShow((prev) => prev - 20),
+                  onError: setShow((prev) => prev - 20),
                 });
               }}
               touchColor={Colors.accent}>
               <Ionicons
                 name='ios-megaphone'
                 size={18}
-                color={show > 10 ? Colors.accent : Colors.surround}
+                color={Colors.surround}
               />
             </Buttons.ButtonBox>
             <Buttons.ButtonBox
