@@ -26,6 +26,7 @@ import WordShow from '../components/UI/WordShow';
 import { Ionicons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
 import { InfoLine } from '../components/UI/InfoLine';
+import * as Speech from 'expo-speech';
 
 const MasterScreen = () => {
   const [levelA, setLevelA] = useState(false);
@@ -378,13 +379,29 @@ const MasterScreen = () => {
             }}>
             <Buttons.ButtonBox
               action={() => {
+                setShow((prev) => prev + 20);
+                Speech.speak(words[index][lngscnd], {
+                  language: lngscnd,
+                  voice: Speech.VoiceQuality.Enhanced,
+                  pitch: 1.0,
+                  rate: 0.2,
+                  onDone: setShow((prev) => prev - 20),
+                });
+              }}
+              touchColor={Colors.accent}>
+              <Ionicons
+                name='ios-megaphone'
+                size={18}
+                color={show > 10 ? Colors.accent : Colors.surround}
+              />
+            </Buttons.ButtonBox>
+            <Buttons.ButtonBox
+              action={() => {
                 setShow(0);
               }}
               bodyStyle={
                 show === 0
                   ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
                       borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
@@ -397,7 +414,7 @@ const MasterScreen = () => {
                     }
                   : null
               }>
-              <Ionicons name='md-eye' size={18} />
+              <Ionicons name='md-eye-off' size={18} />
             </Buttons.ButtonBox>
 
             <Buttons.ButtonBox
@@ -407,8 +424,6 @@ const MasterScreen = () => {
               bodyStyle={
                 show === 1
                   ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
                       borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
@@ -430,8 +445,6 @@ const MasterScreen = () => {
               bodyStyle={
                 show === 2
                   ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
                       borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
@@ -453,8 +466,6 @@ const MasterScreen = () => {
               bodyStyle={
                 show === 3
                   ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
                       borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }
@@ -476,8 +487,6 @@ const MasterScreen = () => {
               bodyStyle={
                 show === 4
                   ? {
-                      borderWidth: 1,
-                      borderRadius: 25,
                       borderColor: Colors.surround,
                     }
                   : { backgroundColor: Colors.base }

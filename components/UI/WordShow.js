@@ -93,7 +93,7 @@ const WordShow = (props) => {
     );
   };
 
-  if (props.show > 0) {
+  if (props.show !== 0) {
     return (
       <View style={styles.showka}>
         {word.map((ltr, index) => {
@@ -117,7 +117,7 @@ const WordShow = (props) => {
     return (
       <View style={styles.showka}>
         <Ionicons
-          name='md-eye'
+          name='md-eye-off'
           size={Dimensions.get('window').height / 9}
           color={Colors.inactive}
         />
@@ -125,7 +125,6 @@ const WordShow = (props) => {
     );
   }
 };
-
 const styles = StyleSheet.create({
   showka: {
     flexDirection: 'row',
