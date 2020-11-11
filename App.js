@@ -5,6 +5,7 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
