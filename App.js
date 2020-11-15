@@ -13,6 +13,16 @@ import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
 
+import { init } from './localDb/db';
+
+init()
+  .then(() => {
+    console.log('db init');
+  })
+  .catch((err) => {
+    console.log('db init failed: ', err);
+  });
+
 const rootReducer = combineReducers({
   language: langReducer,
   words: wordsReducer,
