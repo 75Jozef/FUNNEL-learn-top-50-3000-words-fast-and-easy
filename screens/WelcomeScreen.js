@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { View, Button } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
@@ -21,9 +21,12 @@ import * as Languages from '../data/languages';
 const WelcomeScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
-  const theme = useSelector((state) => state.theme.theme);
   const txtfrst = Languages[lngfrst].Welcome;
   const txtscnd = Languages[lngscnd].Welcome;
+
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
 
   return (
     <ScreenFrame>
@@ -34,7 +37,7 @@ const WelcomeScreen = () => {
           backgroundColor: Colors.base,
         }}>
         <TxtHeader>F|U|N|N|E|L</TxtHeader>
-        <TxtHeader>{theme.toString()}</TxtHeader>
+        <TxtHeader>{actTheme.toString()}</TxtHeader>
       </View>
       <CardFrame style={{ margin: 15 }}>
         <TxtLabel>frst{txtfrst.title}</TxtLabel>

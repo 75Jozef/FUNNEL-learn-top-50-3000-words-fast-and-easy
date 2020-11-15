@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from './../components/UI/Input';
@@ -21,6 +21,10 @@ const AuthScreen = () => {
   const txtfrst = Languages[lngfrst].Auth;
 
   const inputChangeHandler = useCallback(() => {}, []);
+
+  const [thm, setThm] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setThm(actTheme));
 
   return (
     <ScreenFrame>

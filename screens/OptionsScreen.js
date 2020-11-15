@@ -220,6 +220,10 @@ const OptionsScreen = () => {
     setTheme(props);
   };
 
+  const [thm, setThm] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setThm(actTheme));
+
   return (
     <ScreenFrame>
       <View

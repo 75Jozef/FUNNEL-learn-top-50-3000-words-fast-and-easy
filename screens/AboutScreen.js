@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from './../components/UI/Input';
@@ -22,6 +22,10 @@ const AboutScreen = () => {
   const lngscnd = useSelector((state) => state.language.lngscnd);
   const txtscnd = Languages[lngscnd].About;
   const txtfrst = Languages[lngfrst].About;
+
+  const [thm, setThm] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setThm(actTheme));
 
   return (
     <ScreenFrame>

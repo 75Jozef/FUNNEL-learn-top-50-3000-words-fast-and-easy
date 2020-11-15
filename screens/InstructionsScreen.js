@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Input from '../components/UI/Input';
@@ -17,6 +17,9 @@ import * as Languages from '../data/languages';
 import { useSelector } from 'react-redux';
 
 const InstructionsScreen = () => {
+  const [thm, setThm] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setThm(actTheme));
   return (
     <ScreenFrame>
       <View style={{ alignItems: 'center', margin: 10 }}>

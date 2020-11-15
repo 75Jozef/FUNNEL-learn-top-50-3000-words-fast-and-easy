@@ -76,6 +76,10 @@ const StatisticsScreen = () => {
 
   const dispatch = useDispatch();
 
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => setTheme(actTheme));
+
   let languages = [
     'en',
     'it',
