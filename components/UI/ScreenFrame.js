@@ -15,6 +15,7 @@ const ScreenFrame = (props) => {
     <SafeAreaView
       style={{
         flex: 1,
+        paddingTop: 7,
         backgroundColor: Colors.base,
         flexDirection: 'column',
         justifyContent: 'space-between',

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { View, SafeAreaView } from 'react-native';
+import { View, SafeAreaView, Dimensions } from 'react-native';
 
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -46,6 +46,7 @@ import InstructionsScreen, {
   screenOptions as instructionsScreenOptions,
 } from '../screens/InstructionsScreen';
 import { TxtItalic } from '../components/UI/Txt';
+import ColorsLight from '../constants/ColorsLight';
 
 //* Default Navigation Options
 
@@ -70,7 +71,8 @@ export const AuthNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      }}
+      headerMode={'none'}>
       <AuthStackNavigator.Screen
         name='Auth'
         component={AuthScreen}
@@ -98,7 +100,8 @@ export const WelcomeNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      }}
+      headerMode={'none'}>
       <WelcomeStackNavigator.Screen
         name='Welcome'
         component={WelcomeScreen}
@@ -128,7 +131,8 @@ export const MasterNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      }}
+      headerMode={'none'}>
       <MasterStackNavigator.Screen
         name='Master'
         component={MasterScreen}
@@ -163,7 +167,8 @@ export const StatsNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      }}
+      headerMode={'none'}>
       <StatsStackNavigator.Screen
         name='Stats'
         component={StatisticsScreen}
@@ -193,7 +198,8 @@ export const OptionsNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      }}
+      headerMode={'none'}>
       <OptionsStackNavigator.Screen
         name='Options'
         component={OptionsScreen}
@@ -223,7 +229,8 @@ export const AboutNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      }}
+      headerMode={'none'}>
       <AboutStackNavigator.Screen
         name='About'
         component={AboutScreen}
@@ -247,7 +254,7 @@ export const SideNavigator = () => {
           <View
             style={{
               flex: 1,
-              paddingTop: 50,
+              paddingTop: 3,
               backgroundColor: Colors.base,
             }}>
             <SafeAreaView forceInset={{ top: 'always' }}>
@@ -283,17 +290,12 @@ export const SideNavigator = () => {
       drawerContentOptions={{
         activeTintColor: Colors.textPrimary,
         inactiveTintColor: Colors.surround,
+        activeBackgroundColor: Colors.inactive,
+        inactiveBackgroundColor: Colors.base,
         labelStyle: {
-          fontSize: 15,
+          fontSize: Dimensions.get('window').width / 23,
           marginLeft: 1,
         },
-      }}
-      drawerStyle={{
-        initialRouteName: 'Home',
-        drawerPosition: 'left',
-        drawerOpenRoute: 'DrawerOpen',
-        drawerToggleRoute: 'DrawerToggle',
-        drawerCloseRoute: 'DrawerClose',
       }}>
       <SideDrawerNavigator.Screen
         name='Welcome'
@@ -302,6 +304,15 @@ export const SideNavigator = () => {
           drawerIcon: (props) => (
             <Ionicons name={'ios-home'} size={30} color={Colors.surround} />
           ),
+          headerStyle: {
+            backgroundColor: Colors.base,
+            height: Dimensions.get('window').height / 15,
+          },
+          headerTitleStyle: {
+            color: Colors.inactive,
+          },
+          headerPressColorAndroid: Colors.textPrimary,
+          headerTintColor: Colors.surround,
         }}
       />
 
@@ -312,6 +323,15 @@ export const SideNavigator = () => {
           drawerIcon: (props) => (
             <Ionicons name={'ios-funnel'} size={30} color={Colors.surround} />
           ),
+          headerStyle: {
+            backgroundColor: Colors.base,
+            height: Dimensions.get('window').height / 15,
+          },
+          headerTitleStyle: {
+            color: Colors.inactive,
+          },
+          headerPressColorAndroid: Colors.textPrimary,
+          headerTintColor: Colors.surround,
         }}
       />
       <SideDrawerNavigator.Screen
@@ -321,6 +341,15 @@ export const SideNavigator = () => {
           drawerIcon: (props) => (
             <Ionicons name={'ios-stats'} size={30} color={Colors.surround} />
           ),
+          headerStyle: {
+            backgroundColor: Colors.base,
+            height: Dimensions.get('window').height / 15,
+          },
+          headerTitleStyle: {
+            color: Colors.inactive,
+          },
+          headerPressColorAndroid: Colors.textPrimary,
+          headerTintColor: Colors.surround,
         }}
       />
       <SideDrawerNavigator.Screen
@@ -330,6 +359,15 @@ export const SideNavigator = () => {
           drawerIcon: (props) => (
             <Ionicons name={'ios-options'} size={30} color={Colors.surround} />
           ),
+          headerStyle: {
+            backgroundColor: Colors.base,
+            height: Dimensions.get('window').height / 15,
+          },
+          headerTitleStyle: {
+            color: Colors.inactive,
+          },
+          headerPressColorAndroid: Colors.textPrimary,
+          headerTintColor: Colors.surround,
         }}
       />
       <SideDrawerNavigator.Screen
@@ -339,6 +377,15 @@ export const SideNavigator = () => {
           drawerIcon: (props) => (
             <Ionicons name={'ios-heart'} size={30} color={Colors.surround} />
           ),
+          headerStyle: {
+            backgroundColor: Colors.base,
+            height: Dimensions.get('window').height / 15,
+          },
+          headerTitleStyle: {
+            color: Colors.inactive,
+          },
+          headerPressColorAndroid: Colors.textPrimary,
+          headerTintColor: Colors.surround,
         }}
       />
     </SideDrawerNavigator.Navigator>
