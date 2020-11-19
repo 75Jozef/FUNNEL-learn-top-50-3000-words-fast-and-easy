@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import AppNavigator from './navigation/AppNavigator';
 
 import { AppLoading } from 'expo';
@@ -12,16 +13,6 @@ import ReduxThunk from 'redux-thunk';
 import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
-
-import { init } from './localDb/db';
-
-init()
-  .then(() => {
-    console.log('db init');
-  })
-  .catch((err) => {
-    console.log('db init failed: ', err);
-  });
 
 const rootReducer = combineReducers({
   language: langReducer,
