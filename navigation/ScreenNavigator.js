@@ -101,7 +101,8 @@ export const WelcomeNavigator = () => {
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
-      headerMode={'none'}>
+      // headerMode={'none'}
+    >
       <WelcomeStackNavigator.Screen
         name='Welcome'
         component={WelcomeScreen}
@@ -132,7 +133,8 @@ export const MasterNavigator = () => {
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
-      headerMode={'none'}>
+      // headerMode={'none'}
+    >
       <MasterStackNavigator.Screen
         name='Master'
         component={MasterScreen}
@@ -168,7 +170,8 @@ export const StatsNavigator = () => {
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
-      headerMode={'none'}>
+      // headerMode={'none'}
+    >
       <StatsStackNavigator.Screen
         name='Stats'
         component={StatisticsScreen}
@@ -199,7 +202,8 @@ export const OptionsNavigator = () => {
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
-      headerMode={'none'}>
+      // headerMode={'none'}
+    >
       <OptionsStackNavigator.Screen
         name='Options'
         component={OptionsScreen}
@@ -230,7 +234,8 @@ export const AboutNavigator = () => {
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
-      headerMode={'none'}>
+      // headerMode={'none'}
+    >
       <AboutStackNavigator.Screen
         name='About'
         component={AboutScreen}

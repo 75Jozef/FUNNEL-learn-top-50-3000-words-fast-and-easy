@@ -1,5 +1,6 @@
 import WORDS from '../../data/words';
 import { SET_STATUS } from './../actions/words';
+import { SET_STATUSES } from './../actions/words';
 
 const initialState = {
   words: WORDS,

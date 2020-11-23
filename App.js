@@ -14,6 +14,26 @@ import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
 
+import { initStatuses, initSettings } from './localDb/db';
+
+initStatuses()
+  .then(() => {
+    console.log('initialized statuses db OK');
+  })
+  .catch((err) => {
+    console.log('failed to open statuses db');
+    console.log(err);
+  });
+
+initSettings()
+  .then(() => {
+    console.log('initialized settings db OK');
+  })
+  .catch((err) => {
+    console.log('failed to open settings db');
+    console.log(err);
+  });
+
 const rootReducer = combineReducers({
   language: langReducer,
   words: wordsReducer,
