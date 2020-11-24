@@ -95,6 +95,24 @@ export const deleteZeroStatuses = () => {
   return promise;
 };
 
+export const deleteAll = () => {
+  const promise = new Promise((resolve, reject) => {
+    dbStatuses.transaction((tx) => {
+      tx.executeSql(
+        `DELETE FROM statuses;`,
+        [],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+  return promise;
+};
+
 export const loadStatuses = () => {
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
@@ -117,7 +135,7 @@ export const insertSetting = (idlng, status) => {
   const promise = new Promise((resolve, reject) => {
     dbSettings.transaction((tx) => {
       tx.executeSql(
-        `INSERT INTO settings (parameter, setting) VALUES (?, ?);`,
+        `REPLACE INTO settings (parameter, setting) VALUES (?, ?);`,
         [parameter, setting],
         (_, result) => {
           resolve(result);

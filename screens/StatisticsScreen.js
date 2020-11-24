@@ -511,22 +511,31 @@ const StatisticsScreen = () => {
 
   const WordsWindow = (props) => {
     return (
-      <View>
+      <View
+        style={{
+          width: '98%',
+        }}>
         <FlatList
           data={select === 3 ? selectedWords : words}
           keyExtractor={(item) => item['id' + lngscnd].toString()}
           renderItem={({ item }) => {
             return (
-              <View style={{ marginBottom: 10, alignItems: 'center' }}>
+              <View
+                style={{
+                  marginBottom: 7,
+                  alignItems: 'center',
+                  alignContent: 'center',
+                  justifyContent: 'center',
+                }}>
                 <Buttons.ButtonBox
                   bodyStyle={{
-                    width: Dimensions.get('window').width / 1.5,
-                    height: Dimensions.get('window').height / 40,
+                    width: Dimensions.get('window').width / 1.8,
+                    height: Dimensions.get('window').height / 28,
                     borderColor: Colors.base,
                   }}
                   insideStyle={{
                     color:
-                      item['st' + lngscnd] === 0
+                      item['st' + lngscnd] === 0 && item[lngscnd] !== lngscnd
                         ? Colors.accent
                         : item['st' + lngscnd] === 1
                         ? Colors.backSecond
@@ -557,7 +566,7 @@ const StatisticsScreen = () => {
     <ScreenFrame>
       <View
         style={{
-          height: '15%',
+          height: '10%',
           width: '90%',
           justifyContent: 'space-evenly',
           borderColor: Colors.inactive,
@@ -565,33 +574,6 @@ const StatisticsScreen = () => {
           borderStyle: 'dotted',
           borderRadius: 25,
         }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginLeft: 10,
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              width: Dimensions.get('window').width / 7,
-            }}>
-            <ComboAround>
-              <Ionicons name='ios-body' size={20} color={Colors.surround} />
-            </ComboAround>
-          </View>
-
-          <View style={{ marginLeft: 20 }}>
-            <ComboAround>
-              <TxtNormal
-                style={{
-                  color: Colors.surround,
-                  fontSize: Dimensions.get('window').height / 45,
-                }}>
-                Nick: {'Cabbage Head'}
-              </TxtNormal>
-            </ComboAround>
-          </View>
-        </View>
         <View
           style={{
             flexDirection: 'row',
@@ -668,7 +650,7 @@ const StatisticsScreen = () => {
       <View
         style={{
           flexDirection: 'row',
-          height: '57%',
+          height: '62%',
           justifyContent: 'flex-start',
           width: '90%',
           borderColor: Colors.inactive,
@@ -686,6 +668,7 @@ const StatisticsScreen = () => {
             borderRadius: 25,
             justifyContent: 'space-evenly',
             alignItems: 'center',
+            overflow: 'hidden',
           }}>
           <Buttons.ButtonCircle
             touchColor={Colors.backSecond}
@@ -940,9 +923,11 @@ const StatisticsScreen = () => {
         <View
           style={{
             width: '90%',
-
             justifyContent: 'center',
-          }}></View>
+            alignItems: 'center',
+          }}>
+          <TxtButton>{new Date().toDateString().slice(4)}</TxtButton>
+        </View>
       </View>
     </ScreenFrame>
   );

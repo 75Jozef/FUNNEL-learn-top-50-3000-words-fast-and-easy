@@ -2,22 +2,16 @@ import {
   insertStatus,
   loadStatuses,
   deleteZeroStatuses,
+  deleteAll,
 } from '../../localDb/db';
 
 export const LANG = 'LANG';
 export const SET_STATUS = 'SET_STATUS';
-export const SET_STATUSES = 'SET_STATUSES';
+export const RESET_STATUSES = 'SET_STATUSES';
 
 export const lang = (lng) => {
   return { type: LANG, language: lng };
 };
-
-// export const setStatus = (index, status, lngscnd) => {
-//   return {
-//     type: SET_STATUS,
-//     data: { iden: index, status: status, lng: lngscnd },
-//   };
-// };
 
 export const setStatus = (index, status, lngscnd) => {
   return async (dispatch) => {
@@ -30,6 +24,7 @@ export const setStatus = (index, status, lngscnd) => {
         type: SET_STATUS,
         data: { iden: index, status: status, lng: lngscnd },
       });
+      console.log(await loadStatuses());
     } catch (err) {
       throw err;
     }
@@ -56,6 +51,22 @@ export const loadStatusesFromDb = () => {
           data: { iden: index, status: status, lng: lngscnd },
         });
       }
+    } catch (err) {
+      throw err;
+    }
+  };
+};
+
+export const resetStatuses = () => {
+  return async (dispatch) => {
+    try {
+      await dispatch({
+        type: RESET_STATUSES,
+      });
+      await deleteAll();
+      console.log('deleted all rows');
+
+      console.log(await loadStatuses());
     } catch (err) {
       throw err;
     }

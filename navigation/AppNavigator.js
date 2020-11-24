@@ -19,7 +19,7 @@ const AppNavigator = (props) => {
     setError(null);
     setIsRefreshing(true);
     try {
-      await dispatch(wordsActions.loadStatusesFromDb());
+      dispatch(wordsActions.loadStatusesFromDb());
       console.log('loaded from local DB');
     } catch (err) {
       setError(err.message);

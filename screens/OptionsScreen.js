@@ -4,7 +4,7 @@ import {
   Dimensions,
   TouchableNativeFeedback,
   ScrollView,
-  DevSettings,
+  Alert,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
@@ -29,6 +29,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import * as lngActions from '../store/actions/lang';
 import * as themeActions from '../store/actions/theme';
+import * as wordActions from '../store/actions/words';
 
 import ComboAround from '../components/UI/ComboAround';
 import Fonts from '../constants/Fonts';
@@ -41,6 +42,8 @@ const OptionsScreen = () => {
 
   const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
   const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
+  const [resetStatuses, setResetStatuses] = useState(false);
+  const [locker, setLocker] = useState(true);
 
   const data = useSelector((state) => state.words.words);
 
@@ -136,19 +139,19 @@ const OptionsScreen = () => {
       <ScrollView>
         {languages.map((lng, index) => {
           return (
-            <View key={index}>
+            <View key={index} style={{ marginTop: 7 }}>
               <Buttons.ButtonBox
                 bodyStyle={
                   lng === lngfrst
                     ? {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 18,
+                        height: Dimensions.get('window').height / 28,
                         backgroundColor: Colors.inactive,
                         padding: 3,
                       }
                     : {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 18,
+                        height: Dimensions.get('window').height / 28,
                         borderColor: Colors.base,
                         padding: 3,
                       }
@@ -157,7 +160,7 @@ const OptionsScreen = () => {
                 <TxtLabel
                   style={{
                     color: Colors.surround,
-                    fontSize: Dimensions.get('window').height / 30,
+                    fontSize: Dimensions.get('window').height / 35,
                   }}>
                   {wordFrst[0][lng]}
                 </TxtLabel>
@@ -173,19 +176,19 @@ const OptionsScreen = () => {
       <ScrollView>
         {languages.map((lng, index) => {
           return (
-            <View key={index}>
+            <View key={index} style={{ marginTop: 7 }}>
               <Buttons.ButtonBox
                 bodyStyle={
                   lng === lngscnd
                     ? {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 18,
+                        height: Dimensions.get('window').height / 28,
                         backgroundColor: Colors.inactive,
                         padding: 3,
                       }
                     : {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 18,
+                        height: Dimensions.get('window').height / 28,
                         borderColor: Colors.base,
                         padding: 3,
                       }
@@ -194,7 +197,7 @@ const OptionsScreen = () => {
                 <TxtLabel
                   style={{
                     color: Colors.surround,
-                    fontSize: Dimensions.get('window').height / 30,
+                    fontSize: Dimensions.get('window').height / 35,
                   }}>
                   {wordFrst[0][lng]}
                 </TxtLabel>
@@ -224,13 +227,135 @@ const OptionsScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => setThm(actTheme));
 
+  const handleReset = (props) => {
+    Alert.alert(
+      'Reset all words to unknown?',
+      'Are you sure?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {
+            setResetStatuses((prev) => !prev);
+            setLocker((prev) => !prev);
+          },
+          style: 'cancel',
+        },
+        {
+          text: 'RESET',
+          style: 'destructive',
+          onPress: () => {
+            dispatch(wordActions.resetStatuses());
+            setLocker((prev) => !prev);
+            setResetStatuses((prev) => !prev);
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  };
+
+  const ResetStatuses = (props) => {
+    return (
+      <View
+        style={{
+          height: '100%',
+          width: '100%',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+        }}>
+        <TouchableNativeFeedback
+          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+          delayPressIn={0}
+          onPress={() => setLocker((prev) => !prev)}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Buttons.ButtonCircle
+              action={() => setLocker((prev) => !prev)}
+              touchColor={Colors.backSecond}>
+              <Ionicons
+                name={locker ? 'ios-lock' : 'ios-unlock'}
+                size={25}
+                color={locker ? Colors.accent : Colors.backPrimary}
+              />
+            </Buttons.ButtonCircle>
+            <View style={{ marginLeft: 20, justifyContent: 'center' }}>
+              <ComboAround>
+                <TxtNormal
+                  style={
+                    selectFirstLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.surround }
+                  }></TxtNormal>
+              </ComboAround>
+            </View>
+          </View>
+        </TouchableNativeFeedback>
+        {!locker ? (
+          <TouchableNativeFeedback
+            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+            delayPressIn={0}
+            onPress={() => setLocker((prev) => !prev)}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Buttons.ButtonCircle
+                action={() => handleReset()}
+                touchColor={Colors.backSecond}>
+                <Ionicons
+                  name={'ios-refresh'}
+                  size={25}
+                  color={locker ? Colors.accent : Colors.backPrimary}
+                />
+              </Buttons.ButtonCircle>
+              <View style={{ marginLeft: 20 }}>
+                <ComboAround>
+                  <TxtNormal
+                    style={
+                      selectFirstLanguage
+                        ? { color: Colors.textPrimary }
+                        : { color: Colors.surround }
+                    }></TxtNormal>
+                </ComboAround>
+              </View>
+            </View>
+          </TouchableNativeFeedback>
+        ) : (
+          <></>
+        )}
+      </View>
+    );
+  };
+
+  const InfoBox = (props) => {
+    return (
+      <View
+        style={{
+          height: '100%',
+          width: '100%',
+          overflow: 'hidden',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View>
+          <TxtItalic>options information</TxtItalic>
+          <TxtItalic>options information</TxtItalic>
+        </View>
+      </View>
+    );
+  };
+
   return (
     <ScreenFrame>
       <View
         style={{
           height: '50%',
           width: '80%',
-          justifyContent: 'center',
+          justifyContent: 'space-evenly',
           backgroundColor: Colors.base,
         }}>
         <TouchableNativeFeedback
@@ -334,7 +459,6 @@ const OptionsScreen = () => {
                       : { color: Colors.surround }
                   }>
                   dark theme
-                  {'\n'}(black)
                 </TxtNormal>
               </ComboAround>
             </View>
@@ -370,7 +494,41 @@ const OptionsScreen = () => {
                       : { color: Colors.surround }
                   }>
                   light theme
-                  {'\n'}(white)
+                </TxtNormal>
+              </ComboAround>
+            </View>
+          </View>
+        </TouchableNativeFeedback>
+
+        <TouchableNativeFeedback
+          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+          delayPressIn={0}
+          onPress={() => setResetStatuses((prev) => !prev)}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Buttons.ButtonCircle
+              action={() => setResetStatuses((prev) => !prev)}
+              touchColor={Colors.backSecond}>
+              <Ionicons
+                name='ios-refresh'
+                size={25}
+                color={
+                  selectSecondLanguage ? Colors.backSecond : Colors.surround
+                }
+              />
+            </Buttons.ButtonCircle>
+            <View style={{ marginLeft: 20 }}>
+              <ComboAround>
+                <TxtNormal
+                  style={
+                    selectSecondLanguage
+                      ? { color: Colors.textPrimary }
+                      : { color: Colors.surround }
+                  }>
+                  reset all words
                 </TxtNormal>
               </ComboAround>
             </View>
@@ -380,12 +538,24 @@ const OptionsScreen = () => {
 
       <View
         style={{
-          marginTop: 10,
-          height: '35%',
+          backgroundColor: Colors.base,
+          height: '45%',
           alignItems: 'center',
+          borderWidth: 1,
+          borderStyle: 'dotted',
+          borderRadius: 25,
+          borderColor: Colors.inactive,
+          width: '90%',
         }}>
-        {selectFirstLanguage ? <SelectFirstLanguage /> : null}
-        {selectSecondLanguage ? <SelectSecondLanguage /> : null}
+        {selectFirstLanguage ? (
+          <SelectFirstLanguage />
+        ) : selectSecondLanguage ? (
+          <SelectSecondLanguage />
+        ) : resetStatuses ? (
+          <ResetStatuses />
+        ) : (
+          <InfoBox />
+        )}
       </View>
       <View
         style={{

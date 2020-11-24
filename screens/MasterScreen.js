@@ -101,7 +101,7 @@ const MasterScreen = () => {
     setRange(words.length);
     counter();
   }, [
-    // range,
+    range,
     levelA,
     levelN,
     levelV,
@@ -115,7 +115,6 @@ const MasterScreen = () => {
     selectTwo,
     lngfrst,
     lngscnd,
-    range,
     index,
   ]);
 
