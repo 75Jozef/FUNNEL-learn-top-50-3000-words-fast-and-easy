@@ -1,4 +1,8 @@
-import { insertStatus, loadStatuses } from '../../localDb/db';
+import {
+  insertStatus,
+  loadStatuses,
+  deleteZeroStatuses,
+} from '../../localDb/db';
 
 export const LANG = 'LANG';
 export const SET_STATUS = 'SET_STATUS';
@@ -22,9 +26,6 @@ export const setStatus = (index, status, lngscnd) => {
 
     try {
       const dbResult = await insertStatus(idlng, status);
-
-      console.log(dbResult, 'adding user status');
-
       dispatch({
         type: SET_STATUS,
         data: { iden: index, status: status, lng: lngscnd },
@@ -38,10 +39,11 @@ export const setStatus = (index, status, lngscnd) => {
 export const loadStatusesFromDb = () => {
   return async (dispatch) => {
     // const userId = getState().auth.userId;
-    const loadedUserStatuses = [];
+
     try {
-      const dbResult = await loadStatuses();
-      console.log(dbResult);
+      const dbResult = await deleteZeroStatuses().then(
+        async () => await loadStatuses()
+      );
       const statuses = dbResult.rows._array;
 
       for (const key in statuses) {

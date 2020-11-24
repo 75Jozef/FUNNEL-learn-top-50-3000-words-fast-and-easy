@@ -140,7 +140,6 @@ const MasterScreen = () => {
         );
         counter();
         setRange(words.length);
-        setIndex(0);
       }
     }
   };

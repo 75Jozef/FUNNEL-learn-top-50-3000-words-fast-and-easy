@@ -77,11 +77,11 @@ export const insertStatus = (idlng, status) => {
   return promise;
 };
 
-export const deleteStatuses = () => {
+export const deleteZeroStatuses = () => {
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
-        `DELETE FROM statuses where status = 0;`,
+        `DELETE FROM statuses WHERE status = '0';`,
         [],
         (_, result) => {
           resolve(result);
