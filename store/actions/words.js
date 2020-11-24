@@ -41,14 +41,13 @@ export const loadStatusesFromDb = () => {
     const loadedUserStatuses = [];
     try {
       const dbResult = await loadStatuses();
-      console.log(dbResult, 'dbresult from load statuses from DB');
+      console.log(dbResult);
+      const statuses = dbResult.rows._array;
 
-      for (const key in dbResult.row._array) {
-        loadedUserStatuses.push(
-          dbResult.row._array[key].idlng,
-          dbResult.row._array[key].status
-        );
+      for (const key in statuses) {
+        loadedUserStatuses.push(statuses[key].idlng, statuses[key].status);
       }
+
       console.log(loadedUserStatuses, 'loaded user statuses');
 
       dispatch({

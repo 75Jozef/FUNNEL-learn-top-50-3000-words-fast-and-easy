@@ -11,7 +11,7 @@ export const initStatuses = () => {
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS statuses (idlng TEXT PRIMARY KEY NOT NULL, status INTEGER NOT NULL)',
+        'CREATE TABLE IF NOT EXISTS statuses (idlng TEXT PRIMARY KEY, status INTEGER)',
         [],
         () => {
           resolve();
@@ -29,7 +29,7 @@ export const initSettings = () => {
   const promise = new Promise((resolve, reject) => {
     dbSettings.transaction((tx) => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS settings (parameter TEXT PRIMARY KEY NOT NULL, setting TEXT NOT NULL)',
+        'CREATE TABLE IF NOT EXISTS settings (parameter TEXT PRIMARY KEY, setting TEXT)',
         [],
         () => {
           resolve();
@@ -63,7 +63,7 @@ export const insertStatus = (idlng, status) => {
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
-        `INSERT INTO statuses (idlng, status) VALUES (?,?);`,
+        `REPLACE INTO statuses (idlng, status) VALUES (?,?);`,
         [idlng, status],
         (_, result) => {
           resolve(result);
