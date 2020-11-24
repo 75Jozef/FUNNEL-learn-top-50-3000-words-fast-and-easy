@@ -45,15 +45,15 @@ export const loadStatusesFromDb = () => {
       const statuses = dbResult.rows._array;
 
       for (const key in statuses) {
-        loadedUserStatuses.push(statuses[key].idlng, statuses[key].status);
+        let index = parseInt(statuses[key].idlng.slice(0, -2));
+        let status = statuses[key].status;
+        let lngscnd = statuses[key].idlng.slice(-2);
+        console.log('ready to dispatch:', index, status, lngscnd);
+        await dispatch({
+          type: SET_STATUS,
+          data: { iden: index, status: status, lng: lngscnd },
+        });
       }
-
-      console.log(loadedUserStatuses, 'loaded user statuses');
-
-      dispatch({
-        type: SET_STATUSES,
-        statuses: loadedUserStatuses,
-      });
     } catch (err) {
       throw err;
     }

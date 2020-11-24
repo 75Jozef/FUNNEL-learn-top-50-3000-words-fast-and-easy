@@ -23,12 +23,6 @@ export default (state = initialState, action) => {
         words: updatedWords,
       };
     }
-    case SET_STATUSES: {
-      const statuses = action.statuses;
-      console.log(statuses, 'statuses loaded to word reducer on startup');
-
-      return { ...state };
-    }
   }
 
   return state;

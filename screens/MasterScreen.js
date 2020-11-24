@@ -115,6 +115,8 @@ const MasterScreen = () => {
     selectTwo,
     lngfrst,
     lngscnd,
+    range,
+    index,
   ]);
 
   const handleIndex = (jump) => {
@@ -130,11 +132,15 @@ const MasterScreen = () => {
     }
   };
 
-  const handleStatus = (status) => {
+  const handleStatus = async (status) => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
-        dispatch(wordActions.setStatus(words[index]['iden'], status, lngscnd));
+        await dispatch(
+          wordActions.setStatus(words[index]['iden'], status, lngscnd)
+        );
         counter();
+        setRange(words.length);
+        setIndex(0);
       }
     }
   };
