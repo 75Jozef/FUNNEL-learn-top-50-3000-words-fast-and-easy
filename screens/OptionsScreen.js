@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Restart } from 'fiction-expo-restart';
+import RNRestart from 'react-native-restart';
 
 import {
   View,
@@ -34,7 +34,6 @@ import * as themeActions from '../store/actions/theme';
 import * as wordActions from '../store/actions/words';
 
 import ComboAround from '../components/UI/ComboAround';
-import Fonts from '../constants/Fonts';
 
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -250,7 +249,7 @@ const OptionsScreen = () => {
             dispatch(wordActions.resetStatuses());
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
-            Restart();
+            RNRestart.Restart();
           },
         },
       ],
