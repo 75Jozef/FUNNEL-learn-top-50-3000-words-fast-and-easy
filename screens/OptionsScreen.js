@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import RNRestart from 'react-native-restart';
 
 import {
   View,
@@ -7,6 +6,7 @@ import {
   TouchableNativeFeedback,
   ScrollView,
   Alert,
+  DevSettings,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 
@@ -249,7 +249,7 @@ const OptionsScreen = () => {
             dispatch(wordActions.resetStatuses());
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
-            RNRestart.Restart();
+            DevSettings.reload();
           },
         },
       ],
