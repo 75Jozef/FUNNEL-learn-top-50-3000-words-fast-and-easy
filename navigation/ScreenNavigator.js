@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { View, SafeAreaView, Dimensions } from 'react-native';
+import { View, SafeAreaView, Dimensions, BackHandler } from 'react-native';
 
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -274,7 +274,7 @@ export const SideNavigator = () => {
                   backgroundColor: Colors.base,
                 }}>
                 <Buttons.ButtonBox
-                  action={() => {}}
+                  action={() => BackHandler.exitApp()}
                   bodyStyle={{
                     borderWidth: 0,
                     backgroundColor: Colors.base,
