@@ -231,7 +231,7 @@ const OptionsScreen = () => {
 
   const handleReset = (props) => {
     Alert.alert(
-      'Reset all words to unknown?',
+      'Application RESET',
       'Are you sure?',
       [
         {
@@ -531,7 +531,7 @@ const OptionsScreen = () => {
                       ? { color: Colors.textPrimary }
                       : { color: Colors.surround }
                   }>
-                  reset all words
+                  application reset
                 </TxtNormal>
               </ComboAround>
             </View>

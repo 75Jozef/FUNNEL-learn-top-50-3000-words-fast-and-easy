@@ -100,11 +100,10 @@ const MasterScreen = () => {
   );
 
   useEffect(() => {
-    setRange(words.length);
     counter();
-    console.log('useEffect master');
+    setRange(words.length);
+    console.log('useEffect master', index);
   }, [
-    range,
     levelA,
     levelN,
     levelV,
@@ -112,18 +111,14 @@ const MasterScreen = () => {
     levelF,
     levelT,
     levelX,
-    select,
     selectZero,
     selectOne,
     selectTwo,
     lngfrst,
     lngscnd,
-    index,
   ]);
 
   const handleIndex = (jump) => {
-    setRange(words.length);
-
     if (range <= 1) {
       setIndex(0);
     } else {
@@ -139,22 +134,25 @@ const MasterScreen = () => {
     }
   };
 
-  const handleStatus = async (status) => {
+  const handleStatus = (status) => {
     if (words[index]['userlvl'] !== 'l') {
       if (words[index]['st' + lngscnd] !== status) {
-        await dispatch(
+        dispatch(
           wordActions.setStatus(words[index]['iden'], status, lngscnd)
-        );
-        counter();
-        setRange(words.length);
+        ).then(() => {
+          counter();
+          console.log('status handler after dispatch');
+        });
       }
     }
   };
+
   const handleSelect = (select) => {
     setSelect(select);
     counter();
-    setRange(words.length);
     setIndex(0);
+    setRange(words.length);
+    console.log('handle select', range);
   };
 
   const counter = () => {
@@ -398,7 +396,7 @@ const MasterScreen = () => {
                   language: lngscnd,
                   voice: Speech.VoiceQuality.Enhanced,
                   pitch: 1.0,
-                  rate: 0.2,
+                  rate: 0.6,
                 });
               }}
               touchColor={Colors.accent}>
@@ -602,6 +600,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelV((prev) => !prev);
+                // counter();
                 setIndex(0);
               }}
               bodyStyle={
@@ -661,6 +660,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelN((prev) => !prev);
+                // counter();
                 setIndex(0);
               }}
               bodyStyle={
@@ -718,6 +718,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelA((prev) => !prev);
+                // counter();
                 setIndex(0);
               }}
               bodyStyle={
@@ -775,6 +776,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelH((prev) => !prev);
+                // counter();
                 setIndex(0);
               }}
               bodyStyle={
@@ -833,6 +835,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelF((prev) => !prev);
+                // counter();
                 setIndex(0);
               }}
               bodyStyle={
@@ -890,6 +893,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelT((prev) => !prev);
+                // counter();
                 setIndex(0);
               }}
               bodyStyle={
@@ -947,6 +951,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelX((prev) => !prev);
+                // counter();
                 setIndex(0);
               }}
               bodyStyle={
@@ -1173,7 +1178,9 @@ const MasterScreen = () => {
               justifyContent: 'space-between',
             }}>
             <Buttons.ButtonCircle
-              action={() => handleStatus(0)}
+              action={() => {
+                handleStatus(0);
+              }}
               touchColor={
                 words[index]['st' + lngscnd] === 0 ? null : Colors.accent
               }
@@ -1202,7 +1209,9 @@ const MasterScreen = () => {
               />
             </Buttons.ButtonCircle>
             <Buttons.ButtonCircle
-              action={() => handleStatus(1)}
+              action={() => {
+                handleStatus(1);
+              }}
               touchColor={
                 words[index]['st' + lngscnd] === 1 ? null : Colors.backSecond
               }
@@ -1231,7 +1240,9 @@ const MasterScreen = () => {
               />
             </Buttons.ButtonCircle>
             <Buttons.ButtonCircle
-              action={() => handleStatus(2)}
+              action={() => {
+                handleStatus(2);
+              }}
               touchColor={
                 words[index]['st' + lngscnd] === 2 ? null : Colors.backPrimary
               }

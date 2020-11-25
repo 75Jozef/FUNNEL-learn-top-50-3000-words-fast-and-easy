@@ -19,12 +19,12 @@ export const setStatus = (index, status, lngscnd) => {
     console.log(idlng);
 
     try {
-      const dbResult = await insertStatus(idlng, status);
-      dispatch({
-        type: SET_STATUS,
-        data: { iden: index, status: status, lng: lngscnd },
-      });
-      console.log(await loadStatuses());
+      await insertStatus(idlng, status).then(() =>
+        dispatch({
+          type: SET_STATUS,
+          data: { iden: index, status: status, lng: lngscnd },
+        })
+      );
     } catch (err) {
       throw err;
     }
