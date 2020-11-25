@@ -94,8 +94,13 @@ const MasterScreen = () => {
   );
 
   const [theme, setTheme] = useState();
+  const [refresh, setRefresh] = useState();
   const actTheme = useSelector((state) => state.theme.theme);
-  useEffect(() => setTheme(actTheme));
+  const rfrsh = useSelector((state) => state.refresh.refresh);
+  useEffect(() => {
+    setTheme(actTheme);
+    setRefresh(rfrsh);
+  });
 
   useEffect(() => {
     setRange(words.length);

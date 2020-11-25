@@ -38,6 +38,7 @@ const rootReducer = combineReducers({
   language: langReducer,
   words: wordsReducer,
   theme: themeReducer,
+  refresh: refreshReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
