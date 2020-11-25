@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -13,6 +13,7 @@ import ReduxThunk from 'redux-thunk';
 import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
+import refreshReducer from './store/reducers/refresh';
 
 import { initStatuses, initSettings } from './localDb/db';
 
@@ -55,6 +56,7 @@ const fetchFonts = () => {
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
+
   if (!fontLoaded) {
     return (
       <AppLoading
@@ -65,6 +67,7 @@ export default function App() {
       />
     );
   }
+
   return (
     <Provider store={store}>
       <AppNavigator />

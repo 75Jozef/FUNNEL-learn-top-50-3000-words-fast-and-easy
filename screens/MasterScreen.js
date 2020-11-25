@@ -72,10 +72,16 @@ const MasterScreen = () => {
   const lngscnd = useSelector((state) => state.language.lngscnd);
   const txtfrst = Languages[lngfrst].Master;
   const txtscnd = Languages[lngscnd].Master;
+  const dispatch = useDispatch();
+
+  const [theme, setTheme] = useState();
+  const actTheme = useSelector((state) => state.theme.theme);
+  useEffect(() => {
+    setTheme(actTheme);
+    console.log('theme effect');
+  }, []);
 
   const data = useSelector((state) => state.words.words);
-
-  const dispatch = useDispatch();
 
   const selectedWords = data.filter(
     (word) =>
@@ -93,18 +99,10 @@ const MasterScreen = () => {
     (word) => word['st' + lngscnd] === select || word.userlvl === 'l'
   );
 
-  const [theme, setTheme] = useState();
-  const [refresh, setRefresh] = useState();
-  const actTheme = useSelector((state) => state.theme.theme);
-  const rfrsh = useSelector((state) => state.refresh.refresh);
-  useEffect(() => {
-    setTheme(actTheme);
-    setRefresh(rfrsh);
-  });
-
   useEffect(() => {
     setRange(words.length);
     counter();
+    console.log('useEffect master');
   }, [
     range,
     levelA,
@@ -125,14 +123,19 @@ const MasterScreen = () => {
 
   const handleIndex = (jump) => {
     setRange(words.length);
-    if (index + jump >= range) {
-      setIndex(range - 2);
-    } else if (index + jump < 0) {
-      setIndex(0);
-    } else if (words[index + jump][lngscnd] === lngscnd) {
+
+    if (range <= 1) {
       setIndex(0);
     } else {
-      setIndex(index + jump);
+      if (index + jump >= range) {
+        setIndex(range - 2);
+      } else if (index + jump < 0) {
+        setIndex(0);
+      } else if (words[index + jump][lngscnd] === lngscnd) {
+        setIndex(0);
+      } else {
+        setIndex(index + jump);
+      }
     }
   };
 
@@ -155,6 +158,7 @@ const MasterScreen = () => {
   };
 
   const counter = () => {
+    console.log('counter here');
     let cntZero = 0;
     let cntOne = 0;
     let cntTwo = 0;
@@ -1311,7 +1315,7 @@ const MasterScreen = () => {
                 : null
             }
             action={() => {
-              setIndex(Math.floor(Math.random() * range));
+              setIndex(Math.floor(Math.random() * (range - 1)));
             }}>
             <Ionicons name='ios-color-wand' size={35} color={Colors.surround} />
           </Buttons.ButtonCircle>

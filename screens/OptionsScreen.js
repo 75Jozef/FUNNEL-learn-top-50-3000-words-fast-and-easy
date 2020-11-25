@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Restart } from 'fiction-expo-restart';
+
 import {
   View,
   Dimensions,
@@ -58,8 +60,6 @@ const OptionsScreen = () => {
   const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
 
   const dispatch = useDispatch();
-
-  const [theme, setTheme] = useState();
 
   let languages = [
     'en',
@@ -223,9 +223,12 @@ const OptionsScreen = () => {
     setTheme(props);
   };
 
+  const [theme, setTheme] = useState();
   const [thm, setThm] = useState();
   const actTheme = useSelector((state) => state.theme.theme);
-  useEffect(() => setThm(actTheme));
+  useEffect(() => {
+    setThm(actTheme);
+  });
 
   const handleReset = (props) => {
     Alert.alert(
@@ -247,6 +250,7 @@ const OptionsScreen = () => {
             dispatch(wordActions.resetStatuses());
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
+            Restart();
           },
         },
       ],
