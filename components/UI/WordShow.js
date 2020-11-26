@@ -17,12 +17,6 @@ const WordShow = (props) => {
 
   const wordToShow = props.word;
 
-  // 0: ..?..
-  // 1: - - -
-  // 2: - - X
-  // 3: X - -
-  // 4: X - X
-
   if (props.show === 1) {
     for (let i = 0; i < props.word.length; i++) {
       word.push('_');
@@ -135,5 +129,3 @@ const styles = StyleSheet.create({
 });
 
 export default WordShow;
-
-// fa, ur, ar

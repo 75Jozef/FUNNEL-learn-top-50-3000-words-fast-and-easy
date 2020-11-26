@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { StyleSheet, Dimensions, Text } from 'react-native';
+import { Dimensions, Text } from 'react-native';
 import Fonts from './../../constants/Fonts';
 import Colors from './../../constants/Colors';
 
@@ -145,14 +145,3 @@ export const TxtButton = (props) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  textNormal: {},
-  textItalic: {},
-  textBold: {},
-  textHeader: {},
-
-  textLabel: {},
-  textError: {},
-  textButton: {},
-});

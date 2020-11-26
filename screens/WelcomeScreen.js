@@ -12,7 +12,6 @@ import {
   TxtItalic,
   TxtLabel,
 } from '../components/UI/Txt';
-import CardFrame from '../components/UI/CardFrame';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 
@@ -39,10 +38,10 @@ const WelcomeScreen = () => {
         <TxtHeader>F|U|N|N|E|L</TxtHeader>
         <TxtHeader>{actTheme.toString()}</TxtHeader>
       </View>
-      <CardFrame style={{ margin: 15 }}>
+      <View style={{ margin: 15 }}>
         <TxtLabel>frst{txtfrst.title}</TxtLabel>
         <TxtNormal>scnd{txtscnd.title}</TxtNormal>
-      </CardFrame>
+      </View>
     </ScreenFrame>
   );
 };

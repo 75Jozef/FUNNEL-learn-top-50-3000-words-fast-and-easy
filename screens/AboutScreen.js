@@ -11,7 +11,7 @@ import {
   TxtItalic,
   TxtLabel,
 } from '../components/UI/Txt';
-import CardFrame from '../components/UI/CardFrame';
+
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 import * as Languages from '../data/languages';
@@ -31,9 +31,6 @@ const AboutScreen = () => {
       <View style={{ alignItems: 'center', margin: 10 }}>
         <TxtHeader>W|O|R|D</TxtHeader>
       </View>
-      <CardFrame style={{ margin: 15 }}>
-        <TxtLabel>{txtfrst.title}</TxtLabel>
-      </CardFrame>
     </ScreenFrame>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colors from '../../constants/Colors';
@@ -31,9 +30,5 @@ const ScreenFrame = (props) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {},
-});
 
 export default ScreenFrame;
