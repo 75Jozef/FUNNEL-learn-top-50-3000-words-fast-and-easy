@@ -14,23 +14,14 @@ import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
 
-import { initStatuses, initSettings } from './localDb/db';
+import { initStatuses } from './localDb/db';
 
 initStatuses()
   .then(() => {
-    console.log('initialized statuses db OK');
+    console.log('initialized statuses db');
   })
   .catch((err) => {
-    console.log('failed to open statuses db');
-    console.log(err);
-  });
-
-initSettings()
-  .then(() => {
-    console.log('initialized settings db OK');
-  })
-  .catch((err) => {
-    console.log('failed to open settings db');
+    console.log('failed to load statuses db');
     console.log(err);
   });
 
@@ -48,9 +39,6 @@ const fetchFonts = () => {
     'open-sans-bold': require('./fonts/OpenSans-Bold.ttf'),
   });
 };
-
-//! screenshot banned of some screens; copy texts is available from list od words by filter
-//! git ignore, implement .env and encrypt data
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);

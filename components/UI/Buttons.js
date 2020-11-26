@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  StyleSheet,
-  Dimensions,
-  Text,
-  TouchableNativeFeedback,
-  View,
-} from 'react-native';
+import { Dimensions, Text, TouchableNativeFeedback, View } from 'react-native';
 import Fonts from './../../constants/Fonts';
 import Colors from './../../constants/Colors';
 export const ButtonCircle = (props) => {
@@ -95,10 +89,3 @@ export const ButtonBox = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonCircleBody: {},
-  buttonCircleInside: {},
-  buttonBoxBody: {},
-  buttonBoxInside: {},
-});

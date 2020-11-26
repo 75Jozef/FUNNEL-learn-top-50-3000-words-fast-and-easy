@@ -22,10 +22,6 @@ import AboutScreen, {
   screenOptions as aboutScreenOptions,
 } from './../screens/AboutScreen';
 
-import AuthScreen, {
-  screenOptions as authScreenOptions,
-} from '../screens/AuthScreen';
-
 import MasterScreen, {
   screenOptions as masterScreenOptions,
 } from './../screens/MasterScreen';
@@ -46,41 +42,6 @@ import InstructionsScreen, {
   screenOptions as instructionsScreenOptions,
 } from '../screens/InstructionsScreen';
 import { TxtItalic } from '../components/UI/Txt';
-import ColorsLight from '../constants/ColorsLight';
-
-//* Default Navigation Options
-
-//* Auth Navigation ****************************
-
-const AuthStackNavigator = createStackNavigator();
-
-export const AuthNavigator = () => {
-  const [theme, setTheme] = useState();
-  const actTheme = useSelector((state) => state.theme.theme);
-  useEffect(() => setTheme(actTheme));
-
-  return (
-    <AuthStackNavigator.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: Colors.base,
-        },
-        headerTitleStyle: {
-          fontFamily: Fonts.bold,
-        },
-        headerTintColor: Colors.surround,
-        gestureEnabled: true,
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}
-      headerMode={'none'}>
-      <AuthStackNavigator.Screen
-        name='Auth'
-        component={AuthScreen}
-        options={authScreenOptions}
-      />
-    </AuthStackNavigator.Navigator>
-  );
-};
 
 //* Welcome navigation ***********************
 const WelcomeStackNavigator = createStackNavigator();

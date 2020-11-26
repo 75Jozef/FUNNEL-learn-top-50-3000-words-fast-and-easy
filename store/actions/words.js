@@ -16,7 +16,6 @@ export const lang = (lng) => {
 export const setStatus = (index, status, lngscnd) => {
   return async (dispatch) => {
     let idlng = index.toString() + lngscnd;
-    console.log(idlng);
 
     try {
       await insertStatus(idlng, status).then(() =>
@@ -45,7 +44,7 @@ export const loadStatusesFromDb = () => {
         let index = parseInt(statuses[key].idlng.slice(0, -2));
         let status = statuses[key].status;
         let lngscnd = statuses[key].idlng.slice(-2);
-        console.log('ready to dispatch:', index, status, lngscnd);
+
         await dispatch({
           type: SET_STATUS,
           data: { iden: index, status: status, lng: lngscnd },
@@ -64,9 +63,6 @@ export const resetStatuses = () => {
         type: RESET_STATUSES,
       });
       await deleteAll();
-      console.log('deleted all rows');
-
-      console.log(await loadStatuses());
     } catch (err) {
       throw err;
     }

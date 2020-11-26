@@ -20,7 +20,7 @@ import * as Buttons from './../components/UI/Buttons';
 import { Ionicons } from '@expo/vector-icons';
 import ComboAround from '../components/UI/ComboAround';
 import * as lngActions from '../store/actions/lang';
-import { InfoLine } from '../components/UI/InfoLine';
+
 import Fonts from '../constants/Fonts';
 
 const StatisticsScreen = () => {

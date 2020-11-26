@@ -17,16 +17,12 @@ export default (state = initialState, action) => {
       const updatedWords = [...state.words];
       updatedWords[index]['st' + lng] = status;
 
-      console.log('dispatched one word to status:', status);
-
       return {
         ...state,
         words: updatedWords,
       };
     }
     case RESET_STATUSES: {
-      console.log('resetting all words');
-
       return {
         ...initialState,
       };

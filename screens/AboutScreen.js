@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Input from './../components/UI/Input';
 import Colors from '../constants/Colors';
 import { useSelector } from 'react-redux';
 

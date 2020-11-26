@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import Colors from '../../constants/Colors';
 
@@ -21,9 +21,5 @@ const ComboAround = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {},
-});
 
 export default ComboAround;
