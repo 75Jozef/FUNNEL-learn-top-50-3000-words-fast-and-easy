@@ -366,7 +366,7 @@ const StatisticsScreen = () => {
     return (
       <View
         style={{
-          width: '98%',
+          width: '99%',
         }}>
         <FlatList
           data={select === 3 ? selectedWords : words}
@@ -375,7 +375,7 @@ const StatisticsScreen = () => {
             return (
               <View
                 style={{
-                  marginBottom: 7,
+                  marginBottom: 10,
                   alignItems: 'center',
                   alignContent: 'center',
                   justifyContent: 'center',
@@ -385,6 +385,7 @@ const StatisticsScreen = () => {
                     width: Dimensions.get('window').width / 1.8,
                     height: Dimensions.get('window').height / 28,
                     borderColor: Colors.base,
+                    marginBottom: 3,
                   }}
                   insideStyle={{
                     color:
@@ -395,7 +396,7 @@ const StatisticsScreen = () => {
                         : item['st' + lngscnd] === 2
                         ? Colors.backPrimary
                         : Colors.base,
-                    fontSize: Dimensions.get('window').height / 35,
+                    fontSize: Dimensions.get('window').height / 31,
                   }}>
                   {item[lngscnd]}
                 </Buttons.ButtonBox>

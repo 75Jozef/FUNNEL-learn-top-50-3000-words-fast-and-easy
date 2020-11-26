@@ -4,6 +4,6 @@ export default {
   backSecond: '#DAA520',
   surround: '#303030',
   accent: '#B22222',
-  base: '#FFFFFF',
+  base: '#FFFFF0',
   inactive: '#A0A0A0',
 };
