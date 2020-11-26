@@ -15,17 +15,12 @@ const AppNavigator = (props) => {
     dispatch(wordsActions.loadStatusesFromDb());
   }, []);
 
-  //once component loaded, it fires action to fetch user products from firebase by GET method; makes only once when building screen or when change is done on this screen (not non server)
-
   useEffect(() => {
     loadUserStatuses().then(() => {
       setIsFetched(true);
     });
   }, []);
 
-  // end of preload of statuses
-
-  let isAuth = true;
   return (
     <NavigationContainer>
       {isFetched ? (
