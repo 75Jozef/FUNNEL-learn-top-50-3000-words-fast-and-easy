@@ -360,7 +360,7 @@ const MasterScreen = () => {
                         words[index][lngfrst] === lngfrst
                           ? Colors.base
                           : Colors.surround,
-                      fontSize: Dimensions.get('window').height / 25,
+                      fontSize: Dimensions.get('window').height / 28,
                     }}>
                     {range > 0 ? (
                       words[index][lngfrst]
@@ -525,45 +525,56 @@ const MasterScreen = () => {
           <FlatList
             data={words}
             keyExtractor={(item) => item['id' + lngfrst].toString()}
+            initialNumToRender={20}
             getItemLayout={(data, index) => ({
-              length: 53,
-              offset: 53 * index,
+              length: 52.5,
+              offset: 52.5 * index,
               index,
             })}
             initialScrollIndex={index}
             renderItem={({ item }) => {
               return (
-                <Buttons.ButtonBox
-                  bodyStyle={
-                    words[index][lngfrst] === item[lngfrst]
-                      ? {
-                          width: Dimensions.get('window').width / 1.5,
-                          height: Dimensions.get('window').height / 18,
-                          borderColor: Colors.base,
-                          backgroundColor:
-                            item[lngfrst] === lngfrst
-                              ? Colors.base
-                              : Colors.inactive,
-                          padding: 3,
-                        }
-                      : {
-                          width: Dimensions.get('window').width / 1.5,
-                          height: Dimensions.get('window').height / 18,
-                          borderColor: Colors.base,
-                          padding: 3,
-                        }
-                  }
-                  action={() => {
-                    setSelectorIndex(item[lngfrst]);
-                    setWordSelector(false);
-                  }}
-                  insideStyle={{
-                    color:
-                      item[lngfrst] === lngfrst ? Colors.base : Colors.surround,
-                    fontSize: Dimensions.get('window').height / 25,
+                <View
+                  style={{
+                    marginBottom: 10,
+                    alignItems: 'center',
+                    alignContent: 'center',
+                    justifyContent: 'center',
                   }}>
-                  {item[lngfrst]}
-                </Buttons.ButtonBox>
+                  <Buttons.ButtonBox
+                    bodyStyle={
+                      words[index][lngfrst] === item[lngfrst]
+                        ? {
+                            width: Dimensions.get('window').width / 1.5,
+                            height: Dimensions.get('window').height / 18,
+                            borderColor: Colors.base,
+                            backgroundColor:
+                              item[lngfrst] === lngfrst
+                                ? Colors.base
+                                : Colors.inactive,
+                            marginBottom: 7,
+                          }
+                        : {
+                            width: Dimensions.get('window').width / 1.5,
+                            height: Dimensions.get('window').height / 18,
+                            borderColor: Colors.base,
+                            marginBottom: 7,
+                          }
+                    }
+                    action={() => {
+                      setSelectorIndex(item[lngfrst]);
+                      setWordSelector(false);
+                    }}
+                    insideStyle={{
+                      color:
+                        item[lngfrst] === lngfrst
+                          ? Colors.base
+                          : Colors.surround,
+                      fontSize: Dimensions.get('window').height / 28,
+                    }}>
+                    {item[lngfrst]}
+                  </Buttons.ButtonBox>
+                </View>
               );
             }}
           />

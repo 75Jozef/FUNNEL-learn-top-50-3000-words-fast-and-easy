@@ -371,6 +371,7 @@ const StatisticsScreen = () => {
         <FlatList
           data={select === 3 ? selectedWords : words}
           keyExtractor={(item) => item['id' + lngscnd].toString()}
+          initialNumToRender={20}
           renderItem={({ item }) => {
             return (
               <View
