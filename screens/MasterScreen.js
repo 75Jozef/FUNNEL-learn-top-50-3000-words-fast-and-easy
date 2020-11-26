@@ -44,27 +44,27 @@ const MasterScreen = () => {
   const [selectZero, setSelectZero] = useState(0);
   const [selectOne, setSelectOne] = useState(0);
   const [selectTwo, setSelectTwo] = useState(0);
-  const [countVZero, setCountVZero] = useState();
-  const [countVOne, setCountVOne] = useState();
-  const [countVTwo, setCountVTwo] = useState();
-  const [countAZero, setCountAZero] = useState();
-  const [countAOne, setCountAOne] = useState();
-  const [countATwo, setCountATwo] = useState();
-  const [countNZero, setCountNZero] = useState();
-  const [countNOne, setCountNOne] = useState();
-  const [countNTwo, setCountNTwo] = useState();
-  const [countHZero, setCountHZero] = useState();
-  const [countHOne, setCountHOne] = useState();
-  const [countHTwo, setCountHTwo] = useState();
-  const [countFZero, setCountFZero] = useState();
-  const [countFOne, setCountFOne] = useState();
-  const [countFTwo, setCountFTwo] = useState();
-  const [countTZero, setCountTZero] = useState();
-  const [countTOne, setCountTOne] = useState();
-  const [countTTwo, setCountTTwo] = useState();
-  const [countXZero, setCountXZero] = useState();
-  const [countXOne, setCountXOne] = useState();
-  const [countXTwo, setCountXTwo] = useState();
+  const [countVZero, setCountVZero] = useState(0);
+  const [countVOne, setCountVOne] = useState(0);
+  const [countVTwo, setCountVTwo] = useState(0);
+  const [countAZero, setCountAZero] = useState(0);
+  const [countAOne, setCountAOne] = useState(0);
+  const [countATwo, setCountATwo] = useState(0);
+  const [countNZero, setCountNZero] = useState(0);
+  const [countNOne, setCountNOne] = useState(0);
+  const [countNTwo, setCountNTwo] = useState(0);
+  const [countHZero, setCountHZero] = useState(0);
+  const [countHOne, setCountHOne] = useState(0);
+  const [countHTwo, setCountHTwo] = useState(0);
+  const [countFZero, setCountFZero] = useState(0);
+  const [countFOne, setCountFOne] = useState(0);
+  const [countFTwo, setCountFTwo] = useState(0);
+  const [countTZero, setCountTZero] = useState(0);
+  const [countTOne, setCountTOne] = useState(0);
+  const [countTTwo, setCountTTwo] = useState(0);
+  const [countXZero, setCountXZero] = useState(0);
+  const [countXOne, setCountXOne] = useState(0);
+  const [countXTwo, setCountXTwo] = useState(0);
 
   const [wordSelector, setWordSelector] = useState(false);
 
@@ -78,7 +78,6 @@ const MasterScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     setTheme(actTheme);
-    console.log('theme effect');
   }, []);
 
   const data = useSelector((state) => state.words.words);
@@ -99,10 +98,11 @@ const MasterScreen = () => {
     (word) => word['st' + lngscnd] === select || word.userlvl === 'l'
   );
 
+  const [helper, setHelper] = useState(false);
+
   useEffect(() => {
     counter();
     setRange(words.length);
-    console.log('useEffect master', index);
   }, [
     levelA,
     levelN,
@@ -111,11 +111,12 @@ const MasterScreen = () => {
     levelF,
     levelT,
     levelX,
-    selectZero,
+    range,
+    select,
+    helper,
     selectOne,
     selectTwo,
-    lngfrst,
-    lngscnd,
+    selectZero,
   ]);
 
   const handleIndex = (jump) => {
@@ -140,8 +141,7 @@ const MasterScreen = () => {
         dispatch(
           wordActions.setStatus(words[index]['iden'], status, lngscnd)
         ).then(() => {
-          counter();
-          console.log('status handler after dispatch');
+          setHelper((prev) => !prev);
         });
       }
     }
@@ -149,14 +149,10 @@ const MasterScreen = () => {
 
   const handleSelect = (select) => {
     setSelect(select);
-    counter();
     setIndex(0);
-    setRange(words.length);
-    console.log('handle select', range);
   };
 
   const counter = () => {
-    console.log('counter here');
     let cntZero = 0;
     let cntOne = 0;
     let cntTwo = 0;
@@ -517,7 +513,7 @@ const MasterScreen = () => {
       </>
     );
   };
-  //! *******************************************************************
+
   const WordSelectorWindow = (props) => {
     return (
       <>
@@ -581,7 +577,6 @@ const MasterScreen = () => {
     setIndex(newIndex);
   };
 
-  //* render **************************************
   return (
     <ScreenFrame>
       <View
@@ -1149,7 +1144,6 @@ const MasterScreen = () => {
         </View>
       </View>
 
-      {/* ***********************************WORD SHOW */}
       <View
         style={{
           width: '90%',
@@ -1163,7 +1157,6 @@ const MasterScreen = () => {
         {wordSelector ? <WordSelectorWindow /> : <WordShowWindow />}
       </View>
 
-      {/* ***********************************************************************SHOW */}
       <View
         style={{
           height: '25%',
