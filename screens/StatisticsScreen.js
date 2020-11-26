@@ -22,30 +22,9 @@ import ComboAround from '../components/UI/ComboAround';
 import * as lngActions from '../store/actions/lang';
 
 import Fonts from '../constants/Fonts';
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 const StatisticsScreen = () => {
-  const [countVZero, setCountVZero] = useState();
-  const [countVOne, setCountVOne] = useState();
-  const [countVTwo, setCountVTwo] = useState();
-  const [countAZero, setCountAZero] = useState();
-  const [countAOne, setCountAOne] = useState();
-  const [countATwo, setCountATwo] = useState();
-  const [countNZero, setCountNZero] = useState();
-  const [countNOne, setCountNOne] = useState();
-  const [countNTwo, setCountNTwo] = useState();
-  const [countHZero, setCountHZero] = useState();
-  const [countHOne, setCountHOne] = useState();
-  const [countHTwo, setCountHTwo] = useState();
-  const [countFZero, setCountFZero] = useState();
-  const [countFOne, setCountFOne] = useState();
-  const [countFTwo, setCountFTwo] = useState();
-  const [countTZero, setCountTZero] = useState();
-  const [countTOne, setCountTOne] = useState();
-  const [countTTwo, setCountTTwo] = useState();
-  const [countXZero, setCountXZero] = useState();
-  const [countXOne, setCountXOne] = useState();
-  const [countXTwo, setCountXTwo] = useState();
-
   const [selectZero, setSelectZero] = useState(0);
   const [selectOne, setSelectOne] = useState(0);
   const [selectTwo, setSelectTwo] = useState(0);
@@ -150,122 +129,17 @@ const StatisticsScreen = () => {
     let cntZero = 0;
     let cntOne = 0;
     let cntTwo = 0;
-    let cntVZero = 0;
-    let cntAZero = 0;
-    let cntNZero = 0;
-    let cntHZero = 0;
-    let cntFZero = 0;
-    let cntTZero = 0;
-    let cntXZero = 0;
-    let cntVOne = 0;
-    let cntAOne = 0;
-    let cntNOne = 0;
-    let cntHOne = 0;
-    let cntFOne = 0;
-    let cntTOne = 0;
-    let cntXOne = 0;
-    let cntVTwo = 0;
-    let cntATwo = 0;
-    let cntNTwo = 0;
-    let cntHTwo = 0;
-    let cntFTwo = 0;
-    let cntTTwo = 0;
-    let cntXTwo = 0;
 
     selectedWords.forEach((word) => {
       switch (word['st' + lngscnd]) {
         case 0:
           cntZero++;
-          if (word['userlvl'] === 'v') {
-            cntVZero++;
-            break;
-          }
-          if (word['userlvl'] === 'a') {
-            cntAZero++;
-            break;
-          }
-          if (word['userlvl'] === 'n') {
-            cntNZero++;
-            break;
-          }
-          if (word['userlvl'] === 'h') {
-            cntHZero++;
-            break;
-          }
-          if (word['userlvl'] === 'f') {
-            cntFZero++;
-            break;
-          }
-          if (word['userlvl'] === 't') {
-            cntTZero++;
-            break;
-          }
-          if (word['userlvl'] === 'x') {
-            cntXZero++;
-            break;
-          }
           break;
         case 1:
           cntOne++;
-          if (word['userlvl'] === 'v') {
-            cntVOne++;
-            break;
-          }
-          if (word['userlvl'] === 'a') {
-            cntAOne++;
-            break;
-          }
-          if (word['userlvl'] === 'n') {
-            cntNOne++;
-            break;
-          }
-          if (word['userlvl'] === 'h') {
-            cntHOne++;
-            break;
-          }
-          if (word['userlvl'] === 'f') {
-            cntFOne++;
-            break;
-          }
-          if (word['userlvl'] === 't') {
-            cntTOne++;
-            break;
-          }
-          if (word['userlvl'] === 'x') {
-            cntXOne++;
-            break;
-          }
           break;
         case 2:
           cntTwo++;
-          if (word['userlvl'] === 'v') {
-            cntVTwo++;
-            break;
-          }
-          if (word['userlvl'] === 'a') {
-            cntATwo++;
-            break;
-          }
-          if (word['userlvl'] === 'n') {
-            cntNTwo++;
-            break;
-          }
-          if (word['userlvl'] === 'h') {
-            cntHTwo++;
-            break;
-          }
-          if (word['userlvl'] === 'f') {
-            cntFTwo++;
-            break;
-          }
-          if (word['userlvl'] === 't') {
-            cntTTwo++;
-            break;
-          }
-          if (word['userlvl'] === 'x') {
-            cntXTwo++;
-            break;
-          }
           break;
       }
     });
@@ -273,27 +147,6 @@ const StatisticsScreen = () => {
     setSelectZero(cntZero);
     setSelectOne(cntOne);
     setSelectTwo(cntTwo);
-    setCountVZero(cntVZero);
-    setCountVOne(cntVOne);
-    setCountVTwo(cntVTwo);
-    setCountAZero(cntAZero);
-    setCountAOne(cntAOne);
-    setCountATwo(cntATwo);
-    setCountNZero(cntNZero);
-    setCountNOne(cntNOne);
-    setCountNTwo(cntNTwo);
-    setCountHZero(cntHZero);
-    setCountHOne(cntHOne);
-    setCountHTwo(cntHTwo);
-    setCountFZero(cntFZero);
-    setCountFOne(cntFOne);
-    setCountFTwo(cntFTwo);
-    setCountTZero(cntTZero);
-    setCountTOne(cntTOne);
-    setCountTTwo(cntTTwo);
-    setCountXZero(cntXZero);
-    setCountXOne(cntXOne);
-    setCountXTwo(cntXTwo);
   };
 
   const handleSecondLng = (props) => {
@@ -316,15 +169,15 @@ const StatisticsScreen = () => {
                   lng === lngscnd
                     ? {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 25,
+                        height: Dimensions.get('window').height / 22,
                         backgroundColor: Colors.inactive,
-                        padding: 3,
+                        marginBottom: 5,
                       }
                     : {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 25,
+                        height: Dimensions.get('window').height / 22,
                         borderColor: Colors.base,
-                        padding: 3,
+                        marginBottom: 5,
                       }
                 }
                 action={() => setLanguageSecond(lng)}
@@ -578,6 +431,8 @@ const StatisticsScreen = () => {
           style={{
             flexDirection: 'row',
             marginLeft: 10,
+            overflow: 'hidden',
+            alignItems: 'center',
           }}>
           <View
             style={{
@@ -597,7 +452,7 @@ const StatisticsScreen = () => {
                     }
                   : {
                       overflow: 'hidden',
-                      borderColor: Colors.surround,
+                      borderColor: Colors.inactive,
                       width: Dimensions.get('window').width / 7,
                       height: Dimensions.get('window').height / 20,
                     }
@@ -637,7 +492,7 @@ const StatisticsScreen = () => {
 
       <View
         style={{
-          height: '25%',
+          height: '30%',
           width: '90%',
           borderColor: Colors.inactive,
           borderWidth: 1,
@@ -650,7 +505,7 @@ const StatisticsScreen = () => {
       <View
         style={{
           flexDirection: 'row',
-          height: '62%',
+          height: '57%',
           justifyContent: 'flex-start',
           width: '90%',
           borderColor: Colors.inactive,
