@@ -277,11 +277,11 @@ const OptionsScreen = () => {
             }}>
             <Buttons.ButtonCircle
               action={() => setLocker((prev) => !prev)}
-              touchColor={Colors.backSecond}>
+              touchColor={locker ? Colors.accent : Colors.backPrimary}>
               <Ionicons
                 name={locker ? 'ios-lock' : 'ios-unlock'}
                 size={25}
-                color={locker ? Colors.accent : Colors.backPrimary}
+                color={Colors.accent}
               />
             </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20, justifyContent: 'center' }}>

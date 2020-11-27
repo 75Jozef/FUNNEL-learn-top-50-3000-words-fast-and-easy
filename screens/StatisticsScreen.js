@@ -23,7 +23,6 @@ import ComboAround from '../components/UI/ComboAround';
 import * as lngActions from '../store/actions/lang';
 
 import Fonts from '../constants/Fonts';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 const StatisticsScreen = () => {
   const [selectZero, setSelectZero] = useState(0);

@@ -17,6 +17,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 
 import * as Languages from '../data/languages';
+import { Ionicons } from '@expo/vector-icons';
 
 const WelcomeScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -40,33 +41,113 @@ const WelcomeScreen = () => {
     <ScreenFrame>
       <View
         style={{
+          height: '20%',
           alignItems: 'center',
-          margin: 10,
-          backgroundColor: Colors.base,
+          justifyContent: 'center',
+          width: '90%',
         }}>
+        <Ionicons name='ios-funnel' size={60} color={Colors.backSecond} />
         <TxtHeader>F|U|N|N|E|L</TxtHeader>
-        <TxtNormal>color theme {actTheme}</TxtNormal>
-        <TxtNormal>
-          {Device.brand} {Device.modelName}
-        </TxtNormal>
-
-        <TxtItalic>
-          Model {Device.deviceYearClass} Android {Device.osVersion}
-        </TxtItalic>
-
-        <TxtNormal>Name {Device.deviceName}</TxtNormal>
-        <TxtNormal>
-          {actLngFrstLocal}
-          {actLngFrstEng}
-        </TxtNormal>
-        <TxtNormal>
-          {actLngScndLocal}
-          {actLngScndEng}
-        </TxtNormal>
       </View>
-      <View style={{ margin: 15 }}>
-        <TxtLabel>frst{txtfrst.title}</TxtLabel>
-        <TxtNormal>scnd{txtscnd.title}</TxtNormal>
+      <View
+        style={{
+          height: '30%',
+          alignItems: 'center',
+          width: '90%',
+          justifyContent: 'space-evenly',
+        }}>
+        <TxtNormal>
+          Hello{' \n'}
+          <Ionicons name='ios-person' size={22} color={Colors.textPrimary} />
+          {'  '}
+          {Device.deviceName} !
+        </TxtNormal>
+        <View>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            <Ionicons name='ios-body' size={55} color={Colors.backSecond} />
+            <View style={{ marginLeft: 20 }}>
+              <TxtNormal>
+                {actLngFrstLocal}
+                {'\n'}({actLngFrstEng})
+              </TxtNormal>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            <Ionicons name='ios-globe' size={55} color={Colors.backSecond} />
+            <View style={{ marginLeft: 20 }}>
+              <TxtNormal>
+                {actLngScndLocal}
+                {'\n'}({actLngScndEng})
+              </TxtNormal>
+            </View>
+          </View>
+        </View>
+      </View>
+
+      <View
+        style={{
+          height: '30%',
+          alignItems: 'center',
+          width: '90%',
+          justifyContent: 'space-evenly',
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            width: '90%',
+            justifyContent: 'space-evenly',
+          }}>
+          <Ionicons name='ios-book' size={40} color={Colors.backPrimary} />
+          <Ionicons name='ios-bulb' size={40} color={Colors.backPrimary} />
+          <Ionicons name='ios-cafe' size={40} color={Colors.backPrimary} />
+          <Ionicons name='ios-people' size={40} color={Colors.backPrimary} />
+          <Ionicons name='ios-fitness' size={40} color={Colors.backPrimary} />
+        </View>
+        <View
+          style={{
+            height: '30%',
+            flexDirection: 'row',
+            width: '90%',
+            justifyContent: 'space-evenly',
+          }}>
+          <Ionicons name='ios-pulse' size={40} color={Colors.backPrimary} />
+          <Ionicons name='ios-thumbs-up' size={40} color={Colors.backPrimary} />
+          <Ionicons name='md-beer' size={40} color={Colors.backPrimary} />
+          <Ionicons name='ios-hand' size={40} color={Colors.backPrimary} />
+          <Ionicons name='md-bed' size={40} color={Colors.backPrimary} />
+        </View>
+        <Ionicons name='ios-happy' size={50} color={Colors.backPrimary} />
+      </View>
+      <View
+        style={{
+          height: '10%',
+          width: '90%',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Ionicons name='ios-heart' size={25} color={'red'} />
+          <Ionicons name='logo-android' size={30} color={'lightgreen'} />
+          <TxtNormal> v{Device.osVersion}</TxtNormal>
+        </View>
+        <View>
+          <TxtNormal>
+            {'   '}
+            {Device.brand}
+          </TxtNormal>
+        </View>
       </View>
     </ScreenFrame>
   );
@@ -76,7 +157,7 @@ export const screenOptions = (navData) => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const txtfrst = Languages[lngfrst].Welcome;
   return {
-    headerTitle: `${txtfrst.header}`,
+    headerTitle: '',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
