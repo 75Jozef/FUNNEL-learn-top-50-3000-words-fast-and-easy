@@ -60,7 +60,7 @@ const WelcomeScreen = () => {
           Hello{' \n'}
           <Ionicons name='ios-person' size={22} color={Colors.textPrimary} />
           {'  '}
-          {Device.deviceName} !
+          {Device.deviceName} !{'\n'}
         </TxtNormal>
         <View>
           <View
@@ -68,7 +68,7 @@ const WelcomeScreen = () => {
               flexDirection: 'row',
             }}>
             <Ionicons name='ios-body' size={55} color={Colors.backSecond} />
-            <View style={{ marginLeft: 20 }}>
+            <View style={{ marginLeft: 20, marginBottom: 10 }}>
               <TxtNormal>
                 {actLngFrstLocal}
                 {'\n'}({actLngFrstEng})
