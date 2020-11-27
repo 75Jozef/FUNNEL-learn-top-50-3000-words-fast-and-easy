@@ -28,6 +28,14 @@ const WelcomeScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => setTheme(actTheme));
 
+  const data = useSelector((state) => state.words.words);
+  const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
+  const actLngScndEng = wordEng[0][lngscnd];
+  const actLngFrstEng = wordEng[0][lngfrst];
+  const wordLocal = data.filter((word) => word['id' + lngscnd] === 2999);
+  const actLngScndLocal = wordLocal[0][lngscnd];
+  const actLngFrstLocal = wordLocal[0][lngfrst];
+
   return (
     <ScreenFrame>
       <View
@@ -37,13 +45,24 @@ const WelcomeScreen = () => {
           backgroundColor: Colors.base,
         }}>
         <TxtHeader>F|U|N|N|E|L</TxtHeader>
-        <TxtHeader>{actTheme.toString()}</TxtHeader>
-        <TxtNormal>{Device.brand}</TxtNormal>
-        <TxtNormal>{Device.manufacturer}</TxtNormal>
-        <TxtNormal>{Device.modelName}</TxtNormal>
-        <TxtNormal>{Device.deviceYearClass}</TxtNormal>
-        <TxtNormal>{Device.osVersion}</TxtNormal>
-        <TxtNormal>{Device.deviceName}</TxtNormal>
+        <TxtNormal>color theme {actTheme}</TxtNormal>
+        <TxtNormal>
+          {Device.brand} {Device.modelName}
+        </TxtNormal>
+
+        <TxtItalic>
+          Model {Device.deviceYearClass} Android {Device.osVersion}
+        </TxtItalic>
+
+        <TxtNormal>Name {Device.deviceName}</TxtNormal>
+        <TxtNormal>
+          {actLngFrstLocal}
+          {actLngFrstEng}
+        </TxtNormal>
+        <TxtNormal>
+          {actLngScndLocal}
+          {actLngScndEng}
+        </TxtNormal>
       </View>
       <View style={{ margin: 15 }}>
         <TxtLabel>frst{txtfrst.title}</TxtLabel>

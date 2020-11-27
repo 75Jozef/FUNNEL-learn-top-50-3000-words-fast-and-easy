@@ -4,7 +4,6 @@ import { SET_LNG_SCND } from '../actions/lang';
 import { NativeModules } from 'react-native';
 
 let deviceLanguage = NativeModules.I18nManager.localeIdentifier.slice(0, 2);
-console.log(deviceLanguage);
 
 if (deviceLanguage == undefined) {
   deviceLanguage = 'en';

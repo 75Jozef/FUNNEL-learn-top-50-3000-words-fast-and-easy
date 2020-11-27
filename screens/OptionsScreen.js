@@ -49,14 +49,14 @@ const OptionsScreen = () => {
   const data = useSelector((state) => state.words.words);
 
   const wordScnd = data.filter((word) => word['id' + lngscnd] === 2999);
+  const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
+
   const actLngScnd = wordScnd[0][lngscnd];
   const actLngFrst = wordScnd[0][lngfrst];
 
   const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
   const actLngScndEng = wordEng[0][lngscnd];
   const actLngFrstEng = wordEng[0][lngfrst];
-
-  const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
 
   const dispatch = useDispatch();
 
