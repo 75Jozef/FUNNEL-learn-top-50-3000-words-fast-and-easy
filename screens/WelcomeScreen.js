@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { View } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
+import * as Device from 'expo-device';
 
 import Colors from '../constants/Colors';
 
@@ -37,6 +38,12 @@ const WelcomeScreen = () => {
         }}>
         <TxtHeader>F|U|N|N|E|L</TxtHeader>
         <TxtHeader>{actTheme.toString()}</TxtHeader>
+        <TxtNormal>{Device.brand}</TxtNormal>
+        <TxtNormal>{Device.manufacturer}</TxtNormal>
+        <TxtNormal>{Device.modelName}</TxtNormal>
+        <TxtNormal>{Device.deviceYearClass}</TxtNormal>
+        <TxtNormal>{Device.osVersion}</TxtNormal>
+        <TxtNormal>{Device.deviceName}</TxtNormal>
       </View>
       <View style={{ margin: 15 }}>
         <TxtLabel>frst{txtfrst.title}</TxtLabel>

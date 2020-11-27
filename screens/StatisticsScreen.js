@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dimensions, View, ScrollView, FlatList } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
+import * as Device from 'expo-device';
 
 import Colors from '../constants/Colors';
 import {
@@ -779,11 +780,13 @@ const StatisticsScreen = () => {
         }}>
         <View
           style={{
-            width: '90%',
-            justifyContent: 'center',
+            width: '98%',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
             alignItems: 'center',
           }}>
           <TxtButton>{new Date().toDateString().slice(4)}</TxtButton>
+          <TxtButton> {Device.deviceName} </TxtButton>
         </View>
       </View>
     </ScreenFrame>
