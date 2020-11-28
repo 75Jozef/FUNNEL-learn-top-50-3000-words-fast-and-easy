@@ -226,7 +226,7 @@ const StatisticsScreen = () => {
                   ? { borderWidth: 3, borderColor: Colors.surround }
                   : null
               }>
-              <Ionicons name='ios-menu' size={40} color={Colors.surround} />
+              <Ionicons name='ios-list' size={40} color={Colors.surround} />
             </Buttons.ButtonCircle>
             <TxtBold style={{ color: Colors.surround }}>{'100%'}</TxtBold>
             <TxtButton>{selectZero + selectOne + selectTwo}</TxtButton>
@@ -793,10 +793,10 @@ const StatisticsScreen = () => {
 };
 
 export const screenOptions = (navData) => {
+  const data = useSelector((state) => state.words.words);
   const lngfrst = useSelector((state) => state.language.lngfrst);
-  const txtfrst = Languages[lngfrst].Statistics;
   return {
-    headerTitle: `${txtfrst.header}`,
+    headerTitle: data[2530][lngfrst],
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

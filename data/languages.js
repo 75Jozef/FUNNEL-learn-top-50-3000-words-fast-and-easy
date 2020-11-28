@@ -2,6 +2,13 @@
 
 export const en = {
   Language: 'English',
+  Navi: {
+    welcome: 'welcome',
+    statistics: 'statistics',
+    options: 'options',
+    about: 'about',
+    exit: 'exit',
+  },
   About: {
     header: 'About header',
     title: 'About title',
@@ -40,6 +47,13 @@ export const en = {
 //slovak
 export const sk = {
   Language: 'Slovenský jazyk',
+  Navi: {
+    welcome: 'Vitaj',
+    statistics: 'Štatistiky',
+    options: 'Možnosti',
+    about: 'Inštrukcie',
+    exit: 'Ukončenie',
+  },
   About: {
     header: 'O appke hlavička',
     title: 'O appke nadpis',
@@ -71,7 +85,7 @@ export const sk = {
     noRange: 'Najprv vyber rozsah...',
   },
   Welcome: {
-    header: 'Welcome my friend',
+    header: 'Vitaj',
     title: 'Welcome nadpis',
   },
 };

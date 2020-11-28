@@ -18,10 +18,6 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 
-import AboutScreen, {
-  screenOptions as aboutScreenOptions,
-} from './../screens/AboutScreen';
-
 import MasterScreen, {
   screenOptions as masterScreenOptions,
 } from './../screens/MasterScreen';
@@ -174,44 +170,14 @@ export const OptionsNavigator = () => {
   );
 };
 
-//* About Navigation ***************************
-
-const AboutStackNavigator = createStackNavigator();
-
-export const AboutNavigator = () => {
-  const [theme, setTheme] = useState();
-  const actTheme = useSelector((state) => state.theme.theme);
-  useEffect(() => setTheme(actTheme));
-  return (
-    <AboutStackNavigator.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: Colors.base,
-        },
-        headerTitleStyle: {
-          fontFamily: Fonts.bold,
-        },
-        headerTintColor: Colors.surround,
-        gestureEnabled: true,
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}
-      // headerMode={'none'}
-    >
-      <AboutStackNavigator.Screen
-        name='About'
-        component={AboutScreen}
-        options={aboutScreenOptions}
-      />
-    </AboutStackNavigator.Navigator>
-  );
-};
-
 //* Side Drawer Navigation *******************
 const SideDrawerNavigator = createDrawerNavigator();
 export const SideNavigator = () => {
   const [theme, setTheme] = useState();
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => setTheme(actTheme));
+  const data = useSelector((state) => state.words.words);
+  const lngfrst = useSelector((state) => state.language.lngfrst);
 
   return (
     <SideDrawerNavigator.Navigator
@@ -228,14 +194,15 @@ export const SideNavigator = () => {
 
               <View
                 style={{
-                  marginTop: 30,
-                  marginLeft: 6,
+                  marginTop: 20,
+
                   flexDirection: 'row',
-                  alignContent: 'center',
+                  alignItems: 'center',
                   backgroundColor: Colors.base,
                 }}>
-                <Buttons.ButtonBox
+                <Buttons.ButtonCircle
                   action={() => BackHandler.exitApp()}
+                  touchColor={Colors.surround}
                   bodyStyle={{
                     borderWidth: 0,
                     backgroundColor: Colors.base,
@@ -246,7 +213,7 @@ export const SideNavigator = () => {
                     size={30}
                     color={Colors.surround}
                   />
-                </Buttons.ButtonBox>
+                </Buttons.ButtonCircle>
                 <TxtItalic style={{ marginLeft: 15 }}>EXIT</TxtItalic>
               </View>
             </SafeAreaView>
@@ -264,7 +231,7 @@ export const SideNavigator = () => {
         },
       }}>
       <SideDrawerNavigator.Screen
-        name='Welcome'
+        name={data[1282][lngfrst]}
         component={WelcomeNavigator}
         options={{
           drawerIcon: (props) => (
@@ -301,7 +268,7 @@ export const SideNavigator = () => {
         }}
       />
       <SideDrawerNavigator.Screen
-        name='Statistics'
+        name={data[2530][lngfrst]}
         component={StatsNavigator}
         options={{
           drawerIcon: (props) => (
@@ -319,29 +286,11 @@ export const SideNavigator = () => {
         }}
       />
       <SideDrawerNavigator.Screen
-        name='Options'
+        name={data[45][lngfrst]}
         component={OptionsNavigator}
         options={{
           drawerIcon: (props) => (
             <Ionicons name={'ios-options'} size={30} color={Colors.surround} />
-          ),
-          headerStyle: {
-            backgroundColor: Colors.base,
-            height: Dimensions.get('window').height / 15,
-          },
-          headerTitleStyle: {
-            color: Colors.inactive,
-          },
-          headerPressColorAndroid: Colors.textPrimary,
-          headerTintColor: Colors.surround,
-        }}
-      />
-      <SideDrawerNavigator.Screen
-        name='About'
-        component={AboutNavigator}
-        options={{
-          drawerIcon: (props) => (
-            <Ionicons name={'ios-heart'} size={30} color={Colors.surround} />
           ),
           headerStyle: {
             backgroundColor: Colors.base,

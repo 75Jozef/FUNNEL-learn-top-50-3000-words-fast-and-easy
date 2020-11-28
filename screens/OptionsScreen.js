@@ -144,15 +144,15 @@ const OptionsScreen = () => {
                   lng === lngfrst
                     ? {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 28,
+                        height: Dimensions.get('window').height / 22,
                         backgroundColor: Colors.inactive,
-                        padding: 3,
+                        marginBottom: 5,
                       }
                     : {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 28,
+                        height: Dimensions.get('window').height / 22,
                         borderColor: Colors.base,
-                        padding: 3,
+                        marginBottom: 5,
                       }
                 }
                 action={() => setLanguageFirst(lng)}>
@@ -181,15 +181,15 @@ const OptionsScreen = () => {
                   lng === lngscnd
                     ? {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 28,
+                        height: Dimensions.get('window').height / 22,
                         backgroundColor: Colors.inactive,
-                        padding: 3,
+                        marginBottom: 5,
                       }
                     : {
                         width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 28,
+                        height: Dimensions.get('window').height / 22,
                         borderColor: Colors.base,
-                        padding: 3,
+                        marginBottom: 5,
                       }
                 }
                 action={() => setLanguageSecond(lng)}>
@@ -571,10 +571,10 @@ const OptionsScreen = () => {
 };
 
 export const screenOptions = (navData) => {
+  const data = useSelector((state) => state.words.words);
   const lngfrst = useSelector((state) => state.language.lngfrst);
-  const txtfrst = Languages[lngfrst].Options;
   return {
-    headerTitle: `${txtfrst.header}`,
+    headerTitle: data[45][lngfrst],
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
