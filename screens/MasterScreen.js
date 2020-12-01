@@ -599,10 +599,6 @@ const MasterScreen = () => {
         style={{
           height: '20%',
           justifyContent: 'space-between',
-          borderWidth: 0.5,
-          borderColor: Colors.inactive,
-          borderStyle: 'dotted',
-          borderRadius: 25,
         }}>
         <View
           style={{
@@ -1182,16 +1178,11 @@ const MasterScreen = () => {
           height: '25%',
           width: '95%',
           justifyContent: 'space-between',
-          borderWidth: 0.5,
-          borderColor: Colors.inactive,
-          borderStyle: 'dotted',
-          borderRadius: 25,
         }}>
         <View style={{ alignItems: 'center' }}>
           <View
             style={{
-              width: '65%',
-
+              width: '55%',
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
@@ -1297,7 +1288,7 @@ const MasterScreen = () => {
             alignItems: 'center',
             alignSelf: 'center',
             justifyContent: 'space-around',
-            width: '80%',
+            width: '90%',
           }}>
           <Buttons.ButtonCircle
             touchColor={
