@@ -46,6 +46,13 @@ const WelcomeScreen = () => {
   const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
   const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
 
+  const [selectZeroFrst, setSelectZeroFrst] = useState(0);
+  const [selectOneFrst, setSelectOneFrst] = useState(0);
+  const [selectTwoFrst, setSelectTwoFrst] = useState(0);
+  const [selectZeroScnd, setSelectZeroScnd] = useState(0);
+  const [selectOneScnd, setSelectOneScnd] = useState(0);
+  const [selectTwoScnd, setSelectTwoScnd] = useState(0);
+
   let languages = [
     'en',
     'it',
@@ -93,6 +100,51 @@ const WelcomeScreen = () => {
   ];
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    counter();
+  }, [lngfrst, lngscnd]);
+
+  const counter = () => {
+    let cntZeroFrst = 0;
+    let cntOneFrst = 0;
+    let cntTwoFrst = 0;
+    let cntZeroScnd = 0;
+    let cntOneScnd = 0;
+    let cntTwoScnd = 0;
+
+    data.forEach((word) => {
+      switch (word['st' + lngfrst]) {
+        case 0:
+          cntZeroFrst++;
+          break;
+        case 1:
+          cntOneFrst++;
+          break;
+        case 2:
+          cntTwoFrst++;
+          break;
+      }
+      switch (word['st' + lngscnd]) {
+        case 0:
+          cntZeroScnd++;
+          break;
+        case 1:
+          cntOneScnd++;
+          break;
+        case 2:
+          cntTwoScnd++;
+          break;
+      }
+    });
+
+    setSelectZeroFrst(cntZeroFrst);
+    setSelectOneFrst(cntOneFrst);
+    setSelectTwoFrst(cntTwoFrst);
+    setSelectZeroScnd(cntZeroScnd);
+    setSelectOneScnd(cntOneScnd);
+    setSelectTwoScnd(cntTwoScnd);
+  };
 
   const setLanguageFirst = (lngfrst, lngscnd) => {
     dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
@@ -151,6 +203,7 @@ const WelcomeScreen = () => {
                 <TxtButton style={{ color: Colors.inactive }}>
                   {wordEng[0][lng]}
                 </TxtButton>
+                <TxtError> </TxtError>
               </View>
             </View>
           );
@@ -203,6 +256,7 @@ const WelcomeScreen = () => {
                 <TxtButton style={{ color: Colors.inactive }}>
                   {wordEng[0][lng]}
                 </TxtButton>
+                <TxtError> </TxtError>
               </View>
             </View>
           );
@@ -355,6 +409,9 @@ const WelcomeScreen = () => {
                   <TxtButton style={{ color: Colors.inactive }}>
                     {wordEng[0][lngfrst]}
                   </TxtButton>
+                  <TxtError>
+                    {selectZeroFrst}+{selectOneFrst}+{selectTwoFrst}
+                  </TxtError>
                 </View>
               </View>
             )}
@@ -429,6 +486,9 @@ const WelcomeScreen = () => {
                   <TxtButton style={{ color: Colors.inactive }}>
                     {wordEng[0][lngscnd]}
                   </TxtButton>
+                  <TxtError>
+                    {selectZeroScnd}+{selectOneScnd}+{selectTwoScnd}
+                  </TxtError>
                 </View>
               </View>
             )}
