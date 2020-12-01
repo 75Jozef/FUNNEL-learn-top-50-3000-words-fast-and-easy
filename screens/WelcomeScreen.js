@@ -246,7 +246,7 @@ const WelcomeScreen = () => {
           height: '15%',
           alignItems: 'center',
           width: '95%',
-          justifyContent: 'space-evenly',
+          justifyContent: 'flex-end',
         }}>
         <Buttons.ButtonCircle
           action={() => {
