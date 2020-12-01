@@ -45,15 +45,14 @@ const OptionsScreen = () => {
 
   const data = useSelector((state) => state.words.words);
 
-  const wordScnd = data.filter((word) => word['id' + lngscnd] === 2999);
   const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
 
-  const actLngScnd = wordScnd[0][lngscnd];
-  const actLngFrst = wordScnd[0][lngfrst];
+  const actLngFrst = wordFrst[0][lngfrst];
+  const actLngScnd = wordFrst[0][lngscnd];
 
   const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
-  const actLngScndEng = wordEng[0][lngscnd];
   const actLngFrstEng = wordEng[0][lngfrst];
+  const actLngScndEng = wordEng[0][lngscnd];
 
   const dispatch = useDispatch();
 
@@ -107,13 +106,19 @@ const OptionsScreen = () => {
     if (selectSecondLanguage) {
       setSelectSecondLanguage(false);
       setSelectFirstLanguage(false);
+      setLocker(true);
+      setResetStatuses(false);
       return;
     }
 
     if (selectFirstLanguage) {
       setSelectFirstLanguage(false);
+      setLocker(true);
+      setResetStatuses(false);
       return;
     }
+    setLocker(true);
+    setResetStatuses(false);
     setSelectFirstLanguage(true);
   };
 
@@ -121,13 +126,19 @@ const OptionsScreen = () => {
     if (selectFirstLanguage) {
       setSelectFirstLanguage(false);
       setSelectSecondLanguage(false);
+      setLocker(true);
+      setResetStatuses(false);
       return;
     }
 
     if (selectSecondLanguage) {
       setSelectSecondLanguage(false);
+      setLocker(true);
+      setResetStatuses(false);
       return;
     }
+    setLocker(true);
+    setResetStatuses(false);
     setSelectSecondLanguage(true);
   };
 
@@ -136,32 +147,43 @@ const OptionsScreen = () => {
       <ScrollView>
         {languages.map((lng, index) => {
           return (
-            <View key={index} style={{ marginTop: 7 }}>
-              <Buttons.ButtonBox
-                bodyStyle={
-                  lng === lngfrst
-                    ? {
-                        width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 22,
-                        backgroundColor: Colors.inactive,
-                        marginBottom: 5,
-                      }
-                    : {
-                        width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 22,
-                        borderColor: Colors.base,
-                        marginBottom: 5,
-                      }
-                }
-                action={() => setLanguageFirst(lng)}>
-                <TxtLabel
-                  style={{
-                    color: Colors.surround,
-                    fontSize: Dimensions.get('window').height / 35,
-                  }}>
-                  {wordFrst[0][lng]}
-                </TxtLabel>
-              </Buttons.ButtonBox>
+            <View
+              key={index}
+              style={{
+                marginTop: 7,
+                alignItems: 'center',
+                overflow: 'hidden',
+              }}>
+              <View style={{ alignItems: 'center' }}>
+                <Buttons.ButtonBox
+                  bodyStyle={
+                    lng === lngfrst
+                      ? {
+                          width: Dimensions.get('window').width / 1.5,
+                          height: Dimensions.get('window').height / 22,
+                          backgroundColor: Colors.inactive,
+                          marginBottom: 1,
+                        }
+                      : {
+                          width: Dimensions.get('window').width / 1.5,
+                          height: Dimensions.get('window').height / 22,
+                          borderColor: Colors.base,
+                          marginBottom: 1,
+                        }
+                  }
+                  action={() => setLanguageFirst(lng)}>
+                  <TxtLabel
+                    style={{
+                      color: Colors.surround,
+                      fontSize: Dimensions.get('window').height / 35,
+                    }}>
+                    {wordFrst[0][lng]}
+                  </TxtLabel>
+                </Buttons.ButtonBox>
+                <TxtButton style={{ color: Colors.inactive }}>
+                  {wordEng[0][lng]}
+                </TxtButton>
+              </View>
             </View>
           );
         })}
@@ -173,32 +195,43 @@ const OptionsScreen = () => {
       <ScrollView>
         {languages.map((lng, index) => {
           return (
-            <View key={index} style={{ marginTop: 7 }}>
-              <Buttons.ButtonBox
-                bodyStyle={
-                  lng === lngscnd
-                    ? {
-                        width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 22,
-                        backgroundColor: Colors.inactive,
-                        marginBottom: 5,
-                      }
-                    : {
-                        width: Dimensions.get('window').width / 1.5,
-                        height: Dimensions.get('window').height / 22,
-                        borderColor: Colors.base,
-                        marginBottom: 5,
-                      }
-                }
-                action={() => setLanguageSecond(lng)}>
-                <TxtLabel
-                  style={{
-                    color: Colors.surround,
-                    fontSize: Dimensions.get('window').height / 35,
-                  }}>
-                  {wordFrst[0][lng]}
-                </TxtLabel>
-              </Buttons.ButtonBox>
+            <View
+              key={index}
+              style={{
+                marginTop: 7,
+                alignItems: 'center',
+                overflow: 'hidden',
+              }}>
+              <View style={{ alignItems: 'center' }}>
+                <Buttons.ButtonBox
+                  bodyStyle={
+                    lng === lngscnd
+                      ? {
+                          width: Dimensions.get('window').width / 1.5,
+                          height: Dimensions.get('window').height / 22,
+                          backgroundColor: Colors.inactive,
+                          marginBottom: 5,
+                        }
+                      : {
+                          width: Dimensions.get('window').width / 1.5,
+                          height: Dimensions.get('window').height / 22,
+                          borderColor: Colors.base,
+                          marginBottom: 5,
+                        }
+                  }
+                  action={() => setLanguageSecond(lng)}>
+                  <TxtLabel
+                    style={{
+                      color: Colors.surround,
+                      fontSize: Dimensions.get('window').height / 35,
+                    }}>
+                    {wordFrst[0][lng]}
+                  </TxtLabel>
+                </Buttons.ButtonBox>
+                <TxtButton style={{ color: Colors.inactive }}>
+                  {wordEng[0][lng]}
+                </TxtButton>
+              </View>
             </View>
           );
         })}
@@ -283,6 +316,7 @@ const OptionsScreen = () => {
                 color={Colors.accent}
               />
             </Buttons.ButtonCircle>
+            {locker ? null : <TxtBold> {data[222][lngfrst]}</TxtBold>}
             <View style={{ marginLeft: 20, justifyContent: 'center' }}>
               <ComboAround>
                 <TxtNormal
@@ -314,6 +348,7 @@ const OptionsScreen = () => {
                   color={locker ? Colors.accent : Colors.backPrimary}
                 />
               </Buttons.ButtonCircle>
+              <TxtBold> {data[2244][lngfrst]}</TxtBold>
               <View style={{ marginLeft: 20 }}>
                 <ComboAround>
                   <TxtNormal
@@ -446,22 +481,14 @@ const OptionsScreen = () => {
             <Buttons.ButtonCircle
               action={() => handleTheme('dark')}
               touchColor={Colors.backSecond}>
-              <Ionicons
-                name='ios-moon'
-                size={25}
-                color={
-                  selectSecondLanguage ? Colors.backSecond : Colors.surround
-                }
-              />
+              <Ionicons name='ios-moon' size={25} color={Colors.surround} />
             </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20 }}>
               <ComboAround>
                 <TxtNormal
-                  style={
-                    selectSecondLanguage
-                      ? { color: Colors.textPrimary }
-                      : { color: Colors.surround }
-                  }>
+                  style={{
+                    color: Colors.surround,
+                  }}>
                   {data[1753][lngfrst]}
                 </TxtNormal>
               </ComboAround>
@@ -481,22 +508,11 @@ const OptionsScreen = () => {
             <Buttons.ButtonCircle
               action={() => handleTheme('light')}
               touchColor={Colors.backSecond}>
-              <Ionicons
-                name='ios-sunny'
-                size={25}
-                color={
-                  selectSecondLanguage ? Colors.backSecond : Colors.surround
-                }
-              />
+              <Ionicons name='ios-sunny' size={25} color={Colors.surround} />
             </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20 }}>
               <ComboAround>
-                <TxtNormal
-                  style={
-                    selectSecondLanguage
-                      ? { color: Colors.textPrimary }
-                      : { color: Colors.surround }
-                  }>
+                <TxtNormal style={{ color: Colors.surround }}>
                   {data[682][lngfrst]}
                 </TxtNormal>
               </ComboAround>
@@ -519,18 +535,16 @@ const OptionsScreen = () => {
               <Ionicons
                 name='ios-refresh'
                 size={25}
-                color={
-                  selectSecondLanguage ? Colors.backSecond : Colors.surround
-                }
+                color={!resetStatuses ? Colors.surround : Colors.backSecond}
               />
             </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20 }}>
               <ComboAround>
                 <TxtNormal
                   style={
-                    selectSecondLanguage
-                      ? { color: Colors.textPrimary }
-                      : { color: Colors.surround }
+                    !resetStatuses
+                      ? { color: Colors.surround }
+                      : { color: Colors.backSecond }
                   }>
                   {data[2244][lngfrst]}
                 </TxtNormal>

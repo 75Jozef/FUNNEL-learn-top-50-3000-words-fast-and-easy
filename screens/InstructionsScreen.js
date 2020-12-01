@@ -53,7 +53,7 @@ const InstructionsScreen = () => {
           }}>
           <TxtNormal>
             {' '}
-            {data[758][lngfrst]} - {data[451][lngfrst]} {data[2346][lngfrst]}
+            {data[758][lngfrst]} - {data[451][lngfrst]}
           </TxtNormal>
         </View>
         <View
@@ -61,7 +61,7 @@ const InstructionsScreen = () => {
             alignItems: 'center',
           }}>
           <TxtNormal>
-            {data[1206][lngfrst]} - {data[451][lngfrst]} {data[2346][lngfrst]}
+            {data[1206][lngfrst]} - {data[451][lngfrst]}
           </TxtNormal>
         </View>
       </View>
@@ -80,7 +80,7 @@ const InstructionsScreen = () => {
         <TxtNormal> </TxtNormal>
         <TxtNormal> </TxtNormal>
         <TxtNormal>
-          {data[2403][lngfrst]} {data[2470][lngfrst]} {data[1526][lngfrst]}
+          {data[2403][lngfrst]} {data[2470][lngfrst]}
         </TxtNormal>
         <TxtNormal> </TxtNormal>
         <TxtNormal> </TxtNormal>
@@ -88,8 +88,8 @@ const InstructionsScreen = () => {
           {data[2966][lngfrst]} {data[1545][lngfrst]}
         </TxtNormal>
         <TxtNormal>
-          {data[2309][lngfrst]} {data[2966][lngfrst]} {'   '}{' '}
-          {data[1262][lngfrst]} / {data[785][lngfrst]} {data[1526][lngfrst]}
+          {data[2309][lngfrst]} {'   '} {data[1262][lngfrst]} /{' '}
+          {data[785][lngfrst]}
         </TxtNormal>
       </View>
 
