@@ -52,7 +52,7 @@ export const WelcomeNavigator = () => {
           backgroundColor: Colors.base,
         },
         headerTitleStyle: {
-          fontFamily: Fonts.bold,
+          fontFamily: Fonts.normal,
         },
         headerTintColor: Colors.surround,
         gestureEnabled: true,
@@ -84,7 +84,8 @@ export const MasterNavigator = () => {
           backgroundColor: Colors.base,
         },
         headerTitleStyle: {
-          fontFamily: Fonts.bold,
+          fontFamily: Fonts.normal,
+          fontSize: Dimensions.get('window').height / 50,
         },
         headerTintColor: Colors.surround,
         gestureEnabled: true,
@@ -121,7 +122,7 @@ export const StatsNavigator = () => {
           backgroundColor: Colors.base,
         },
         headerTitleStyle: {
-          fontFamily: Fonts.bold,
+          fontFamily: Fonts.normal,
         },
         headerTintColor: Colors.surround,
         gestureEnabled: true,
@@ -153,7 +154,7 @@ export const OptionsNavigator = () => {
           backgroundColor: Colors.base,
         },
         headerTitleStyle: {
-          fontFamily: Fonts.bold,
+          fontFamily: Fonts.normal,
         },
         headerTintColor: Colors.surround,
         gestureEnabled: true,

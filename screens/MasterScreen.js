@@ -1392,8 +1392,8 @@ const MasterScreen = () => {
 export const screenOptions = (navData) => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
-  const langfrst = Languages[lngfrst]['Language'].slice(0, 10);
-  const langscnd = Languages[lngscnd]['Language'].slice(0, 10);
+  const langfrst = Languages[lngfrst]['Language'];
+  const langscnd = Languages[lngscnd]['Language'];
 
   return {
     headerTitle: `${langfrst} > ${langscnd}`,

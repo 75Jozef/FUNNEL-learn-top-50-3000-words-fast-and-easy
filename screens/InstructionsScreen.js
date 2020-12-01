@@ -80,12 +80,12 @@ const InstructionsScreen = () => {
         <TxtNormal> </TxtNormal>
         <TxtNormal> </TxtNormal>
         <TxtNormal>
-          {data[2403][lngfrst]} {data[2470][lngfrst]} {data[451][lngfrst]}
+          {data[2403][lngfrst]} {data[2470][lngfrst]} - {data[451][lngfrst]}
         </TxtNormal>
         <TxtNormal> </TxtNormal>
         <TxtNormal> </TxtNormal>
         <TxtNormal>
-          {data[2966][lngfrst]} {data[1545][lngfrst]} {data[451][lngfrst]}
+          {data[2966][lngfrst]} {data[1545][lngfrst]} - {data[451][lngfrst]}
         </TxtNormal>
         <TxtNormal>
           {data[2309][lngfrst]} {'   '} {data[1262][lngfrst]} /{' '}
@@ -125,12 +125,12 @@ const InstructionsScreen = () => {
 
 export const screenOptions = (navData) => {
   return {
-    headerTitle: '?',
+    headerTitle: ' ',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Master'
-          iconName={'ios-funnel'}
+          iconName={'ios-arrow-round-back'}
           onPress={() => {
             navData.navigation.goBack();
           }}

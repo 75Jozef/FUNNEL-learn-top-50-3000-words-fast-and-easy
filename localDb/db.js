@@ -1,6 +1,7 @@
 import * as SQLite from 'expo-sqlite';
 
 const dbStatuses = SQLite.openDatabase('statuses.db');
+const dbSettings = SQLite.openDatabase('settings.db');
 
 export const initStatuses = () => {
   const promise = new Promise((resolve, reject) => {
@@ -20,12 +21,48 @@ export const initStatuses = () => {
   return promise;
 };
 
+export const initSettings = () => {
+  const promise = new Promise((resolve, reject) => {
+    dbSettings.transaction((tx) => {
+      tx.executeSql(
+        'CREATE TABLE IF NOT EXISTS settings (set_id, lngfrst TEXT, lngscnd TEXT, theme TEXT)',
+        [],
+        () => {
+          resolve();
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+  return promise;
+};
+
 export const insertStatus = (idlng, status) => {
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
         `REPLACE INTO statuses (idlng, status) VALUES (?,?);`,
         [idlng, status],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+  return promise;
+};
+
+export const insertSettings = (set_id, lngfrst, lngscnd, theme) => {
+  const promise = new Promise((resolve, reject) => {
+    dbSettings.transaction((tx) => {
+      tx.executeSql(
+        `REPLACE INTO settings (set_id, lngfrst, lngscnd, theme) VALUES (?,?,?,?);`,
+        [set_id, lngfrst, lngscnd, theme],
         (_, result) => {
           resolve(result);
         },
@@ -79,6 +116,24 @@ export const loadStatuses = () => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
         'SELECT * FROM statuses',
+        [],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+  return promise;
+};
+
+export const loadSettings = () => {
+  const promise = new Promise((resolve, reject) => {
+    dbSettings.transaction((tx) => {
+      tx.executeSql(
+        'SELECT * FROM settings',
         [],
         (_, result) => {
           resolve(result);

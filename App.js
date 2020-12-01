@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -15,15 +15,19 @@ import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
 
 import { initStatuses } from './localDb/db';
+import { initSettings } from './localDb/db';
 
 initStatuses()
   .then(() => {
-    console.log('initialized statuses db');
+    console.log('statuses db OK');
   })
-  .catch((err) => {
-    console.log('failed to load statuses db');
-    console.log(err);
-  });
+  .catch((err) => {});
+
+initSettings()
+  .then(() => {
+    console.log('settings db OK');
+  })
+  .catch((err) => {});
 
 const rootReducer = combineReducers({
   language: langReducer,
