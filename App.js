@@ -18,15 +18,11 @@ import { initStatuses } from './localDb/db';
 import { initSettings } from './localDb/db';
 
 initStatuses()
-  .then(() => {
-    console.log('statuses db OK');
-  })
+  .then(() => {})
   .catch((err) => {});
 
 initSettings()
-  .then(() => {
-    console.log('settings db OK');
-  })
+  .then(() => {})
   .catch((err) => {});
 
 const rootReducer = combineReducers({
