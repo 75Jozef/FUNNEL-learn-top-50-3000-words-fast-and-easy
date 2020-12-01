@@ -324,7 +324,9 @@ const MasterScreen = () => {
                   color={words[index]['st' + lngscnd]}
                 />
               ) : (
-                <TxtItalic>{txtfrst.noRange}</TxtItalic>
+                <TxtItalic>
+                  {data[451][lngfrst]} {data[1966][lngfrst]}
+                </TxtItalic>
               )}
             </TxtNormal>
           </View>
@@ -365,7 +367,10 @@ const MasterScreen = () => {
                     {range > 0 ? (
                       words[index][lngfrst]
                     ) : (
-                      <TxtItalic>{txtfrst.noRange}</TxtItalic>
+                      <TxtItalic>
+                        {' '}
+                        {data[451][lngfrst]} {data[1966][lngfrst]}
+                      </TxtItalic>
                     )}
                   </TxtLabel>
                   <Ionicons name='ios-list' size={30} color={Colors.inactive} />
@@ -594,12 +599,16 @@ const MasterScreen = () => {
         style={{
           height: '20%',
           justifyContent: 'space-between',
+          borderWidth: 0.5,
+          borderColor: Colors.inactive,
+          borderStyle: 'dotted',
+          borderRadius: 25,
         }}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-evenly',
-            width: '90%',
+            width: '95%',
             alignSelf: 'center',
           }}>
           <ComboAround>
@@ -1157,7 +1166,7 @@ const MasterScreen = () => {
 
       <View
         style={{
-          width: '90%',
+          width: '95%',
           height: '47%',
           justifyContent: 'space-evenly',
           borderWidth: 0.5,
@@ -1171,7 +1180,12 @@ const MasterScreen = () => {
       <View
         style={{
           height: '25%',
+          width: '95%',
           justifyContent: 'space-between',
+          borderWidth: 0.5,
+          borderColor: Colors.inactive,
+          borderStyle: 'dotted',
+          borderRadius: 25,
         }}>
         <View style={{ alignItems: 'center' }}>
           <View

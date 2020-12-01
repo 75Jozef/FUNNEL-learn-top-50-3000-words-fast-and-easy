@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import {
   View,
@@ -24,7 +24,6 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
 import { useSelector, useDispatch } from 'react-redux';
-import * as Languages from '../data/languages';
 
 import * as Buttons from './../components/UI/Buttons';
 import { Ionicons } from '@expo/vector-icons';
@@ -38,8 +37,6 @@ import ComboAround from '../components/UI/ComboAround';
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
-  const txtfrst = Languages[lngfrst].Options;
-  const txtscnd = Languages[lngscnd].Options;
 
   const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
   const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
@@ -109,7 +106,7 @@ const OptionsScreen = () => {
   const handleFirstLng = (props) => {
     if (selectSecondLanguage) {
       setSelectSecondLanguage(false);
-      setSelectFirstLanguage(true);
+      setSelectFirstLanguage(false);
       return;
     }
 
@@ -119,10 +116,11 @@ const OptionsScreen = () => {
     }
     setSelectFirstLanguage(true);
   };
+
   const handleSecondLng = (props) => {
     if (selectFirstLanguage) {
       setSelectFirstLanguage(false);
-      setSelectSecondLanguage(true);
+      setSelectSecondLanguage(false);
       return;
     }
 
@@ -208,12 +206,13 @@ const OptionsScreen = () => {
     );
   };
 
-  const setLanguageFirst = (props) => {
-    dispatch(lngActions.setLngFrst(props, lngscnd, data));
+  const setLanguageFirst = (lngfrst) => {
+    dispatch(lngActions.setLngFrst(lngfrst, lngscnd));
     setSelectFirstLanguage(false);
   };
-  const setLanguageSecond = (props) => {
-    dispatch(lngActions.setLngScnd(lngfrst, props, data));
+
+  const setLanguageSecond = (lngscnd) => {
+    dispatch(lngActions.setLngScnd(lngfrst, lngscnd));
     setSelectSecondLanguage(false);
   };
 
@@ -345,8 +344,10 @@ const OptionsScreen = () => {
           alignItems: 'center',
         }}>
         <View>
-          <TxtItalic>options information</TxtItalic>
-          <TxtItalic>options information</TxtItalic>
+          <TxtItalic>
+            {' '}
+            <Ionicons name='md-settings' size={100} color={Colors.inactive} />
+          </TxtItalic>
         </View>
       </View>
     );
@@ -461,7 +462,7 @@ const OptionsScreen = () => {
                       ? { color: Colors.textPrimary }
                       : { color: Colors.surround }
                   }>
-                  dark theme
+                  {data[1753][lngfrst]}
                 </TxtNormal>
               </ComboAround>
             </View>
@@ -496,7 +497,7 @@ const OptionsScreen = () => {
                       ? { color: Colors.textPrimary }
                       : { color: Colors.surround }
                   }>
-                  light theme
+                  {data[682][lngfrst]}
                 </TxtNormal>
               </ComboAround>
             </View>
@@ -531,7 +532,7 @@ const OptionsScreen = () => {
                       ? { color: Colors.textPrimary }
                       : { color: Colors.surround }
                   }>
-                  application reset
+                  {data[2244][lngfrst]}
                 </TxtNormal>
               </ComboAround>
             </View>
@@ -550,15 +551,10 @@ const OptionsScreen = () => {
           borderColor: Colors.inactive,
           width: '90%',
         }}>
-        {selectFirstLanguage ? (
-          <SelectFirstLanguage />
-        ) : selectSecondLanguage ? (
-          <SelectSecondLanguage />
-        ) : resetStatuses ? (
-          <ResetStatuses />
-        ) : (
-          <InfoBox />
-        )}
+        {selectFirstLanguage && !resetStatuses && <SelectFirstLanguage />}
+        {selectSecondLanguage && !resetStatuses && <SelectSecondLanguage />}
+        {resetStatuses && <ResetStatuses />}
+        {!selectFirstLanguage && !selectSecondLanguage && <InfoBox />}
       </View>
       <View
         style={{

@@ -56,7 +56,7 @@ const WelcomeScreen = () => {
         style={{
           height: '30%',
           alignItems: 'center',
-          width: '90%',
+          width: '95%',
           justifyContent: 'space-evenly',
         }}>
         <Buttons.ButtonCircle
@@ -76,14 +76,16 @@ const WelcomeScreen = () => {
             borderWidth: 0,
             backgroundColor: Colors.base,
             width: Dimensions.get('window').width / 1.5,
-            height: Dimensions.get('window').height / 11,
+            height: Dimensions.get('window').height / 10,
           }}>
           <TxtNormal>
             {data[1252][lngfrst]}
-            {' \n'}
+            {' \n'}{' '}
+          </TxtNormal>
+          <TxtButton>
             {Device.deviceName}
             {'\n'}
-          </TxtNormal>
+          </TxtButton>
         </Buttons.ButtonCircle>
         <View>
           <View
@@ -106,7 +108,7 @@ const WelcomeScreen = () => {
                 width: Dimensions.get('window').width / 6,
                 height: Dimensions.get('window').height / 11,
               }}>
-              <Ionicons name='ios-body' size={55} color={Colors.backSecond} />
+              <Ionicons name='ios-body' size={45} color={Colors.backSecond} />
             </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20, marginBottom: 10 }}>
               <TxtNormal>
@@ -135,7 +137,7 @@ const WelcomeScreen = () => {
                 width: Dimensions.get('window').width / 6,
                 height: Dimensions.get('window').height / 11,
               }}>
-              <Ionicons name='ios-globe' size={55} color={Colors.backSecond} />
+              <Ionicons name='ios-globe' size={45} color={Colors.backSecond} />
             </Buttons.ButtonCircle>
             <View style={{ marginLeft: 20 }}>
               <TxtNormal>

@@ -56,7 +56,7 @@ export const TxtHeader = (props) => {
         style={{
           color: Colors.backSecond,
           fontFamily: Fonts.normal,
-          fontSize: Dimensions.get('window').height / 18,
+          fontSize: Dimensions.get('window').height / 22,
           ...props.style,
         }}>
         {props.children}
