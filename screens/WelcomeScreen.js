@@ -334,7 +334,7 @@ const WelcomeScreen = () => {
       <View
         style={{
           width: '95%',
-          height: '35%',
+          height: '45%',
           overflow: 'hidden',
           justifyContent: 'space-evenly',
           paddingLeft: 10,
@@ -409,8 +409,27 @@ const WelcomeScreen = () => {
                   <TxtButton style={{ color: Colors.inactive }}>
                     {wordEng[0][lngfrst]}
                   </TxtButton>
-                  <TxtError>
-                    {selectZeroFrst}+{selectOneFrst}+{selectTwoFrst}
+                  <TxtError style={{ color: Colors.surround }}>
+                    <Ionicons
+                      name='ios-infinite'
+                      size={20}
+                      color={Colors.accent}
+                    />{' '}
+                    {selectZeroFrst}
+                    {'  '}
+                    <Ionicons
+                      name='ios-attach'
+                      size={20}
+                      color={Colors.backSecond}
+                    />{' '}
+                    {selectOneFrst}
+                    {'  '}
+                    <Ionicons
+                      name='ios-checkmark'
+                      size={20}
+                      color={Colors.backPrimary}
+                    />{' '}
+                    {selectTwoFrst}
                   </TxtError>
                 </View>
               </View>
@@ -486,8 +505,27 @@ const WelcomeScreen = () => {
                   <TxtButton style={{ color: Colors.inactive }}>
                     {wordEng[0][lngscnd]}
                   </TxtButton>
-                  <TxtError>
-                    {selectZeroScnd}+{selectOneScnd}+{selectTwoScnd}
+                  <TxtError style={{ color: Colors.surround }}>
+                    <Ionicons
+                      name='ios-infinite'
+                      size={20}
+                      color={Colors.accent}
+                    />{' '}
+                    {selectZeroScnd}
+                    {'  '}
+                    <Ionicons
+                      name='ios-attach'
+                      size={20}
+                      color={Colors.backSecond}
+                    />{' '}
+                    {selectOneScnd}
+                    {'  '}
+                    <Ionicons
+                      name='ios-checkmark'
+                      size={20}
+                      color={Colors.backPrimary}
+                    />{' '}
+                    {selectTwoScnd}
                   </TxtError>
                 </View>
               </View>
@@ -498,7 +536,7 @@ const WelcomeScreen = () => {
 
       <View
         style={{
-          height: '15%',
+          height: '20%',
           alignItems: 'center',
           width: '95%',
           justifyContent: 'center',
@@ -537,20 +575,6 @@ const WelcomeScreen = () => {
         </View>
       </View>
 
-      <View
-        style={{
-          width: '95%',
-          justifyContent: 'space-evenly',
-          height: '15%',
-          alignItems: 'center',
-          padding: 10,
-        }}>
-        <TxtError style={{ color: Colors.surround }}>50</TxtError>
-        <TxtError style={{ color: Colors.surround }}>100</TxtError>
-        <TxtError style={{ color: Colors.surround }}>500</TxtError>
-        <TxtError style={{ color: Colors.surround }}>1000</TxtError>
-        <TxtError style={{ color: Colors.surround }}>3000</TxtError>
-      </View>
       <View
         style={{
           height: '5%',
