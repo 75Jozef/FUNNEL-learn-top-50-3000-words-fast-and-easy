@@ -153,8 +153,8 @@ const StatisticsScreen = () => {
     setSelectSecondLanguage((prev) => !prev);
   };
 
-  const setLanguageSecond = (props) => {
-    dispatch(lngActions.setLngScnd(lngfrst, props, data));
+  const setLanguageSecond = (lngfrst, lngscnd) => {
+    dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
     setSelectSecondLanguage(false);
   };
 
@@ -180,7 +180,7 @@ const StatisticsScreen = () => {
                         marginBottom: 5,
                       }
                 }
-                action={() => setLanguageSecond(lng)}
+                action={() => setLanguageSecond(lngfrst, lng)}
                 insideStyle={
                   lng === lngscnd
                     ? {

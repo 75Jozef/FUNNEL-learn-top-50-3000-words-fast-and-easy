@@ -5,6 +5,7 @@ import { SideNavigator } from './../navigation/ScreenNavigator';
 import { View, Text } from 'react-native';
 
 import * as wordsActions from '../store/actions/words';
+import * as langActions from '../store/actions/lang';
 
 const AppNavigator = (props) => {
   const dispatch = useDispatch();
@@ -15,10 +16,18 @@ const AppNavigator = (props) => {
     dispatch(wordsActions.loadStatusesFromDb());
   }, []);
 
+  const loadSettings = useCallback(async () => {
+    dispatch(langActions.loadSettingsFromDb());
+  }, []);
+
   useEffect(() => {
-    loadUserStatuses().then(() => {
-      setIsFetched(true);
-    });
+    loadUserStatuses()
+      .then(() => {
+        loadSettings();
+      })
+      .then(() => {
+        setIsFetched(true);
+      });
   }, []);
 
   return (

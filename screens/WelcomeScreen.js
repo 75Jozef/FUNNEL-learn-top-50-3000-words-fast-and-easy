@@ -94,14 +94,14 @@ const WelcomeScreen = () => {
 
   const dispatch = useDispatch();
 
-  const setLanguageFirst = (lngfrst) => {
-    dispatch(lngActions.setLngFrst(lngfrst, lngscnd));
+  const setLanguageFirst = (lngfrst, lngscnd) => {
+    dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
     setActLngFrst(lngfrst);
     setSelectFirstLanguage(false);
   };
 
-  const setLanguageSecond = (lngscnd) => {
-    dispatch(lngActions.setLngScnd(lngfrst, lngscnd));
+  const setLanguageSecond = (lngfrst, lngscnd) => {
+    dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
     setActLngScnd(lngscnd);
     setSelectSecondLanguage(false);
   };
@@ -139,7 +139,7 @@ const WelcomeScreen = () => {
                           marginBottom: 1,
                         }
                   }
-                  action={() => setLanguageFirst(lng)}>
+                  action={() => setLanguageFirst(lng, lngscnd)}>
                   <TxtLabel
                     style={{
                       color: Colors.surround,
@@ -191,7 +191,7 @@ const WelcomeScreen = () => {
                           marginBottom: 1,
                         }
                   }
-                  action={() => setLanguageSecond(lng)}>
+                  action={() => setLanguageSecond(lngfrst, lng)}>
                   <TxtLabel
                     style={{
                       color: Colors.surround,
