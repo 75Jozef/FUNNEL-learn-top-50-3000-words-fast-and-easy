@@ -21,9 +21,7 @@ import {
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
 
-import * as Languages from '../data/languages';
 import { Ionicons } from '@expo/vector-icons';
-import { ColorAndroid } from 'react-native/Libraries/StyleSheet/PlatformColorValueTypesAndroid';
 
 const WelcomeScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -36,9 +34,6 @@ const WelcomeScreen = () => {
   const data = useSelector((state) => state.words.words);
   const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
 
-  const wordLocal = data.filter((word) => word['id' + lngscnd] === 2999);
-  const actLngScndLocal = wordLocal[0][lngscnd];
-  const actLngFrstLocal = wordLocal[0][lngfrst];
   const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
 
   const [actlngfrst, setActLngFrst] = useState(lngfrst);
@@ -46,9 +41,6 @@ const WelcomeScreen = () => {
   const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
   const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
 
-  const [selectZeroFrst, setSelectZeroFrst] = useState(0);
-  const [selectOneFrst, setSelectOneFrst] = useState(0);
-  const [selectTwoFrst, setSelectTwoFrst] = useState(0);
   const [selectZeroScnd, setSelectZeroScnd] = useState(0);
   const [selectOneScnd, setSelectOneScnd] = useState(0);
   const [selectTwoScnd, setSelectTwoScnd] = useState(0);
@@ -103,28 +95,14 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     counter();
-  }, [lngfrst, lngscnd]);
+  });
 
   const counter = () => {
-    let cntZeroFrst = 0;
-    let cntOneFrst = 0;
-    let cntTwoFrst = 0;
     let cntZeroScnd = 0;
     let cntOneScnd = 0;
     let cntTwoScnd = 0;
 
     data.forEach((word) => {
-      switch (word['st' + lngfrst]) {
-        case 0:
-          cntZeroFrst++;
-          break;
-        case 1:
-          cntOneFrst++;
-          break;
-        case 2:
-          cntTwoFrst++;
-          break;
-      }
       switch (word['st' + lngscnd]) {
         case 0:
           cntZeroScnd++;
@@ -138,9 +116,6 @@ const WelcomeScreen = () => {
       }
     });
 
-    setSelectZeroFrst(cntZeroFrst);
-    setSelectOneFrst(cntOneFrst);
-    setSelectTwoFrst(cntTwoFrst);
     setSelectZeroScnd(cntZeroScnd);
     setSelectOneScnd(cntOneScnd);
     setSelectTwoScnd(cntTwoScnd);
@@ -166,11 +141,11 @@ const WelcomeScreen = () => {
             <View
               key={index}
               style={{
-                marginTop: 7,
+                justifyContent: 'center',
                 alignItems: 'center',
                 overflow: 'hidden',
-                borderColor: Colors.inactive,
-                borderWidth: 0.5,
+                borderColor: Colors.surround,
+                borderWidth: 1,
                 borderStyle: 'dotted',
                 borderRadius: 25,
               }}>
@@ -182,13 +157,11 @@ const WelcomeScreen = () => {
                           width: Dimensions.get('window').width / 2,
                           height: Dimensions.get('window').height / 18,
                           backgroundColor: Colors.inactive,
-                          marginBottom: 1,
                         }
                       : {
                           width: Dimensions.get('window').width / 2,
                           height: Dimensions.get('window').height / 18,
                           borderColor: Colors.base,
-                          marginBottom: 1,
                         }
                   }
                   action={() => setLanguageFirst(lng, lngscnd)}>
@@ -203,7 +176,6 @@ const WelcomeScreen = () => {
                 <TxtButton style={{ color: Colors.inactive }}>
                   {wordEng[0][lng]}
                 </TxtButton>
-                <TxtError> </TxtError>
               </View>
             </View>
           );
@@ -219,11 +191,11 @@ const WelcomeScreen = () => {
             <View
               key={index}
               style={{
-                marginTop: 7,
+                justifyContent: 'center',
                 alignItems: 'center',
                 overflow: 'hidden',
-                borderColor: Colors.inactive,
-                borderWidth: 0.5,
+                borderColor: Colors.surround,
+                borderWidth: 1,
                 borderStyle: 'dotted',
                 borderRadius: 25,
               }}>
@@ -235,13 +207,11 @@ const WelcomeScreen = () => {
                           width: Dimensions.get('window').width / 2,
                           height: Dimensions.get('window').height / 18,
                           backgroundColor: Colors.inactive,
-                          marginBottom: 1,
                         }
                       : {
                           width: Dimensions.get('window').width / 2,
                           height: Dimensions.get('window').height / 18,
                           borderColor: Colors.base,
-                          marginBottom: 1,
                         }
                   }
                   action={() => setLanguageSecond(lngfrst, lng)}>
@@ -256,7 +226,6 @@ const WelcomeScreen = () => {
                 <TxtButton style={{ color: Colors.inactive }}>
                   {wordEng[0][lng]}
                 </TxtButton>
-                <TxtError> </TxtError>
               </View>
             </View>
           );
@@ -333,11 +302,10 @@ const WelcomeScreen = () => {
       </View>
       <View
         style={{
-          width: '95%',
-          height: '45%',
+          width: '85%',
+          height: '35%',
           overflow: 'hidden',
           justifyContent: 'space-evenly',
-          paddingLeft: 10,
         }}>
         <View
           style={{
@@ -361,12 +329,12 @@ const WelcomeScreen = () => {
               borderWidth: 1,
               backgroundColor: Colors.base,
               width: Dimensions.get('window').width / 6,
-              height: Dimensions.get('window').height / 9,
+              height: Dimensions.get('window').height / 8,
             }}>
             <Ionicons
               name='ios-body'
               size={45}
-              color={selectFirstLanguage ? Colors.backSecond : Colors.inactive}
+              color={selectFirstLanguage ? Colors.backSecond : Colors.surround}
             />
           </Buttons.ButtonCircle>
           <Ionicons
@@ -377,8 +345,6 @@ const WelcomeScreen = () => {
 
           <View
             style={{
-              marginLeft: 15,
-              marginBottom: 10,
               justifyContent: 'center',
             }}>
             {selectFirstLanguage ? (
@@ -386,7 +352,6 @@ const WelcomeScreen = () => {
             ) : (
               <View
                 style={{
-                  marginTop: 7,
                   alignItems: 'center',
                   overflow: 'hidden',
                 }}>
@@ -395,12 +360,12 @@ const WelcomeScreen = () => {
                     bodyStyle={{
                       width: Dimensions.get('window').width / 2,
                       height: Dimensions.get('window').height / 18,
-                      marginBottom: 1,
                       borderWidth: 0,
-                    }}>
+                    }}
+                    touchColor={Colors.base}>
                     <TxtLabel
                       style={{
-                        color: Colors.surround,
+                        color: Colors.textPrimary,
                         fontSize: Dimensions.get('window').height / 35,
                       }}>
                       {wordFrst[0][lngfrst]}
@@ -409,28 +374,6 @@ const WelcomeScreen = () => {
                   <TxtButton style={{ color: Colors.inactive }}>
                     {wordEng[0][lngfrst]}
                   </TxtButton>
-                  <TxtError style={{ color: Colors.surround }}>
-                    <Ionicons
-                      name='ios-infinite'
-                      size={20}
-                      color={Colors.accent}
-                    />{' '}
-                    {selectZeroFrst}
-                    {'  '}
-                    <Ionicons
-                      name='ios-attach'
-                      size={20}
-                      color={Colors.backSecond}
-                    />{' '}
-                    {selectOneFrst}
-                    {'  '}
-                    <Ionicons
-                      name='ios-checkmark'
-                      size={20}
-                      color={Colors.backPrimary}
-                    />{' '}
-                    {selectTwoFrst}
-                  </TxtError>
                 </View>
               </View>
             )}
@@ -457,12 +400,12 @@ const WelcomeScreen = () => {
               borderWidth: 1,
               backgroundColor: Colors.base,
               width: Dimensions.get('window').width / 6,
-              height: Dimensions.get('window').height / 9,
+              height: Dimensions.get('window').height / 8,
             }}>
             <Ionicons
               name='ios-globe'
               size={35}
-              color={selectSecondLanguage ? Colors.backSecond : Colors.inactive}
+              color={selectSecondLanguage ? Colors.backSecond : Colors.surround}
             />
           </Buttons.ButtonCircle>
           <Ionicons
@@ -473,8 +416,6 @@ const WelcomeScreen = () => {
 
           <View
             style={{
-              marginLeft: 15,
-              marginBottom: 10,
               justifyContent: 'center',
             }}>
             {selectSecondLanguage ? (
@@ -482,7 +423,6 @@ const WelcomeScreen = () => {
             ) : (
               <View
                 style={{
-                  marginTop: 7,
                   alignItems: 'center',
                   overflow: 'hidden',
                 }}>
@@ -492,11 +432,11 @@ const WelcomeScreen = () => {
                       width: Dimensions.get('window').width / 2,
                       height: Dimensions.get('window').height / 18,
                       borderWidth: 0,
-                      marginBottom: 1,
-                    }}>
+                    }}
+                    touchColor={Colors.base}>
                     <TxtLabel
                       style={{
-                        color: Colors.surround,
+                        color: Colors.textPrimary,
                         fontSize: Dimensions.get('window').height / 35,
                       }}>
                       {wordFrst[0][lngscnd]}
@@ -505,28 +445,6 @@ const WelcomeScreen = () => {
                   <TxtButton style={{ color: Colors.inactive }}>
                     {wordEng[0][lngscnd]}
                   </TxtButton>
-                  <TxtError style={{ color: Colors.surround }}>
-                    <Ionicons
-                      name='ios-infinite'
-                      size={20}
-                      color={Colors.accent}
-                    />{' '}
-                    {selectZeroScnd}
-                    {'  '}
-                    <Ionicons
-                      name='ios-attach'
-                      size={20}
-                      color={Colors.backSecond}
-                    />{' '}
-                    {selectOneScnd}
-                    {'  '}
-                    <Ionicons
-                      name='ios-checkmark'
-                      size={20}
-                      color={Colors.backPrimary}
-                    />{' '}
-                    {selectTwoScnd}
-                  </TxtError>
                 </View>
               </View>
             )}
@@ -536,45 +454,85 @@ const WelcomeScreen = () => {
 
       <View
         style={{
-          height: '20%',
+          height: '30%',
           alignItems: 'center',
           width: '95%',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
         }}>
         <View
           style={{
-            alignItems: 'center',
-            width: '40%',
-            justifyContent: 'center',
+            width: '80%',
             flexDirection: 'row',
+            justifyContent: 'space-evenly',
           }}>
-          <View style={{ width: '30%' }}>
-            <Ionicons name='md-globe' size={25} color={Colors.backPrimary} />
+          <View
+            style={{
+              alignItems: 'center',
+            }}>
+            <TxtNormal>
+              <Ionicons name='ios-book' size={45} color={Colors.accent} />
+            </TxtNormal>
+            <TxtNormal>{selectZeroScnd}</TxtNormal>
           </View>
-          <View style={{ width: '40%' }}>
-            <TxtNormal>43</TxtNormal>
+          <View
+            style={{
+              alignItems: 'center',
+            }}>
+            <TxtNormal>
+              <Ionicons name='ios-attach' size={45} color={Colors.backSecond} />
+            </TxtNormal>
+            <TxtNormal>{selectOneScnd}</TxtNormal>
+          </View>
+          <View
+            style={{
+              alignItems: 'center',
+            }}>
+            <TxtNormal>
+              <Ionicons
+                name='ios-trophy'
+                size={45}
+                color={Colors.backPrimary}
+              />
+            </TxtNormal>
+            <TxtNormal>{selectTwoScnd}</TxtNormal>
           </View>
         </View>
-        <View
-          style={{
-            alignItems: 'center',
-            width: '40%',
-            justifyContent: 'center',
-            flexDirection: 'row',
-          }}>
-          <View style={{ width: '30%' }}>
-            <Ionicons
-              name='ios-chatbubbles'
-              size={25}
-              color={Colors.backPrimary}
-            />
+
+        <View>
+          <View
+            style={{
+              alignItems: 'center',
+              width: '40%',
+              justifyContent: 'center',
+              flexDirection: 'row',
+            }}>
+            <View style={{ width: '30%' }}>
+              <Ionicons name='md-globe' size={35} color={Colors.surround} />
+            </View>
+            <View style={{ width: '50%' }}>
+              <TxtBold>~ 43</TxtBold>
+            </View>
           </View>
-          <View style={{ width: '40%' }}>
-            <TxtNormal>3000</TxtNormal>
+          <View
+            style={{
+              alignItems: 'center',
+              width: '40%',
+              justifyContent: 'center',
+              flexDirection: 'row',
+            }}>
+            <View style={{ width: '30%' }}>
+              <Ionicons
+                name='ios-chatbubbles'
+                size={35}
+                color={Colors.surround}
+              />
+            </View>
+            <View style={{ width: '50%' }}>
+              <TxtBold>~ 3000</TxtBold>
+            </View>
           </View>
         </View>
       </View>
-
       <View
         style={{
           height: '5%',

@@ -7,7 +7,7 @@ export const initStatuses = () => {
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS statuses (idlng TEXT PRIMARY KEY, status INTEGER)',
+        'CREATE TABLE IF NOT EXISTS statuses (idlng TEXT PRIMARY KEY, status INTEGER);',
         [],
         () => {
           resolve();
@@ -25,7 +25,7 @@ export const initSettings = () => {
   const promise = new Promise((resolve, reject) => {
     dbSettings.transaction((tx) => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS settings (set_id, lngfrst TEXT, lngscnd TEXT, theme TEXT)',
+        'CREATE TABLE IF NOT EXISTS settings (set_id INTEGER, lngfrst TEXT, lngscnd TEXT, theme TEXT);',
         [],
         () => {
           resolve();
@@ -115,7 +115,7 @@ export const loadStatuses = () => {
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM statuses',
+        'SELECT * FROM statuses;',
         [],
         (_, result) => {
           resolve(result);
@@ -133,7 +133,25 @@ export const loadSettings = () => {
   const promise = new Promise((resolve, reject) => {
     dbSettings.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM settings',
+        'SELECT * FROM settings;',
+        [],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+  return promise;
+};
+
+export const deleteSettings = () => {
+  const promise = new Promise((resolve, reject) => {
+    dbSettings.transaction((tx) => {
+      tx.executeSql(
+        `DELETE FROM settings;`,
         [],
         (_, result) => {
           resolve(result);

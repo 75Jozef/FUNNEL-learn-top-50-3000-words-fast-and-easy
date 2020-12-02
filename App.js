@@ -14,8 +14,7 @@ import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
 
-import { initStatuses } from './localDb/db';
-import { initSettings } from './localDb/db';
+import { initStatuses, initSettings } from './localDb/db';
 
 initStatuses()
   .then(() => {})

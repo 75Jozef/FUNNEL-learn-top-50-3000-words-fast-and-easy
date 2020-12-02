@@ -240,7 +240,7 @@ const StatisticsScreen = () => {
                   ? { borderWidth: 3, borderColor: Colors.surround }
                   : null
               }>
-              <Ionicons name='ios-infinite' size={40} color={Colors.accent} />
+              <Ionicons name='ios-book' size={40} color={Colors.accent} />
             </Buttons.ButtonCircle>
             {levelA ||
             levelN ||
@@ -300,7 +300,7 @@ const StatisticsScreen = () => {
                   : null
               }>
               <Ionicons
-                name='md-checkmark'
+                name='ios-trophy'
                 size={40}
                 color={Colors.backPrimary}
               />
@@ -371,7 +371,7 @@ const StatisticsScreen = () => {
         <FlatList
           data={select === 3 ? selectedWords : words}
           keyExtractor={(item) => item['id' + lngscnd].toString()}
-          initialNumToRender={20}
+          initialNumToRender={50}
           renderItem={({ item }) => {
             return (
               <View

@@ -3,11 +3,13 @@ import {
   loadStatuses,
   deleteZeroStatuses,
   deleteAll,
+  deleteSettings,
 } from '../../localDb/db';
 
 export const LANG = 'LANG';
 export const SET_STATUS = 'SET_STATUS';
-export const RESET_STATUSES = 'SET_STATUSES';
+export const SET_STATUSES = 'SET_STATUSES';
+export const RESET_STATUSES = 'RESET_STATUSES';
 
 export const lang = (lng) => {
   return { type: LANG, language: lng };
@@ -16,14 +18,12 @@ export const lang = (lng) => {
 export const setStatus = (index, status, lngscnd) => {
   return async (dispatch) => {
     let idlng = index.toString() + lngscnd;
-
     try {
-      await insertStatus(idlng, status).then(() =>
-        dispatch({
-          type: SET_STATUS,
-          data: { iden: index, status: status, lng: lngscnd },
-        })
-      );
+      await insertStatus(idlng, status);
+      dispatch({
+        type: SET_STATUS,
+        data: { iden: index, status: status, lng: lngscnd },
+      });
     } catch (err) {
       throw err;
     }
@@ -32,22 +32,16 @@ export const setStatus = (index, status, lngscnd) => {
 
 export const loadStatusesFromDb = () => {
   return async (dispatch) => {
-    // const userId = getState().auth.userId;
-
     try {
-      const dbResult = await deleteZeroStatuses().then(
-        async () => await loadStatuses()
-      );
+      const del = await deleteZeroStatuses();
+      console.log('del', del);
+      const dbResult = await loadStatuses();
+      console.log('loaded statuses', dbResult);
       const statuses = dbResult.rows._array;
-
-      for (const key in statuses) {
-        let index = parseInt(statuses[key].idlng.slice(0, -2));
-        let status = statuses[key].status;
-        let lngscnd = statuses[key].idlng.slice(-2);
-
+      if (statuses.length > 0) {
         await dispatch({
-          type: SET_STATUS,
-          data: { iden: index, status: status, lng: lngscnd },
+          type: SET_STATUSES,
+          loadedStatuses: statuses,
         });
       }
     } catch (err) {
@@ -59,10 +53,11 @@ export const loadStatusesFromDb = () => {
 export const resetStatuses = () => {
   return async (dispatch) => {
     try {
-      await dispatch({
+      dispatch({
         type: RESET_STATUSES,
       });
       await deleteAll();
+      await deleteSettings();
     } catch (err) {
       throw err;
     }

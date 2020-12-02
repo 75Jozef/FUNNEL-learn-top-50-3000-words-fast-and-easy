@@ -1,5 +1,5 @@
 import WORDS from '../../data/words';
-import { RESET_STATUSES, SET_STATUS } from './../actions/words';
+import { RESET_STATUSES, SET_STATUS, SET_STATUSES } from './../actions/words';
 
 const initialState = {
   words: WORDS,
@@ -25,6 +25,22 @@ export default (state = initialState, action) => {
     case RESET_STATUSES: {
       return {
         ...initialState,
+      };
+    }
+    case SET_STATUSES: {
+      const statuses = action.loadedStatuses;
+      const updatedWords = [...state.words];
+
+      for (const key in statuses) {
+        let index = parseInt(statuses[key].idlng.slice(0, -2));
+        let status = statuses[key].status;
+        let lngscnd = statuses[key].idlng.slice(-2);
+        updatedWords[index]['st' + lngscnd] = status;
+      }
+
+      return {
+        ...state,
+        words: updatedWords,
       };
     }
   }

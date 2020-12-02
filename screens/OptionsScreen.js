@@ -397,161 +397,168 @@ const OptionsScreen = () => {
           justifyContent: 'space-evenly',
           backgroundColor: Colors.base,
         }}>
-        <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
-          delayPressIn={0}
-          onPress={() => handleFirstLng()}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Buttons.ButtonCircle
-              action={() => handleFirstLng()}
-              touchColor={Colors.backSecond}>
-              <Ionicons
-                name='ios-body'
-                size={25}
-                color={
-                  selectFirstLanguage ? Colors.backSecond : Colors.surround
-                }
-              />
-            </Buttons.ButtonCircle>
-            <View style={{ marginLeft: 20 }}>
-              <ComboAround>
-                <TxtNormal
-                  style={
-                    selectFirstLanguage
-                      ? { color: Colors.textPrimary }
-                      : { color: Colors.surround }
-                  }>
-                  {actLngFrst}
-                  {'\n'}({actLngFrstEng})
-                </TxtNormal>
-              </ComboAround>
+        <View style={{ borderRadius: 25, overflow: 'hidden' }}>
+          <TouchableNativeFeedback
+            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+            delayPressIn={0}
+            onPress={() => handleFirstLng()}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Buttons.ButtonCircle
+                action={() => handleFirstLng()}
+                touchColor={Colors.backSecond}>
+                <Ionicons
+                  name='ios-body'
+                  size={25}
+                  color={
+                    selectFirstLanguage ? Colors.backSecond : Colors.surround
+                  }
+                />
+              </Buttons.ButtonCircle>
+              <View style={{ marginLeft: 20 }}>
+                <ComboAround>
+                  <TxtNormal
+                    style={
+                      selectFirstLanguage
+                        ? { color: Colors.textPrimary }
+                        : { color: Colors.surround }
+                    }>
+                    {actLngFrst}
+                    {'\n'}({actLngFrstEng})
+                  </TxtNormal>
+                </ComboAround>
+              </View>
             </View>
-          </View>
-        </TouchableNativeFeedback>
+          </TouchableNativeFeedback>
+        </View>
 
-        <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
-          delayPressIn={0}
-          onPress={() => handleSecondLng()}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Buttons.ButtonCircle
-              action={() => handleSecondLng()}
-              touchColor={Colors.backSecond}>
-              <Ionicons
-                name='ios-globe'
-                size={25}
-                color={
-                  selectSecondLanguage ? Colors.backSecond : Colors.surround
-                }
-              />
-            </Buttons.ButtonCircle>
-            <View style={{ marginLeft: 20 }}>
-              <ComboAround>
-                <TxtNormal
-                  style={
-                    selectSecondLanguage
-                      ? { color: Colors.textPrimary }
-                      : { color: Colors.surround }
-                  }>
-                  {actLngScnd}
-                  {'\n'}({actLngScndEng})
-                </TxtNormal>
-              </ComboAround>
+        <View style={{ borderRadius: 25, overflow: 'hidden' }}>
+          <TouchableNativeFeedback
+            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+            delayPressIn={0}
+            onPress={() => handleSecondLng()}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Buttons.ButtonCircle
+                action={() => handleSecondLng()}
+                touchColor={Colors.backSecond}>
+                <Ionicons
+                  name='ios-globe'
+                  size={25}
+                  color={
+                    selectSecondLanguage ? Colors.backSecond : Colors.surround
+                  }
+                />
+              </Buttons.ButtonCircle>
+              <View style={{ marginLeft: 20 }}>
+                <ComboAround>
+                  <TxtNormal
+                    style={
+                      selectSecondLanguage
+                        ? { color: Colors.textPrimary }
+                        : { color: Colors.surround }
+                    }>
+                    {actLngScnd}
+                    {'\n'}({actLngScndEng})
+                  </TxtNormal>
+                </ComboAround>
+              </View>
             </View>
-          </View>
-        </TouchableNativeFeedback>
-
-        <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
-          delayPressIn={0}
-          onPress={() => handleTheme('dark', lngfrst, lngscnd)}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Buttons.ButtonCircle
-              action={() => handleTheme('dark', lngfrst, lngscnd)}
-              touchColor={Colors.backSecond}>
-              <Ionicons name='ios-moon' size={25} color={Colors.surround} />
-            </Buttons.ButtonCircle>
-            <View style={{ marginLeft: 20 }}>
-              <ComboAround>
-                <TxtNormal
-                  style={{
-                    color: Colors.surround,
-                  }}>
-                  {data[1753][lngfrst]}
-                </TxtNormal>
-              </ComboAround>
+          </TouchableNativeFeedback>
+        </View>
+        <View style={{ borderRadius: 25, overflow: 'hidden' }}>
+          <TouchableNativeFeedback
+            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+            delayPressIn={0}
+            onPress={() => handleTheme('dark', lngfrst, lngscnd)}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Buttons.ButtonCircle
+                action={() => handleTheme('dark', lngfrst, lngscnd)}
+                touchColor={Colors.backSecond}>
+                <Ionicons name='ios-moon' size={25} color={Colors.surround} />
+              </Buttons.ButtonCircle>
+              <View style={{ marginLeft: 20 }}>
+                <ComboAround>
+                  <TxtNormal
+                    style={{
+                      color: Colors.surround,
+                    }}>
+                    {data[1753][lngfrst]}
+                  </TxtNormal>
+                </ComboAround>
+              </View>
             </View>
-          </View>
-        </TouchableNativeFeedback>
-
-        <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
-          delayPressIn={0}
-          onPress={() => handleTheme('light', lngfrst, lngscnd)}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Buttons.ButtonCircle
-              action={() => handleTheme('light', lngfrst, lngscnd)}
-              touchColor={Colors.backSecond}>
-              <Ionicons name='ios-sunny' size={25} color={Colors.surround} />
-            </Buttons.ButtonCircle>
-            <View style={{ marginLeft: 20 }}>
-              <ComboAround>
-                <TxtNormal style={{ color: Colors.surround }}>
-                  {data[682][lngfrst]}
-                </TxtNormal>
-              </ComboAround>
+          </TouchableNativeFeedback>
+        </View>
+        <View style={{ borderRadius: 25, overflow: 'hidden' }}>
+          <TouchableNativeFeedback
+            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+            delayPressIn={0}
+            onPress={() => handleTheme('light', lngfrst, lngscnd)}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Buttons.ButtonCircle
+                action={() => handleTheme('light', lngfrst, lngscnd)}
+                touchColor={Colors.backSecond}>
+                <Ionicons name='ios-sunny' size={25} color={Colors.surround} />
+              </Buttons.ButtonCircle>
+              <View style={{ marginLeft: 20 }}>
+                <ComboAround>
+                  <TxtNormal style={{ color: Colors.surround }}>
+                    {data[682][lngfrst]}
+                  </TxtNormal>
+                </ComboAround>
+              </View>
             </View>
-          </View>
-        </TouchableNativeFeedback>
-
-        <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
-          delayPressIn={0}
-          onPress={() => setResetStatuses((prev) => !prev)}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Buttons.ButtonCircle
-              action={() => setResetStatuses((prev) => !prev)}
-              touchColor={Colors.backSecond}>
-              <Ionicons
-                name='ios-refresh'
-                size={25}
-                color={!resetStatuses ? Colors.surround : Colors.backSecond}
-              />
-            </Buttons.ButtonCircle>
-            <View style={{ marginLeft: 20 }}>
-              <ComboAround>
-                <TxtNormal
-                  style={
-                    !resetStatuses
-                      ? { color: Colors.surround }
-                      : { color: Colors.backSecond }
-                  }>
-                  {data[2244][lngfrst]}
-                </TxtNormal>
-              </ComboAround>
+          </TouchableNativeFeedback>
+        </View>
+        <View style={{ borderRadius: 25, overflow: 'hidden' }}>
+          <TouchableNativeFeedback
+            background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.9)')}
+            delayPressIn={0}
+            onPress={() => setResetStatuses((prev) => !prev)}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Buttons.ButtonCircle
+                action={() => setResetStatuses((prev) => !prev)}
+                touchColor={Colors.backSecond}>
+                <Ionicons
+                  name='ios-refresh'
+                  size={25}
+                  color={!resetStatuses ? Colors.surround : Colors.backSecond}
+                />
+              </Buttons.ButtonCircle>
+              <View style={{ marginLeft: 20 }}>
+                <ComboAround>
+                  <TxtNormal
+                    style={
+                      !resetStatuses
+                        ? { color: Colors.surround }
+                        : { color: Colors.backSecond }
+                    }>
+                    {data[2244][lngfrst]}
+                  </TxtNormal>
+                </ComboAround>
+              </View>
             </View>
-          </View>
-        </TouchableNativeFeedback>
+          </TouchableNativeFeedback>
+        </View>
       </View>
 
       <View

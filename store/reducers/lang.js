@@ -1,4 +1,4 @@
-import { SET_LNG, SET_SETTINGS } from '../actions/lang';
+import { SET_LNG } from '../actions/lang';
 
 import { NativeModules } from 'react-native';
 

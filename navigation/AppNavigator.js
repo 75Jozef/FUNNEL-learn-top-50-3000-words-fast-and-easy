@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { SideNavigator } from './../navigation/ScreenNavigator';
 import { View, Text } from 'react-native';
+import ScreenFrame from './../components/UI/ScreenFrame';
 
 import * as wordsActions from '../store/actions/words';
 import * as langActions from '../store/actions/lang';
@@ -25,9 +26,7 @@ const AppNavigator = (props) => {
       .then(() => {
         loadSettings();
       })
-      .then(() => {
-        setIsFetched(true);
-      });
+      .then(() => setIsFetched(true));
   }, []);
 
   return (
@@ -35,9 +34,11 @@ const AppNavigator = (props) => {
       {isFetched ? (
         <SideNavigator />
       ) : (
-        <View>
-          <Text>Failed loading statuses</Text>
-        </View>
+        <ScreenFrame>
+          <View>
+            <Text>Loading...</Text>
+          </View>
+        </ScreenFrame>
       )}
     </NavigationContainer>
   );

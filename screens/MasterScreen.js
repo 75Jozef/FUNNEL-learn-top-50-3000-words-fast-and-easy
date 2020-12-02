@@ -1060,7 +1060,7 @@ const MasterScreen = () => {
                       }
                 }>
                 <Ionicons
-                  name='ios-infinite'
+                  name='ios-book'
                   size={18}
                   color={
                     select === 0 && selectZero > 0
@@ -1140,7 +1140,7 @@ const MasterScreen = () => {
                       }
                 }>
                 <Ionicons
-                  name='md-checkmark'
+                  name='ios-trophy'
                   size={18}
                   color={
                     select === 2 && selectOne > 0
@@ -1208,7 +1208,7 @@ const MasterScreen = () => {
                 }
               />{' '}
               <Ionicons
-                name='ios-infinite'
+                name='ios-book'
                 size={25}
                 color={
                   words[index]['st' + lngscnd] === 0
@@ -1270,7 +1270,7 @@ const MasterScreen = () => {
                 }
               />{' '}
               <Ionicons
-                name='md-checkmark'
+                name='ios-trophy'
                 size={25}
                 color={
                   words[index]['st' + lngscnd] === 2
