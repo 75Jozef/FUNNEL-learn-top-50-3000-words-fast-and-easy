@@ -219,8 +219,8 @@ const OptionsScreen = () => {
 
   const handleReset = (props) => {
     Alert.alert(
-      'Application RESET',
-      'Are you sure?',
+      `${data[2244][lngfrst]} ${data[96][lngfrst]}...`,
+      `${data[2988][lngfrst]}?`,
       [
         {
           text: 'Cancel',
