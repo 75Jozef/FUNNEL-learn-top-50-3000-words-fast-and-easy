@@ -468,7 +468,7 @@ const WelcomeScreen = () => {
               <Ionicons name='md-globe' size={35} color={Colors.surround} />
             </View>
             <View style={{ width: '50%' }}>
-              <TxtBold>~ 43</TxtBold>
+              <TxtBold style={{ color: Colors.surround }}>~ 43</TxtBold>
             </View>
           </View>
           <View
@@ -486,7 +486,7 @@ const WelcomeScreen = () => {
               />
             </View>
             <View style={{ width: '50%' }}>
-              <TxtBold>~ 3000</TxtBold>
+              <TxtBold style={{ color: Colors.surround }}>~ 3000</TxtBold>
             </View>
           </View>
           <View
