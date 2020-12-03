@@ -29,7 +29,9 @@ const WelcomeScreen = () => {
 
   const [theme, setTheme] = useState();
   const actTheme = useSelector((state) => state.theme.theme);
-  useEffect(() => setTheme(actTheme));
+  useEffect(() => {
+    setTheme(actTheme);
+  }, []);
 
   const data = useSelector((state) => state.words.words);
   const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
@@ -45,8 +47,10 @@ const WelcomeScreen = () => {
   const [selectOneScnd, setSelectOneScnd] = useState(0);
   const [selectTwoScnd, setSelectTwoScnd] = useState(0);
 
-  let languagesFirst = useSelector((state) => state.language.languagesFirst);
-  let languagesSecond = useSelector((state) => state.language.languagesSecond);
+  const languagesFirst = useSelector((state) => state.language.languagesFirst);
+  const languagesSecond = useSelector(
+    (state) => state.language.languagesSecond
+  );
 
   const dispatch = useDispatch();
 

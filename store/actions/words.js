@@ -34,9 +34,7 @@ export const loadStatusesFromDb = () => {
   return async (dispatch) => {
     try {
       const del = await deleteZeroStatuses();
-      console.log('del', del);
       const dbResult = await loadStatuses();
-      console.log('loaded statuses', dbResult);
       const statuses = dbResult.rows._array;
       if (statuses.length > 0) {
         await dispatch({

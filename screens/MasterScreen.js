@@ -18,7 +18,7 @@ import {
 import ComboAround from '../components/UI/ComboAround';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
-import * as Languages from '../data/languages';
+
 import * as Buttons from './../components/UI/Buttons';
 import { useSelector, useDispatch } from 'react-redux';
 import * as wordActions from '../store/actions/words';
@@ -70,8 +70,6 @@ const MasterScreen = () => {
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
-  const txtfrst = Languages[lngfrst].Master;
-  const txtscnd = Languages[lngscnd].Master;
   const dispatch = useDispatch();
 
   const [theme, setTheme] = useState();
@@ -530,7 +528,7 @@ const MasterScreen = () => {
           <FlatList
             data={words}
             keyExtractor={(item) => item['id' + lngfrst].toString()}
-            initialNumToRender={20}
+            initialNumToRender={50}
             getItemLayout={(data, index) => ({
               length: 52.5,
               offset: 52.5 * index,
@@ -611,7 +609,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelV((prev) => !prev);
-                // counter();
+
                 setIndex(0);
               }}
               bodyStyle={
@@ -671,7 +669,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelN((prev) => !prev);
-                // counter();
+
                 setIndex(0);
               }}
               bodyStyle={
@@ -729,7 +727,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelA((prev) => !prev);
-                // counter();
+
                 setIndex(0);
               }}
               bodyStyle={
@@ -787,7 +785,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelH((prev) => !prev);
-                // counter();
+
                 setIndex(0);
               }}
               bodyStyle={
@@ -846,7 +844,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelF((prev) => !prev);
-                // counter();
+
                 setIndex(0);
               }}
               bodyStyle={
@@ -904,7 +902,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelT((prev) => !prev);
-                // counter();
+
                 setIndex(0);
               }}
               bodyStyle={
@@ -962,7 +960,7 @@ const MasterScreen = () => {
             <Buttons.ButtonBox
               action={() => {
                 setLevelX((prev) => !prev);
-                // counter();
+
                 setIndex(0);
               }}
               bodyStyle={
@@ -1392,11 +1390,14 @@ const MasterScreen = () => {
 export const screenOptions = (navData) => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
-  const langfrst = Languages[lngfrst]['Language'];
-  const langscnd = Languages[lngscnd]['Language'];
+  const data = useSelector((state) => state.words.words);
+  const languagesLocal = data.filter((word) => word['iden'] === 2999);
+
+  const actLngFrst = languagesLocal[0][lngfrst];
+  const actLngScnd = languagesLocal[0][lngscnd];
 
   return {
-    headerTitle: `${langfrst} > ${langscnd}`,
+    headerTitle: `${actLngFrst} > ${actLngScnd}`,
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item

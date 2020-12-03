@@ -8,7 +8,7 @@ export const loadSettingsFromDb = () => {
     try {
       const dbResult = await loadSettings();
       const settings = dbResult.rows._array;
-      console.log(dbResult);
+
       for (const key in settings) {
         let lngfrst = settings[key].lngfrst;
         let lngscnd = settings[key].lngscnd;

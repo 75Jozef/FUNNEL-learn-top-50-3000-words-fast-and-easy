@@ -15,7 +15,6 @@ import {
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
-import * as Languages from '../data/languages';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Buttons from './../components/UI/Buttons';
 import { Ionicons } from '@expo/vector-icons';
@@ -41,8 +40,6 @@ const StatisticsScreen = () => {
 
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
-  const txtscnd = Languages[lngscnd].Statistics;
-  const txtfrst = Languages[lngfrst].Statistics;
 
   const data = useSelector((state) => state.words.words);
 
@@ -57,53 +54,13 @@ const StatisticsScreen = () => {
 
   const [theme, setTheme] = useState();
   const actTheme = useSelector((state) => state.theme.theme);
-  useEffect(() => setTheme(actTheme));
+  useEffect(() => {
+    setTheme(actTheme);
+  }, []);
 
-  let languages = [
-    'en',
-    'it',
-    'pa',
-    'jv',
-    'th',
-    'pl',
-    'fa',
-    'ur',
-    'uk',
-    'ro',
-    'nl',
-    'sr',
-    'hr',
-    'hu',
-    'el',
-    'cs',
-    'sv',
-    'be',
-    'fi',
-    'da',
-    'cn',
-    'es',
-    'ar',
-    'pt',
-    'id',
-    'ms',
-    'fr',
-    'ru',
-    'de',
-    'ja',
-    'hi',
-    'bn',
-    'tr',
-    'mr',
-    'ko',
-    'vi',
-    'ta',
-    'sk',
-    'af',
-    'lv',
-    'eo',
-    'et',
-    'bg',
-  ];
+  const languagesSecond = useSelector(
+    (state) => state.language.languagesSecond
+  );
 
   const selectedWords = data.filter(
     (word) =>
@@ -161,7 +118,7 @@ const StatisticsScreen = () => {
   const SelectSecondLanguage = (props) => {
     return (
       <ScrollView>
-        {languages.map((lng, index) => {
+        {languagesSecond.map((lng, index) => {
           return (
             <View key={index}>
               <Buttons.ButtonBox
@@ -760,7 +717,9 @@ const StatisticsScreen = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <TxtItalic>{txtfrst.noRange}</TxtItalic>
+              <TxtItalic>
+                {data[451][lngfrst]} {data[1966][lngfrst]}
+              </TxtItalic>
             </View>
           )}
         </View>

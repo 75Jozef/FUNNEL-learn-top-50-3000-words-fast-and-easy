@@ -45,62 +45,20 @@ const OptionsScreen = () => {
 
   const data = useSelector((state) => state.words.words);
 
-  const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
+  const languageLocal = data.filter((word) => word['iden'] === 2999);
+  const actLngFrst = languageLocal[0][lngfrst];
+  const actLngScnd = languageLocal[0][lngscnd];
 
-  const actLngFrst = wordFrst[0][lngfrst];
-  const actLngScnd = wordFrst[0][lngscnd];
-
-  const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
-  const actLngFrstEng = wordEng[0][lngfrst];
-  const actLngScndEng = wordEng[0][lngscnd];
+  const languageEng = data.filter((word) => word['iden'] === 3001);
+  const actLngFrstEng = languageEng[0][lngfrst];
+  const actLngScndEng = languageEng[0][lngscnd];
 
   const dispatch = useDispatch();
 
-  let languages = [
-    'en',
-    'it',
-    'pa',
-    'jv',
-    'th',
-    'pl',
-    'fa',
-    'ur',
-    'uk',
-    'ro',
-    'nl',
-    'sr',
-    'hr',
-    'hu',
-    'el',
-    'cs',
-    'sv',
-    'be',
-    'fi',
-    'da',
-    'cn',
-    'es',
-    'ar',
-    'pt',
-    'id',
-    'ms',
-    'fr',
-    'ru',
-    'de',
-    'ja',
-    'hi',
-    'bn',
-    'tr',
-    'mr',
-    'ko',
-    'vi',
-    'ta',
-    'sk',
-    'af',
-    'lv',
-    'eo',
-    'et',
-    'bg',
-  ];
+  const languagesFirst = useSelector((state) => state.language.languagesFirst);
+  const languagesSecond = useSelector(
+    (state) => state.language.languagesSecond
+  );
 
   const handleFirstLng = (props) => {
     if (selectSecondLanguage) {
@@ -145,7 +103,7 @@ const OptionsScreen = () => {
   const SelectFirstLanguage = (props) => {
     return (
       <ScrollView>
-        {languages.map((lng, index) => {
+        {languagesFirst.map((lng, index) => {
           return (
             <View
               key={index}
@@ -177,11 +135,11 @@ const OptionsScreen = () => {
                       color: Colors.surround,
                       fontSize: Dimensions.get('window').height / 35,
                     }}>
-                    {wordFrst[0][lng]}
+                    {languageLocal[0][lng]}
                   </TxtLabel>
                 </Buttons.ButtonBox>
                 <TxtButton style={{ color: Colors.inactive }}>
-                  {wordEng[0][lng]}
+                  {languageEng[0][lng]}
                 </TxtButton>
               </View>
             </View>
@@ -193,7 +151,7 @@ const OptionsScreen = () => {
   const SelectSecondLanguage = (props) => {
     return (
       <ScrollView>
-        {languages.map((lng, index) => {
+        {languagesSecond.map((lng, index) => {
           return (
             <View
               key={index}
@@ -225,11 +183,11 @@ const OptionsScreen = () => {
                       color: Colors.surround,
                       fontSize: Dimensions.get('window').height / 35,
                     }}>
-                    {wordFrst[0][lng]}
+                    {languageLocal[0][lng]}
                   </TxtLabel>
                 </Buttons.ButtonBox>
                 <TxtButton style={{ color: Colors.inactive }}>
-                  {wordEng[0][lng]}
+                  {languageEng[0][lng]}
                 </TxtButton>
               </View>
             </View>
@@ -255,11 +213,10 @@ const OptionsScreen = () => {
   };
 
   const [theme, setTheme] = useState();
-  const [thm, setThm] = useState();
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
-    setThm(actTheme);
-  });
+    setTheme(actTheme);
+  }, []);
 
   const handleReset = (props) => {
     Alert.alert(
