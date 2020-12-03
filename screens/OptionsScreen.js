@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   View,
@@ -12,7 +12,6 @@ import ScreenFrame from '../components/UI/ScreenFrame';
 
 import Colors from '../constants/Colors';
 import {
-  TxtHeader,
   TxtBold,
   TxtNormal,
   TxtItalic,
@@ -553,7 +552,7 @@ export const screenOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='HowTo'
-          iconName={'ios-menu'}
+          iconName={'md-menu'}
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}

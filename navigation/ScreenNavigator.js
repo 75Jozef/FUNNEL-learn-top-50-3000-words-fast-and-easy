@@ -6,7 +6,6 @@ import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
 
-import * as Languages from '../data/languages';
 import * as Buttons from './../components/UI/Buttons';
 
 import {
@@ -57,9 +56,7 @@ export const WelcomeNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}
-      // headerMode={'none'}
-    >
+      }}>
       <WelcomeStackNavigator.Screen
         name='Welcome'
         component={WelcomeScreen}
@@ -90,9 +87,7 @@ export const MasterNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}
-      // headerMode={'none'}
-    >
+      }}>
       <MasterStackNavigator.Screen
         name='Master'
         component={MasterScreen}
@@ -127,9 +122,7 @@ export const StatsNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}
-      // headerMode={'none'}
-    >
+      }}>
       <StatsStackNavigator.Screen
         name='Stats'
         component={StatisticsScreen}
@@ -159,9 +152,7 @@ export const OptionsNavigator = () => {
         headerTintColor: Colors.surround,
         gestureEnabled: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}
-      // headerMode={'none'}
-    >
+      }}>
       <OptionsStackNavigator.Screen
         name='Options'
         component={OptionsScreen}

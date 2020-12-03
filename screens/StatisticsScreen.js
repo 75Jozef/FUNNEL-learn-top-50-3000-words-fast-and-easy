@@ -4,14 +4,7 @@ import ScreenFrame from '../components/UI/ScreenFrame';
 import * as Device from 'expo-device';
 
 import Colors from '../constants/Colors';
-import {
-  TxtHeader,
-  TxtBold,
-  TxtNormal,
-  TxtItalic,
-  TxtLabel,
-  TxtButton,
-} from '../components/UI/Txt';
+import { TxtBold, TxtNormal, TxtItalic, TxtButton } from '../components/UI/Txt';
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
@@ -760,7 +753,7 @@ export const screenOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Menu'
-          iconName={'ios-menu'}
+          iconName={'md-menu'}
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}

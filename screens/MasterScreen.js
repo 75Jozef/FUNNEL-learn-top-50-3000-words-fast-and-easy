@@ -3,7 +3,6 @@ import {
   View,
   Dimensions,
   TouchableNativeFeedback,
-  Platform,
   FlatList,
 } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
@@ -1402,7 +1401,7 @@ export const screenOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Menu'
-          iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+          iconName={'md-menu'}
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}

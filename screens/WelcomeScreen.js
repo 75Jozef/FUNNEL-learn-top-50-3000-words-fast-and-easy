@@ -13,10 +13,8 @@ import {
   TxtHeader,
   TxtBold,
   TxtNormal,
-  TxtItalic,
   TxtLabel,
   TxtButton,
-  TxtError,
 } from '../components/UI/Txt';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
@@ -543,7 +541,7 @@ export const screenOptions = (navData) => {
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Menu'
-          iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+          iconName={'md-menu'}
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}
