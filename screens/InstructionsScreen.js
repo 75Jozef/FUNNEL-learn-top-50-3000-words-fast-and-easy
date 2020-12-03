@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
-import Colors from '../constants/Colors';
-import {
-  TxtNormal,
-  TxtItalic,
-  TxtLabel,
-  TxtButton,
-  TxtBold,
-} from '../components/UI/Txt';
+import { TxtNormal } from '../components/UI/Txt';
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from '../components/UI/CustomHeaderButton';
 
 import { useSelector } from 'react-redux';
-
-import { Ionicons } from '@expo/vector-icons';
 
 const InstructionsScreen = () => {
   const [theme, setTheme] = useState();
@@ -30,7 +21,11 @@ const InstructionsScreen = () => {
   return (
     <ScreenFrame>
       <Image
-        source={require('./../Images/instructions.png')}
+        source={
+          theme === 'light'
+            ? require('./../Images/instructions_light.png')
+            : require('./../Images/instructions_dark.png')
+        }
         style={{
           flex: 1,
           width: null,
