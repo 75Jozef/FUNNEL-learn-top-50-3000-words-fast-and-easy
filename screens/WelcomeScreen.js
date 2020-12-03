@@ -489,6 +489,17 @@ const WelcomeScreen = () => {
               <TxtBold>~ 3000</TxtBold>
             </View>
           </View>
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'row',
+            }}>
+            <TxtButton
+              style={{ fontSize: Dimensions.get('window').height / 70 }}>
+              by Google Translate
+            </TxtButton>
+          </View>
         </View>
       </View>
       <View

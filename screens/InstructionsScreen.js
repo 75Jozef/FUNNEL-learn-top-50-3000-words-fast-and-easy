@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Dimensions,
-  TouchableNativeFeedback,
-  Platform,
-  FlatList,
-} from 'react-native';
+import { View, Image } from 'react-native';
 import ScreenFrame from '../components/UI/ScreenFrame';
 import Colors from '../constants/Colors';
 import {
@@ -35,17 +29,27 @@ const InstructionsScreen = () => {
 
   return (
     <ScreenFrame>
+      <Image
+        source={require('./../Images/instructions.png')}
+        style={{
+          flex: 1,
+          width: null,
+          height: null,
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          opacity: 0.6,
+        }}></Image>
       <View
         style={{
           height: '20%',
           justifyContent: 'space-between',
-          borderWidth: 1,
-          borderColor: Colors.inactive,
-          borderStyle: 'dotted',
-          borderRadius: 25,
         }}>
         <View
           style={{
+            marginTop: 10,
             flexDirection: 'row',
             justifyContent: 'space-evenly',
             width: '90%',
@@ -72,10 +76,6 @@ const InstructionsScreen = () => {
           width: '90%',
           justifyContent: 'space-between',
           alignItems: 'center',
-          borderWidth: 1,
-          borderColor: Colors.inactive,
-          borderStyle: 'dotted',
-          borderRadius: 25,
         }}>
         <TxtNormal> </TxtNormal>
         <TxtNormal> </TxtNormal>
@@ -97,24 +97,19 @@ const InstructionsScreen = () => {
         style={{
           height: '25%',
           justifyContent: 'space-between',
-
           width: '90%',
           alignItems: 'center',
-          borderWidth: 1,
-          borderColor: Colors.inactive,
-          borderStyle: 'dotted',
-          borderRadius: 25,
         }}>
-        <TxtNormal>
+        <TxtNormal style={{ marginTop: 25 }}>
           {data[1206][lngfrst]} - {data[40][lngfrst]} {data[2966][lngfrst]}
         </TxtNormal>
 
-        <TxtNormal>{data[2345][lngfrst]}</TxtNormal>
+        <TxtNormal style={{ marginTop: 30 }}>{data[2345][lngfrst]}</TxtNormal>
 
         <View
           style={{
             alignItems: 'center',
-            justifyContent: 'space-evenly',
+            justifyContent: 'space-between',
           }}>
           <TxtNormal>{data[1360][lngfrst]}</TxtNormal>
         </View>
