@@ -45,51 +45,8 @@ const WelcomeScreen = () => {
   const [selectOneScnd, setSelectOneScnd] = useState(0);
   const [selectTwoScnd, setSelectTwoScnd] = useState(0);
 
-  let languages = [
-    'en',
-    'it',
-    'pa',
-    'jv',
-    'th',
-    'pl',
-    'fa',
-    'ur',
-    'uk',
-    'ro',
-    'nl',
-    'sr',
-    'hr',
-    'hu',
-    'el',
-    'cs',
-    'sv',
-    'be',
-    'fi',
-    'da',
-    'cn',
-    'es',
-    'ar',
-    'pt',
-    'id',
-    'ms',
-    'fr',
-    'ru',
-    'de',
-    'ja',
-    'hi',
-    'bn',
-    'tr',
-    'mr',
-    'ko',
-    'vi',
-    'ta',
-    'sk',
-    'af',
-    'lv',
-    'eo',
-    'et',
-    'bg',
-  ];
+  let languagesFirst = useSelector((state) => state.language.languagesFirst);
+  let languagesSecond = useSelector((state) => state.language.languagesSecond);
 
   const dispatch = useDispatch();
 
@@ -136,7 +93,7 @@ const WelcomeScreen = () => {
   const SelectFirstLanguage = (props) => {
     return (
       <ScrollView horizontal={true}>
-        {languages.map((lng, index) => {
+        {languagesFirst.map((lng, index) => {
           return (
             <View
               key={index}
@@ -186,7 +143,7 @@ const WelcomeScreen = () => {
   const SelectSecondLanguage = (props) => {
     return (
       <ScrollView horizontal={true}>
-        {languages.map((lng, index) => {
+        {languagesSecond.map((lng, index) => {
           return (
             <View
               key={index}
