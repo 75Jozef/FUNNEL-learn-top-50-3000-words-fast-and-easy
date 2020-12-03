@@ -505,13 +505,13 @@ const WelcomeScreen = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Ionicons name='ios-heart' size={20} color={'red'} />
           <Ionicons name='logo-android' size={25} color={'lightgreen'} />
           <TxtButton> v{Device.osVersion}</TxtButton>
         </View>
         <View>
           <TxtButton>
             {'   '}
+            <Ionicons name='ios-heart' size={20} color={'red'} />
             (c)2020 75Jozef Drha
           </TxtButton>
         </View>
