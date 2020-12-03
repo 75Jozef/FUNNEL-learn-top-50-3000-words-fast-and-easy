@@ -227,10 +227,10 @@ const WelcomeScreen = () => {
       </View>
       <View
         style={{
-          height: '15%',
+          height: '10%',
           alignItems: 'center',
           width: '95%',
-          justifyContent: 'flex-end',
+          justifyContent: 'center',
         }}>
         <Buttons.ButtonCircle
           action={() => {
@@ -249,16 +249,13 @@ const WelcomeScreen = () => {
             borderWidth: 0,
             backgroundColor: Colors.base,
             width: Dimensions.get('window').width / 1.2,
-            height: Dimensions.get('window').height / 10,
+            height: Dimensions.get('window').height / 15,
           }}>
           <TxtNormal>
             {data[1252][lngfrst]}
-            {' \n'}{' '}
+            {' \n'}
           </TxtNormal>
-          <TxtButton>
-            {Device.deviceName}
-            {'\n'}
-          </TxtButton>
+          <TxtButton>{Device.deviceName}</TxtButton>
         </Buttons.ButtonCircle>
       </View>
       <View
@@ -415,7 +412,7 @@ const WelcomeScreen = () => {
 
       <View
         style={{
-          height: '30%',
+          height: '35%',
           alignItems: 'center',
           width: '95%',
           justifyContent: 'space-around',
