@@ -509,6 +509,7 @@ const WelcomeScreen = () => {
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
+          alignContent: 'center',
         }}>
         <View
           style={{
@@ -516,14 +517,16 @@ const WelcomeScreen = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Ionicons name='logo-android' size={25} color={'lightgreen'} />
-          <TxtButton> v{Device.osVersion}</TxtButton>
+          <Ionicons name='logo-android' size={20} color={Colors.inactive} />
+          <TxtButton>v{Device.osVersion}</TxtButton>
         </View>
         <View>
           <TxtButton>
             {'   '}
-            <Ionicons name='ios-heart' size={20} color={'red'} />
-            (c)2020 75Jozef Drha
+            <Ionicons name='ios-heart' size={20} color={Colors.inactive} />
+            2020{'   '}
+            <Ionicons name='ios-person' size={20} color={Colors.inactive} />
+            75Jozef Drha
           </TxtButton>
         </View>
       </View>

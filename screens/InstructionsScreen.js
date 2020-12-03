@@ -30,13 +30,15 @@ const InstructionsScreen = () => {
           flex: 1,
           width: null,
           height: null,
+          resizeMode: 'contain',
           position: 'absolute',
           top: 0,
           right: 0,
           bottom: 0,
           left: 0,
-          opacity: 0.6,
-        }}></Image>
+          opacity: 0.5,
+        }}
+      />
       <View
         style={{
           height: '20%',
@@ -44,20 +46,19 @@ const InstructionsScreen = () => {
         }}>
         <View
           style={{
-            marginTop: 10,
             flexDirection: 'row',
             justifyContent: 'space-evenly',
             width: '90%',
             alignSelf: 'center',
           }}>
           <TxtNormal>
-            {' '}
             {data[758][lngfrst]} - {data[451][lngfrst]}
           </TxtNormal>
         </View>
         <View
           style={{
             alignItems: 'center',
+            paddingBottom: 15,
           }}>
           <TxtNormal>
             {data[1206][lngfrst]} - {data[451][lngfrst]}
@@ -73,11 +74,10 @@ const InstructionsScreen = () => {
           alignItems: 'center',
         }}>
         <TxtNormal> </TxtNormal>
-        <TxtNormal> </TxtNormal>
+
         <TxtNormal>
           {data[2403][lngfrst]} {data[2470][lngfrst]} - {data[451][lngfrst]}
         </TxtNormal>
-        <TxtNormal> </TxtNormal>
         <TxtNormal> </TxtNormal>
         <TxtNormal>
           {data[2966][lngfrst]} {data[1545][lngfrst]} - {data[451][lngfrst]}
@@ -95,7 +95,7 @@ const InstructionsScreen = () => {
           width: '90%',
           alignItems: 'center',
         }}>
-        <TxtNormal style={{ marginTop: 25 }}>
+        <TxtNormal style={{ paddingTop: 10 }}>
           {data[1206][lngfrst]} - {data[40][lngfrst]} {data[2966][lngfrst]}
         </TxtNormal>
 
@@ -115,7 +115,7 @@ const InstructionsScreen = () => {
 
 export const screenOptions = (navData) => {
   return {
-    headerTitle: ' ',
+    headerTitle: ':)',
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
