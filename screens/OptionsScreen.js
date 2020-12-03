@@ -265,14 +265,19 @@ const OptionsScreen = () => {
             }}>
             <Buttons.ButtonCircle
               action={() => setLocker((prev) => !prev)}
-              touchColor={locker ? Colors.accent : Colors.backPrimary}>
+              touchColor={Colors.accent}>
               <Ionicons
                 name={locker ? 'ios-lock' : 'ios-unlock'}
                 size={25}
-                color={Colors.accent}
+                color={locker ? Colors.accent : Colors.backPrimary}
               />
             </Buttons.ButtonCircle>
-            {locker ? null : <TxtBold> {data[222][lngfrst]}</TxtBold>}
+            {locker ? null : (
+              <TxtBold style={{ color: Colors.backPrimary }}>
+                {' '}
+                {data[222][lngfrst]}
+              </TxtBold>
+            )}
             <View style={{ marginLeft: 20, justifyContent: 'center' }}>
               <ComboAround>
                 <TxtNormal
@@ -301,10 +306,13 @@ const OptionsScreen = () => {
                 <Ionicons
                   name={'ios-refresh'}
                   size={25}
-                  color={locker ? Colors.accent : Colors.backPrimary}
+                  color={locker ? Colors.backPrimary : Colors.accent}
                 />
               </Buttons.ButtonCircle>
-              <TxtBold> {data[2244][lngfrst]}</TxtBold>
+              <TxtBold style={{ color: Colors.accent }}>
+                {' '}
+                {data[2244][lngfrst]}
+              </TxtBold>
               <View style={{ marginLeft: 20 }}>
                 <ComboAround>
                   <TxtNormal
