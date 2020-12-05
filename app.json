@@ -34,7 +34,8 @@
     "adaptiveIcon": {
       "foregroundImage": "./assets/funnel_icon.png",
       "backgroundColor": "#fffff5"
-    }
+    },
+    "permissions": ["READ_PHONE_STATE"]
   }
   }
 }
