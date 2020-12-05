@@ -126,13 +126,13 @@ const WelcomeScreen = () => {
                   action={() => setLanguageFirst(lng, lngscnd)}>
                   <TxtLabel
                     style={{
-                      color: Colors.surround,
+                      color: Colors.textPrimary,
                       fontSize: Dimensions.get('window').height / 35,
                     }}>
                     {wordFrst[0][lng]}
                   </TxtLabel>
                 </Buttons.ButtonBox>
-                <TxtButton style={{ color: Colors.inactive }}>
+                <TxtButton style={{ color: Colors.surround }}>
                   {wordEng[0][lng]}
                 </TxtButton>
               </View>
@@ -176,13 +176,13 @@ const WelcomeScreen = () => {
                   action={() => setLanguageSecond(lngfrst, lng)}>
                   <TxtLabel
                     style={{
-                      color: Colors.surround,
+                      color: Colors.textPrimary,
                       fontSize: Dimensions.get('window').height / 35,
                     }}>
                     {wordFrst[0][lng]}
                   </TxtLabel>
                 </Buttons.ButtonBox>
-                <TxtButton style={{ color: Colors.inactive }}>
+                <TxtButton style={{ color: Colors.surround }}>
                   {wordEng[0][lng]}
                 </TxtButton>
               </View>
