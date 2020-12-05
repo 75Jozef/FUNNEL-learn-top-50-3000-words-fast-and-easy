@@ -494,8 +494,11 @@ const WelcomeScreen = () => {
               flexDirection: 'row',
             }}>
             <TxtButton
-              style={{ fontSize: Dimensions.get('window').height / 70 }}>
-              by Google Translate
+              style={{
+                fontSize: Dimensions.get('window').height / 70,
+              }}>
+              {' '}
+              <Ionicons name='ios-happy' size={20} color={Colors.inactive} />
             </TxtButton>
           </View>
         </View>
