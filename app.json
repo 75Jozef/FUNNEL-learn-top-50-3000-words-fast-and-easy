@@ -1,9 +1,15 @@
 {
   "expo": {
-    "name": "wordrow",
-    "slug": "wordrow",
+    "name": "FUNNEL",
+    "description": "learn top words offline, build basic vocabulary fast and easy",
+    "slug": "funnel",
+    "owner": "Jozef Drha",
+    "privacy": "public",
+    "platforms": "android",
     "version": "1.0.0",
     "orientation": "portrait",
+    "backgroundColor":"#000000",
+    "primaryColor":"#000000",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -11,7 +17,7 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+     "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
@@ -23,9 +29,12 @@
       "favicon": "./assets/favicon.png"
     },
     "androidNavigationBar": {
-     
-     "barStyle": "light-content",
+    "barStyle": "light-content",
+    "backgroundColor": "#000000"
+  },
+  "androidStatusBar": {
+    "barStyle": "light-content",
     "backgroundColor": "#000000"
   }
-}
+  }
 }
