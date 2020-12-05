@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FUNNEL",
-    "description": "learn top words offline, build basic vocabulary fast and easy",
+    "description": "Learn top words offline, build basic vocabulary fast and easy.",
     "slug": "funnel",
        "privacy": "public",
     "platforms": ["android"],
