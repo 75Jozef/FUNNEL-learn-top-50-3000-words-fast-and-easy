@@ -492,15 +492,7 @@ const WelcomeScreen = () => {
               alignItems: 'center',
               justifyContent: 'center',
               flexDirection: 'row',
-            }}>
-            <TxtButton
-              style={{
-                fontSize: Dimensions.get('window').height / 70,
-              }}>
-              {' '}
-              <Ionicons name='ios-happy' size={20} color={Colors.inactive} />
-            </TxtButton>
-          </View>
+            }}></View>
         </View>
       </View>
       <View
