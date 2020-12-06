@@ -237,7 +237,7 @@ const OptionsScreen = () => {
             dispatch(wordActions.resetStatuses());
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
-            DevSettings.reload();
+            // DevSettings.reload();
           },
         },
       ],

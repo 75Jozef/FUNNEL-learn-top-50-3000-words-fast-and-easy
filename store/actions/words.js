@@ -51,7 +51,7 @@ export const loadStatusesFromDb = () => {
 export const resetStatuses = () => {
   return async (dispatch) => {
     try {
-      dispatch({
+      await dispatch({
         type: RESET_STATUSES,
       });
       await deleteAll();

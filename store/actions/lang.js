@@ -9,20 +9,22 @@ export const loadSettingsFromDb = () => {
       const dbResult = await loadSettings();
       const settings = dbResult.rows._array;
 
-      for (const key in settings) {
-        let lngfrst = settings[key].lngfrst;
-        let lngscnd = settings[key].lngscnd;
-        let theme = settings[key].theme;
+      if (settings.length > 0) {
+        for (const key in settings) {
+          let lngfrst = settings[key].lngfrst;
+          let lngscnd = settings[key].lngscnd;
+          let theme = settings[key].theme;
 
-        await dispatch({
-          type: SET_LNG,
-          lngfrst: lngfrst,
-          lngscnd: lngscnd,
-        });
-        await dispatch({
-          type: SET_THEME,
-          theme: theme,
-        });
+          await dispatch({
+            type: SET_LNG,
+            lngfrst: lngfrst,
+            lngscnd: lngscnd,
+          });
+          await dispatch({
+            type: SET_THEME,
+            theme: theme,
+          });
+        }
       }
     } catch (err) {
       throw err;
