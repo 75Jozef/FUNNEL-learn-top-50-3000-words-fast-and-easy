@@ -99,6 +99,10 @@ const MasterScreen = () => {
 
   useEffect(() => {
     counter();
+  }, []);
+
+  useEffect(() => {
+    counter();
     setRange(words.length);
   }, [
     levelA,

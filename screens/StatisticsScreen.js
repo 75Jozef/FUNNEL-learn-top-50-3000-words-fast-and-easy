@@ -51,6 +51,10 @@ const StatisticsScreen = () => {
     setTheme(actTheme);
   }, []);
 
+  useEffect(() => {
+    counter();
+  }, []);
+
   const languagesSecond = useSelector(
     (state) => state.language.languagesSecond
   );
@@ -70,10 +74,6 @@ const StatisticsScreen = () => {
   const words = selectedWords.filter(
     (word) => word['st' + lngscnd] === select || word.userlvl === 'l'
   );
-
-  useEffect(() => {
-    counter();
-  });
 
   const counter = () => {
     let cntZero = 0;
