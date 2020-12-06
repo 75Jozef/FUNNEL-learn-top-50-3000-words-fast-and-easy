@@ -32,7 +32,7 @@
   },
   "android": {
     "adaptiveIcon": {
-      "foregroundImage": "./assets/funnel_icon.png",
+      "foregroundImage": "./assets/funnel_icon_512.png",
       "backgroundColor": "#fffff5"
     },
     "permissions": ["READ_PHONE_STATE"]
