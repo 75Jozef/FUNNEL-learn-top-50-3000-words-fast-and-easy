@@ -30,6 +30,7 @@ const WelcomeScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     setTheme(actTheme);
+    console.log('welcome theme');
   }, []);
 
   const data = useSelector((state) => state.words.words);
@@ -55,7 +56,8 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     counter();
-  });
+    console.log('welcome counter');
+  }, []);
 
   const counter = () => {
     let cntZeroScnd = 0;

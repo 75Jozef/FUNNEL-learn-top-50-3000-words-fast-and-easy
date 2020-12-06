@@ -75,6 +75,8 @@ const MasterScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     setTheme(actTheme);
+    console.log(object);
+    console.log('master theme');
   }, []);
 
   const data = useSelector((state) => state.words.words);
@@ -97,11 +99,12 @@ const MasterScreen = () => {
 
   const [helper, setHelper] = useState(false);
 
-  useEffect(() => {
-    counter();
-  });
+  // useEffect(() => {
+  //   counter();
+  // });
 
   useEffect(() => {
+    console.log('master counter');
     counter();
     setRange(words.length);
   }, [
