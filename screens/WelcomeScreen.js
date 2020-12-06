@@ -55,7 +55,7 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     counter();
-  }, []);
+  });
 
   const counter = () => {
     let cntZeroScnd = 0;

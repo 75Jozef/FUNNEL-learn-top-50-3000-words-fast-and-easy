@@ -53,7 +53,7 @@ const StatisticsScreen = () => {
 
   useEffect(() => {
     counter();
-  }, []);
+  });
 
   const languagesSecond = useSelector(
     (state) => state.language.languagesSecond

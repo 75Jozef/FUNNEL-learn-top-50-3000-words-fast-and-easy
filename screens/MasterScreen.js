@@ -99,7 +99,7 @@ const MasterScreen = () => {
 
   useEffect(() => {
     counter();
-  }, []);
+  });
 
   useEffect(() => {
     counter();
