@@ -238,6 +238,7 @@ const OptionsScreen = () => {
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
             // DevSettings.reload();
+            dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
           },
         },
       ],
