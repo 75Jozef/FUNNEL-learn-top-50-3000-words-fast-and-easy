@@ -1140,7 +1140,7 @@ const MasterScreen = () => {
                   name='ios-trophy'
                   size={18}
                   color={
-                    select === 2 && selectOne > 0
+                    select === 2 && selectTwo > 0
                       ? Colors.backPrimary
                       : Colors.inactive
                   }
