@@ -233,10 +233,11 @@ const OptionsScreen = () => {
         {
           text: 'RESET',
           style: 'destructive',
-          onPress: () => {
-            dispatch(wordActions.resetStatuses());
-            setLocker((prev) => !prev);
-            setResetStatuses((prev) => !prev);
+          onPress: async () => {
+            await dispatch(wordActions.resetStatuses())
+              .then(setLocker((prev) => !prev))
+              .then(setResetStatuses((prev) => !prev));
+
             // DevSettings.reload();
           },
         },
