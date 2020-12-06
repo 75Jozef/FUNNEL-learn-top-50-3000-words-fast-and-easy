@@ -52,6 +52,7 @@ export const WelcomeNavigator = () => {
         },
         headerTitleStyle: {
           fontFamily: Fonts.normal,
+          fontSize: Dimensions.get('window').height / 50,
         },
         headerTintColor: Colors.surround,
         gestureEnabled: true,
@@ -118,6 +119,7 @@ export const StatsNavigator = () => {
         },
         headerTitleStyle: {
           fontFamily: Fonts.normal,
+          fontSize: Dimensions.get('window').height / 50,
         },
         headerTintColor: Colors.surround,
         gestureEnabled: true,
@@ -148,6 +150,7 @@ export const OptionsNavigator = () => {
         },
         headerTitleStyle: {
           fontFamily: Fonts.normal,
+          fontSize: Dimensions.get('window').height / 50,
         },
         headerTintColor: Colors.surround,
         gestureEnabled: true,

@@ -222,7 +222,13 @@ const WelcomeScreen = () => {
           width: '95%',
         }}>
         <Ionicons name='ios-funnel' size={60} color={Colors.backSecond} />
-        <TxtHeader style={{ fontFamily: Fonts.normal }}>F|U|N|N|E|L</TxtHeader>
+        <TxtHeader
+          style={{
+            fontFamily: Fonts.normal,
+            fontSize: Dimensions.get('window').height / 30,
+          }}>
+          F|U|N|N|E|L
+        </TxtHeader>
       </View>
       <View
         style={{
@@ -250,10 +256,10 @@ const WelcomeScreen = () => {
             width: Dimensions.get('window').width / 1.2,
             height: Dimensions.get('window').height / 15,
           }}>
-          <TxtNormal>
+          <TxtButton>
             {data[1252][lngfrst]}
             {' \n'}
-          </TxtNormal>
+          </TxtButton>
           <TxtButton>{Device.deviceName}</TxtButton>
         </Buttons.ButtonCircle>
       </View>
@@ -427,7 +433,11 @@ const WelcomeScreen = () => {
               alignItems: 'center',
             }}>
             <TxtNormal>
-              <Ionicons name='ios-book' size={45} color={Colors.accent} />
+              <Ionicons
+                name='ios-book'
+                size={Dimensions.get('window').height / 15}
+                color={Colors.accent}
+              />
             </TxtNormal>
             <TxtNormal>{selectZeroScnd}</TxtNormal>
           </View>
@@ -436,7 +446,11 @@ const WelcomeScreen = () => {
               alignItems: 'center',
             }}>
             <TxtNormal>
-              <Ionicons name='ios-attach' size={45} color={Colors.backSecond} />
+              <Ionicons
+                name='ios-attach'
+                size={Dimensions.get('window').height / 15}
+                color={Colors.backSecond}
+              />
             </TxtNormal>
             <TxtNormal>{selectOneScnd}</TxtNormal>
           </View>
@@ -447,7 +461,7 @@ const WelcomeScreen = () => {
             <TxtNormal>
               <Ionicons
                 name='ios-trophy'
-                size={45}
+                size={Dimensions.get('window').height / 15}
                 color={Colors.backPrimary}
               />
             </TxtNormal>
