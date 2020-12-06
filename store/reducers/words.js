@@ -24,8 +24,10 @@ export default (state = initialState, action) => {
     }
     case RESET_STATUSES: {
       console.log('reset statuses words');
+      const updatedWords = [...initialState.words];
       return {
-        words: WORDS,
+        ...state,
+        words: updatedWords,
       };
     }
     case SET_STATUSES: {

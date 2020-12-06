@@ -30,9 +30,10 @@ import { Ionicons } from '@expo/vector-icons';
 import * as lngActions from '../store/actions/lang';
 import * as themeActions from '../store/actions/theme';
 import * as wordActions from '../store/actions/words';
-import * as resetActions from '../store/actions/resetKey';
 
 import ComboAround from '../components/UI/ComboAround';
+
+import * as Updates from 'expo-updates';
 
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
@@ -235,11 +236,10 @@ const OptionsScreen = () => {
         {
           text: 'RESET',
           style: 'destructive',
-          onPress: () => {
-            dispatch(wordActions.resetStatuses());
-            let a = new Date().toString();
-            console.log(a);
-            dispatch(resetActions.resetKey(new Date()r.toString()));
+          onPress: async () => {
+            dispatch(wordActions.resetStatuses()).then(
+              await Updates.reloadAsync()
+            );
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
             // DevSettings.reload();

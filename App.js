@@ -13,7 +13,6 @@ import ReduxThunk from 'redux-thunk';
 import langReducer from './store/reducers/lang';
 import wordsReducer from './store/reducers/words';
 import themeReducer from './store/reducers/theme';
-import resetKeyReducer from './store/reducers/resetKey';
 
 import { initStatuses, initSettings } from './localDb/db';
 
@@ -29,7 +28,6 @@ const rootReducer = combineReducers({
   language: langReducer,
   words: wordsReducer,
   theme: themeReducer,
-  reset: resetKeyReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

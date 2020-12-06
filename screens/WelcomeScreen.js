@@ -22,7 +22,7 @@ import Fonts from '../constants/Fonts';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = (resetKey = useSelector((state) => state.reset.key)) => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
 
@@ -53,8 +53,8 @@ const WelcomeScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    counter();
     console.log('welcome counter');
+    counter();
   });
 
   const counter = () => {
@@ -77,8 +77,11 @@ const WelcomeScreen = () => {
     });
 
     setSelectZeroScnd(cntZeroScnd);
+    console.log(selectZeroScnd);
     setSelectOneScnd(cntOneScnd);
+    console.log(selectOneScnd);
     setSelectTwoScnd(cntTwoScnd);
+    console.log(selectTwoScnd);
   };
 
   const setLanguageFirst = (lngfrst, lngscnd) => {
