@@ -6,6 +6,8 @@ import {
   deleteSettings,
 } from '../../localDb/db';
 
+import { Restart } from 'fiction-expo-restart';
+
 export const LANG = 'LANG';
 export const SET_STATUS = 'SET_STATUS';
 export const SET_STATUSES = 'SET_STATUSES';
@@ -56,6 +58,7 @@ export const resetStatuses = () => {
       });
       await deleteAll();
       await deleteSettings();
+      Restart();
     } catch (err) {
       throw err;
     }

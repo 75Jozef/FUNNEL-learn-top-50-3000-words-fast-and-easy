@@ -33,8 +33,6 @@ import * as wordActions from '../store/actions/words';
 
 import ComboAround from '../components/UI/ComboAround';
 
-import RNRestart from 'react-native-restart';
-
 const OptionsScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
@@ -236,10 +234,7 @@ const OptionsScreen = () => {
           text: 'RESET',
           style: 'destructive',
           onPress: async () => {
-            await dispatch(wordActions.resetStatuses())
-              .then(setLocker((prev) => !prev))
-              .then(setResetStatuses((prev) => !prev));
-            RNRestart.Restart();
+            dispatch(wordActions.resetStatuses());
             // DevSettings.reload();
           },
         },
