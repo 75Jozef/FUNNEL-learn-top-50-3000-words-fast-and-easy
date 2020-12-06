@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
     }
     case RESET_STATUSES: {
       return {
-        ...initialState,
+        initialState,
       };
     }
     case SET_STATUSES: {
