@@ -18,6 +18,7 @@ import {
 } from '../components/UI/Txt';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import CustomHeaderButton from './../components/UI/CustomHeaderButton';
+import Fonts from '../constants/Fonts';
 
 import { Ionicons } from '@expo/vector-icons';
 
@@ -221,7 +222,7 @@ const WelcomeScreen = () => {
           width: '95%',
         }}>
         <Ionicons name='ios-funnel' size={60} color={Colors.backSecond} />
-        <TxtHeader>F|U|N|N|E|L</TxtHeader>
+        <TxtHeader style={{ fontFamily: Fonts.normal }}>F|U|N|N|E|L</TxtHeader>
       </View>
       <View
         style={{
