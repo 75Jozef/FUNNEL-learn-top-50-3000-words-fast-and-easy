@@ -30,7 +30,6 @@ const WelcomeScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     setTheme(actTheme);
-    console.log('welcome theme');
   }, [actTheme]);
 
   const data = useSelector((state) => state.words.words);
@@ -53,7 +52,6 @@ const WelcomeScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('welcome counter');
     counter();
   });
 
@@ -77,11 +75,10 @@ const WelcomeScreen = () => {
     });
 
     setSelectZeroScnd(cntZeroScnd);
-    console.log(selectZeroScnd);
+
     setSelectOneScnd(cntOneScnd);
-    console.log(selectOneScnd);
+
     setSelectTwoScnd(cntTwoScnd);
-    console.log(selectTwoScnd);
   };
 
   const setLanguageFirst = (lngfrst, lngscnd) => {

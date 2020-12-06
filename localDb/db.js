@@ -94,7 +94,6 @@ export const deleteZeroStatuses = () => {
 };
 
 export const deleteAll = () => {
-  console.log('delete statuses');
   const promise = new Promise((resolve, reject) => {
     dbStatuses.transaction((tx) => {
       tx.executeSql(
@@ -149,7 +148,6 @@ export const loadSettings = () => {
 };
 
 export const deleteSettings = () => {
-  console.log('delete settings');
   const promise = new Promise((resolve, reject) => {
     dbSettings.transaction((tx) => {
       tx.executeSql(

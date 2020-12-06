@@ -49,12 +49,10 @@ const StatisticsScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     setTheme(actTheme);
-    console.log('stats theme');
   }, [actTheme]);
 
   useEffect(() => {
     counter();
-    console.log('stats counter');
   });
 
   const languagesSecond = useSelector(
