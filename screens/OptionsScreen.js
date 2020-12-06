@@ -237,7 +237,9 @@ const OptionsScreen = () => {
           style: 'destructive',
           onPress: () => {
             dispatch(wordActions.resetStatuses());
-            dispatch(resetActions.resetKey(new Date.toString()));
+            let a = new Date().toString();
+            console.log(a);
+            dispatch(resetActions.resetKey(new Date()r.toString()));
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
             // DevSettings.reload();

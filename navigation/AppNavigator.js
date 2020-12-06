@@ -29,7 +29,12 @@ const AppNavigator = (props) => {
       .then(() => setIsFetched(true));
   }, []);
 
-  const resetKey = useSelector();
+  const [resetKey, setResetKey] = useState();
+  const actReset = useSelector((state) => state.reset.key);
+  useEffect(() => {
+    setResetKey(actReset);
+    console.log('setResetKey', actReset);
+  }, [actReset]);
 
   return (
     <NavigationContainer>
