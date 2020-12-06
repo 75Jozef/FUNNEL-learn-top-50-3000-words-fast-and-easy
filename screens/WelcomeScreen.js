@@ -22,7 +22,7 @@ import Fonts from '../constants/Fonts';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const WelcomeScreen = (resetKey = useSelector((state) => state.reset.key)) => {
+const WelcomeScreen = () => {
   const lngfrst = useSelector((state) => state.language.lngfrst);
   const lngscnd = useSelector((state) => state.language.lngscnd);
 
