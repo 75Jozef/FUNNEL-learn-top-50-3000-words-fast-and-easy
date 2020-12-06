@@ -30,6 +30,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as lngActions from '../store/actions/lang';
 import * as themeActions from '../store/actions/theme';
 import * as wordActions from '../store/actions/words';
+import * as resetActions from '../store/actions/resetKey';
 
 import ComboAround from '../components/UI/ComboAround';
 
@@ -215,7 +216,8 @@ const OptionsScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     setTheme(actTheme);
-  }, []);
+    console.log('opt theme');
+  }, [actTheme]);
 
   const handleReset = (props) => {
     Alert.alert(
@@ -235,10 +237,10 @@ const OptionsScreen = () => {
           style: 'destructive',
           onPress: () => {
             dispatch(wordActions.resetStatuses());
+            dispatch(resetActions.resetKey(new Date.toString()));
             setLocker((prev) => !prev);
             setResetStatuses((prev) => !prev);
             // DevSettings.reload();
-            dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
           },
         },
       ],

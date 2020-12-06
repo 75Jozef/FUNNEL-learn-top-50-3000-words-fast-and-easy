@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { SideNavigator } from './../navigation/ScreenNavigator';
 import { View, Text } from 'react-native';
@@ -29,10 +29,12 @@ const AppNavigator = (props) => {
       .then(() => setIsFetched(true));
   }, []);
 
+  const resetKey = useSelector();
+
   return (
     <NavigationContainer>
       {isFetched ? (
-        <SideNavigator />
+        <SideNavigator key={resetKey} />
       ) : (
         <ScreenFrame>
           <View>

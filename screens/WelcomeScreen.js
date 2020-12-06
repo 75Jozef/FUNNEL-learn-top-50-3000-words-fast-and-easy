@@ -31,15 +31,13 @@ const WelcomeScreen = () => {
   useEffect(() => {
     setTheme(actTheme);
     console.log('welcome theme');
-  }, []);
+  }, [actTheme]);
 
   const data = useSelector((state) => state.words.words);
   const wordEng = data.filter((word) => word['id' + lngscnd] === 3001);
 
   const wordFrst = data.filter((word) => word['id' + lngfrst] === 2999);
 
-  const [actlngfrst, setActLngFrst] = useState(lngfrst);
-  const [actlngscnd, setActLngScnd] = useState(lngscnd);
   const [selectFirstLanguage, setSelectFirstLanguage] = useState(false);
   const [selectSecondLanguage, setSelectSecondLanguage] = useState(false);
 
@@ -57,7 +55,7 @@ const WelcomeScreen = () => {
   useEffect(() => {
     counter();
     console.log('welcome counter');
-  }, []);
+  });
 
   const counter = () => {
     let cntZeroScnd = 0;
@@ -85,13 +83,11 @@ const WelcomeScreen = () => {
 
   const setLanguageFirst = (lngfrst, lngscnd) => {
     dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
-    setActLngFrst(lngfrst);
     setSelectFirstLanguage(false);
   };
 
   const setLanguageSecond = (lngfrst, lngscnd) => {
     dispatch(lngActions.setLng(lngfrst, lngscnd, theme));
-    setActLngScnd(lngscnd);
     setSelectSecondLanguage(false);
   };
 

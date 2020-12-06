@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Dimensions,
@@ -75,7 +75,6 @@ const MasterScreen = () => {
   const actTheme = useSelector((state) => state.theme.theme);
   useEffect(() => {
     setTheme(actTheme);
-    console.log(object);
     console.log('master theme');
   }, []);
 

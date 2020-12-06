@@ -50,7 +50,7 @@ const StatisticsScreen = () => {
   useEffect(() => {
     setTheme(actTheme);
     console.log('stats theme');
-  }, []);
+  }, [actTheme]);
 
   useEffect(() => {
     counter();
