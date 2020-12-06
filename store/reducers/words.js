@@ -23,7 +23,6 @@ export default (state = initialState, action) => {
       };
     }
     case RESET_STATUSES: {
-      console.log('reset');
       return {
         ...state,
         words: WORDS,
