@@ -4,7 +4,6 @@
     "description": "Learn top words offline, build basic vocabulary fast and easy.",
     "slug": "funnel",
     "privacy": "public",
-    "sdkVersion": "39.0.0",
     "platforms": ["android"],
     "version": "1.0.0",
     "orientation": "portrait",
